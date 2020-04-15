@@ -15,7 +15,7 @@ const RightsScreen = props => {
 
     const renderGridItem = (itemData) => {
         return (
-            <RightsCategoryTile title={itemData.item.title} onSelect={() => {
+            <RightsCategoryTile title={itemData.item.title} image={itemData.item.image} onSelect={() => {
                 props.navigation.navigate({routeName: 'SubRights', params: {
                     categoryId: itemData.item.id // sending the rights category to the new screen
                 }});
@@ -23,13 +23,10 @@ const RightsScreen = props => {
             )
     };
 
+    // <RightsModal />
     return(
         <View style={styles.screen}>
-            <RightsModal />
             <FlatList data={RIGHTSCATEGORIES} renderItem={renderGridItem} numColumns={2} />
-
-            
-
         </View>
     );
 };

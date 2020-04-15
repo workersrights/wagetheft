@@ -2,12 +2,12 @@ import RightsCategory from '../models/rightsCategory';
 import SubRight from '../models/subRight';
 
 export const RIGHTSCATEGORIES = [
-    new RightsCategory('c1', 'Getting Hired', 'cat1.png'),
-    new RightsCategory('c2', 'Mistreatment', 'cat2.png'),
-    new RightsCategory('c3', 'Getting Paid', 'cat3.png'),
-    new RightsCategory('c4', 'Safety & Health', 'cat4.png'),
-    new RightsCategory('c5', 'Unions', 'cat5.png'),
-    new RightsCategory('c6', 'Unemployment', 'cat6.png'),
+    new RightsCategory('c1', 'Getting Hired', require('../images/hiring-icon.png')),
+    new RightsCategory('c2', 'Mistreatment', require('../images/mistreatment-icon.png')),
+    new RightsCategory('c3', 'Getting Paid', require('../images/payments-icon.png')),
+    new RightsCategory('c4', 'Safety & Health', require('../images/health-icon.png')),
+    new RightsCategory('c5', 'Unions', require('../images/unions-icon.png')),
+    new RightsCategory('c6', 'Unemployment', require('../images/unemployment-icon.png')),
 ];
 
 export const SUBRIGHTS = [
