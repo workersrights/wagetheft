@@ -13,9 +13,15 @@ const SubRightsScreen = props => {
 
     const renderSubright = itemData => {
         return(
-            <SubRightsItem title={itemData.item.title} emoji={itemData.item.emoji} onSelect={() => {
-                props.navigation.navigate({routeName: 'RightsDetails'});
-            }}/>
+            <SubRightsItem
+                title={itemData.item.title}
+                emoji={itemData.item.emoji}
+                onSelect={() => {
+                    props.navigation.navigate({routeName: 'RightsDetails', params: {
+                        subrightId: itemData.item.id
+                    }});
+                }}
+            />
         );
     };
 
