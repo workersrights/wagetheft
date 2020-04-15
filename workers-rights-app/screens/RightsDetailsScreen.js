@@ -25,7 +25,7 @@ RightsDetailsScreen.navigationOptions = navigationData => {
         <HeaderButtons HeaderButtonComponent={CustomHeaderButton} >
             <Item
                 title='Fav'
-                iconName='ios-star'
+                iconName='ios-star-outline'
                 onPress={() => {
                     console.log("mark as favorite!")
                 }}

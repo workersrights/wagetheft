@@ -2,9 +2,12 @@ import React from 'react';
 import { View, Text, Platform } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import RightsScreen from '../screens/RightsScreen';
 import SubRightsScreen from '../screens/SubRightsScreen';
 import RightsDetailsScreen from '../screens/RightsDetailsScreen';
+import FavoritesScreen from '../screens/FavoritesScreen';
+import EventsScreen from '../screens/EventsScreen';
 
 import Colors from '../constants/Colors';
 
@@ -28,5 +31,12 @@ const RightsNavigator = createStackNavigator({
   }
 });
 
+// have 1 stack per tab
+const RightsTabNavigator = createBottomTabNavigator({
+  Rights: RightsNavigator,
+  Favorites: FavoritesScreen,
+  Events: EventsScreen
+});
 
-export default createAppContainer(RightsNavigator);
+
+export default createAppContainer(RightsTabNavigator);
