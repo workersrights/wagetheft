@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet} from 'react-native';
 import { SUBRIGHTS } from '../data/dummy-data';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import CustomHeaderButton from '../components/CustomHeaderButton';
 
 const RightsDetailsScreen = props => {
     const subrightId = props.navigation.getParam('subrightId');
@@ -18,7 +20,18 @@ RightsDetailsScreen.navigationOptions = navigationData => {
     const subrightId = navigationData.navigation.getParam('subrightId');
     const selectedSubright = SUBRIGHTS.find(subright => subright.id === subrightId);
     return {
-        headerTitle: selectedSubright.title
+        headerTitle: selectedSubright.title,
+        headerRight: () =>
+        <HeaderButtons HeaderButtonComponent={CustomHeaderButton} >
+            <Item
+                title='Fav'
+                iconName='ios-star'
+                onPress={() => {
+                    console.log("mark as favorite!")
+                }}
+            />
+
+        </HeaderButtons>
     };
 };
 
