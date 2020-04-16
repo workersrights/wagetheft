@@ -10,7 +10,8 @@ import RightsDetailsScreen from '../screens/RightsDetailsScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import EventsScreen from '../screens/EventsScreen';
 import ForumScreen from '../screens/ForumScreen';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import SettingsScreen from '../screens/SettingsScreen';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Colors from '../constants/Colors';
 
@@ -36,14 +37,19 @@ const RightsNavigator = createStackNavigator({
 
 // have 1 stack per tab
 const RightsTabNavigator = createBottomTabNavigator({
-  Rights: {screen: RightsNavigator, navigationOptions: {
+  Events: {screen: EventsScreen, navigationOptions: {
     tabBarIcon: (tabInfo) => {
-      return <Ionicons name='ios-restaurant' size={25} color={tabInfo.tintColor}/>
+      return <Ionicons name='ios-calendar' size={25} color={tabInfo.tintColor}/>
     }
   }},
   Forum: {screen: ForumScreen, navigationOptions: {
     tabBarIcon: (tabInfo) => {
-      return <Ionicons name='ios-star' size={25} color={tabInfo.tintColor}/>
+      return <Icon name='forum-outline' size={25} color={tabInfo.tintColor}/>
+    }
+  }},
+  Rights: {screen: RightsNavigator, navigationOptions: {
+    tabBarIcon: (tabInfo) => {
+      return <Ionicons name='ios-book' size={25} color={tabInfo.tintColor}/>
     }
   }},
   Favorites: {screen: FavoritesScreen, navigationOptions: {
@@ -51,13 +57,13 @@ const RightsTabNavigator = createBottomTabNavigator({
       return <Ionicons name='ios-star' size={25} color={tabInfo.tintColor}/>
     }
   }},
-  Events: {screen: EventsScreen, navigationOptions: {
+  Settings: {screen: SettingsScreen, navigationOptions: {
     tabBarIcon: (tabInfo) => {
-      return <Icon name="rocket" size={25} color={tabInfo.tintColor} />;
-      //return <Ionicons name='ios-calendar' size={25} color={tabInfo.tintColor}/>
+      return <Ionicons name='md-settings' size={25} color={tabInfo.tintColor}/>
     }
   }}
 }, {
+  initialRouteName: "Rights",
   tabBarOptions: {
     activeTintColor: Colors.darkOrange
   }
