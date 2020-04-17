@@ -1,5 +1,6 @@
 import RightsCategory from '../models/rightsCategory';
 import SubRight from '../models/subRight';
+import Organization from '../models/organization';
 
 export const RIGHTSCATEGORIES = [
     new RightsCategory('c1', 'Getting Hired', require('../images/hiring-icon.png')),
@@ -8,6 +9,14 @@ export const RIGHTSCATEGORIES = [
     new RightsCategory('c4', 'Safety & Health', require('../images/health-icon.png')),
     new RightsCategory('c5', 'Unions', require('../images/unions-icon.png')),
     new RightsCategory('c6', 'Unemployment', require('../images/unemployment-icon.png')),
+];
+
+export const ORGANIZATIONS = [
+    new Organization('o1', 'Wage Theft Coalition', require('../images/wage-theft-coalition-logo.png'), 'TODO description', 'TODO website link'),
+    new Organization('o2', 'OSHA', require('../images/osha-logo.png'), 'TODO description', 'TODO website link'),
+    new Organization('o3', 'NLRB', require('../images/NLRB-logo.png'), 'TODO description', 'TODO website link'),
+    new Organization('o4', 'PERB', require('../images/PERB-logo.png'), 'TODO description', 'TODO website link'),
+    new Organization('o5', 'DFEH', require('../images/DFEH-logo.png'), 'TODO description', 'TODO website link'),
 ];
 
 export const SUBRIGHTS = [
