@@ -5,45 +5,43 @@ import {
     StyleSheet,
     Image
 } from "react-native";
+import Colors from '../constants/Colors';
 
 const OrganizationBox = props => {
     return (
-        <View style={{ height: 130, width: 130, marginLeft: 20, borderWidth: 0.5, borderColor: '#dddddd' }}>
-            <View style={{ flex: 2 }}>
+        <View style={styles.box}>
+            <View style={{ flex: 4 }}>
                 <Image source={props.image}
-                    style={{ flex: 1, width: null, height: null, resizeMode: 'cover' }}
+                    style={styles.imgStyle}
                 />
             </View>
             <View style={{ flex: 1, paddingLeft: 10, paddingTop: 10 }}>
-                <Text>{props.title}</Text>
+                <Text numberOfLines={2} style={styles.orgTitle}>{props.title}</Text>
             </View>
         </View>
     )
 };
 
-// class OrganizationBox extends Component {
-//     render() {
-        // return (
-        //     <View style={{ height: 130, width: 130, marginLeft: 20, borderWidth: 0.5, borderColor: '#dddddd' }}>
-        //         <View style={{ flex: 2 }}>
-        //             <Image source={this.props.imageUri}
-        //                 style={{ flex: 1, width: null, height: null, resizeMode: 'cover' }}
-        //             />
-        //         </View>
-        //         <View style={{ flex: 1, paddingLeft: 10, paddingTop: 10 }}>
-        //             <Text>{this.props.name}</Text>
-        //         </View>
-        //     </View>
-        // );
-//     }
-// }
-
-
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
+    box: {
+        height: 130,
+        width: 162,
+        marginRight: 15,
+        borderRadius: 15,
+        shadowOpacity: 0.25,
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 6
+    },
+    orgTitle: {
+        fontWeight: "600"
+    },
+    imgStyle: {
+        flex: 1, 
+        width: null,
+        height: null, 
+        resizeMode: 'cover',
+        borderRadius: 8
     }
 });
 
