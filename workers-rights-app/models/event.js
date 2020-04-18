@@ -1,6 +1,7 @@
 class Event  {
     contructor(
         title, 
+        eventId,
         date, 
         image = 'https://www.clipartkey.com/mpngs/m/220-2204245_calendaring-clipart-everyday-calendar-icon-png-white.png', 
         organizer, 
@@ -11,6 +12,7 @@ class Event  {
         
     {
         this.title = title;
+        this.eventId - eventId;
         this.date = date;
         this.image = image;
         this.organizer = organizer;
