@@ -8,7 +8,7 @@ import RightsScreen from '../screens/RightsScreen';
 import SubRightsScreen from '../screens/SubRightsScreen';
 import RightsDetailsScreen from '../screens/RightsDetailsScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
-import EventsScreen from '../screens/EventsScreen';
+import EventsHomeScreen from '../screens/EventsHomeScreen';
 import ForumScreen from '../screens/ForumScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -37,7 +37,7 @@ const RightsNavigator = createStackNavigator({
 
 // have 1 stack per tab
 const RightsTabNavigator = createBottomTabNavigator({
-  Events: {screen: EventsScreen, navigationOptions: {
+  Events: {screen: EventsHomeScreen, navigationOptions: {
     tabBarIcon: (tabInfo) => {
       return <Ionicons name='ios-calendar' size={25} color={tabInfo.tintColor}/>
     }
