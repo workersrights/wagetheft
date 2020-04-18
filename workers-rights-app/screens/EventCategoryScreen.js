@@ -5,7 +5,7 @@ const EventCategoryScreen = props => {
     return(
         <View style={styles.screen}>
             <Text>The Event Category Screen!</Text>
-            <Button title='Go to Event Category Screen' onPress={() => props.navigation.navigate('EventDetails')} />
+            <Button title='Go to Event Detail Screen' onPress={() => props.navigation.navigate('EventDetails')} />
         </View>
     );
 };
