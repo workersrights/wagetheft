@@ -10,7 +10,7 @@ import Colors from '../constants/Colors';
 
 const EventsNavigator = createStackNavigator({
   EventsHome: EventsHomeScreen,
-  EventCategory: EventsHomeScreen,
+  EventCategory: EventCategoryScreen,
   EventDetails: EventDetailsScreen
 }, {
   // second argument: to configure the style of the navigator
