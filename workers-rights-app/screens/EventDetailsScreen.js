@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet, Button} from 'react-native';
 
-const EventsScreen = props => {
+const EventDetailsScreen = props => {
     return(
         <View style={styles.screen}>
-            <Text>The Events Screen!</Text>
+            <Text>The Event Details Screen!</Text>
         </View>
     );
 };
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default EventsScreen;
+export default EventDetailsScreen;
