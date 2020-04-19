@@ -1,5 +1,6 @@
 import RightsCategory from '../models/rightsCategory';
 import SubRight from '../models/subRight';
+import Event from '../models/event';
 
 export const RIGHTSCATEGORIES = [
     new RightsCategory('c1', 'Getting Hired', require('../images/hiring-icon.png')),
@@ -29,4 +30,11 @@ export const SUBRIGHTS = [
     new SubRight('sr16', ['c6'], 'Unemployment Insurance Benefits', 'cat3.png', '👩‍💼'),
     new SubRight('sr17', ['c6'], 'Fired For No Reason', 'cat3.png', '👩‍💼'),
     new SubRight('sr18', ['c6'], 'Unemployment Compensation App', 'cat3.png', '👩‍💼'),
+];
+
+export const EVENTS = [
+    new Event('Know Your Rights Workshop', 'e1', '05/20/2020', 'https://540westmain.files.wordpress.com/2018/01/know.jpg', 'WTC', 'San Jose', 'workshop'),
+    new Event('Legal Workshop', 'e2', '06/11/2020', 'https://previews.123rf.com/images/belchonock/belchonock1802/belchonock180286505/96155278-word-law-with-judges-gavel-and-legal-books-on-wooden-background.jpg', 'Stanford Law Clinic', 'Stanford', 'workshop'),
+    new Event('PAWIS Potluck', 'e3', '04/29/2020', 'https://i0.wp.com/pawis-sv.com/wp-content/uploads/2014/01/pawis-logo-final.jpg?fit=584%2C438&ssl=1', 'PAWIS', 'San Jose', 'social'),
+    new Event('PAWIS Church Meeting', 'e4', '04/29/2020', 'https://i0.wp.com/pawis-sv.com/wp-content/uploads/2014/01/pawis-logo-final.jpg?fit=584%2C438&ssl=1', 'PAWIS', 'San Jose', 'social')
 ];
