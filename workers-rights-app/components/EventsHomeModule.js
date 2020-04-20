@@ -21,8 +21,6 @@ const EventsHomeModule = (props) => {
     );
   };
 
-  //console.log(EVENTS);
-
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
