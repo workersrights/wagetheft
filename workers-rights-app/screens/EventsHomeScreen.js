@@ -1,13 +1,21 @@
 import React from "react";
-import { View, Text, StyleSheet, Button, Dimensions } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import EventsHomeModule from "../components/EventsHomeModule.js";
 
+const categoryTitles = [
+  { id: "t1", title: "Your Events" },
+  { id: "t2", title: "Social" },
+  { id: "t3", title: "Workshops" },
+];
+
 const EventsHomeScreen = (props) => {
+  const renderEventModules = (itemData) => {
+    return <EventsHomeModule category={itemData.item.title} />;
+  };
+
   return (
     <View style={styles.screen}>
-      <View style={styles.container}>
-        <EventsHomeModule category={"Your Events"} />
-      </View>
+      <FlatList data={categoryTitles} renderItem={renderEventModules} />
     </View>
   );
 };
@@ -15,14 +23,6 @@ const EventsHomeScreen = (props) => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  container: {
-    flex: 1,
-    width: Dimensions.get("window").width * 0.866,
-    marginTop: 40,
-    justifyContent: "center",
     alignItems: "center",
   },
 });

@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Dimensions,
+} from "react-native";
 
 const EventsHomeCard = (props) => {
   return (
@@ -25,9 +32,9 @@ const EventsHomeCard = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    width: Dimensions.get("window").width * 0.866,
     height: 150,
-    marginRight: 325,
+    marginRight: 12,
     borderRadius: 2,
     backgroundColor: "#ffffff",
     shadowColor: "black",

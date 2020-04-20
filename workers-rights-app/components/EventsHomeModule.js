@@ -5,7 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   FlatList,
-  ScrollView,
+  Dimensions,
 } from "react-native";
 import EventsHomeCard from "../components/EventsHomeCard.js";
 import { EVENTS } from "../data/dummy-data";
@@ -31,12 +31,7 @@ const EventsHomeModule = (props) => {
           <Text>View All</Text>
         </TouchableOpacity>
       </View>
-      <FlatList
-        style={styles.list}
-        horizontal
-        data={EVENTS}
-        renderItem={renderHomeCards}
-      />
+      <FlatList horizontal data={EVENTS} renderItem={renderHomeCards} />
     </View>
   );
 };
@@ -45,18 +40,16 @@ const styles = StyleSheet.create({
   container: {
     height: 192,
     width: "100%",
+    marginLeft: Dimensions.get("window").width * 0.067,
+    marginTop: 40,
   },
 
   titleContainer: {
-    width: "100%",
+    width: Dimensions.get("window").width * 0.866,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 10,
-  },
-
-  list: {
-    backgroundColor: "red",
   },
 });
 
