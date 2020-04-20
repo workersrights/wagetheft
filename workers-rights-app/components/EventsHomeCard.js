@@ -10,7 +10,11 @@ import {
 
 const EventsHomeCard = (props) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => {
+        props.pressAction(props.id);
+      }}
+    >
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image
@@ -23,7 +27,7 @@ const EventsHomeCard = (props) => {
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.eventName}>{props.title}</Text>
-          <Text>{props.date}</Text>
+          <Text style={styles.date}>{props.date}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -66,7 +70,14 @@ const styles = StyleSheet.create({
   },
 
   eventName: {
+    fontSize: 16,
+    fontFamily: "nunito-semibold",
     marginBottom: 5,
+  },
+
+  date: {
+    fontSize: 16,
+    fontFamily: "nunito-light",
   },
 });
 

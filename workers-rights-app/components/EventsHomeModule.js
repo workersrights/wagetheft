@@ -17,6 +17,8 @@ const EventsHomeModule = (props) => {
         title={itemData.item.title}
         date={itemData.item.date}
         image={itemData.item.image}
+        pressAction={props.cardPress}
+        id={itemData.item.id}
       />
     );
   };
@@ -24,9 +26,11 @@ const EventsHomeModule = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text>{props.category}</Text>
+        <Text style={styles.categoryText}>{props.category}</Text>
         <TouchableOpacity>
-          <Text>View All</Text>
+          <Text style={styles.viewAllText} onPress={props.viewPress}>
+            View All
+          </Text>
         </TouchableOpacity>
       </View>
       <FlatList horizontal={true} data={EVENTS} renderItem={renderHomeCards} />
@@ -48,6 +52,19 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 10,
+    paddingBottom: 7,
+  },
+
+  categoryText: {
+    fontSize: 18,
+    fontFamily: "nunito-bold",
+    color: "#A1A1A1",
+  },
+
+  viewAllText: {
+    fontSize: 18,
+    fontFamily: "nunito-bold",
+    color: "#373A42",
   },
 });
 
