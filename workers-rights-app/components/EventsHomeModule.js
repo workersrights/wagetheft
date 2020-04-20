@@ -16,12 +16,12 @@ const EventsHomeModule = (props) => {
       <EventsHomeCard
         title={itemData.item.title}
         date={itemData.item.date}
-        image={
-          "https://previews.123rf.com/images/belchonock/belchonock1802/belchonock180286505/96155278-word-law-with-judges-gavel-and-legal-books-on-wooden-background.jpg"
-        }
+        image={itemData.item.image}
       />
     );
   };
+
+  //console.log(EVENTS);
 
   return (
     <View style={styles.container}>
@@ -31,7 +31,7 @@ const EventsHomeModule = (props) => {
           <Text>View All</Text>
         </TouchableOpacity>
       </View>
-      <FlatList horizontal data={EVENTS} renderItem={renderHomeCards} />
+      <FlatList horizontal={true} data={EVENTS} renderItem={renderHomeCards} />
     </View>
   );
 };
