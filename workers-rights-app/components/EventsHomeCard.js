@@ -1,14 +1,22 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 
 const EventsHomeCard = (props) => {
   return (
     <TouchableOpacity>
       <View style={styles.container}>
-        <View style={styles.imageContainer}></View>
+        <View style={styles.imageContainer}>
+          <Image
+            source={{
+              uri: props.image,
+            }}
+            style={styles.image}
+            resizeMode="cover"
+          />
+        </View>
         <View style={styles.textContainer}>
-          <Text style={styles.eventName}>Event Name</Text>
-          <Text>Event Date</Text>
+          <Text style={styles.eventName}>{props.title}</Text>
+          <Text>{props.date}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -19,8 +27,9 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     height: 150,
+    marginRight: 325,
     borderRadius: 2,
-    backgroundColor: "red",
+    backgroundColor: "#ffffff",
     shadowColor: "black",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
@@ -38,7 +47,11 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 2,
-    backgroundColor: "green",
+  },
+
+  image: {
+    width: "100%",
+    height: "100%",
   },
 
   textContainer: {
