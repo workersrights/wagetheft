@@ -1,24 +1,23 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import Colors from '../constants/Colors';
 
 const SubRightsItem = props => {
     return(
         <TouchableOpacity onPress={props.onSelect} style={styles.subrights}>
             <View style={styles.txtContainer}>
-                <Text style = {styles.subrightstxt}>{props.emoji}</Text>
+                <Image style={styles.icon} source={props.img} />
                 <Text style = {styles.subrightstxt} >{props.title}</Text>
                 <Text style = {styles.subrightstxt}>→</Text>
             </View>
         </TouchableOpacity>
-        
     );
 };
 
 const styles = StyleSheet.create({
     subrights: {
         alignItems: 'center',
-        padding: 20,
+        padding: 15,
         margin: 7,
         borderRadius: 8,
         shadowOpacity: 0.25,
@@ -34,6 +33,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         flex: 1
+    },
+    icon: {
+        width: 30,
+        height: 30
     }
 });
 

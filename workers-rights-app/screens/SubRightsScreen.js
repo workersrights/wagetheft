@@ -16,6 +16,7 @@ const SubRightsScreen = props => {
             <SubRightsItem
                 title={itemData.item.title}
                 emoji={itemData.item.emoji}
+                img={itemData.item.img}
                 onSelect={() => {
                     props.navigation.navigate({routeName: 'RightsDetails', params: {
                         subrightId: itemData.item.id
@@ -33,9 +34,6 @@ const SubRightsScreen = props => {
                 numColumns={1}
                 style={{width: '95%'}}
             />
-            <Button title="Go to Rights Details Rights" onPress={() => {
-                props.navigation.navigate({routeName: 'RightsDetails' });
-            }} />
         </View>
     );
 };

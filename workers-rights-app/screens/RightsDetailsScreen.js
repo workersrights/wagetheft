@@ -21,7 +21,7 @@ const RightsDetailsScreen = props => {
 
     return(
         <View style={styles.screen}>
-            <ScrollView style={{marginHorizontal: 20}}>
+            <ScrollView style={{marginHorizontal: 20}} showsVerticalScrollIndicator={false}>
                 <Text style={styles.section}>Description: </Text>
                 <Text>An employer has the right to make many types of deductions from an employee’s pay. For anything that is for the employee’s benefit, the employer must first get the employee’s consent before providing the good or service and deducting the cost of the employee’s pay. However, there are limits on what employers can deduct from pay. </Text>
                 <Text style={styles.section}>Organizations that can help: </Text>
