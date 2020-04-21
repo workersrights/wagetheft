@@ -27,7 +27,15 @@ const EventsHomeCard = (props) => {
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.eventName}>{props.title}</Text>
-          <Text style={styles.date}>{props.date}</Text>
+          <View style={styles.dateContainer}>
+            <View style={styles.iconContainer}>
+              <Image
+                style={styles.image}
+                source={require("../images/calendar.png")}
+              />
+            </View>
+            <Text style={styles.date}>{props.date}</Text>
+          </View>
         </View>
       </View>
     </TouchableOpacity>
@@ -75,9 +83,20 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 
+  dateContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
   date: {
     fontSize: 16,
     fontFamily: "nunito-light",
+  },
+
+  iconContainer: {
+    width: 15,
+    height: 15,
+    marginRight: 8,
   },
 });
 
