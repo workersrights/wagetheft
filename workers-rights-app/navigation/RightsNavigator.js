@@ -32,7 +32,8 @@ const RightsNavigator = createStackNavigator({
     headerTintColor: Colors.darkOrange,
     headerTitleStyle: {
       fontWeight: 'bold',
-    }
+    },
+    //cardStyle: {backgroundColor: 'white'}
   }
 });
 

@@ -1,19 +1,55 @@
 import React from 'react';
-import { View, Text, StyleSheet} from 'react-native';
-import { SUBRIGHTS } from '../data/dummy-data';
+import { View, Text, StyleSheet, ScrollView, FlatList} from 'react-native';
+import { SUBRIGHTS, ORGANIZATIONS } from '../data/dummy-data';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/CustomHeaderButton';
+import OrganizationBox from '../components/OrganizationBox';
+import LearnMoreItem from '../components/LearnMoreItem';
 
 const RightsDetailsScreen = props => {
     const subrightId = props.navigation.getParam('subrightId');
     const selectedSubright = SUBRIGHTS.find(subright => subright.id === subrightId);
 
+    const renderGridItem = (itemData) => {
+        return (
+            <OrganizationBox
+                title={itemData.item.title}    
+                image={itemData.item.image}
+            />
+        )
+    };
+
     return(
         <View style={styles.screen}>
-            <Text>The Rights Details Screen!</Text>
-            <Text>{selectedSubright.title}</Text>
+            <ScrollView style={{marginHorizontal: 20}} showsVerticalScrollIndicator={false}>
+                <Text style={styles.section}>Description: </Text>
+                <Text>An employer has the right to make many types of deductions from an employee’s pay. For anything that is for the employee’s benefit, the employer must first get the employee’s consent before providing the good or service and deducting the cost of the employee’s pay. However, there are limits on what employers can deduct from pay. </Text>
+                <Text style={styles.section}>Organizations that can help: </Text>
+                <View style={{ height: 130, marginTop: 20 }}>
+                    <FlatList
+                        data={ORGANIZATIONS}
+                        renderItem={renderGridItem}
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}
+                    />
+                </View>
+                <Text style={styles.section}>Learn more:</Text>
+                <LearnMoreItem
+                    title="How much is overtime pay?"
+                    onSelect={() => { }}
+                />
+                <LearnMoreItem
+                    title="Which federal laws cover deductions?"
+                    onSelect={() => { }}
+                />
+                <LearnMoreItem
+                    title="How do I file a complaint?"
+                    onSelect={() => { }}
+                />
+
+            </ScrollView>
         </View>
-    );
+    )
 };
 
 RightsDetailsScreen.navigationOptions = navigationData => {
@@ -37,9 +73,12 @@ RightsDetailsScreen.navigationOptions = navigationData => {
 
 const styles = StyleSheet.create({
     screen: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        flex: 1
+    },
+    section: {
+        fontSize: 16,
+        fontWeight: "700",
+        marginTop: 20
     }
 })
 
