@@ -1,24 +1,22 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import Colors from '../constants/Colors';
 
-const SubRightsItem = props => {
+const LearnMoreItem = props => {
     return(
-        <TouchableOpacity onPress={props.onSelect} style={styles.subrights}>
+        <TouchableOpacity onPress={props.onSelect} style={styles.box}>
             <View style={styles.txtContainer}>
-                <Text style = {styles.subrightstxt}>{props.emoji}</Text>
-                <Text style = {styles.subrightstxt} >{props.title}</Text>
-                <Text style = {styles.subrightstxt}>→</Text>
+                <Image source={require("../images/question.png")} />
+                <Text numberOfLines={2} style = {styles.subrightstxt} >{props.title}</Text>
             </View>
         </TouchableOpacity>
-        
     );
 };
 
 const styles = StyleSheet.create({
-    subrights: {
+    box: {
         alignItems: 'center',
-        padding: 20,
+        padding: 10,
         margin: 7,
         borderRadius: 8,
         shadowOpacity: 0.25,
@@ -26,15 +24,16 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.lightOrange
     },
     subrightstxt: {
-        fontSize: 16
+        fontSize: 15,
+        paddingHorizontal: 15
     },
     txtContainer: {
         flexDirection: 'row',
         width: '100%',
-        justifyContent: 'space-between',
         alignItems: 'center',
-        flex: 1
+        flex: 1,
+        paddingHorizontal: 5
     }
 });
 
-export default SubRightsItem;
+export default LearnMoreItem;

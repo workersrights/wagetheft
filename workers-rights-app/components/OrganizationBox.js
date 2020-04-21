@@ -3,22 +3,23 @@ import {
     View,
     Text,
     StyleSheet,
-    Image
+    Image,
+    TouchableOpacity
 } from "react-native";
 import Colors from '../constants/Colors';
 
 const OrganizationBox = props => {
     return (
-        <View style={styles.box}>
-            <View style={{ flex: 4 }}>
-                <Image source={props.image}
-                    style={styles.imgStyle}
-                />
-            </View>
-            <View style={{ flex: 1, paddingLeft: 10, paddingTop: 10 }}>
-                <Text numberOfLines={2} style={styles.orgTitle}>{props.title}</Text>
-            </View>
-        </View>
+        <TouchableOpacity onPress={props.onSelect} style={styles.box}>
+                <View style={{ flex: 4 }}>
+                    <Image source={props.image}
+                        style={styles.imgStyle}
+                    />
+                </View>
+                <View style={{ flex: 1, paddingLeft: 10, paddingTop: 10 }}>
+                    <Text numberOfLines={2} style={styles.orgTitle}>{props.title}</Text>
+                </View>
+        </TouchableOpacity>
     )
 };
 

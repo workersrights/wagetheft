@@ -2,6 +2,7 @@ import RightsCategory from '../models/rightsCategory';
 import SubRight from '../models/subRight';
 import Organization from '../models/organization';
 import Event from '../models/event';
+import LearnMore from '../models/learnMore';
 
 export const RIGHTSCATEGORIES = [
   new RightsCategory(
