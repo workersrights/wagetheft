@@ -32,13 +32,19 @@ const EventsHomeScreen = (props) => {
             },
           });
         }}
+        lastIndex={itemData.index === categoryTitles.length - 1}
       />
     );
   };
 
   return (
     <View style={styles.screen}>
-      <FlatList data={categoryTitles} renderItem={renderEventModules} />
+      <FlatList
+        style={{ paddingTop: 40 }}
+        data={categoryTitles}
+        renderItem={renderEventModules}
+        showsVerticalScrollIndicator={false}
+      />
     </View>
   );
 };

@@ -24,16 +24,19 @@ const EventsHomeModule = (props) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={props.lastIndex ? styles.containerLast : styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.categoryText}>{props.category}</Text>
-        <TouchableOpacity>
-          <Text style={styles.viewAllText} onPress={props.viewPress}>
-            View All
-          </Text>
+        <TouchableOpacity onPress={props.viewPress}>
+          <Text style={styles.viewAllText}>View All</Text>
         </TouchableOpacity>
       </View>
-      <FlatList horizontal={true} data={EVENTS} renderItem={renderHomeCards} />
+      <FlatList
+        horizontal={true}
+        data={EVENTS}
+        renderItem={renderHomeCards}
+        showsHorizontalScrollIndicator={false}
+      />
     </View>
   );
 };
@@ -43,16 +46,20 @@ const styles = StyleSheet.create({
     height: 192,
     width: "100%",
     marginLeft: Dimensions.get("window").width * 0.067,
-    marginTop: 40,
+    marginBottom: 40,
   },
-
+  containerLast: {
+    height: 192,
+    width: "100%",
+    marginLeft: Dimensions.get("window").width * 0.067,
+    marginBottom: 50,
+  },
   titleContainer: {
     width: Dimensions.get("window").width * 0.866,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 10,
-    paddingBottom: 7,
   },
 
   categoryText: {

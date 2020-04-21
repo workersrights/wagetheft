@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 5,
-    elevation: 8,
+    elevation: 5,
   },
 
   imageContainer: {
@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 2,
+    elevation: 7,
   },
 
   image: {
