@@ -6,11 +6,16 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
+  Platform,
+  TouchableNativeFeedback,
 } from "react-native";
 
 const EventsHomeCard = (props) => {
+  let TouchablePlatformSpecific =
+    Platform.OS === "ios" ? TouchableOpacity : TouchableNativeFeedback;
+
   return (
-    <TouchableOpacity
+    <TouchablePlatformSpecific
       onPress={() => {
         props.pressAction(props.id);
       }}
@@ -38,7 +43,7 @@ const EventsHomeCard = (props) => {
           </View>
         </View>
       </View>
-    </TouchableOpacity>
+    </TouchablePlatformSpecific>
   );
 };
 
