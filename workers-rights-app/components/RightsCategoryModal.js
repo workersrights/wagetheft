@@ -44,8 +44,8 @@ const RightsCategoryModal = (props) => {
 
 const styles = StyleSheet.create({
   modal: {
-    width: "70%",
-    height: "60%",
+    width: "80%",
+    height: "50%",
     backgroundColor: Colors.lightOrange,
     borderRadius: 0,
     shadowOpacity: 0.25,
@@ -67,12 +67,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
+    paddingHorizontal: 10,
     fontWeight: "bold",
     fontSize: 16,
     textAlign: "center",
   },
   description: {
-    paddingVertical: 10,
+    padding: 10,
     textAlign: "center",
   },
   image: {
