@@ -3,6 +3,7 @@ class Event {
     eventId,
     title,
     date,
+    time,
     image,
     organizer,
     location,
@@ -13,6 +14,7 @@ class Event {
     this.id = eventId;
     this.title = title;
     this.date = date;
+    this.time = time;
     this.image = image;
     this.organizer = organizer;
     this.location = location;
