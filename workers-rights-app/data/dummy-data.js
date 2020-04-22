@@ -7,28 +7,44 @@ export const RIGHTSCATEGORIES = [
   new RightsCategory(
     "c1",
     "Getting Hired",
-    require("../images/hiring-icon.png")
+    require("../images/hiring-icon.png"),
+    "Not getting paid what your employer owes you? Are you not allowed to take sick leaves?",
+    "This section addresses the facts on wage and hours as well as your rights when it comes to leaves."
   ),
   new RightsCategory(
     "c2",
     "Mistreatment",
-    require("../images/mistreatment-icon.png")
+    require("../images/mistreatment-icon.png"),
+    "Are you being harrassed or discriminated against at work? Is your employer being unfair or unreasonably disrespectful?",
+    "This section addresses your rights to fair treatment, and other topics related to discrimination and general mistreatment."
   ),
   new RightsCategory(
     "c3",
     "Getting Paid",
-    require("../images/payments-icon.png")
+    require("../images/payments-icon.png"),
+    "",
+    ""
   ),
   new RightsCategory(
     "c4",
     "Safety & Health",
-    require("../images/health-icon.png")
+    require("../images/health-icon.png"),
+    "",
+    ""
   ),
-  new RightsCategory("c5", "Unions", require("../images/unions-icon.png")),
+  new RightsCategory(
+    "c5",
+    "Unions",
+    require("../images/unions-icon.png"),
+    "",
+    ""
+  ),
   new RightsCategory(
     "c6",
     "Unemployment",
-    require("../images/unemployment-icon.png")
+    require("../images/unemployment-icon.png"),
+    "",
+    ""
   ),
 ];
 

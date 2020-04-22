@@ -1,62 +1,86 @@
-import React from 'react';
-import { View, Text, StyleSheet, Button, FlatList, Touchable, TouchableOpacity, Platform} from 'react-native';
-import { RIGHTSCATEGORIES } from '../data/dummy-data';
-import Colors from '../constants/Colors';
-import RightsCategoryTile from '../components/RightsCategoryTile';
-//import Modal from 'react-native-modal';
-import RightsModalFirstAttempt from '../components/RightsModalFirstAttempt';
-import RightsModal from '../components/RightsModal';
+import React, { useState } from "react";
+import { View, StyleSheet, FlatList, Platform } from "react-native";
+import { RIGHTSCATEGORIES } from "../data/dummy-data";
+import Colors from "../constants/Colors";
+import RightsCategoryTile from "../components/RightsCategoryTile";
+import RightsCategoryModal from "../components/RightsCategoryModal";
+
 //var globalProps = null
 
+const RightsScreen = (props) => {
+  //globalProps = props
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeCategoryId, setActiveCategoryId] = useState("c1");
 
+  const openModalHandler = (id) => {
+    setIsModalOpen(true);
+    setActiveCategoryId(id);
+  };
 
-const RightsScreen = props => {
-    //globalProps = props
+  const closeModalHandler = () => {
+    console.log("closeModalHandler() called.");
+    setIsModalOpen(false);
+  };
 
-    const renderGridItem = (itemData) => {
-        return (
-            <RightsCategoryTile title={itemData.item.title} image={itemData.item.image} onSelect={() => {
-                props.navigation.navigate({routeName: 'SubRights', params: {
-                    categoryId: itemData.item.id // sending the rights category to the new screen
-                }});
-            }} />
-            )
-    };
+  const advanceScreenHandler = () => {
+    closeModalHandler();
+    props.navigation.navigate({
+      routeName: "SubRights",
+      params: {
+        categoryId: activeCategoryId, // sending the rights category to the new screen
+      },
+    });
+  };
 
-    // <RightsModal />
-    return(
-        <View style={styles.screen}>
-            <FlatList data={RIGHTSCATEGORIES} renderItem={renderGridItem} numColumns={2} />
-        </View>
+  const renderGridItem = (itemData) => {
+    return (
+      <RightsCategoryTile
+        title={itemData.item.title}
+        image={itemData.item.image}
+        onSelect={() => {
+          openModalHandler(itemData.item.id);
+        }}
+      />
     );
+  };
+
+  // <RightsModal />
+  return (
+    <View style={styles.screen}>
+      <FlatList
+        data={RIGHTSCATEGORIES}
+        renderItem={renderGridItem}
+        numColumns={2}
+      />
+
+      <RightsCategoryModal
+        isVisible={isModalOpen}
+        onCloseModal={closeModalHandler}
+        categoryId={activeCategoryId}
+        onAdvance={advanceScreenHandler}
+      ></RightsCategoryModal>
+    </View>
+  );
 };
 
 RightsScreen.navigationOptions = {
-    headerTitle: 'Rights Information',
-    headerStyle: {
-        // only color the background of the header if Android to fit the typical platform look
-        backgroundColor: Platform.OS === 'android' ? Colors.lightOrange : ''
-    },
-    headerTintColor: Colors.darkOrange,
-    headerTitleStyle: {
-        fontWeight: 'bold',
-    }
+  headerTitle: "Rights Information",
+  headerStyle: {
+    // only color the background of the header if Android to fit the typical platform look
+    backgroundColor: Platform.OS === "android" ? Colors.lightOrange : "",
+  },
+  headerTintColor: Colors.darkOrange,
+  headerTitleStyle: {
+    fontWeight: "bold",
+  },
 };
 
 const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        alignItems: 'center',
-        margin: 10
-    },
-    modalStyle: {
-        backgroundColor: 'white',
-        width: '80%',
-        height: '65%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        margin: '10%'
-    }
-})
+  screen: {
+    flex: 1,
+    alignItems: "center",
+    margin: 10,
+  },
+});
 
 export default RightsScreen;

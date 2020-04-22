@@ -3,6 +3,9 @@ import { StyleSheet } from "react-native";
 import RightsNavigator from "./navigation/RightsNavigator";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
+import { enableScreens } from "react-native-screens";
+
+enableScreens(); 
 
 const fetchFonts = () => {
   Font.loadAsync({
