@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import EventsHomeCard from "../components/EventsHomeCard.js";
 import { EVENTS } from "../data/dummy-data";
+import Colors from '../constants/Colors';
 
 const EventsHomeModule = (props) => {
   const renderHomeCards = (itemData) => {
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
   categoryText: {
     fontSize: 18,
     fontFamily: "nunito-bold",
-    color: "#A1A1A1",
+    color: Colors.darkOrange
   },
 
   viewAllText: {
