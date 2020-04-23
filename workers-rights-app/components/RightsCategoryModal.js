@@ -9,10 +9,6 @@ const RightsCategoryModal = (props) => {
   const selectedCategory = RIGHTSCATEGORIES.filter(
     (category) => category.id === props.categoryId
   )[0];
-  /* 
-  I can't call <Image souce={required(imageUrl)} />.
-  const imageUrl = "../assets/".concat(selectedCategory.image);
-  */
 
   return (
     <Modal visible={props.isVisible} transparent={true} animationType="fade">
@@ -46,6 +42,7 @@ const styles = StyleSheet.create({
   modal: {
     width: "80%",
     height: "50%",
+    minHeight: 420,
     backgroundColor: Colors.lightOrange,
     borderRadius: 0,
     shadowOpacity: 0.25,
