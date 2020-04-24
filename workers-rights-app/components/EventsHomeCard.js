@@ -39,7 +39,16 @@ const EventsHomeCard = (props) => {
                 source={require("../images/calendar.png")}
               />
             </View>
-            <Text style={styles.date}>{props.date}</Text>
+            <Text style={styles.labelText}>{props.date}</Text>
+          </View>
+          <View style={styles.dateContainer}>
+            <View style={styles.iconContainer}>
+              <Image
+                style={styles.image}
+                source={require("../images/place.png")}
+              />
+            </View>
+            <Text style={styles.labelText}>{props.location}</Text>
           </View>
         </View>
       </View>
@@ -52,26 +61,22 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width * 0.866,
     height: 150,
     marginRight: 12,
-    borderRadius: 2,
+    borderRadius: 7,
     backgroundColor: "#ffffff",
     shadowColor: "black",
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.25,
-    shadowRadius: 5,
+    shadowRadius: 3,
     elevation: 5,
   },
 
   imageContainer: {
     width: "100%",
     height: 70,
-    marginBottom: 16,
-    borderTopLeftRadius: 2,
-    borderTopRightRadius: 2,
-    shadowRadius: "black",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 2,
-    elevation: 7,
+    marginBottom: 6,
+    borderTopLeftRadius: 7,
+    borderTopRightRadius: 7,
+    overflow: "hidden",
   },
 
   image: {
@@ -80,28 +85,29 @@ const styles = StyleSheet.create({
   },
 
   textContainer: {
-    marginLeft: 38,
+    marginLeft: 25,
   },
 
   eventName: {
     fontSize: 16,
     fontFamily: "nunito-semibold",
-    marginBottom: 5,
+    paddingBottom: 4,
   },
 
   dateContainer: {
     flexDirection: "row",
     alignItems: "center",
+    paddingBottom: 3,
   },
 
-  date: {
-    fontSize: 16,
+  labelText: {
+    fontSize: 14,
     fontFamily: "nunito-light",
   },
 
   iconContainer: {
-    width: 15,
-    height: 15,
+    width: 14,
+    height: 14,
     marginRight: 8,
   },
 });

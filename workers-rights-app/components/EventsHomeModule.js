@@ -16,6 +16,7 @@ const EventsHomeModule = (props) => {
       <EventsHomeCard
         title={itemData.item.title}
         date={itemData.item.date}
+        location={itemData.item.location}
         image={itemData.item.image}
         pressAction={props.cardPress}
         id={itemData.item.id}
