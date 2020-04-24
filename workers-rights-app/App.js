@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import RightsNavigator from "./navigation/RightsNavigator";
+import { Host } from "react-native-portalize";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
 import { enableScreens } from "react-native-screens";
 
-enableScreens(); 
+enableScreens();
 
 const fetchFonts = () => {
   Font.loadAsync({
@@ -29,7 +30,11 @@ export default function App() {
     );
   }
 
-  return <RightsNavigator />;
+  return (
+    <Host>
+      <RightsNavigator />
+    </Host>
+  );
 }
 
 const styles = StyleSheet.create({

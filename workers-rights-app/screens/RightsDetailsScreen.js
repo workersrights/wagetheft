@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { View, Text, StyleSheet, ScrollView, FlatList } from "react-native";
-import { SUBRIGHTS, LEARNMORES, ORGANIZATIONS } from "../data/dummy-data";
+import { SUBRIGHTS, ORGANIZATIONS } from "../data/dummy-data";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../components/CustomHeaderButton";
 import OrganizationBox from "../components/OrganizationBox";
 import LearnMoreItem from "../components/LearnMoreItem";
-import LearnMoreModal from "../components/LearnMoreModal";
+import RightsSheetContent from "../components/RightsSheetContent";
+import { Modalize } from "react-native-modalize"; // Credits to https://github.com/jeremybarbet/react-native-modalize
+import { Portal } from "react-native-portalize";
+import Colors from "../constants/Colors";
 
 const RightsDetailsScreen = (props) => {
   // Get the parent subright
@@ -17,18 +20,13 @@ const RightsDetailsScreen = (props) => {
   const displayedLearnMoreIds = parentSubRight.learnMores;
 
   // State Hooks for LearnMore modals.
-  const [isLearnMoreOpen, setIsLearnMoreOpen] = useState(false);
   const [activeLearnMoreId, setActiveLearnMoreId] = useState("lm1");
+  const modalizeRef = useRef(null);
 
   const openLearnMoreHandler = (id) => {
     console.log("openLearnMoreHandler() called.");
-    setIsLearnMoreOpen(true);
     setActiveLearnMoreId(id);
-  };
-
-  const closeLearnMoreHandler = () => {
-    console.log("closeLearnMoreHandler() called.");
-    setIsLearnMoreOpen(false);
+    modalizeRef.current?.open();
   };
 
   const renderOrgItem = (itemData) => {
@@ -75,14 +73,14 @@ const RightsDetailsScreen = (props) => {
             }}
           />
         ))}
-
-        <LearnMoreModal
-          isVisible={isLearnMoreOpen}
-          onCloseModal={closeLearnMoreHandler}
-          id={activeLearnMoreId}
-          //onAdvance={advanceScreenHandler}
-        ></LearnMoreModal>
       </ScrollView>
+      <Portal>
+        <Modalize ref={modalizeRef} modalStyle={styles.modalize}>
+          <View style={styles.modalizeContent}>
+            <RightsSheetContent learnMoreId={activeLearnMoreId} />
+          </View>
+        </Modalize>
+      </Portal>
     </View>
   );
 };
@@ -116,6 +114,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "700",
     marginTop: 20,
+  },
+  modalize: {
+    height: "85%",
+    backgroundColor: Colors.lightOrange,
+  },
+  modalizeContent: {
+    flex: 1,
   },
 });
 
