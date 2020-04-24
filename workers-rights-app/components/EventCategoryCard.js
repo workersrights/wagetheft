@@ -10,7 +10,6 @@ import {
   TouchableNativeFeedback,
 } from "react-native";
 
-
 // Card to display the events in the EventCategoryScreen
 // Similar to EventsHomeCard but contains more information (time and location)
 // and differrent styling
@@ -24,7 +23,7 @@ const EventCategoryCard = (props) => {
         props.pressAction(props.id);
       }}
     >
-        {/* Event Image */}
+      {/* Event Image */}
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image
@@ -38,51 +37,49 @@ const EventCategoryCard = (props) => {
 
         {/* Event Details */}
         <View style={styles.textContainer}>
-
-            {/* Title */}
+          {/* Title */}
           <Text style={styles.eventName}>{props.title}</Text>
-         {/* Date, Time, and Location */}
-          <View >
+          {/* Date, Time, and Location */}
+          <View>
             {/* First Row of information (date and time) */}
             <View style={styles.firstRow}>
-                {/* Date Conatiner*/}
-                <View style={styles.infoContainer}>
-                    <View style={styles.iconContainer}>
-                    <Image
-                        style={styles.image}
-                        source={require("../images/calendar.png")}
-                    />
-                    </View>
-                    <Text style={styles.text}>{props.date}</Text>
+              {/* Date Conatiner*/}
+              <View style={styles.infoContainer}>
+                <View style={styles.iconContainer}>
+                  <Image
+                    style={styles.image}
+                    source={require("../images/calendar.png")}
+                  />
                 </View>
+                <Text style={styles.text}>{props.date}</Text>
+              </View>
 
-                {/* Time Container*/}
-                <View style={styles.infoContainer}>
-                    <View style={styles.iconContainer}>
-                        <Image
-                            style={styles.image}
-                            source={require("../images/clock.png")}
-                        />
-                    </View>
-                    <Text style={styles.text}>{props.time}</Text>
+              {/* Time Container*/}
+              <View style={styles.infoContainer}>
+                <View style={styles.iconContainer}>
+                  <Image
+                    style={styles.image}
+                    source={require("../images/clock.png")}
+                  />
                 </View>
+                <Text style={styles.text}>{props.time}</Text>
+              </View>
             </View>
 
             {/* Second Row of information (location) */}
             <View>
-                {/* Location container */}
-                <View style={styles.infoContainer}>
-                        <View style={styles.iconContainer}>
-                        <Image
-                            style={styles.image}
-                            source={require("../images/place.png")}
-                        />
-                        </View>
-                        <Text style={styles.text}>{props.location}</Text>
-                    </View>
+              {/* Location container */}
+              <View style={styles.infoContainer}>
+                <View style={styles.iconContainer}>
+                  <Image
+                    style={styles.image}
+                    source={require("../images/place.png")}
+                  />
                 </View>
+                <Text style={styles.text}>{props.location}</Text>
+              </View>
             </View>
-
+          </View>
         </View>
       </View>
     </TouchablePlatformSpecific>
@@ -93,27 +90,23 @@ const styles = StyleSheet.create({
   container: {
     width: Dimensions.get("window").width * 0.87,
     height: 270,
-    borderRadius: 2,
+    borderRadius: 8,
     backgroundColor: "#ffffff",
     shadowColor: "black",
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.25,
-    shadowRadius: 5,
+    shadowRadius: 4,
     elevation: 5,
-    marginVertical: 10
+    marginVertical: 15,
   },
 
   imageContainer: {
     width: "100%",
     height: 150,
     marginBottom: 16,
-    borderTopLeftRadius: 2,
-    borderTopRightRadius: 2,
-    shadowRadius: "black",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 2,
-    elevation: 7,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+    overflow: "hidden",
   },
 
   image: {
@@ -123,7 +116,7 @@ const styles = StyleSheet.create({
 
   textContainer: {
     marginLeft: 30,
-    paddingVertical: 10
+    paddingVertical: 10,
   },
 
   eventName: {
@@ -149,13 +142,11 @@ const styles = StyleSheet.create({
   },
 
   firstRow: {
-      flexDirection: "row",
-      justifyContent: "space-between",
-      marginRight: '15%',
-      paddingVertical: 5
-      },
-
-  
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginRight: "15%",
+    paddingVertical: 5,
+  },
 });
 
 export default EventCategoryCard;
