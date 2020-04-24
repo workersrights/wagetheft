@@ -39,7 +39,16 @@ const EventsHomeCard = (props) => {
                 source={require("../images/calendar.png")}
               />
             </View>
-            <Text style={styles.date}>{props.date}</Text>
+            <Text style={styles.labelText}>{props.date}</Text>
+          </View>
+          <View style={styles.dateContainer}>
+            <View style={styles.iconContainer}>
+              <Image
+                style={styles.image}
+                source={require("../images/place.png")}
+              />
+            </View>
+            <Text style={styles.labelText}>{props.location}</Text>
           </View>
         </View>
       </View>
@@ -64,7 +73,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: "100%",
     height: 70,
-    marginBottom: 16,
+    marginBottom: 6,
     borderTopLeftRadius: 7,
     borderTopRightRadius: 7,
     overflow: "hidden",
@@ -76,28 +85,29 @@ const styles = StyleSheet.create({
   },
 
   textContainer: {
-    marginLeft: 38,
+    marginLeft: 25,
   },
 
   eventName: {
     fontSize: 16,
     fontFamily: "nunito-semibold",
-    marginBottom: 5,
+    paddingBottom: 4,
   },
 
   dateContainer: {
     flexDirection: "row",
     alignItems: "center",
+    paddingBottom: 3,
   },
 
-  date: {
-    fontSize: 16,
+  labelText: {
+    fontSize: 14,
     fontFamily: "nunito-light",
   },
 
   iconContainer: {
-    width: 15,
-    height: 15,
+    width: 14,
+    height: 14,
     marginRight: 8,
   },
 });
