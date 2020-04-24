@@ -1,20 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button} from 'react-native';
+import { View, Text, StyleSheet, Image} from 'react-native';
+import EventDetails from "../components/EventDetails";
 
-const EventDetailsScreen = props => {
+const EventDetailsScreen = (props) => {
     return(
-        <View style={styles.screen}>
-            <Text>The Event Details Screen!</Text>
-        </View>
+        <EventDetails id={props.navigation.getParam('eventId')}/>
     );
 };
-
-const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-})
 
 export default EventDetailsScreen;
