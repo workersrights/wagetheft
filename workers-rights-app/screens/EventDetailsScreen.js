@@ -1,11 +1,19 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image} from 'react-native';
+import React from "react";
+import { View, StyleSheet } from "react-native";
 import EventDetails from "../components/EventDetails";
 
 const EventDetailsScreen = (props) => {
-    return(
-        <EventDetails id={props.navigation.getParam('eventId')}/>
-    );
+  return (
+    <View style={styles.screen}>
+      <EventDetails id={props.navigation.getParam("eventId")} />
+    </View>
+  );
 };
+
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+  },
+});
 
 export default EventDetailsScreen;
