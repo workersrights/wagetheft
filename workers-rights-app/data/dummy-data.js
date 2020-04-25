@@ -54,40 +54,40 @@ export const ORGANIZATIONS = [
       'o1',
       'Wage Theft Coalition',
       require('../images/wage-theft-coalition-logo.png'),
-      'TODO: Add Description for this subright in Dummy Data description',
-      'TODO: Add Description for this subright in Dummy Data website link',
+      'The Santa Clara County Wage Theft Coalition actively works to end wage theft, defend workers’ rights, and enforce wage theft judgments.  We hope to accomplish this through policy advocacy, community organizing and outreach, direct action, education, leadership development, and resource coordination.  We work with affected workers and their families, particularly low-wage workers who have been victims of the crime of wage theft.',
+      'https://wagetheftcoalition.com/',
       ["c3"]
     ),
     new Organization(
       'o2',
       'OSHA',
       require('../images/osha-logo.png'),
-      'TODO: Add Description for this subright in Dummy Data description',
-      'TODO: Add Description for this subright in Dummy Data website link',
+      'The Occupational Safety and Health Administration is an agency of the United States Department of Labor. OSHA ensure safe and healthful working conditions for working men and women by setting and enforcing standards and by providing training, outreach, education and assistance.',
+      'https://www.osha.gov/',
       ["c4"]
       ),
     new Organization(
       'o3',
       'NLRB',
       require('../images/NLRB-logo.png'),
-      'TODO: Add Description for this subright in Dummy Data description',
-      'TODO: Add Description for this subright in Dummy Data website link',
+      'The National Labor Relations Board is an independent agency of the federal government of the United States with responsibilities for enforcing U.S. labor law in relation to collective bargaining and unfair labor practices.',
+      'https://www.nlrb.gov/',
       ["c6"]
       ),
     new Organization(
       'o4',
       'PERB',
       require('../images/PERB-logo.png'),
-      'TODO: Add Description for this subright in Dummy Data description',
-      'TODO: Add Description for this subright in Dummy Data website link',
+      'The Public Employment Relations Board (PERB or Board) is a quasi-judicial administrative agency charged with administering the eight collective bargaining statutes covering employees of California’s public schools, colleges, and universities, employees of the State of California, employees of California local public agencies (cities, counties and special districts), trial court employees, trial court interpreters, supervisory employees of the Los Angeles County Metropolitan Transportation Authority, and judicial council employees.',
+      'https://perb.ca.gov/',
       ["c6"]
       ),
     new Organization(
       'o5',
       'DFEH',
       require('../images/DFEH-logo.png'),
-      'TODO: Add Description for this subright in Dummy Data description',
-      'TODO: Add Description for this subright in Dummy Data website link',
+      'The Department of Fair Employment and Housing is the state agency charged with enforcing California’s civil rights laws. The mission of the DFEH is to protect the people of California from unlawful discrimination in employment, housing, and public accommodations and from hate violence and human trafficking.',
+      'https://www.dfeh.ca.gov/',
       ["c2"]
       ),
     new Organization(
