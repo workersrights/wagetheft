@@ -23,9 +23,12 @@ const RightsDetailsScreen = props => {
     return(
         <View style={styles.screen}>
             <ScrollView style={{marginHorizontal: 20}} showsVerticalScrollIndicator={false}>
+                {/* Initial subright description */}
                 <Text style={styles.section}>Description: </Text>
                 <Text>{selectedSubright.description}</Text>
-                <Text style={styles.section}>Organizations that can help: </Text>
+                
+                {/* Organization section */}
+                <Text style={styles.section}>Contact the following agencies for help: </Text>
                 <View style={{ height: 230, marginTop: 20 }}> 
                     <FlatList
                         data={relevantOrgs}
@@ -34,6 +37,8 @@ const RightsDetailsScreen = props => {
                         showsHorizontalScrollIndicator={false}
                     />
                 </View>
+                
+                {/* Learn More Section */}
                 <Text style={styles.section}>Learn more:</Text>
                 <LearnMoreItem
                     title="How much is overtime pay?"
