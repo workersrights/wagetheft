@@ -9,6 +9,7 @@ import LearnMoreItem from '../components/LearnMoreItem';
 const RightsDetailsScreen = props => {
     const subrightId = props.navigation.getParam('subrightId');
     const selectedSubright = SUBRIGHTS.find(subright => subright.id === subrightId);
+    const relevantOrgs = ORGANIZATIONS.filter(org => (selectedSubright.organizations).includes(org.id));
 
     const renderGridItem = (itemData) => {
         return (
@@ -23,11 +24,11 @@ const RightsDetailsScreen = props => {
         <View style={styles.screen}>
             <ScrollView style={{marginHorizontal: 20}} showsVerticalScrollIndicator={false}>
                 <Text style={styles.section}>Description: </Text>
-                <Text>An employer has the right to make many types of deductions from an employee’s pay. For anything that is for the employee’s benefit, the employer must first get the employee’s consent before providing the good or service and deducting the cost of the employee’s pay. However, there are limits on what employers can deduct from pay. </Text>
+                <Text>{selectedSubright.description}</Text>
                 <Text style={styles.section}>Organizations that can help: </Text>
                 <View style={{ height: 230, marginTop: 20 }}> 
                     <FlatList
-                        data={ORGANIZATIONS}
+                        data={relevantOrgs}
                         renderItem={renderGridItem}
                         horizontal={true}
                         showsHorizontalScrollIndicator={false}

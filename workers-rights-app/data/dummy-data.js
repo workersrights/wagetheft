@@ -53,40 +53,40 @@ export const ORGANIZATIONS = [
       'o1',
       'Wage Theft Coalition',
       require('../images/wage-theft-coalition-logo.png'),
-      'TODO description',
-      'TODO website link',
+      'TODO: Add Description for this subright in Dummy Data description',
+      'TODO: Add Description for this subright in Dummy Data website link',
       ["c3"]
     ),
     new Organization(
       'o2',
       'OSHA',
       require('../images/osha-logo.png'),
-      'TODO description',
-      'TODO website link',
+      'TODO: Add Description for this subright in Dummy Data description',
+      'TODO: Add Description for this subright in Dummy Data website link',
       ["c4"]
       ),
     new Organization(
       'o3',
       'NLRB',
       require('../images/NLRB-logo.png'),
-      'TODO description',
-      'TODO website link',
+      'TODO: Add Description for this subright in Dummy Data description',
+      'TODO: Add Description for this subright in Dummy Data website link',
       ["c6"]
       ),
     new Organization(
       'o4',
       'PERB',
       require('../images/PERB-logo.png'),
-      'TODO description',
-      'TODO website link',
+      'TODO: Add Description for this subright in Dummy Data description',
+      'TODO: Add Description for this subright in Dummy Data website link',
       ["c6"]
       ),
     new Organization(
       'o5',
       'DFEH',
       require('../images/DFEH-logo.png'),
-      'TODO description',
-      'TODO website link',
+      'TODO: Add Description for this subright in Dummy Data description',
+      'TODO: Add Description for this subright in Dummy Data website link',
       ["c2"]
       ),
     new Organization(
@@ -116,24 +116,63 @@ export const ORGANIZATIONS = [
 ];
 
 export const SUBRIGHTS = [
-  new SubRight("w1", ["c3"], "Deductions from Pay", require("../images/payments-icon.png"), "💵"),
-  new SubRight("w2", ["c3"], "Final Paycheck Laws", require("../images/payments-icon.png"), "💵"),
-  new SubRight("w3", ["c3"], "Meal and Rest Breaks", require("../images/payments-icon.png"), "💵"),
-  new SubRight("w4", ["c3"], "Overtime Pay", require("../images/payments-icon.png"), "💵"),
-  new SubRight("h1", ["c1"], "Interview / Application", require("../images/hiring-icon.png"), "🔖"),
-  new SubRight("h2", ["c1"], "Background Checks", require("../images/hiring-icon.png"), "🔖"),
-  new SubRight("h3", ["c1"], "Non-Disclosure Agreements (NDAs)", require("../images/hiring-icon.png"), "🔖"),
-  new SubRight("m1", ["c2"], "Race Discrimination", require("../images/mistreatment-icon.png"), "✋"),
-  new SubRight("m2", ["c2"], "Age Discrimination", require("../images/mistreatment-icon.png"), "✋"),
-  new SubRight("m3", ["c2"], "Sexual Harassment", require("../images/mistreatment-icon.png"), "✋"),
-  new SubRight("s1", ["c4"], "Workplace Safety Protections", require("../images/health-icon.png"), "⛑"),
-  new SubRight("s2", ["c4"], "Infectious Diseases in Workplace", require("../images/health-icon.png"), "⛑"),
-  new SubRight("s3", ["c4"], "Injured at Work", require("../images/health-icon.png"), "⛑"),
-  new SubRight("g1", ["c5"], "Retaliation for Collective Action", require("../images/unions-icon.png"), "👫"),
-  new SubRight("g2", ["c5"], "Right to Work Laws", require("../images/unions-icon.png"), "👫"),
-  new SubRight("u1", ["c6"], "Unemployment Insurance Benefits", require("../images/unemployment-icon.png"), "👩‍💼"),
-  new SubRight("u2", ["c6"], "Fired For No Reason", require("../images/unemployment-icon.png"), "👩‍💼"),
-  new SubRight("u3", ["c6"], "Unemployment Compensation App", require("../images/unemployment-icon.png"), "👩‍💼"),
+  new SubRight(
+    "w1",
+    ["c3"],
+    "Deductions from Pay",
+    require("../images/payments-icon.png"),
+    "💵",
+    "An employer has the right to make many types of deductions from an employee’s pay. These deductions include the cost of work-specific uniforms, tools, meals, lodging, and more. For anything that is for the employee’s benefit, the employer must first get the employee’s consent before providing the good or service and deducting the cost of the employee’s pay. However, there are limits on what employers can deduct from pay. ",
+    ["o1"]),
+  new SubRight(
+    "w2",
+    ["c3"],
+    "Final Paycheck Laws",
+    require("../images/payments-icon.png"),
+    "💵",
+    "Getting your final paycheck and being paid everything you are owed can be a tricky situation. What do you do with your accrued vacation days? What if your former employer doesn’t want to pay? Do you get paid during your two-week notice? This page can help answer many questions you may have. To learn more about your rights with respect to final pay, contact the following agencies and read the information below.",
+    ["o1"]
+  ),
+  new SubRight(
+    "w3",
+    ["c3"],
+    "Meal and Rest Breaks",
+    require("../images/payments-icon.png"),
+    "💵",
+    "Surprisingly, there are no federal laws requiring meal and rest breaks. This area of the law has been left mostly to states with only 20 requiring meal breaks and 9 requiring rest breaks. However, most employers do provide meal breaks and may be required to provide breaks for specific religious or health reasons. To learn more about meal and rest breaks, read below.",
+    ["o1"]
+    ),
+  new SubRight(
+    "w4",
+    ["c3"],
+    "Overtime Pay",
+    require("../images/payments-icon.png"),
+    "💵",
+    "The subject of overtime pay is one of the most confusing subject for workers seeking to learn more about their employment rights. Many workers do not understand whether or not they are eligible for overtime, or what they should do in the event their employer is not paying them correctly for the extra time that they work. Many of the overtime regulations have very different interpretations and may not yet have been clarified by court decisions. \n\nThis Overtime Pay page explains what types of work are covered by overtime laws, including which kinds of construction work are covered. It also explains how overtime pay is calculated, whether it applies to weekends/holidays, and how overtime pay may apply to salaried employees.",
+    ["o1"]
+    ),
+  new SubRight(
+    "h1",
+    ["c1"],
+    "Interview / Application",
+    require("../images/hiring-icon.png"),
+    "🔖",
+    "TODO: Add Description for this subright in Dummy Data",
+    ["o1"]
+  ),
+  new SubRight("h2", ["c1"], "Background Checks", require("../images/hiring-icon.png"), "🔖", "TODO: Add Description for this subright in Dummy Data", []),
+  new SubRight("h3", ["c1"], "Non-Disclosure Agreements (NDAs)", require("../images/hiring-icon.png"), "🔖", "TODO: Add Description for this subright in Dummy Data", []),
+  new SubRight("m1", ["c2"], "Race Discrimination", require("../images/mistreatment-icon.png"), "✋", "TODO: Add Description for this subright in Dummy Data", []),
+  new SubRight("m2", ["c2"], "Age Discrimination", require("../images/mistreatment-icon.png"), "✋", "TODO: Add Description for this subright in Dummy Data", []),
+  new SubRight("m3", ["c2"], "Sexual Harassment", require("../images/mistreatment-icon.png"), "✋", "TODO: Add Description for this subright in Dummy Data", []),
+  new SubRight("s1", ["c4"], "Workplace Safety Protections", require("../images/health-icon.png"), "⛑", "TODO: Add Description for this subright in Dummy Data", []),
+  new SubRight("s2", ["c4"], "Infectious Diseases in Workplace", require("../images/health-icon.png"), "⛑", "TODO: Add Description for this subright in Dummy Data", []),
+  new SubRight("s3", ["c4"], "Injured at Work", require("../images/health-icon.png"), "⛑", "TODO: Add Description for this subright in Dummy Data",[]),
+  new SubRight("g1", ["c5"], "Retaliation for Collective Action", require("../images/unions-icon.png"), "👫", "TODO: Add Description for this subright in Dummy Data", []),
+  new SubRight("g2", ["c5"], "Right to Work Laws", require("../images/unions-icon.png"), "👫", "TODO: Add Description for this subright in Dummy Data", []),
+  new SubRight("u1", ["c6"], "Unemployment Insurance Benefits", require("../images/unemployment-icon.png"), "👩‍💼", "TODO: Add Description for this subright in Dummy Data", []),
+  new SubRight("u2", ["c6"], "Fired For No Reason", require("../images/unemployment-icon.png"), "👩‍💼", "TODO: Add Description for this subright in Dummy Data", []),
+  new SubRight("u3", ["c6"], "Unemployment Compensation App", require("../images/unemployment-icon.png"), "👩‍💼", "TODO: Add Description for this subright in Dummy Data", []),
 ];
 
 export const EVENTS = [
