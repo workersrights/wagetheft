@@ -124,7 +124,8 @@ export const SUBRIGHTS = [
     require("../images/payments-icon.png"),
     "💵",
     "An employer has the right to make many types of deductions from an employee’s pay. These deductions include the cost of work-specific uniforms, tools, meals, lodging, and more. For anything that is for the employee’s benefit, the employer must first get the employee’s consent before providing the good or service and deducting the cost of the employee’s pay. However, there are limits on what employers can deduct from pay. ",
-    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]),
+    ["o1","o7"]
+  ),
   new SubRight(
     "w2",
     ["c3"],
@@ -132,7 +133,7 @@ export const SUBRIGHTS = [
     require("../images/payments-icon.png"),
     "💵",
     "Getting your final paycheck and being paid everything you are owed can be a tricky situation. What do you do with your accrued vacation days? What if your former employer doesn’t want to pay? Do you get paid during your two-week notice? This page can help answer many questions you may have. To learn more about your rights with respect to final pay, contact the following agencies and read the information below.",
-    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
+    ["o1","o7"]
   ),
   new SubRight(
     "w3",
@@ -141,7 +142,7 @@ export const SUBRIGHTS = [
     require("../images/payments-icon.png"),
     "💵",
     "Surprisingly, there are no federal laws requiring meal and rest breaks. This area of the law has been left mostly to states with only 20 requiring meal breaks and 9 requiring rest breaks. However, most employers do provide meal breaks and may be required to provide breaks for specific religious or health reasons. To learn more about meal and rest breaks, read below.",
-    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
+    ["o1","o7"]
     ),
   new SubRight(
     "w4",
@@ -150,7 +151,7 @@ export const SUBRIGHTS = [
     require("../images/payments-icon.png"),
     "💵",
     "The subject of overtime pay is one of the most confusing subject for workers seeking to learn more about their employment rights. Many workers do not understand whether or not they are eligible for overtime, or what they should do in the event their employer is not paying them correctly for the extra time that they work. Many of the overtime regulations have very different interpretations and may not yet have been clarified by court decisions. \n\nThis Overtime Pay page explains what types of work are covered by overtime laws, including which kinds of construction work are covered. It also explains how overtime pay is calculated, whether it applies to weekends/holidays, and how overtime pay may apply to salaried employees.",
-    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
+    ["o1","o7"]
     ),
   new SubRight(
     "h1",
@@ -159,7 +160,7 @@ export const SUBRIGHTS = [
     require("../images/hiring-icon.png"),
     "🔖",
     "Applying for a new job can be stressful and time-consuming. It is important to know what to expect so you can be prepared and confident during the application and interview process. The following information explains what kind of questions employers can ask you on an application or in an interview for a new job. Additionally, these questions and answers give information about when and how employers can use drug testing, lie detectors, background checks, and credit checks. Lastly, they discuss illegal discrimination against jobs applicants.",
-    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
+    ["o8"]
   ),
   new SubRight(
     "h2",
@@ -168,7 +169,7 @@ export const SUBRIGHTS = [
     require("../images/hiring-icon.png"),
     "🔖",
     "While an employer may have reasons for wanting to do a background check, as a potential employee, you also have rights and an expectation of privacy. For many types of information, an employer needs to get your written permission before they can get information about you. Once an employer has information about you, they must inform you if they take any adverse action against you because of that information. Additionally, an employer cannot use any of the information in a discriminatory manner. For more information about your rights concerning background checks, read below.",
-    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
+    ["o8"]
   ),
   new SubRight(
     "h3",
@@ -177,7 +178,7 @@ export const SUBRIGHTS = [
     require("../images/hiring-icon.png"),
     "🔖",
     "Over one-third of the US workforce is bound to their company by a non-disclosure agreement (NDA). NDAs can force employees to be silent about anything from trade secrets to sexual harassment and assault and have been growing in number as companies become increasingly worried about competition and reputation. It is important as an employee to understand what your employer is asking you to sign. To learn more about NDAs and the workplace, read below.",
-    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
+    ["o8"]
   ),
   new SubRight(
     "m1",
@@ -186,7 +187,7 @@ export const SUBRIGHTS = [
     require("../images/mistreatment-icon.png"),
     "✋",
     "Racial discrimination refers to the practice of treating individuals differently because of their race or color. Federal law prohibits race discrimination in the workplace and incidents of race discrimination can take many forms, in the workplace particularly, race discrimination can be hard to identify. For more information about race discrimination, read below.",
-    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
+    ["o5", "o6", "o8"]
     ),
   new SubRight(
     "m2",
@@ -195,7 +196,7 @@ export const SUBRIGHTS = [
     require("../images/mistreatment-icon.png"),
     "✋",
     "Elderly and youthful employees sometimes experience age discrimination in the workplace. Ageism, is stereotyping and discriminating against individuals or groups on the basis of their age. Employers are generally not allowed to hire, fire, promote, or decide an employee’s compensation based on their age. However, it can be difficult to determine whether an employer’s actions were motivated by age discrimination, or by a genuine belief that another person can perform a particular job better. States have extensive complaint and fact finding procedures to help employees determine when they have been victims of age discrimination and to assert their rights. Read below to learn more about age discrimination and how the law protects you.",
-    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
+    ["o5", "o6", "o8"]
   ),
   new SubRight(
     "m3",
@@ -204,7 +205,7 @@ export const SUBRIGHTS = [
     require("../images/mistreatment-icon.png"),
     "✋",
     "Sex or gender discrimination in employment involves treating someone unfavorably because of the person’s sex, whether they are applying for a job or are a current employee. Although women have made clear they have the ability to perform with the same skill and success in every endeavor engaged in by men, the issue of sex discrimination still holds many back. Sex discrimination, although predominantly an issue for women, can sometimes be directed towards men as well. Below, we answer many of the questions that commonly arise with respect to this issue.", 
-    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
+    ["o5", "o6", "o8"]
     ),
   new SubRight(
     "s1",
@@ -213,7 +214,7 @@ export const SUBRIGHTS = [
     require("../images/health-icon.png"),
     "⛑",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac lacus eget lectus suscipit faucibus. Suspendisse potenti. Proin posuere tellus sit amet urna sodales aliquam. Aliquam accumsan felis et nulla molestie, sit amet iaculis erat malesuada. Pellentesque vel est justo. Vestibulum justo sem, porta sed orci vitae, vestibulum tempor nisl. Nunc vestibulum porta odio, vitae placerat lectus interdum nec. Ut sagittis congue mattis. Etiam mollis, nulla ut pharetra ultricies, urna libero sodales enim, sit amet mattis elit tellus vel lectus. Donec sit amet ligula et enim varius pretium.",
-    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
+    ["o2"]
   ),
   new SubRight(
     "s2",
@@ -222,7 +223,7 @@ export const SUBRIGHTS = [
     require("../images/health-icon.png"),
     "⛑",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac lacus eget lectus suscipit faucibus. Suspendisse potenti. Proin posuere tellus sit amet urna sodales aliquam. Aliquam accumsan felis et nulla molestie, sit amet iaculis erat malesuada. Pellentesque vel est justo. Vestibulum justo sem, porta sed orci vitae, vestibulum tempor nisl. Nunc vestibulum porta odio, vitae placerat lectus interdum nec. Ut sagittis congue mattis. Etiam mollis, nulla ut pharetra ultricies, urna libero sodales enim, sit amet mattis elit tellus vel lectus. Donec sit amet ligula et enim varius pretium.",
-    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
+    ["o2"]
   ),
   new SubRight(
     "s3",
@@ -231,7 +232,7 @@ export const SUBRIGHTS = [
     require("../images/health-icon.png"),
     "⛑",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac lacus eget lectus suscipit faucibus. Suspendisse potenti. Proin posuere tellus sit amet urna sodales aliquam. Aliquam accumsan felis et nulla molestie, sit amet iaculis erat malesuada. Pellentesque vel est justo. Vestibulum justo sem, porta sed orci vitae, vestibulum tempor nisl. Nunc vestibulum porta odio, vitae placerat lectus interdum nec. Ut sagittis congue mattis. Etiam mollis, nulla ut pharetra ultricies, urna libero sodales enim, sit amet mattis elit tellus vel lectus. Donec sit amet ligula et enim varius pretium.",
-    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
+    ["o2"]
   ),
   new SubRight(
     "g1",
@@ -240,7 +241,7 @@ export const SUBRIGHTS = [
     require("../images/unions-icon.png"),
     "👫",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac lacus eget lectus suscipit faucibus. Suspendisse potenti. Proin posuere tellus sit amet urna sodales aliquam. Aliquam accumsan felis et nulla molestie, sit amet iaculis erat malesuada. Pellentesque vel est justo. Vestibulum justo sem, porta sed orci vitae, vestibulum tempor nisl. Nunc vestibulum porta odio, vitae placerat lectus interdum nec. Ut sagittis congue mattis. Etiam mollis, nulla ut pharetra ultricies, urna libero sodales enim, sit amet mattis elit tellus vel lectus. Donec sit amet ligula et enim varius pretium.",
-    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
+    ["o3", "o4"]
   ),
   new SubRight(
     "g2",
@@ -249,7 +250,7 @@ export const SUBRIGHTS = [
     require("../images/unions-icon.png"),
     "👫",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac lacus eget lectus suscipit faucibus. Suspendisse potenti. Proin posuere tellus sit amet urna sodales aliquam. Aliquam accumsan felis et nulla molestie, sit amet iaculis erat malesuada. Pellentesque vel est justo. Vestibulum justo sem, porta sed orci vitae, vestibulum tempor nisl. Nunc vestibulum porta odio, vitae placerat lectus interdum nec. Ut sagittis congue mattis. Etiam mollis, nulla ut pharetra ultricies, urna libero sodales enim, sit amet mattis elit tellus vel lectus. Donec sit amet ligula et enim varius pretium.",
-    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
+    ["o3", "o4"]
   ),
   new SubRight(
     "u1",
@@ -258,7 +259,7 @@ export const SUBRIGHTS = [
     require("../images/unemployment-icon.png"),
     "👩‍💼",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac lacus eget lectus suscipit faucibus. Suspendisse potenti. Proin posuere tellus sit amet urna sodales aliquam. Aliquam accumsan felis et nulla molestie, sit amet iaculis erat malesuada. Pellentesque vel est justo. Vestibulum justo sem, porta sed orci vitae, vestibulum tempor nisl. Nunc vestibulum porta odio, vitae placerat lectus interdum nec. Ut sagittis congue mattis. Etiam mollis, nulla ut pharetra ultricies, urna libero sodales enim, sit amet mattis elit tellus vel lectus. Donec sit amet ligula et enim varius pretium.",
-    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
+    ["o7", "o8"]
   ),
   new SubRight(
     "u2",
@@ -267,7 +268,7 @@ export const SUBRIGHTS = [
     require("../images/unemployment-icon.png"),
     "👩‍💼",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac lacus eget lectus suscipit faucibus. Suspendisse potenti. Proin posuere tellus sit amet urna sodales aliquam. Aliquam accumsan felis et nulla molestie, sit amet iaculis erat malesuada. Pellentesque vel est justo. Vestibulum justo sem, porta sed orci vitae, vestibulum tempor nisl. Nunc vestibulum porta odio, vitae placerat lectus interdum nec. Ut sagittis congue mattis. Etiam mollis, nulla ut pharetra ultricies, urna libero sodales enim, sit amet mattis elit tellus vel lectus. Donec sit amet ligula et enim varius pretium.",
-    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
+    ["o7", "o8"]
   ),
   new SubRight(
     "u3",
@@ -276,7 +277,7 @@ export const SUBRIGHTS = [
     require("../images/unemployment-icon.png"),
     "👩‍💼",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac lacus eget lectus suscipit faucibus. Suspendisse potenti. Proin posuere tellus sit amet urna sodales aliquam. Aliquam accumsan felis et nulla molestie, sit amet iaculis erat malesuada. Pellentesque vel est justo. Vestibulum justo sem, porta sed orci vitae, vestibulum tempor nisl. Nunc vestibulum porta odio, vitae placerat lectus interdum nec. Ut sagittis congue mattis. Etiam mollis, nulla ut pharetra ultricies, urna libero sodales enim, sit amet mattis elit tellus vel lectus. Donec sit amet ligula et enim varius pretium.",
-    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
+    ["o7", "o8"]
   ),
 ];
 
