@@ -48,6 +48,7 @@ export const RIGHTSCATEGORIES = [
   ),
 ];
 
+// https://www.workplacefairness.org/federalagencies for federal agencies!
 export const ORGANIZATIONS = [
     new Organization(
       'o1',
@@ -92,7 +93,7 @@ export const ORGANIZATIONS = [
     new Organization(
       'o6',
       'U.S. Commission on Civil Rights',
-      require('../images/wage-theft-coalition-logo.png'),
+      require('../images/commission-civil-rights-logo.png'),
       'The Civil Rights Act of 1957 created the U.S. Commission on Civil Rights. Since then, Congress has reauthorized or extended the legislation creating the Commission several times; the last reauthorization was in 1994 by the Civil Rights Commission Amendments Act of 1994. \n Established as an independent, bipartisan, fact-finding federal agency, our mission is to inform the development of national civil rights policy and enhance enforcement of federal civil rights laws. We pursue this mission by studying alleged deprivations of voting rights and alleged discrimination based on race, color, religion, sex, age, disability, or national origin, or in the administration of justice. We play a vital role in advancing civil rights through objective and comprehensive investigation, research, and analysis on issues of fundamental concern to the federal government and the public.',
       'www.usccr.gov',
       ["c2"]
@@ -100,15 +101,15 @@ export const ORGANIZATIONS = [
     new Organization(
       'o7',
       'EBSA',
-      require('../images/wage-theft-coalition-logo.png'),
+      require('../images/EBSA-logo.png'),
       'EBSA is committed to educating and assisting over 200 million pension, health and other employee benefit plan participants and beneficiaries and more than 3 million plan sponsors and members of the employee benefit community. EBSA promotes voluntary compliance and facilitates self-regulation, working diligently to provide quality assistance to plan participants and beneficiaries. EBSA\'s goal in providing direct assistance is to raise the knowledge level of plan participants and beneficiaries, service providers and other interested parties and to ensure that they have access to available plan documents filed with the Department of Labor. This enables participants to better understand and exercise their rights under the law and, when possible, to recover any benefits to which they may be entitled.',
-      'www.dol.gov/ebsa',
+      'https://www.dol.gov/agencies/ebsa',
       ["c3"]
     ),
     new Organization(
       'o8',
       'EEOC',
-      require('../images/wage-theft-coalition-logo.png'),
+      require('../images/EEOC-logo.png'),
       'The U.S. Equal Employment Opportunity Commission (EEOC) is responsible for enforcing federal laws that make it illegal to discriminate against a job applicant or an employee because of the person\'s race, color, religion, sex (including pregnancy, gender identity, and sexual orientation), national origin, age (40 or older), disability or genetic information. It is also illegal to discriminate against a person because the person complained about discrimination, filed a charge of discrimination, or participated in an employment discrimination investigation or lawsuit.',
       'https://eeoc.custhelp.com/app/home',
       ["c2"]
@@ -123,7 +124,7 @@ export const SUBRIGHTS = [
     require("../images/payments-icon.png"),
     "💵",
     "An employer has the right to make many types of deductions from an employee’s pay. These deductions include the cost of work-specific uniforms, tools, meals, lodging, and more. For anything that is for the employee’s benefit, the employer must first get the employee’s consent before providing the good or service and deducting the cost of the employee’s pay. However, there are limits on what employers can deduct from pay. ",
-    ["o1"]),
+    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]),
   new SubRight(
     "w2",
     ["c3"],
@@ -131,7 +132,7 @@ export const SUBRIGHTS = [
     require("../images/payments-icon.png"),
     "💵",
     "Getting your final paycheck and being paid everything you are owed can be a tricky situation. What do you do with your accrued vacation days? What if your former employer doesn’t want to pay? Do you get paid during your two-week notice? This page can help answer many questions you may have. To learn more about your rights with respect to final pay, contact the following agencies and read the information below.",
-    ["o1"]
+    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
   ),
   new SubRight(
     "w3",
@@ -140,7 +141,7 @@ export const SUBRIGHTS = [
     require("../images/payments-icon.png"),
     "💵",
     "Surprisingly, there are no federal laws requiring meal and rest breaks. This area of the law has been left mostly to states with only 20 requiring meal breaks and 9 requiring rest breaks. However, most employers do provide meal breaks and may be required to provide breaks for specific religious or health reasons. To learn more about meal and rest breaks, read below.",
-    ["o1"]
+    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
     ),
   new SubRight(
     "w4",
@@ -149,7 +150,7 @@ export const SUBRIGHTS = [
     require("../images/payments-icon.png"),
     "💵",
     "The subject of overtime pay is one of the most confusing subject for workers seeking to learn more about their employment rights. Many workers do not understand whether or not they are eligible for overtime, or what they should do in the event their employer is not paying them correctly for the extra time that they work. Many of the overtime regulations have very different interpretations and may not yet have been clarified by court decisions. \n\nThis Overtime Pay page explains what types of work are covered by overtime laws, including which kinds of construction work are covered. It also explains how overtime pay is calculated, whether it applies to weekends/holidays, and how overtime pay may apply to salaried employees.",
-    ["o1"]
+    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
     ),
   new SubRight(
     "h1",
@@ -158,7 +159,7 @@ export const SUBRIGHTS = [
     require("../images/hiring-icon.png"),
     "🔖",
     "TODO: Add Description for this subright in Dummy Data",
-    ["o1"]
+    ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"]
   ),
   new SubRight("h2", ["c1"], "Background Checks", require("../images/hiring-icon.png"), "🔖", "TODO: Add Description for this subright in Dummy Data", []),
   new SubRight("h3", ["c1"], "Non-Disclosure Agreements (NDAs)", require("../images/hiring-icon.png"), "🔖", "TODO: Add Description for this subright in Dummy Data", []),
