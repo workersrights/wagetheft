@@ -24,7 +24,6 @@ const RightsDetailsScreen = (props) => {
   const modalizeRef = useRef(null);
 
   const openLearnMoreHandler = (id) => {
-    console.log("openLearnMoreHandler() called.");
     setActiveLearnMoreId(id);
     modalizeRef.current?.open();
   };

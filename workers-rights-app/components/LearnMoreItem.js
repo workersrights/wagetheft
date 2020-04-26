@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     shadowOpacity: 0.25,
     shadowOffset: { width: 2, height: 5 },
+    elevation: 3,
     backgroundColor: Colors.lightOrange,
   },
   subrightstxt: {
