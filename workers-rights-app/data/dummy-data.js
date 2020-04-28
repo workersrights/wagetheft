@@ -46,6 +46,13 @@ export const RIGHTSCATEGORIES = [
     "",
     ""
   ),
+  new RightsCategory(
+    "c7",
+    "Favorites",
+    require("../images/favorites-icon.png"),
+    "",
+    "View your saved rights and most useful information, all in one place!"
+  )
 ];
 
 // https://www.workplacefairness.org/federalagencies for federal agencies!

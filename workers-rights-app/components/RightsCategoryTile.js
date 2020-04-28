@@ -37,6 +37,8 @@ const styles = StyleSheet.create({
   imageStyle: {
     position: "absolute",
     top: "20%",
+    width: 80,
+    height: 80
   },
   textContainer: {
     position: "absolute",
