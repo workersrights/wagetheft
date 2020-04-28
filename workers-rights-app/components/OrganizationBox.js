@@ -12,11 +12,9 @@ const OrganizationBox = props => {
     return (
         <TouchableOpacity onPress={props.onSelect} style={styles.box}>
                 <View style={{ flex: 4 }}>
-                    <Image source={props.image}
-                        style={styles.imgStyle}
-                    />
+                    <Image source={props.image} style={styles.imgStyle}/>
                 </View>
-                <View style={{ flex: 1, paddingLeft: 10, paddingTop: 10 }}>
+                <View style={{ flex: 1, justifyContent: 'center', marginLeft: 25}}>
                     <Text numberOfLines={2} style={styles.orgTitle}>{props.title}</Text>
                 </View>
         </TouchableOpacity>
@@ -25,24 +23,25 @@ const OrganizationBox = props => {
 
 const styles = StyleSheet.create({
     box: {
-        height: 130,
-        width: 162,
+        height: 229,
+        width: 284,
         marginRight: 15,
-        borderRadius: 15,
-        shadowOpacity: 0.25,
+        borderRadius: 6,
+        shadowOpacity: 0.5,
         shadowColor: 'black',
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 6
     },
     orgTitle: {
-        fontWeight: "600"
+        fontSize: 16,
+        fontFamily: 'nunito-semibold'
     },
     imgStyle: {
         flex: 1, 
         width: null,
         height: null, 
         resizeMode: 'cover',
-        borderRadius: 8
+        borderRadius: 6
     }
 });
 

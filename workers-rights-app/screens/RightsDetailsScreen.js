@@ -9,6 +9,7 @@ import LearnMoreItem from '../components/LearnMoreItem';
 const RightsDetailsScreen = props => {
     const subrightId = props.navigation.getParam('subrightId');
     const selectedSubright = SUBRIGHTS.find(subright => subright.id === subrightId);
+    const relevantOrgs = ORGANIZATIONS.filter(org => (selectedSubright.organizations).includes(org.id));
 
     const renderGridItem = (itemData) => {
         return (
@@ -22,17 +23,22 @@ const RightsDetailsScreen = props => {
     return(
         <View style={styles.screen}>
             <ScrollView style={{marginHorizontal: 20}} showsVerticalScrollIndicator={false}>
+                {/* Initial subright description */}
                 <Text style={styles.section}>Description: </Text>
-                <Text>An employer has the right to make many types of deductions from an employee’s pay. For anything that is for the employee’s benefit, the employer must first get the employee’s consent before providing the good or service and deducting the cost of the employee’s pay. However, there are limits on what employers can deduct from pay. </Text>
-                <Text style={styles.section}>Organizations that can help: </Text>
-                <View style={{ height: 130, marginTop: 20 }}>
+                <Text>{selectedSubright.description}</Text>
+                
+                {/* Organization section */}
+                <Text style={styles.section}>Contact the following agencies for help: </Text>
+                <View style={{ height: 230, marginTop: 20 }}> 
                     <FlatList
-                        data={ORGANIZATIONS}
+                        data={relevantOrgs}
                         renderItem={renderGridItem}
                         horizontal={true}
                         showsHorizontalScrollIndicator={false}
                     />
                 </View>
+                
+                {/* Learn More Section */}
                 <Text style={styles.section}>Learn more:</Text>
                 <LearnMoreItem
                     title="How much is overtime pay?"
