@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Modal, Image, StyleSheet } from "react-native";
+import { View, Text, Modal, Image, StyleSheet, Dimensions } from "react-native";
 import Colors from "../constants/Colors";
 import ModalCloseButton from "./ModalCloseButton.js";
 import { RIGHTSCATEGORIES } from "../data/dummy-data";
@@ -9,10 +9,6 @@ const RightsCategoryModal = (props) => {
   const selectedCategory = RIGHTSCATEGORIES.filter(
     (category) => category.id === props.categoryId
   )[0];
-  /* 
-  I can't call <Image souce={required(imageUrl)} />.
-  const imageUrl = "../assets/".concat(selectedCategory.image);
-  */
 
   return (
     <Modal visible={props.isVisible} transparent={true} animationType="fade">
@@ -45,7 +41,7 @@ const RightsCategoryModal = (props) => {
 const styles = StyleSheet.create({
   modal: {
     width: "80%",
-    height: "50%",
+    height: 530, // Hard-coded value to fit iPhone 6/7/8. Dynamic sizing, anyone?
     backgroundColor: Colors.lightOrange,
     borderRadius: 0,
     shadowOpacity: 0.25,

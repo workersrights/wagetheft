@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { View, StyleSheet, FlatList, Platform } from "react-native";
 import { RIGHTSCATEGORIES } from "../data/dummy-data";
 import Colors from "../constants/Colors";
 import RightsCategoryTile from "../components/RightsCategoryTile";
 import RightsCategoryModal from "../components/RightsCategoryModal";
-
 //var globalProps = null
 
 const RightsScreen = (props) => {
@@ -18,7 +17,6 @@ const RightsScreen = (props) => {
   };
 
   const closeModalHandler = () => {
-    console.log("closeModalHandler() called.");
     setIsModalOpen(false);
   };
 

@@ -1,7 +1,8 @@
-import RightsCategory from '../models/rightsCategory';
-import SubRight from '../models/subRight';
-import Organization from '../models/organization';
-import Event from '../models/event';
+import RightsCategory from "../models/rightsCategory";
+import SubRight from "../models/subRight";
+import Organization from "../models/organization";
+import Event from "../models/event";
+import LearnMore from "../models/learnMore";
 
 export const RIGHTSCATEGORIES = [
   new RightsCategory(
@@ -49,61 +50,247 @@ export const RIGHTSCATEGORIES = [
 ];
 
 export const ORGANIZATIONS = [
-    new Organization('o1', 'Wage Theft Coalition', require('../images/wage-theft-coalition-logo.png'), 'TODO description', 'TODO website link'),
-    new Organization('o2', 'OSHA', require('../images/osha-logo.png'), 'TODO description', 'TODO website link'),
-    new Organization('o3', 'NLRB', require('../images/NLRB-logo.png'), 'TODO description', 'TODO website link'),
-    new Organization('o4', 'PERB', require('../images/PERB-logo.png'), 'TODO description', 'TODO website link'),
-    new Organization('o5', 'DFEH', require('../images/DFEH-logo.png'), 'TODO description', 'TODO website link'),
+  new Organization(
+    "o1",
+    "Wage Theft Coalition",
+    require("../images/wage-theft-coalition-logo.png"),
+    "TODO description",
+    "TODO website link"
+  ),
+  new Organization(
+    "o2",
+    "OSHA",
+    require("../images/osha-logo.png"),
+    "TODO description",
+    "TODO website link"
+  ),
+  new Organization(
+    "o3",
+    "NLRB",
+    require("../images/NLRB-logo.png"),
+    "TODO description",
+    "TODO website link"
+  ),
+  new Organization(
+    "o4",
+    "PERB",
+    require("../images/PERB-logo.png"),
+    "TODO description",
+    "TODO website link"
+  ),
+  new Organization(
+    "o5",
+    "DFEH",
+    require("../images/DFEH-logo.png"),
+    "TODO description",
+    "TODO website link"
+  ),
 ];
 
 export const SUBRIGHTS = [
-  new SubRight("sr1", ["c3"], "Deductions from Pay", require("../images/payments-icon.png"), "💵"),
-  new SubRight("sr2", ["c3"], "Final Paycheck Laws", require("../images/payments-icon.png"), "💵"),
-  new SubRight("sr3", ["c3"], "Meal and Rest Breaks", require("../images/payments-icon.png"), "💵"),
-  new SubRight("sr4", ["c3"], "Overtime Pay", require("../images/payments-icon.png"), "💵"),
-  new SubRight("sr5", ["c1"], "Interview / Application", require("../images/hiring-icon.png"), "🔖"),
-  new SubRight("sr6", ["c1"], "Background Checks", require("../images/hiring-icon.png"), "🔖"),
+  new SubRight(
+    "sr1",
+    ["c3"],
+    "Deductions from Pay",
+    require("../images/payments-icon.png"),
+    "💵",
+    ["lm1", "lm2", "lm3"]
+  ),
+  new SubRight(
+    "sr2",
+    ["c3"],
+    "Final Paycheck Laws",
+    require("../images/payments-icon.png"),
+    "💵",
+    ["lm1", "lm2"]
+  ),
+  new SubRight(
+    "sr3",
+    ["c3"],
+    "Meal and Rest Breaks",
+    require("../images/payments-icon.png"),
+    "💵",
+    []
+  ),
+  new SubRight(
+    "sr4",
+    ["c3"],
+    "Overtime Pay",
+    require("../images/payments-icon.png"),
+    "💵",
+    []
+  ),
+  new SubRight(
+    "sr5",
+    ["c1"],
+    "Interview / Application",
+    require("../images/hiring-icon.png"),
+    "🔖",
+    ["lm1", "lm2", "lm3"]
+  ),
+  new SubRight(
+    "sr6",
+    ["c1"],
+    "Background Checks",
+    require("../images/hiring-icon.png"),
+    "🔖",
+    []
+  ),
   new SubRight(
     "sr7",
     ["c1"],
     "Non-Disclosure Agreements (NDAs)",
     require("../images/hiring-icon.png"),
-    "🔖"
+    "🔖",
+    []
   ),
-  new SubRight("sr8", ["c2"], "Race Discrimination", require("../images/mistreatment-icon.png"), "✋"),
-  new SubRight("sr9", ["c2"], "Age Discrimination", require("../images/mistreatment-icon.png"), "✋"),
-  new SubRight("sr10", ["c2"], "Sexual Harassment", require("../images/mistreatment-icon.png"), "✋"),
-  new SubRight("sr11", ["c4"], "Workplace Safety Protections", require("../images/health-icon.png"), "⛑"),
+  new SubRight(
+    "sr8",
+    ["c2"],
+    "Race Discrimination",
+    require("../images/mistreatment-icon.png"),
+    "✋",
+    []
+  ),
+  new SubRight(
+    "sr9",
+    ["c2"],
+    "Age Discrimination",
+    require("../images/mistreatment-icon.png"),
+    "✋",
+    []
+  ),
+  new SubRight(
+    "sr10",
+    ["c2"],
+    "Sexual Harassment",
+    require("../images/mistreatment-icon.png"),
+    "✋",
+    []
+  ),
+  new SubRight(
+    "sr11",
+    ["c4"],
+    "Workplace Safety Protections",
+    require("../images/health-icon.png"),
+    "⛑",
+    []
+  ),
   new SubRight(
     "sr12",
     ["c4"],
     "Infectious Diseases in Workplace",
     require("../images/health-icon.png"),
-    "⛑"
+    "⛑",
+    []
   ),
-  new SubRight("sr13", ["c4"], "Injured at Work", require("../images/health-icon.png"), "⛑"),
+  new SubRight(
+    "sr13",
+    ["c4"],
+    "Injured at Work",
+    require("../images/health-icon.png"),
+    "⛑",
+    []
+  ),
   new SubRight(
     "sr14",
     ["c5"],
     "Retaliation for Collective Action",
     require("../images/unions-icon.png"),
-    "👫"
+    "👫",
+    []
   ),
-  new SubRight("sr15", ["c5"], "Right to Work Laws", require("../images/unions-icon.png"), "👫"),
+  new SubRight(
+    "sr15",
+    ["c5"],
+    "Right to Work Laws",
+    require("../images/unions-icon.png"),
+    "👫",
+    []
+  ),
   new SubRight(
     "sr16",
     ["c6"],
     "Unemployment Insurance Benefits",
     require("../images/unemployment-icon.png"),
-    "👩‍💼"
+    "👩‍💼",
+    []
   ),
-  new SubRight("sr17", ["c6"], "Fired For No Reason", require("../images/unemployment-icon.png"), "👩‍💼"),
+  new SubRight(
+    "sr17",
+    ["c6"],
+    "Fired For No Reason",
+    require("../images/unemployment-icon.png"),
+    "👩‍💼",
+    []
+  ),
   new SubRight(
     "sr18",
     ["c6"],
     "Unemployment Compensation App",
     require("../images/unemployment-icon.png"),
-    "👩‍💼"
+    "👩‍💼",
+    []
+  ),
+];
+
+export const LEARNMORES = [
+  new LearnMore(
+    "lm1",
+    "How much is overtime pay?",
+    require("../images/question.png"),
+    [
+      {
+        header: "Introductory Paragraph",
+        body:
+          "Lorem ipsum dolor ipsum lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor ipsum lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor ipsum lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor ipsum lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor ipsum lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh",
+      },
+      {
+        header: "Elaboration Paragraph",
+        body: "ipsum ipsum ipsum. Dolor sit amet.",
+      },
+    ]
+  ),
+  new LearnMore(
+    "lm2",
+    "Which federal laws cover deductions?",
+    require("../images/question.png"),
+    [
+      {
+        header: "Introductory Paragraph 2",
+        body: "Lorem ipsum dolor ipsum lorem 2.",
+      },
+      {
+        header: "Elaboration Paragraph 2",
+        body:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      },
+      {
+        header: "Look out!",
+        body:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      },
+      {
+        header: "",
+        body:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      },
+    ]
+  ),
+  new LearnMore(
+    "lm3",
+    "How do I file a complaint?",
+    require("../images/question.png"),
+    [
+      {
+        header: "Introductory Paragraph 3",
+        body: "Lorem ipsum dolor ipsum lorem 3.",
+      },
+      {
+        header: "Elaboration Paragraph 3",
+        body: "ipsum ipsum ipsum. Dolor sit amet 3.",
+      },
+    ]
   ),
 ];
 
