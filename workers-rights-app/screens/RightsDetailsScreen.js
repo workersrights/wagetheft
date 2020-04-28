@@ -16,11 +16,12 @@ const RightsDetailsScreen = (props) => {
   const parentSubRight = SUBRIGHTS.find(
     (subRight) => subRight.id === parentSubRightId
   );
+  console.log("parent subright: ", parentSubRight);
   // Get list of LearnMore Ids to display. Works on empty array as well.
   const displayedLearnMoreIds = parentSubRight.learnMores;
   
   // Get list of relevant orgs to this specific subright
-  const relevantOrgs = ORGANIZATIONS.filter(org => (selectedSubright.organizations).includes(org.id));
+  const relevantOrgs = ORGANIZATIONS.filter(org => (parentSubRight.organizations).includes(org.id));
 
   // State Hooks for LearnMore modals.
   const [activeLearnMoreId, setActiveLearnMoreId] = useState("lm1");
@@ -45,14 +46,14 @@ const RightsDetailsScreen = (props) => {
             <ScrollView style={{marginHorizontal: 20}} showsVerticalScrollIndicator={false}>
                 {/* Initial subright description */}
                 <Text style={styles.section}>Description: </Text>
-                <Text>{selectedSubright.description}</Text>
+                <Text>{parentSubRight.description}</Text>
                 
                 {/* Organization section */}
                 <Text style={styles.section}>Contact the following agencies for help: </Text>
                 <View style={{ height: 230, marginTop: 20 }}> 
                     <FlatList
                         data={relevantOrgs}
-                        renderItem={renderGridItem}
+                        renderItem={renderOrgItem}
                         horizontal={true}
                         showsHorizontalScrollIndicator={false}
                     />
@@ -87,11 +88,11 @@ const RightsDetailsScreen = (props) => {
 
 RightsDetailsScreen.navigationOptions = (navigationData) => {
   const subrightId = navigationData.navigation.getParam("subrightId");
-  const selectedSubright = SUBRIGHTS.find(
+  const parentSubRight = SUBRIGHTS.find(
     (subright) => subright.id === subrightId
   );
   return {
-    headerTitle: selectedSubright.title,
+    headerTitle: parentSubRight.title,
     headerRight: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
