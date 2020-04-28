@@ -7,7 +7,6 @@ import { Ionicons } from '@expo/vector-icons';
 import RightsScreen from '../screens/RightsScreen';
 import SubRightsScreen from '../screens/SubRightsScreen';
 import RightsDetailsScreen from '../screens/RightsDetailsScreen';
-import FavoritesScreen from '../screens/FavoritesScreen';
 import FavoriteRightsScreen from '../screens/FavoriteRightsScreen';
 import EventsHomeScreen from '../screens/EventsHomeScreen';
 import ForumScreen from '../screens/ForumScreen';
