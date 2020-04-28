@@ -18,15 +18,13 @@ const RightsDetailsScreen = (props) => {
   );
   // Get list of LearnMore Ids to display. Works on empty array as well.
   const displayedLearnMoreIds = parentSubRight.learnMores;
+  
+  // Get list of relevant orgs to this specific subright
+  const relevantOrgs = ORGANIZATIONS.filter(org => (selectedSubright.organizations).includes(org.id));
 
   // State Hooks for LearnMore modals.
   const [activeLearnMoreId, setActiveLearnMoreId] = useState("lm1");
   const modalizeRef = useRef(null);
-
-  const openLearnMoreHandler = (id) => {
-    setActiveLearnMoreId(id);
-    modalizeRef.current?.open();
-  };
 
   const renderOrgItem = (itemData) => {
     return (
@@ -37,50 +35,53 @@ const RightsDetailsScreen = (props) => {
     );
   };
 
-  return (
-    <View style={styles.screen}>
-      <ScrollView
-        style={{ marginHorizontal: 20 }}
-        showsVerticalScrollIndicator={false}
-      >
-        <Text style={styles.section}>Description: </Text>
-        <Text>
-          An employer has the right to make many types of deductions from an
-          employee’s pay. For anything that is for the employee’s benefit, the
-          employer must first get the employee’s consent before providing the
-          good or service and deducting the cost of the employee’s pay. However,
-          there are limits on what employers can deduct from pay.{" "}
-        </Text>
-        <Text style={styles.section}>Organizations that can help: </Text>
-        <View style={{ height: 130, marginTop: 20 }}>
-          <FlatList
-            data={ORGANIZATIONS}
-            renderItem={renderOrgItem}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-          />
+  const openLearnMoreHandler = (id) => {
+    setActiveLearnMoreId(id);
+    modalizeRef.current?.open();
+  };
+
+    return(
+        <View style={styles.screen}>
+            <ScrollView style={{marginHorizontal: 20}} showsVerticalScrollIndicator={false}>
+                {/* Initial subright description */}
+                <Text style={styles.section}>Description: </Text>
+                <Text>{selectedSubright.description}</Text>
+                
+                {/* Organization section */}
+                <Text style={styles.section}>Contact the following agencies for help: </Text>
+                <View style={{ height: 230, marginTop: 20 }}> 
+                    <FlatList
+                        data={relevantOrgs}
+                        renderItem={renderGridItem}
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}
+                    />
+                </View>
+                
+              {/* ------------- LEARN MORE SECTION -------------- */}
+                <Text style={styles.section}>Learn more:</Text>
+                {displayedLearnMoreIds.map((displayedLearnMoreId) => (
+                  <LearnMoreItem
+                    id={displayedLearnMoreId}
+                    key={displayedLearnMoreId}
+                    onPress={() => {
+                      openLearnMoreHandler(displayedLearnMoreId);
+                    }}
+                  />
+                ))}
+            </ScrollView>
+
+            <Portal>
+              <Modalize ref={modalizeRef} modalStyle={styles.modalize}>
+                <View style={styles.modalizeContent}>
+                  <RightsSheetContent learnMoreId={activeLearnMoreId} />
+                </View>
+              </Modalize>
+            </Portal>
+               
+              
         </View>
 
-        {/* ------------- LEARN MORE SECTION -------------- */}
-        <Text style={styles.section}>Learn more:</Text>
-        {displayedLearnMoreIds.map((displayedLearnMoreId) => (
-          <LearnMoreItem
-            id={displayedLearnMoreId}
-            key={displayedLearnMoreId}
-            onPress={() => {
-              openLearnMoreHandler(displayedLearnMoreId);
-            }}
-          />
-        ))}
-      </ScrollView>
-      <Portal>
-        <Modalize ref={modalizeRef} modalStyle={styles.modalize}>
-          <View style={styles.modalizeContent}>
-            <RightsSheetContent learnMoreId={activeLearnMoreId} />
-          </View>
-        </Modalize>
-      </Portal>
-    </View>
   );
 };
 

@@ -17,6 +17,7 @@ const RightsScreen = (props) => {
   };
 
   const closeModalHandler = () => {
+    //console.log("closeModalHandler() called.");
     setIsModalOpen(false);
   };
 
