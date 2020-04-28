@@ -4,10 +4,8 @@ import { RIGHTSCATEGORIES } from "../data/dummy-data";
 import Colors from "../constants/Colors";
 import RightsCategoryTile from "../components/RightsCategoryTile";
 import RightsCategoryModal from "../components/RightsCategoryModal";
-//var globalProps = null
 
 const RightsScreen = (props) => {
-  //globalProps = props
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeCategoryId, setActiveCategoryId] = useState("c1");
 
@@ -23,8 +21,9 @@ const RightsScreen = (props) => {
 
   const advanceScreenHandler = () => {
     closeModalHandler();
+    
     props.navigation.navigate({
-      routeName: "SubRights",
+      routeName: activeCategoryId != "c7" ? "SubRights" : "FavoriteRights",
       params: {
         categoryId: activeCategoryId, // sending the rights category to the new screen
       },
