@@ -1,6 +1,5 @@
 import React from "react";
 import { View, StyleSheet, FlatList } from "react-native";
-import { useSelector, useDispatch } from 'react-redux';
 
 import EventsHomeModule from "../components/EventsHomeModule.js";
 
@@ -13,8 +12,6 @@ const categoryTitles = [
 //In the EventCategoryScreen use props.navigation.categoryId or props.navigation.categoryTitle
 //This allows you to access the pertinent info from this screen
 const EventsHomeScreen = (props) => {
-
-  const allEvents = useSelector(state => state.events.allEvents);
 
   const renderEventModules = (itemData) => {
     return (
@@ -30,13 +27,11 @@ const EventsHomeScreen = (props) => {
           });
         }}
         cardPress={(id) => {
-          const selectedEvent = allEvents.find(event => event.id===id);
           props.navigation.navigate({
             routeName: "EventDetails",
             params: {
               eventId: id,
-              eventTitle: selectedEvent.title
-            },
+            }
           });
         }}
         lastIndex={itemData.index === categoryTitles.length - 1}
