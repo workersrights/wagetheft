@@ -12,16 +12,31 @@ import CustomHeaderButton from "../components/CustomHeaderButton";
 const EventDetailsScreen = (props) => {
 
   eventId = props.navigation.getParam("eventId");
-  const checkInArray = e => e.id === eventId;
-  const inYourEvents = useSelector(state => state.events.yourEvents.some(checkInArray));
+  const inArray = e => e.id === eventId;
+
+  // finds the event given the event id from the parent
+  // and sets it as a param so that navigation options
+  // can have access to it
+  event = useSelector(state => state.events.allEvents.find(inArray))
+  useEffect(() => {
+    props.navigation.setParams({eventTitle: event.title})
+}, [event]);
+
 
   const dispatch = useDispatch();
 
+  // boolean if an event is in "Your Events"
+  const inYourEvents = useSelector(state => state.events.yourEvents.some(inArray));
+  
+  // dispatches the action
   const setYourEventHandeler = useCallback(() => {
       dispatch(setYourEvent(eventId));
   }, [dispatch, eventId]);
 
 
+  // Handeler and inYourEvents becomes a params 
+  // so that navigation options can have access to it
+  // and updates every time it is changed
   useEffect(() => {
       props.navigation.setParams({setYourEvent: setYourEventHandeler})
   }, [setYourEventHandeler]);
@@ -33,7 +48,7 @@ const EventDetailsScreen = (props) => {
 
   return (
     <View style={styles.screen}>
-      <EventDetails id={eventId} />
+      <EventDetails event={event} />
     </View>
   );
 };
