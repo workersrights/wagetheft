@@ -1,106 +1,109 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image} from 'react-native';
+import React from "react";
+import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import { EVENTS } from "../data/dummy-data";
 
 const EventDetails = (props) => {
-    const event = EVENTS.filter(event=>event.id === props.id)[0];
-    return (
-        <View>
-            <View style = {styles.landingContainer}>
+  const event = EVENTS.filter((event) => event.id === props.id)[0];
+  return (
+    <View style={{ width: "100%", height: "100%" }}>
+      <View style={styles.headingImageContainer}>
+        <Image source={{ uri: event.image }} style={styles.image} />
+      </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.infoContainer}>
+          <Text style={styles.lightText}>{event.date}</Text>
+          <Text style={styles.titleText}>{event.title}</Text>
+          <View style={styles.rowContainer}>
+            <View style={styles.iconNtextContainer}>
+              <View style={styles.iconContainer}>
                 <Image
-                    source={{uri: event.image}}
-                    style={styles.image}
+                  style={styles.image}
+                  source={require("../images/place.png")}
                 />
+              </View>
+              <Text style={styles.lightText}>{event.location}</Text>
             </View>
-
-            <View style={styles.infoContainer}>
-                <Text style={styles.info}>{event.date}</Text>
-                <Text style={styles.title}>{event.title}</Text>
-
-                <View style={styles.rowContainer}>
-                
-                    <View style={styles.iconContainer}>
-                        <Image
-                            style={styles.icon}
-                            source={require("../images/place.png")}
-                        />
-                        <Text style={styles.info}>{event.location}</Text>
-                    </View>
-
-                    <View style={styles.iconContainer}>
-                        <Image
-                            style={styles.icon}
-                            source={require("../images/clock.png")}
-                        />
-                        <Text style={styles.info}>{event.time}</Text>
-                    </View>
-                </View>
-                
+            <View style={styles.iconNtextContainer}>
+              <View style={styles.iconContainer}>
+                <Image
+                  style={styles.image}
+                  source={require("../images/clock.png")}
+                />
+              </View>
+              <Text style={styles.lightText}>{event.time}</Text>
             </View>
-            <Text style={styles.subheading}>Description:</Text>
-            <Text style={styles.text}>{event.description}</Text>
-
+          </View>
         </View>
-    );
+        <View style={styles.descriptionContainer}>
+          <Text style={{ ...styles.lightText, marginBottom: 10 }}>
+            Description:
+          </Text>
+          <Text style={styles.descriptionText}>{event.description}</Text>
+        </View>
+      </ScrollView>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-    title: {
-        fontSize : 20,
-        fontWeight: "bold",
-    },
+  headingImageContainer: {
+    height: "35%",
+    width: "100%",
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 5,
+    shadowOpacity: 0.25,
+    elevation: 6,
+  },
 
-    infoContainer : {
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        borderBottomColor: "gray",
-        borderBottomWidth: 1,
-    },
+  infoContainer: {
+    paddingHorizontal: 15,
+    paddingVertical: 20,
+    borderBottomColor: "gray",
+    borderBottomWidth: 1,
+    marginBottom: 15,
+  },
 
-    iconTextContainer: {
-        flexDirection: "row",
-    },
+  lightText: {
+    fontFamily: "nunito-light",
+    fontSize: 14,
+  },
 
-    landingContainer: {
-        height: "40%",
-        width: "100%",
-        paddingTop:5
-    },
+  titleText: {
+    fontSize: 20,
+    fontFamily: "nunito-bold",
+  },
 
-    info: {
-        fontStyle: "italic",
-    },
+  rowContainer: {
+    flexDirection: "row",
+    marginTop: 4,
+  },
 
-    subheading: {
-        paddingHorizontal:5,
-    },
+  iconContainer: {
+    height: 14,
+    width: 14,
+    marginRight: 5,
+  },
 
-    text: {
-        paddingHorizontal:15,
+  iconNtextContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginRight: 10,
+  },
 
-    },
+  descriptionContainer: {
+    paddingHorizontal: 15,
+  },
 
-    image: {
-        resizeMode: "contain",
-        height: "100%",
-        width: "100%",
-    },
+  descriptionText: {
+    fontFamily: "nunito-regular",
+    fontSize: 15,
+  },
 
-    rowContainer: {
-        flexDirection: "row",
-        margin: 5
-    },
-
-    iconContainer: {
-        flexDirection:"row",
-        paddingRight: 50 
-      },
-      icon: {
-        height:14,
-        width: 14,
-        marginRight: 5,
-      },
+  image: {
+    height: "100%",
+    width: "100%",
+  },
 });
 
-export default EventDetails
-    
+export default EventDetails;
