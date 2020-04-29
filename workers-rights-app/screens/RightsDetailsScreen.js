@@ -1,23 +1,45 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, StyleSheet, ScrollView, FlatList} from 'react-native';
 import { SUBRIGHTS, ORGANIZATIONS } from '../data/dummy-data';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/CustomHeaderButton';
 import OrganizationBox from '../components/OrganizationBox';
 import LearnMoreItem from '../components/LearnMoreItem';
+import RightsOrganizationModal from "../components/RightsOrganizationModal";
 
 const RightsDetailsScreen = props => {
     const subrightId = props.navigation.getParam('subrightId');
     const selectedSubright = SUBRIGHTS.find(subright => subright.id === subrightId);
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [activeOrganizationId, setActiveOrganizationId] = useState("o1");
+      
+    const openModalHandler = (id) => {
+      setIsModalOpen(true);
+      setActiveOrganizationId(id);
+    };
+  
+    const closeModalHandler = () => {
+      console.log("closeModalHandler() called.");
+      setIsModalOpen(false);
+    };
+
+
 
     const renderGridItem = (itemData) => {
         return (
             <OrganizationBox
                 title={itemData.item.title}    
                 image={itemData.item.image}
+                onSelect={() => {
+                    openModalHandler(itemData.item.id);
+                  }}
             />
-        )
+        );
     };
+
+
+    
 
     return(
         <View style={styles.screen}>
@@ -48,6 +70,12 @@ const RightsDetailsScreen = props => {
                 />
 
             </ScrollView>
+
+            <RightsOrganizationModal
+                isVisible={isModalOpen}
+                onCloseModal={closeModalHandler}
+                organizationId={activeOrganizationId}
+            ></RightsOrganizationModal>
         </View>
     )
 };

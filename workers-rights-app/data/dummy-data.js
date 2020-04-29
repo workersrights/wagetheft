@@ -48,13 +48,23 @@ export const RIGHTSCATEGORIES = [
   ),
 ];
 
-export const ORGANIZATIONS = [
-    new Organization('o1', 'Wage Theft Coalition', require('../images/wage-theft-coalition-logo.png'), 'TODO description', 'TODO website link'),
-    new Organization('o2', 'OSHA', require('../images/osha-logo.png'), 'TODO description', 'TODO website link'),
-    new Organization('o3', 'NLRB', require('../images/NLRB-logo.png'), 'TODO description', 'TODO website link'),
-    new Organization('o4', 'PERB', require('../images/PERB-logo.png'), 'TODO description', 'TODO website link'),
-    new Organization('o5', 'DFEH', require('../images/DFEH-logo.png'), 'TODO description', 'TODO website link'),
+// should review design of organization descriptions
+const ORGANIZATION_DESCRIPTIONS = [
+  [["Location:","Katharine & George Alexander Community Law Center", "1030 The Alameda", "San Jose, CA 95126"], 
+  ["Contact:", "Phone: 408-621-5678", "Email: rsilvertaube@scu.edu"], 
+  ["Hours:", "Monday-Friday:", "6:30am - 9:00pm"]] 
 ];
+
+export const ORGANIZATIONS = [
+    new Organization('o1', 'Wage Theft Coalition', require('../images/wage-theft-coalition-logo.png'), ORGANIZATION_DESCRIPTIONS[0], 'TODO website link'),
+    new Organization('o2', 'OSHA', require('../images/osha-logo.png'), ORGANIZATION_DESCRIPTIONS[0], 'TODO website link'),
+    new Organization('o3', 'NLRB', require('../images/NLRB-logo.png'), ORGANIZATION_DESCRIPTIONS[0], 'TODO website link'),
+    new Organization('o4', 'PERB', require('../images/PERB-logo.png'), ORGANIZATION_DESCRIPTIONS[0], 'TODO website link'),
+    new Organization('o5', 'DFEH', require('../images/DFEH-logo.png'), ORGANIZATION_DESCRIPTIONS[0], 'TODO website link'),
+];
+
+
+
 
 export const SUBRIGHTS = [
   new SubRight("sr1", ["c3"], "Deductions from Pay", require("../images/payments-icon.png"), "💵"),
