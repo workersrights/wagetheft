@@ -31,7 +31,10 @@ const EventsHomeModule = (props) => {
       <View style={styles.titleContainer}>
         <Text style={styles.categoryText}>{props.category}</Text>
       </View>
-      <Text style={styles.noEventsText}>There are no events in this category.</Text>
+      <View style={styles.noEventsTextCotainer}>
+        <Text style={styles.noEventsText}>There are no events in this category.</Text>
+        <Text style={styles.noEventsText}>Add some by tapping on the star in each event!</Text>
+      </View>
     </View>);
   }
 
@@ -80,7 +83,7 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   noEventsContainer: {
-    height: 50,
+    height: 70,
     width: "100%",
     marginLeft: Dimensions.get("window").width * 0.067,
     marginBottom: 40,
@@ -113,6 +116,9 @@ const styles = StyleSheet.create({
   noEventsText: {
     fontSize: 16,
     fontFamily: "nunito-regular",
+    color: Colors.darkGray
+  },
+  noEventsTextCotainer: {
     backgroundColor: Colors.gray,
     width: Dimensions.get("window").width * 0.866,
     padding: 5,
