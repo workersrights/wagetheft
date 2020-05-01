@@ -5,8 +5,9 @@ import { Host } from "react-native-portalize";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
 import { enableScreens } from 'react-native-screens';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import ReduxThunk from 'redux-thunk';
 
 import eventsReducer from './store/reducers/events';
 import rightReducer from './store/reducers/rights';
@@ -40,7 +41,7 @@ export default function App() {
     rights: rightsReducer,
     events: eventsReducer
   });
-  const store = createStore(rootreducer);
+  const store = createStore(rootreducer, applyMiddleware(ReduxThunk));
 
   return (
     <Host >
