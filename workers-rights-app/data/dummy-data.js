@@ -473,7 +473,7 @@ export const QUIZOPTIONS = [
     "Unpaid Wages",
     require("../images/payments-icon.png"),
     false,
-    ["qo10", "qo11"],
+    ["qo11", "qo12"],
     []
   ),
   new QuizOption(
@@ -494,7 +494,7 @@ export const QUIZOPTIONS = [
   ),
   new QuizOption(
     "qo10",
-    "(LAST) Filing A Wage Claim",
+    "Filing A Wage Claim",
     require("../images/payments-icon.png"),
     false,
     [],
@@ -502,7 +502,7 @@ export const QUIZOPTIONS = [
   ),
   new QuizOption(
     "qo11",
-    "(LAST) My employer did not pay me overtime.",
+    "(LAST) My employer did not pay me overtime. Lorem Ipsum Long Text. Long Long Long Long Long Text.",
     require("../images/payments-icon.png"),
     true,
     ["lm1", "lm2"],

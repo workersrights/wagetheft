@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Dimensions,
+} from "react-native";
 import { CheckBox } from "react-native-elements";
 import Colors from "../constants/Colors";
 
@@ -44,6 +51,8 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 16,
+    maxWidth: Dimensions.get("window").width * 0.5,
+    margin: 15,
   },
   txtContainer: {
     flexDirection: "row",

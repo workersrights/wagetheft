@@ -64,7 +64,7 @@ const QuizContentScreen = (props) => {
 
         if (someQO.isLast) {
           if (!currentQuizEnds.includes(someQOId)) {
-            setCurrentQuizEnds([...currentQuizEnds, [someQOId]]); // Add to list of QuizEnds (local to this page)
+            setCurrentQuizEnds([...currentQuizEnds, ...[someQOId]]); // Add to list of QuizEnds (local to this page)
           }
         }
       }
@@ -73,13 +73,13 @@ const QuizContentScreen = (props) => {
       if (selectedQOIds.includes(someQOId)) {
         setSelectedQOIds([
           ...selectedQOIds.filter((qoid) => qoid !== someQOId),
-        ]);
+        ]); // Delete from list of checked QOs
 
         if (someQO.isLast) {
           if (currentQuizEnds.includes(someQOId)) {
             setCurrentQuizEnds([
               ...currentQuizEnds.filter((qoid) => qoid !== someQOId),
-            ]); // Add to list of QuizEnds (local to this page)
+            ]); // Did from list of QuizEnds (local to this page)
           }
         }
       }
