@@ -30,7 +30,7 @@ const RightsCategoryModal = (props) => {
               {selectedCategory.description}
             </Text>
 
-            <ButtonTemplate onPress={props.onAdvance} />
+            <ButtonTemplate onPress={props.onAdvance} title="Read more →" />
           </View>
         </View>
       </View>

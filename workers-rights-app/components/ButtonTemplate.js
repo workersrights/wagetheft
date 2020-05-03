@@ -5,11 +5,13 @@ import Colors from "../constants/Colors";
 const ButtonTemplate = (props) => {
   return (
     <TouchableOpacity
-      style={styles.container}
+      style={{ ...styles.container, ...props.style }}
       onPress={props.onPress}
       activeOpacity={0.6}
     >
-      <Text style={styles.readMore}>Read more →</Text>
+      <Text style={{ ...styles.titleStyle, ...props.titleStyle }}>
+        {props.title}
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -20,6 +22,9 @@ const styles = StyleSheet.create({
 
     backgroundColor: Colors.darkOrange,
     borderRadius: 8,
+    borderStyle: "solid",
+    borderWidth: 2,
+    borderColor: Colors.darkOrange,
     shadowOpacity: 0.25,
     shadowColor: "black",
     shadowOffset: { width: 0, height: 2 },
@@ -32,7 +37,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  readMore: {
+  titleStyle: {
     color: "white",
   },
 });
