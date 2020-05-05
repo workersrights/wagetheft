@@ -11,12 +11,7 @@ const RightsOrganizationModal = (props) => {
 
   const deviceWidth = Dimensions.get("window").width;
   const deviceHeight = Dimensions.get("window").height;
-  const changeSize = (contentWidth, contentHeight) => {
-    styles.scroll = {
-      height: contentHeight,
-      width: contentWidth
-    }
-  };
+
   return (
     <Modal 
       isVisible={props.isVisible} 
@@ -70,7 +65,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   scroll: {
-    paddingBottom: 400
+    paddingBottom: 400   // scroll view doesn't show everything for some reason this is added as a placeholder to see content
   },
   title: {
     padding: 10,
