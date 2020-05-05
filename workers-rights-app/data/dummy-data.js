@@ -2,6 +2,7 @@ import RightsCategory from '../models/rightsCategory';
 import SubRight from '../models/subRight';
 import Organization from '../models/organization';
 import Event from '../models/event';
+import Description from '../models/description.js'
 
 export const RIGHTSCATEGORIES = [
   new RightsCategory(
@@ -50,9 +51,11 @@ export const RIGHTSCATEGORIES = [
 
 // should review design of organization descriptions
 const ORGANIZATION_DESCRIPTIONS = [
-  [["Location:","Katharine & George Alexander Community Law Center", "1030 The Alameda", "San Jose, CA 95126"], 
-  ["Contact:", "Phone: 408-621-5678", "Email: rsilvertaube@scu.edu"], 
-  ["Hours:", "Monday-Friday:", "6:30am - 9:00pm"]] 
+  [new Description("Website:", ['https://wagetheftcoalition.com/']),
+  new Description("Description:",['The Santa Clara County Wage Theft Coalition actively works to end wage theft, defend workers’ rights, and enforce wage theft judgments.  We hope to accomplish this through policy advocacy, community organizing and outreach, direct action, education, leadership development, and resource coordination.  We work with affected workers and their families, particularly low-wage workers who have been victims of the crime of wage theft.']),
+  new Description("Location:",["Katharine & George Alexander Community Law Center", "1030 The Alameda", "San Jose, CA 95126"]), 
+  new Description("Contact:", ["Phone: 408-621-5678", "Email: rsilvertaube@scu.edu"]), 
+  new Description("Hours:", ["Monday-Friday:", "6:30am - 9:00pm"])], 
 ];
 
 export const ORGANIZATIONS = [
