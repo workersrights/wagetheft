@@ -7,7 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import RightsScreen from '../screens/RightsScreen';
 import SubRightsScreen from '../screens/SubRightsScreen';
 import RightsDetailsScreen from '../screens/RightsDetailsScreen';
-import FavoritesScreen from '../screens/FavoritesScreen';
+import FavoriteRightsScreen from '../screens/FavoriteRightsScreen';
 import EventsHomeScreen from '../screens/EventsHomeScreen';
 import ForumScreen from '../screens/ForumScreen';
 import SettingsScreen from '../screens/SettingsScreen';
@@ -21,7 +21,8 @@ const RightsNavigator = createStackNavigator({
     screen: RightsScreen
   },
   SubRights: SubRightsScreen,
-  RightsDetails: RightsDetailsScreen
+  RightsDetails: RightsDetailsScreen,
+  FavoriteRights: FavoriteRightsScreen
 }, {
   // second argument: to configure the style of the navigator
   defaultNavigationOptions: {
@@ -54,11 +55,11 @@ const RightsTabNavigator = createBottomTabNavigator({
       return <Ionicons name='ios-book' size={25} color={tabInfo.tintColor}/>
     }
   }},
-  Favorites: {screen: FavoritesScreen, navigationOptions: {
-    tabBarIcon: (tabInfo) => {
-      return <Ionicons name='ios-star' size={25} color={tabInfo.tintColor}/>
-    }
-  }},
+  // Favorites: {screen: FavoritesScreen, navigationOptions: {
+  //   tabBarIcon: (tabInfo) => {
+  //     return <Ionicons name='ios-star' size={25} color={tabInfo.tintColor}/>
+  //   }
+  // }},
   Settings: {screen: SettingsScreen, navigationOptions: {
     tabBarIcon: (tabInfo) => {
       return <Ionicons name='md-settings' size={25} color={tabInfo.tintColor}/>
