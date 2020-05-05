@@ -130,7 +130,7 @@ export const ORGANIZATIONS = [
       'o6',
       'U.S. Commission on Civil Rights',
       require('../images/commission-civil-rights-logo.png'),
-      ORGNAIZATION_DESCRIPTIONS[5],
+      ORGANIZATION_DESCRIPTIONS[5],
       ["c2"]
     ),
     new Organization(
