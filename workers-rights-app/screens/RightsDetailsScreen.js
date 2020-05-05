@@ -9,6 +9,8 @@ import RightsSheetContent from "../components/RightsSheetContent";
 import { Modalize } from "react-native-modalize"; // Credits to https://github.com/jeremybarbet/react-native-modalize
 import { Portal } from "react-native-portalize";
 import Colors from "../constants/Colors";
+import RightsOrganizationModal from "../components/RightsOrganizationModal";
+
 
 const RightsDetailsScreen = (props) => {
   // Get the parent subright
@@ -23,6 +25,21 @@ const RightsDetailsScreen = (props) => {
   // Get list of relevant orgs to this specific subright
   const relevantOrgs = ORGANIZATIONS.filter(org => (parentSubRight.organizations).includes(org.id));
 
+  // org modal stuff
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeOrganizationId, setActiveOrganizationId] = useState("o1");
+
+  const openModalHandler = (id) => {
+    setIsModalOpen(true);
+    setActiveOrganizationId(id);
+  };
+
+  const closeModalHandler = () => {
+    console.log("closeModalHandler() called.");
+    setIsModalOpen(false);
+  };
+
+
   // State Hooks for LearnMore modals.
   const [activeLearnMoreId, setActiveLearnMoreId] = useState("lm1");
   const modalizeRef = useRef(null);
@@ -32,6 +49,9 @@ const RightsDetailsScreen = (props) => {
       <OrganizationBox
         title={itemData.item.title}
         image={itemData.item.image}
+        onSelect={() => {
+            openModalHandler(itemData.item.id);
+          }}
       />
     );
   };
@@ -40,6 +60,9 @@ const RightsDetailsScreen = (props) => {
     setActiveLearnMoreId(id);
     modalizeRef.current?.open();
   };
+
+
+    
 
     return(
         <View style={styles.screen}>
@@ -72,15 +95,20 @@ const RightsDetailsScreen = (props) => {
                 ))}
             </ScrollView>
 
+
+            <RightsOrganizationModal
+                isVisible={isModalOpen}
+                onCloseModal={closeModalHandler}
+                organizationId={activeOrganizationId}
+            ></RightsOrganizationModal>
+
             <Portal>
               <Modalize ref={modalizeRef} modalStyle={styles.modalize}>
                 <View style={styles.modalizeContent}>
                   <RightsSheetContent learnMoreId={activeLearnMoreId} />
                 </View>
               </Modalize>
-            </Portal>
-               
-              
+            </Portal>      
         </View>
 
   );
