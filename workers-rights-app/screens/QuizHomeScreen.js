@@ -4,7 +4,6 @@ import Colors from "../constants/Colors";
 import ButtonTemplate from "../components/ButtonTemplate";
 
 const QuizHomeScreen = (props) => {
-  console.log(props);
   return (
     <View style={styles.screen}>
       {/* Everything here is boilerplate */}

@@ -506,7 +506,7 @@ export const QUIZOPTIONS = [
     require("../images/payments-icon.png"),
     true,
     ["lm1", "lm2"],
-    ["c3"]
+    ["w4"]
   ),
   new QuizOption(
     "qo12",
@@ -514,7 +514,7 @@ export const QUIZOPTIONS = [
     require("../images/payments-icon.png"),
     true,
     ["lm3"],
-    ["c3"]
+    ["w2"]
   ),
   new QuizOption(
     "qo13",

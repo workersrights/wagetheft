@@ -70,7 +70,6 @@ const QuizContentScreen = (props) => {
   */
   const checkHandler = (someQOId, isChecked) => {
     const someQO = currentQOs.find((QO) => QO.id === someQOId);
-    console.log("enter checkHandler. globalQuizEnds = ", globalQuizEnds);
     if (!isChecked) {
       // Add if previously unchecked (i.e. now checked)
       if (!selectedQOIds.includes(someQOId)) {
@@ -88,7 +87,6 @@ const QuizContentScreen = (props) => {
             // Increase refCount (to implement)
           }
         }
-        console.log("ADDED. globalQuizEnds = ", globalQuizEnds);
       }
     } else {
       // Delete if previously checked (i.e. now unchecked)
@@ -114,7 +112,6 @@ const QuizContentScreen = (props) => {
         }
       }
     }
-    console.log("globalQuizEnds: ", globalQuizEnds);
   };
 
   const titleText =
@@ -148,7 +145,6 @@ const QuizContentScreen = (props) => {
 
           // Step 2: navigate to QuizContent or QuizResults based on whether all current selections are quizEnds
           if (currentQuizEnds.length === selectedQOIds.length) {
-            //console.log("globalQuizEnds: ", globalQuizEnds);
             props.navigation.push("QuizResults", {
               selectedQuizEnds: globalQuizEnds,
             });
