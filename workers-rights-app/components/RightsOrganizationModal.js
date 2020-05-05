@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
   },
   title: {
     padding: 10,
-    paddingBottom: 0,
     fontWeight: "bold",
     fontSize: 16,
     textAlign: "center"
@@ -83,8 +82,7 @@ const styles = StyleSheet.create({
   },
   description: {
     flex:1,
-    padding: 10,
-    paddingTop: 0,
+    paddingHorizontal: "5%",
     textAlign: "center",
   },
   info :{
