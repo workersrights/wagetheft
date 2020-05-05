@@ -49,6 +49,7 @@ const QuizHomeScreen = (props) => {
           props.navigation.push("QuizContent", {
             quizPageNo: 1,
             selectedQuizOptions: [],
+            globalQuizEnds: [],
           })
         }
       />

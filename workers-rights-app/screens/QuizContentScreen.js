@@ -18,9 +18,14 @@ const QuizContentScreen = (props) => {
   */
   //Just getting all the Quiz Options and stuff
   const quizPageNo = props.navigation.getParam("quizPageNo");
+  const [currentQuizEnds, setCurrentQuizEnds] = useState([]);
+  const [globalQuizEnds, setGlobalQuizEnds] = useState(
+    props.navigation.getParam("globalQuizEnds")
+  );
   const previouslySelectedQOIds = props.navigation.getParam(
     "selectedQuizOptions"
   ); // e.g. ["qo1", "qo4"]
+
   const previouslySelectedQOs = QUIZOPTIONS.filter(
     (quizOption) => previouslySelectedQOIds.indexOf(quizOption.id) >= 0
   );
@@ -35,6 +40,7 @@ const QuizContentScreen = (props) => {
       }
     }
   }
+
   if (quizPageNo === 1) {
     currentQOIds = ["qo1", "qo2", "qo3", "qo4", "qo5", "qo6"]; //Hard coded to present first page
   }
@@ -55,39 +61,61 @@ const QuizContentScreen = (props) => {
 
   //Prepare list of selectedQOIds to pass on.
   const [selectedQOIds, setSelectedQOIds] = useState([]);
+
+  /* Does 3 things: 
+  1) Adds/deletes from local list of selectedQOIds
+  2a) Adds/delete from local list of currentQuizEnds (if isLast)
+  2b) Adds/delete from global list of globalQuizEnds (if isLast)
+  
+  */
   const checkHandler = (someQOId, isChecked) => {
     const someQO = currentQOs.find((QO) => QO.id === someQOId);
+    console.log("enter checkHandler. globalQuizEnds = ", globalQuizEnds);
     if (!isChecked) {
       // Add if previously unchecked (i.e. now checked)
       if (!selectedQOIds.includes(someQOId)) {
-        setSelectedQOIds([...selectedQOIds, ...[someQOId]]); // Add to list of checked QOs
-
+        // Step 1
+        setSelectedQOIds([...selectedQOIds, ...[someQOId]]);
         if (someQO.isLast) {
           if (!currentQuizEnds.includes(someQOId)) {
-            setCurrentQuizEnds([...currentQuizEnds, ...[someQOId]]); // Add to list of QuizEnds (local to this page)
+            // Step 2a
+            setCurrentQuizEnds([...currentQuizEnds, ...[someQOId]]);
+          }
+          if (!globalQuizEnds.includes(someQOId)) {
+            // Step 2b
+            setGlobalQuizEnds([...globalQuizEnds, someQOId]);
+          } else {
+            // Increase refCount (to implement)
           }
         }
+        console.log("ADDED. globalQuizEnds = ", globalQuizEnds);
       }
     } else {
       // Delete if previously checked (i.e. now unchecked)
       if (selectedQOIds.includes(someQOId)) {
+        // Step 1
         setSelectedQOIds([
           ...selectedQOIds.filter((qoid) => qoid !== someQOId),
-        ]); // Delete from list of checked QOs
+        ]);
 
         if (someQO.isLast) {
           if (currentQuizEnds.includes(someQOId)) {
+            // Step 2a
             setCurrentQuizEnds([
               ...currentQuizEnds.filter((qoid) => qoid !== someQOId),
-            ]); // Did from list of QuizEnds (local to this page)
+            ]);
+          }
+          if (globalQuizEnds.includes(someQOId)) {
+            // Step 2b
+            setGlobalQuizEnds([
+              ...globalQuizEnds.filter((quizEnd) => quizEnd !== someQOId), //Something wrong here<<
+            ]);
           }
         }
       }
     }
-    console.log(currentQuizEnds);
+    console.log("globalQuizEnds: ", globalQuizEnds);
   };
-
-  const [currentQuizEnds, setCurrentQuizEnds] = useState([]);
 
   const titleText =
     quizPageNo === 1 || quizPageNo === 2
@@ -108,12 +136,30 @@ const QuizContentScreen = (props) => {
         title="NEXT PAGE →"
         style={styles.nextPageButtonStyle}
         titleStyle={styles.buttonTitleStyle}
-        onPress={() =>
-          props.navigation.push("QuizContent", {
-            quizPageNo: quizPageNo + 1,
-            selectedQuizOptions: selectedQOIds,
-          })
-        }
+        onPress={() => {
+          // Step 1: add currentQuizEnds into globalQuizEnds
+          /*
+          for (const [index, quizEnd] of currentQuizEnds.entries()) {
+            if (!globalQuizEnds.includes(quizEnd)) {
+              globalQuizEnds.push(quizEnd);
+            }
+          }
+          */
+
+          // Step 2: navigate to QuizContent or QuizResults based on whether all current selections are quizEnds
+          if (currentQuizEnds.length === selectedQOIds.length) {
+            //console.log("globalQuizEnds: ", globalQuizEnds);
+            props.navigation.push("QuizResults", {
+              selectedQuizEnds: globalQuizEnds,
+            });
+          } else {
+            props.navigation.push("QuizContent", {
+              quizPageNo: quizPageNo + 1,
+              selectedQuizOptions: selectedQOIds,
+              globalQuizEnds: globalQuizEnds,
+            });
+          }
+        }}
       />
     </View>
   );

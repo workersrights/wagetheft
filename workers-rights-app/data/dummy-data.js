@@ -433,7 +433,7 @@ export const QUIZOPTIONS = [
     "Mistreatment",
     require("../images/mistreatment-icon.png"),
     false,
-    ["qo7", "qo8"],
+    ["qo7", "qo8", "qo13"],
     []
   ),
   new QuizOption(
@@ -512,6 +512,14 @@ export const QUIZOPTIONS = [
     "qo12",
     "(LAST) My employer did not pay me the minimum wage.",
     require("../images/payments-icon.png"),
+    true,
+    ["lm3"],
+    ["c3"]
+  ),
+  new QuizOption(
+    "qo13",
+    "(LAST) Mistreatment -> THIS",
+    require("../images/mistreatment-icon.png"),
     true,
     ["lm3"],
     ["c3"]
