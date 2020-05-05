@@ -37,14 +37,6 @@ const QuizHomeScreen = (props) => {
         style={styles.startQuizButtonStyle}
         titleStyle={styles.buttonTitleStyle}
         onPress={() =>
-          /*
-          props.navigation.navigate({
-            routeName: "QuizContent",
-            params: {
-              quizPageNo: 1,
-              selectedQuizOptions: [], // Hard-coded as array because page 0 has no options.
-            },
-          })*/
           props.navigation.push("QuizContent", {
             quizPageNo: 1,
             selectedQuizOptions: [],
