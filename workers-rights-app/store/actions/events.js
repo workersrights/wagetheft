@@ -1,7 +1,34 @@
-import { useSelector } from 'react-redux'; 
-export const SET_YOUR_EVENT = 'SET_YOUR_EVENT';
+import Event from '../../models/event'
 
-export const setYourEvent = (
+export const SET_YOUR_EVENT = 'SET_YOUR_EVENT';
+export const POST_EVENT = 'POST_EVENT';
+export const SET_EVENTS = 'SET_EVENTS';
+
+export const fetchEvents = () => {
+    return async dispatch => {
+        const response = await fetch('https://workers-rights-46c43.firebaseio.com/events.json');
+        const resData = await response.json();
+        const loadedEvents = [];
+        for(const key in resData) {
+            loadedEvents.push(new Event(
+                key,
+                key.title,
+                key.date,
+                key.time,
+                key.image,
+                key.organizer,
+                key.location,
+                key.price,
+                key.category,
+                key.description
+            ));
+        }
+        console.log(resData);
+        dispatch({type: SET_EVENTS, events: loadedEvents});
+    };
+};
+
+export const postEvent = (
     title,
     date,
     time,
@@ -12,7 +39,7 @@ export const setYourEvent = (
     category,
     description) => {
     return async dispatch => {
-        const response = await fetch('https://workers-rights-46c43.firebaseio.com/events', {
+        const response = await fetch('https://workers-rights-46c43.firebaseio.com/events.json', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -28,12 +55,18 @@ export const setYourEvent = (
                 category,
                 description})
         });
+
         const resData = await response.json();
         console.log(resData);
-
         dispatch({ 
-            type: SET_YOUR_EVENT, 
-            id: eventId
+            type: POST_EVENT, 
         });
     }
+};
+
+export const setYourEvent = eventId => {
+    return { 
+        type: SET_YOUR_EVENT, 
+        id: eventId
+    };
 };
