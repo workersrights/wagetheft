@@ -13,8 +13,8 @@ import eventsReducer from './store/reducers/events';
 import rightReducer from './store/reducers/rights';
 import rightsReducer from "./store/reducers/rights";
 
-import * as firebase from 'firebase';
-import firebaseConfig from './constants/ApiKeys';
+import './data/ReadingDataOnce.js'; // make sure it runs
+
 
 enableScreens();
 
@@ -28,21 +28,12 @@ const fetchFonts = () => {
   });
 };
 
-if (!firebase.apps.length) { // only load once
-  firebase.initializeApp(firebaseConfig);
-}
+
 
 export default function App() {
-  // Get a reference to the database service
-  var db = firebase.database();
-  var ref = db.ref('rights-categories');
-  // console.log(ref);
-
-  ref.once("value").then(function(snapshot) {
-    console.log(snapshot.val());
-    console.log(typeof snapshot.val());
-  });
-  
+  // when app is run, run file as an asyncronous function in the background 
+  // initialize class, with class variables
+  // class variable, static variable?
   const [dataLoaded, setDataLoaded] = useState(false);
   if (!dataLoaded) {
     return (
