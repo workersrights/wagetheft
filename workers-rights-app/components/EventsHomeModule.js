@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -7,30 +7,20 @@ import {
   FlatList,
   Dimensions,
 } from "react-native";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import * as eventActions from '../store/actions/events';
+
 import EventsHomeCard from "../components/EventsHomeCard.js";
 import Colors from '../constants/Colors';
 
 const EventsHomeModule = (props) => {
 
-  const dispatch = useDispatch();
-  
-  useEffect(() => {
-    dispatch(eventActions.fetchEvents());
-  }, [dispatch]);
-
-  //const displayedEvents = (props.category === "Your Events") ? yourEvents : allEvents.filter(
-   // event => event.category === props.category);
-   const category = props.category;
-   let displayedEvents;
-   if(category === 'Social') { displayedEvents = useSelector(state => state.events.social); }
-   if(category === 'Workshops') { displayedEvents = useSelector(state => state.events.workshops); }
-   if(category === 'Your Events') { displayedEvents = useSelector(state => state.events.yourEvents); }
-
-
-  
+  const allEvents = useSelector(state => state.events.allEvents);
+  const yourEvents = useSelector(state => state.events.yourEvents);
+  console.log('ALL EVENTS --------------- \n');
+  console.log(allEvents);
+  const displayedEvents = (props.category === "Your Events") ? yourEvents : allEvents.filter(
+    event => event.category === props.category);
   
   const len = displayedEvents.length;
 
