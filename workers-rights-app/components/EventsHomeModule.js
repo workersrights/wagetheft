@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   View,
   Text,
@@ -7,9 +7,9 @@ import {
   FlatList,
   Dimensions,
 } from "react-native";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-
+import * as eventActions from '../store/actions/events';
 import EventsHomeCard from "../components/EventsHomeCard.js";
 import Colors from '../constants/Colors';
 
@@ -17,6 +17,12 @@ const EventsHomeModule = (props) => {
 
   const allEvents = useSelector(state => state.events.allEvents);
   const yourEvents = useSelector(state => state.events.yourEvents);
+ 
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(eventActions.fetchEvents());
+  }, [dispatch]);
 
   const displayedEvents = (props.category === "Your Events") ? yourEvents : allEvents.filter(
     event => event.category === props.category);
