@@ -13,7 +13,8 @@ import eventsReducer from './store/reducers/events';
 import rightReducer from './store/reducers/rights';
 import rightsReducer from "./store/reducers/rights";
 
-import './data/ReadingDataOnce.js'; // make sure it runs
+import ImportedData from './data/ImportDataOnce.js'; // make sure it runs
+import './data/ImportDataOnce';
 
 
 enableScreens();
@@ -28,12 +29,17 @@ const fetchFonts = () => {
   });
 };
 
-
+function initializeImportedDataClass() {
+  //ImportedData.increaseCount();
+  console.log(ImportedData.getRightsCategories()[0]);
+}
 
 export default function App() {
   // when app is run, run file as an asyncronous function in the background 
   // initialize class, with class variables
   // class variable, static variable?
+  initializeImportedDataClass();
+
   const [dataLoaded, setDataLoaded] = useState(false);
   if (!dataLoaded) {
     return (
