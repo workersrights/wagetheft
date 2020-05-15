@@ -1,13 +1,16 @@
 import React from "react";
 import { View, Text, StyleSheet, Button, FlatList } from "react-native";
-import { RIGHTSCATEGORIES, SUBRIGHTS } from "../data/dummy-data";
+//import { RIGHTSCATEGORIES, SUBRIGHTS } from "../data/dummy-data";
 import SubRightsItem from "../components/SubRightsItem";
+import ImportedData from "../data/ImportDataOnce";
 
 const SubRightsScreen = (props) => {
   // Get the rights category that we passed in with navigation (eg. "Getting Paid")
   const catId = props.navigation.getParam("categoryId");
-  const selectedCategory = RIGHTSCATEGORIES.find((cat) => cat.id == catId);
-  const displayedSubRights = SUBRIGHTS.filter(
+  // const displayedSubRights = SUBRIGHTS.filter(
+  //   (subright) => subright.categoryIds.indexOf(catId) >= 0
+  // );
+  const displayedSubRights = ImportedData.getSubRights().filter(
     (subright) => subright.categoryIds.indexOf(catId) >= 0
   );
 
@@ -44,7 +47,8 @@ const SubRightsScreen = (props) => {
 // the category id / name will change, so we need to make this dynamic
 SubRightsScreen.navigationOptions = (navigationData) => {
   const catId = navigationData.navigation.getParam("categoryId");
-  const selectedCategory = RIGHTSCATEGORIES.find((cat) => cat.id == catId);
+  //const selectedCategory = RIGHTSCATEGORIES.find((cat) => cat.id == catId);
+  const selectedCategory = ImportedData.getRightsCategories().find((cat) => cat.id == catId);
 
   return {
     headerTitle: selectedCategory.title,

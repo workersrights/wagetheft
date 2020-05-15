@@ -10,6 +10,8 @@ import { Modalize } from "react-native-modalize"; // Credits to https://github.c
 import { Portal } from "react-native-portalize";
 import Colors from "../constants/Colors";
 
+//import ImportedData from "../data/ImportDataOnce";
+
 const RightsDetailsScreen = (props) => {
   // Get the parent subright
   const parentSubRightId = props.navigation.getParam("subrightId");

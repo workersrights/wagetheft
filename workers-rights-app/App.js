@@ -13,8 +13,8 @@ import eventsReducer from './store/reducers/events';
 import rightReducer from './store/reducers/rights';
 import rightsReducer from "./store/reducers/rights";
 
-import ImportedData from './data/ImportDataOnce.js'; // make sure it runs
-import './data/ImportDataOnce';
+import ImportedData from './data/ImportDataOnce.js'; 
+//import './data/ImportDataOnce'; // make sure it runs
 
 
 enableScreens();
@@ -30,14 +30,13 @@ const fetchFonts = () => {
 };
 
 function initializeImportedDataClass() {
+  ImportedData.importAllData();
   //ImportedData.increaseCount();
-  console.log(ImportedData.getRightsCategories()[0]);
+  //console.log(ImportedData.getRightsCategories()[0]);
 }
 
 export default function App() {
-  // when app is run, run file as an asyncronous function in the background 
-  // initialize class, with class variables
-  // class variable, static variable?
+  // initialize static class variable when app is run
   initializeImportedDataClass();
 
   const [dataLoaded, setDataLoaded] = useState(false);

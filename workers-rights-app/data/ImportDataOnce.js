@@ -47,6 +47,34 @@ export default class ImportedData {
     static getCount() {
         return this.count;
     }
+
+    static importAllData() {
+        if (!firebase.apps.length) { // only load once
+            firebase.initializeApp(firebaseConfig);
+        }
+        // Get a reference to the database service
+        var db = firebase.database();
+        
+        // Import rights categories
+        constructRightsCategories(db).then(function(dataArr) {
+            ImportedData.setRightsCategories(dataArr);
+        });
+        
+        // Import subrights
+        constructSubrights(db).then(function(dataArr) {
+            ImportedData.setSubRights(dataArr);
+        });
+        
+        // Import organizations
+        constructOrgs(db).then(function(dataArr) {
+            ImportedData.setOrganizations(dataArr);
+        })
+        
+        // Import learn mores
+        constructLearnMores(db).then(function(dataArr) {
+            ImportedData.setLearnMores(dataArr);
+        })
+    }
 }
 
 function constructLearnMores(db) {
@@ -129,33 +157,4 @@ function constructRightsCategories(db) {
     });
 }
 
-function importAllData() {
-    if (!firebase.apps.length) { // only load once
-        firebase.initializeApp(firebaseConfig);
-    }
-    // Get a reference to the database service
-    var db = firebase.database();
-    
-    // Import rights categories
-    constructRightsCategories(db).then(function(dataArr) {
-        ImportedData.setRightsCategories(dataArr);
-    });
-    
-    // Import subrights
-    constructSubrights(db).then(function(dataArr) {
-        ImportedData.setSubRights(dataArr);
-    });
-    
-    // Import organizations
-    constructOrgs(db).then(function(dataArr) {
-        ImportedData.setOrganizations(dataArr);
-    })
-    
-    // Import learn mores
-    constructLearnMores(db).then(function(dataArr) {
-        ImportedData.setLearnMores(dataArr);
-    })
-}
-
-importAllData();
 //ImportedData.increaseCount();
