@@ -13,6 +13,9 @@ import eventsReducer from './store/reducers/events';
 import rightReducer from './store/reducers/rights';
 import rightsReducer from "./store/reducers/rights";
 
+import * as firebase from 'firebase';
+import firebaseConfig from './constants/ApiKeys';
+
 enableScreens();
 
 const fetchFonts = () => {
@@ -25,9 +28,22 @@ const fetchFonts = () => {
   });
 };
 
-export default function App() {
-  const [dataLoaded, setDataLoaded] = useState(false);
+if (!firebase.apps.length) { // only load once
+  firebase.initializeApp(firebaseConfig);
+}
 
+export default function App() {
+  // Get a reference to the database service
+  var db = firebase.database();
+  var ref = db.ref('rights-categories');
+  // console.log(ref);
+
+  ref.once("value").then(function(snapshot) {
+    console.log(snapshot.val());
+    console.log(typeof snapshot.val());
+  });
+  
+  const [dataLoaded, setDataLoaded] = useState(false);
   if (!dataLoaded) {
     return (
       <AppLoading
