@@ -17,7 +17,8 @@ const EventDetailsScreen = (props) => {
   // finds the event given the event id from the parent
   // and sets it as a param so that navigation options
   // can have access to it
-  event = useSelector(state => state.events.allEvents.find(inArray))
+  event = useSelector(state => state.events.allEvents.find(inArray));
+  
   useEffect(() => {
     props.navigation.setParams({eventTitle: event.title})
 }, [event]);
