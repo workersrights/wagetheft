@@ -15,17 +15,21 @@ import Colors from '../constants/Colors';
 
 const EventsHomeModule = (props) => {
 
-  const allEvents = useSelector(state => state.events.allEvents);
-  const yourEvents = useSelector(state => state.events.yourEvents);
- 
   const dispatch = useDispatch();
   
   useEffect(() => {
     dispatch(eventActions.fetchEvents());
   }, [dispatch]);
 
-  const displayedEvents = (props.category === "Your Events") ? yourEvents : allEvents.filter(
-    event => event.category === props.category);
+  //const displayedEvents = (props.category === "Your Events") ? yourEvents : allEvents.filter(
+   // event => event.category === props.category);
+   const category = props.category;
+   let displayedEvents;
+   if(category === 'Social') { displayedEvents = useSelector(state => state.events.social); }
+   if(category === 'Workshops') { displayedEvents = useSelector(state => state.events.workshops); }
+   if(category === 'Your Events') { displayedEvents = useSelector(state => state.events.yourEvents); }
+
+
   
   
   const len = displayedEvents.length;
