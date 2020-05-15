@@ -2,33 +2,63 @@ import Event from '../../models/event'
 
 export const SET_YOUR_EVENT = 'SET_YOUR_EVENT';
 export const POST_EVENT = 'POST_EVENT';
-export const SET_EVENTS = 'SET_EVENTS';
+export const FETCH_EVENTS = 'FETCH_EVENTS';
+export const FETCH_YOUR_EVENTS = 'FETCH_YOUR_EVENTS';
 
 export const fetchEvents = () => {
     return async dispatch => {
         const response = await fetch('https://workers-rights-46c43.firebaseio.com/events.json');
+        
         const resData = await response.json();
         const loadedEvents = [];
+        
         for(const key in resData) {
-            loadedEvents.push(new Event(
+            const e = new Event(
                 key,
-                key.title,
-                key.date,
-                key.time,
-                key.image,
-                key.organizer,
-                key.location,
-                key.price,
-                key.category,
-                key.description
-            ));
+                resData[key].title,
+                resData[key].date,
+                resData[key].time,
+                resData[key].image,
+                resData[key].organizer,
+                resData[key].location,
+                resData[key].price,
+                resData[key].category,
+                resData[key].description
+            )
+            loadedEvents.push(e);
         }
-        console.log(resData);
-        dispatch({type: SET_EVENTS, events: loadedEvents});
+        dispatch({type: FETCH_EVENTS, events: loadedEvents});
     };
 };
 
-export const postEvent = (
+export const fetchYourEvents = () => {
+    return async dispatch => {
+        const response = await fetch('https://workers-rights-46c43.firebaseio.com/yourEvents.json');
+        
+        const resData = await response.json();
+        const loadedEvents = [];
+        
+        for(const key in resData) {
+            const e = new Event(
+                key,
+                resData[key].title,
+                resData[key].date,
+                resData[key].time,
+                resData[key].image,
+                resData[key].organizer,
+                resData[key].location,
+                resData[key].price,
+                resData[key].category,
+                resData[key].description
+            )
+            loadedEvents.push(e);
+        }
+        dispatch({type: FETCH_YOUR_EVENTS, yourEvents: loadedEvents});
+    };
+};
+
+
+export const setYourEvent = (
     title,
     date,
     time,
@@ -39,7 +69,7 @@ export const postEvent = (
     category,
     description) => {
     return async dispatch => {
-        const response = await fetch('https://workers-rights-46c43.firebaseio.com/events.json', {
+        const response = await fetch('https://workers-rights-46c43.firebaseio.com/yourEvents.json', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -55,18 +85,10 @@ export const postEvent = (
                 category,
                 description})
         });
-
         const resData = await response.json();
-        console.log(resData);
         dispatch({ 
-            type: POST_EVENT, 
+            type: SET_YOUR_EVENT, 
+            id: resData.name
         });
     }
-};
-
-export const setYourEvent = eventId => {
-    return { 
-        type: SET_YOUR_EVENT, 
-        id: eventId
-    };
 };
