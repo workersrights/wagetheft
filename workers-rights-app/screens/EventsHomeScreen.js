@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
+import { useSelector, useDispatch } from 'react-redux';
 
+import * as eventActions from '../store/actions/events';
 import EventsHomeModule from "../components/EventsHomeModule.js";
 
 const categoryTitles = [
@@ -12,6 +14,16 @@ const categoryTitles = [
 //In the EventCategoryScreen use props.navigation.categoryId or props.navigation.categoryTitle
 //This allows you to access the pertinent info from this screen
 const EventsHomeScreen = (props) => {
+
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(eventActions.fetchEvents());
+  }, [dispatch]);
+
+ // useEffect(() => {
+   // dispatch(eventActions.fetchYourEvents());
+  //}, [dispatch]);
 
   const renderEventModules = (itemData) => {
     return (
