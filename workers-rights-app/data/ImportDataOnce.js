@@ -1,5 +1,5 @@
 import * as firebase from 'firebase';
-import firebaseConfig from '../constants/VfApiKeys';
+import firebaseConfig from '../constants/MyApiKeys';
 import RightsCategory from "../models/rightsCategory";
 import SubRight from '../models/subRight';
 import Organization from '../models/organization';
@@ -17,6 +17,7 @@ export default class ImportedData {
     // Setters
     static setRightsCategories(data) {
         this.rightsCategories = data;
+        console.log(this.rightsCategories[5]);
     }
     static setSubRights(data) {
         this.subRights = data;
@@ -48,7 +49,7 @@ export default class ImportedData {
         return this.count;
     }
 
-    static importAllData() {
+    static async importAllData() {
         if (!firebase.apps.length) { // only load once
             firebase.initializeApp(firebaseConfig);
         }
@@ -74,6 +75,12 @@ export default class ImportedData {
         constructLearnMores(db).then(function(dataArr) {
             ImportedData.setLearnMores(dataArr);
         })
+
+        return new Promise(resolve => {
+            setTimeout(() => {
+              resolve('resolved');
+            }, 1000); // TODO: change how I send back this promise
+        });
     }
 }
 

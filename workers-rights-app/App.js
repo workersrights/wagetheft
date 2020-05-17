@@ -14,7 +14,7 @@ import rightReducer from './store/reducers/rights';
 import rightsReducer from "./store/reducers/rights";
 
 import ImportedData from './data/ImportDataOnce.js'; 
-//import './data/ImportDataOnce'; // make sure it runs
+//import './data/PushDummyData'; // to push data to firebase
 
 
 enableScreens();
@@ -29,21 +29,17 @@ const fetchFonts = () => {
   });
 };
 
-function initializeImportedDataClass() {
-  ImportedData.importAllData();
-  //ImportedData.increaseCount();
-  //console.log(ImportedData.getRightsCategories()[0]);
+async function loadAllData() {
+  fetchFonts();
+  const result = await ImportedData.importAllData();
 }
 
 export default function App() {
-  // initialize static class variable when app is run
-  initializeImportedDataClass();
-
   const [dataLoaded, setDataLoaded] = useState(false);
   if (!dataLoaded) {
     return (
       <AppLoading
-        startAsync={fetchFonts}
+        startAsync={loadAllData}
         onFinish={() => setDataLoaded(true)}
       />
     );

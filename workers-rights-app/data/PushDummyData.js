@@ -4,8 +4,8 @@ import Organization from "../models/organization";
 import { ORGANIZATIONS, RIGHTSCATEGORIES, SUBRIGHTS, LEARNMORES } from "./dummy-data.js";
 
 function pushData() {
-    for (var i = 0; i < LEARNMORES.length; i++) {
-        pushLearnMores(LEARNMORES[i]);
+    for (var i = 0; i < SUBRIGHTS.length; i++) {
+        pushSubrights(SUBRIGHTS[i]);
     }
 }
 
@@ -28,7 +28,7 @@ async function pushLearnMores(lmObject) {
 }
 
 async function pushSubrights(sbObject) {
-    fetch('https://workers-rights-46c43.firebaseio.com/subrightsTesting.json', {
+    fetch('https://workers-rights-46c43.firebaseio.com/subrights.json', {
         method: 'POST',
         headers: {
             Accept: 'application/json',

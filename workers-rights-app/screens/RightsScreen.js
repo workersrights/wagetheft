@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { View, StyleSheet, FlatList, Platform } from "react-native";
-import { RIGHTSCATEGORIES } from "../data/dummy-data";
+//import { RIGHTSCATEGORIES } from "../data/dummy-data";
+import ImportedData from "../data/ImportDataOnce";
 import Colors from "../constants/Colors";
 import RightsCategoryTile from "../components/RightsCategoryTile";
 import RightsCategoryModal from "../components/RightsCategoryModal";
@@ -46,7 +47,7 @@ const RightsScreen = (props) => {
   return (
     <View style={styles.screen}>
       <FlatList
-        data={RIGHTSCATEGORIES}
+        data={ImportedData.getRightsCategories()}
         renderItem={renderGridItem}
         numColumns={2}
       />
