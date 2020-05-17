@@ -56,31 +56,23 @@ export default class ImportedData {
         // Get a reference to the database service
         var db = firebase.database();
         
-        // Import rights categories
-        constructRightsCategories(db).then(function(dataArr) {
-            ImportedData.setRightsCategories(dataArr);
-        });
-        
-        // Import subrights
-        constructSubrights(db).then(function(dataArr) {
-            ImportedData.setSubRights(dataArr);
-        });
-        
-        // Import organizations
-        constructOrgs(db).then(function(dataArr) {
-            ImportedData.setOrganizations(dataArr);
-        })
-        
-        // Import learn mores
-        constructLearnMores(db).then(function(dataArr) {
-            ImportedData.setLearnMores(dataArr);
-        })
+        // Fetch rights categories
+        arr1 = await constructRightsCategories(db);
+        ImportedData.setRightsCategories(arr1);
 
-        return new Promise(resolve => {
-            setTimeout(() => {
-              resolve('resolved');
-            }, 1000); // TODO: change how I send back this promise
-        });
+        // Fetch subrights 
+        arr2 = await constructSubrights(db);
+        ImportedData.setSubRights(arr2);
+
+        // Fetch organizations
+        arr3 = await constructOrgs(db);
+        ImportedData.setOrganizations(arr3);
+
+        // Fetch learn mores 
+        arr4 = await constructLearnMores(db);
+        ImportedData.setLearnMores(arr4);
+
+        return; // return after all fetches are done
     }
 }
 
@@ -164,4 +156,3 @@ function constructRightsCategories(db) {
     });
 }
 
-//ImportedData.increaseCount();
