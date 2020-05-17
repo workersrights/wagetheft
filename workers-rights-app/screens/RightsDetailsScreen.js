@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import { View, Text, StyleSheet, ScrollView, FlatList } from "react-native";
-//import { SUBRIGHTS, ORGANIZATIONS } from "../data/dummy-data";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../components/CustomHeaderButton";
 import OrganizationBox from "../components/OrganizationBox";
@@ -10,14 +9,11 @@ import { Modalize } from "react-native-modalize"; // Credits to https://github.c
 import { Portal } from "react-native-portalize";
 import Colors from "../constants/Colors";
 
-import ImportedData from "../data/ImportDataOnce";
+import ImportedData from "../data/FetchRightsData";
 
 const RightsDetailsScreen = (props) => {
   // Get the parent subright
   const parentSubRightId = props.navigation.getParam("subrightId");
-  // const parentSubRight = SUBRIGHTS.find(
-  //   (subRight) => subRight.id === parentSubRightId
-  // );
   const parentSubRight = ImportedData.getSubRights().find(
     (subRight) => subRight.id === parentSubRightId
   );
@@ -27,7 +23,6 @@ const RightsDetailsScreen = (props) => {
   
   
   // Get list of relevant orgs to this specific subright
-  //const relevantOrgs = ORGANIZATIONS.filter(org => (parentSubRight.organizations).includes(org.id));
   const relevantOrgs = ImportedData.getOraganizations().filter(org => (parentSubRight.organizations).includes(org.id));
 
   // State Hooks for LearnMore modals.
@@ -95,9 +90,6 @@ const RightsDetailsScreen = (props) => {
 
 RightsDetailsScreen.navigationOptions = (navigationData) => {
   const subrightId = navigationData.navigation.getParam("subrightId");
-  // const parentSubRight = SUBRIGHTS.find(
-  //   (subright) => subright.id === subrightId
-  // );
   const parentSubRight = ImportedData.getSubRights().find(
     (subright) => subright.id === subrightId
   );

@@ -2,11 +2,11 @@ import React from "react";
 import { View, Text, Modal, Image, StyleSheet, Dimensions } from "react-native";
 import Colors from "../constants/Colors";
 import ModalCloseButton from "./ModalCloseButton.js";
-import { RIGHTSCATEGORIES } from "../data/dummy-data";
+import ImportedData from "../data/FetchRightsData";
 import ButtonTemplate from "../components/ButtonTemplate";
 
 const RightsCategoryModal = (props) => {
-  const selectedCategory = RIGHTSCATEGORIES.filter(
+  const selectedCategory = ImportedData.getRightsCategories().filter(
     (category) => category.id === props.categoryId
   )[0];
 

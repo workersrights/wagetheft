@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import { View, StyleSheet, FlatList, Platform } from "react-native";
-//import { RIGHTSCATEGORIES } from "../data/dummy-data";
-import ImportedData from "../data/ImportDataOnce";
+import ImportedData from "../data/FetchRightsData";
 import Colors from "../constants/Colors";
 import RightsCategoryTile from "../components/RightsCategoryTile";
 import RightsCategoryModal from "../components/RightsCategoryModal";
