@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
-import { View, StyleSheet, FlatList } from "react-native";
+import React, { useEffect, useState, useCallback } from "react";
+import { View, StyleSheet, FlatList,ActivityIndicator, Button } from "react-native";
 import { useSelector, useDispatch } from 'react-redux';
 
 import * as eventActions from '../store/actions/events';
 import EventsHomeModule from "../components/EventsHomeModule.js";
+import Colors from '../constants/Colors';
 
 const categoryTitles = [
   { id: "t1", title: "Your Events" },
@@ -17,9 +18,32 @@ const EventsHomeScreen = (props) => {
 
   const dispatch = useDispatch();
   
-  /*useEffect(() => {
-    dispatch(eventActions.fetchEvents());
-  }, [dispatch]);*/
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
+
+  const loadEvents = useCallback (async () => {
+    setError(null);
+    setIsLoading(true);
+    try{
+      await dispatch(eventActions.fetchEvents());
+    } catch (err) {
+      setError(err.message);
+    }
+    setIsLoading(false);
+  }, [dispatch]);
+
+  // Listener if revisting page
+  useEffect (() => {
+    const willFocusSub = props.navigation.addListener('willFocus', loadEvents);
+    return () => {
+      willFocusSub.remove();
+    }
+  }, [loadEvents]);
+
+  // Load events
+  useEffect(() => {
+    loadEvents();
+  }, [dispatch, loadEvents]);
 
 
   const renderEventModules = (itemData) => {
@@ -48,6 +72,19 @@ const EventsHomeScreen = (props) => {
     );
   };
 
+  if(error){
+    return <View style = {styles.center}>
+      <Button 
+        title='Try Again' 
+        onPress={loadEvents} 
+        color={Colors.darkOrange} />
+    </View>
+  }
+  if(isLoading) {
+    return <View style = {styles.center}>
+      <ActivityIndicator size = 'large' color = {Colors.darkOrange}/>
+    </View>
+  }
   return (
     <View style={styles.screen}>
       <FlatList
@@ -66,6 +103,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  center: {
+    flex : 1,
+    justifyContent: 'center', 
+    alignItems: 'center'}
 });
 
 export default EventsHomeScreen;
