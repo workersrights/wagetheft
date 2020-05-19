@@ -1,14 +1,17 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
+import * as moment from "moment";
 
 const EventDetails = (props) => {
   const event = props.event;
 
   const parseDateString = (timeStr) => {
+    var moment = require('moment');
     const date = moment(timeStr).format("ddd, MMMM Mo, YYYY");
     return date.toString();
   };
   const parseTimeString = (timeStr) => {
+    var moment = require('moment');
     const date = moment(timeStr).format("LT");
     return date.toString();
   };
@@ -16,7 +19,7 @@ const EventDetails = (props) => {
   return (
     <View style={{ width: "100%", height: "100%" }}>
       <View style={styles.headingImageContainer}>
-        <Image source={{ uri: event.image }} style={styles.image} />
+        <Image source={{ uri: event.imageUrl }} style={styles.image} />
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.infoContainer}>
