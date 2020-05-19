@@ -3,6 +3,7 @@ import {Dimensions, ScrollView, View, Text, Image, StyleSheet, Button } from "re
 import Colors from "../constants/Colors";
 import {ORGANIZATIONS } from "../data/dummy-data";
 import Modal from 'react-native-modal';
+import ModalCloseButton from "../components/ModalCloseButton.js"
 
 const RightsOrganizationModal = (props) => {
   const selectedOrganization = ORGANIZATIONS.filter(
@@ -22,18 +23,19 @@ const RightsOrganizationModal = (props) => {
       onBackdropPress={props.onCloseModal}
       >
       <View style={styles.modal}>
+        <Text style={styles.title}>{selectedOrganization.title}</Text>
+        <ModalCloseButton onCloseModal={props.onCloseModal}/>
         <ScrollView contentContainerStyle={styles.scroll} >
-          <Text style={styles.title}>{selectedOrganization.title}</Text>
           <View style={styles.imageContainer}>
-              {/* image here */ }
+              {/* image here */}
               <Image
+                resizeMode= "contain"
                 source={selectedOrganization.image}
-                resizeMode="contain"
                 style={styles.image}
               />
           </View>
           
-          {/* Subtitles and description here */ }
+          {/* Subtitles and description here */}
           <View style={styles.description}>
             {selectedOrganization.description.map(desc => (
               <View style={styles.subheading}>
@@ -65,10 +67,10 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   scroll: {
-    paddingBottom: 400   // scroll view doesn't show everything for some reason this is added as a placeholder to see content
+    paddingBottom: 10,
   },
   title: {
-    padding: 10,
+    padding: "2%",
     fontWeight: "bold",
     fontSize: 16,
     textAlign: "center"
@@ -90,15 +92,15 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   imageContainer: {
-    height: "50%",
-    padding: 5
+    paddingTop: "2%",
+    width: "100%",
+    height: 170,
   },
   image: {
-    flex: 1, 
-    width: "100%",
-    height: "100%", 
-    resizeMode: "contain",
-    borderRadius: 8
+    flex: 1,
+    resizeMode: "cover",
+    width: null,
+    height: null,
   },
 });
 

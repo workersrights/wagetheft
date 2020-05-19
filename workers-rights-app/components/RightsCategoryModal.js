@@ -19,6 +19,7 @@ const RightsCategoryModal = (props) => {
       >
         <View style={styles.modal}>
           <View style={styles.modalContent}>
+            <ModalCloseButton onCloseModal={props.onCloseModal}/>
             <Text style={styles.title}>{selectedCategory.title}</Text>
             {/* image here */}
             <Image
@@ -71,7 +72,6 @@ const styles = StyleSheet.create({
   image: {
     width: "30%",
     height: "30%",
-    marginBottom: 20,
   },
 });
 
