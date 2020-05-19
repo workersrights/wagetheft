@@ -12,7 +12,7 @@ import CustomHeaderButton from "../components/CustomHeaderButton";
 const EventDetailsScreen = (props) => {
 
   eventId = props.navigation.getParam("eventId");
-  const inArray = e => e.id === eventId;
+  const inArray = e =>  e.id === eventId;
 
   // finds the event given the event id from the parent
   // and sets it as a param so that navigation options
@@ -31,7 +31,14 @@ const EventDetailsScreen = (props) => {
   
   // Handerler to dispatch the action
   const setYourEventHandeler = useCallback(() => {
-      dispatch(setYourEvent(eventId));
+      dispatch(setYourEvent(
+        event.title,
+        event.date,
+        event.imageUrl,
+        event.organizer,
+        event.location,
+        event.category,
+        event.description));
   }, [dispatch, eventId]);
 
 
