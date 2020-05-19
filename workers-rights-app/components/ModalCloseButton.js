@@ -19,8 +19,8 @@ const ModalCloseButton = (props) => {
 const styles = StyleSheet.create({
   modalCloseButton: {
     position: "absolute",
-    paddingTop: 15,
-    paddingRight: 20,
+    paddingTop: "4%",
+    paddingRight: "3%",
     top: 0,
     right: 0,
   },

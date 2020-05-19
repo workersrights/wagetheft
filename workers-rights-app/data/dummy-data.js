@@ -4,6 +4,7 @@ import Organization from "../models/organization";
 import Event from "../models/event";
 import LearnMore from "../models/learnMore";
 import QuizOption from "../models/quizOption";
+import Description from '../models/description.js';
 
 export const RIGHTSCATEGORIES = [
   new RightsCategory(
@@ -24,28 +25,28 @@ export const RIGHTSCATEGORIES = [
     "c3",
     "Getting Paid",
     require("../images/payments-icon.png"),
-    "",
-    ""
+    "Not getting paid what your employer owes you? Are you forced to work overtime, but not receiving any extra pay?",
+    "Get the facts on wage and hour laws here."
   ),
   new RightsCategory(
     "c4",
     "Safety & Health",
     require("../images/health-icon.png"),
-    "",
-    ""
+    "Is your workplace unsafe? Are you worried about getting hurt at work? Wondering what to do about it? Have questions about the workers' compensation system?",
+    "Find the answers here."
   ),
   new RightsCategory(
     "c5",
     "Unions",
     require("../images/unions-icon.png"),
-    "",
-    ""
+    "Facing an organizing campaign at work (or want to get involved in one)? Already a union member but don't understand how things work? Fired for organizing or joining a union?",
+    "This section covers information about your rights to organize and be in a union, and how unions work."
   ),
   new RightsCategory(
     "c6",
     "Unemployment",
     require("../images/unemployment-icon.png"),
-    "",
+    "Whether you were suddenly fired, laid off, or asked to resign, you'll want to know what happens now that you are out of a job.",
     ""
   ),
   // new RightsCategory(
@@ -57,73 +58,99 @@ export const RIGHTSCATEGORIES = [
   // )
 ];
 
+// should review design of organization descriptions
+const ORGANIZATION_DESCRIPTIONS = [
+  [new Description("Website:", ['https://wagetheftcoalition.com/']),
+  new Description("Description:",['The Santa Clara County Wage Theft Coalition actively works to end wage theft, defend workers’ rights, and enforce wage theft judgments.  We hope to accomplish this through policy advocacy, community organizing and outreach, direct action, education, leadership development, and resource coordination.  We work with affected workers and their families, particularly low-wage workers who have been victims of the crime of wage theft.']),
+  new Description("Location:",["Katharine & George Alexander Community Law Center", "1030 The Alameda", "San Jose, CA 95126"]), 
+  new Description("Contact:", ["Phone: 408-621-5678", "Email: rsilvertaube@scu.edu"]), 
+  new Description("Hours:", ["Monday-Friday:", "6:30am - 9:00pm"])],
+  
+  [new Description("Website:", ['https://www.osha.gov/']),
+   new Description("Description:", ['The Occupational Safety and Health Administration is an agency of the United States Department of Labor. OSHA ensure safe and healthful working conditions for working men and women by setting and enforcing standards and by providing training, outreach, education and assistance.'])],
+  
+  [new Description("Website:", ['https://www.nlrb.gov/']),
+   new Description("Description:", ['The National Labor Relations Board is an independent agency of the federal government of the United States with responsibilities for enforcing U.S. labor law in relation to collective bargaining and unfair labor practices.'])],
+  
+  [new Description("Website:", ['https://perb.ca.gov/']),
+   new Description("Description:", ['The Public Employment Relations Board (PERB or Board) is a quasi-judicial administrative agency charged with administering the eight collective bargaining statutes covering employees of California’s public schools, colleges, and universities, employees of the State of California, employees of California local public agencies (cities, counties and special districts), trial court employees, trial court interpreters, supervisory employees of the Los Angeles County Metropolitan Transportation Authority, and judicial council employees.'])],
+  
+  [new Description("Website:", ['https://www.dfeh.ca.gov/']),
+   new Description("Description:", ['The Department of Fair Employment and Housing is the state agency charged with enforcing California’s civil rights laws. The mission of the DFEH is to protect the people of California from unlawful discrimination in employment, housing, and public accommodations and from hate violence and human trafficking.'])],
+  
+  [new Description("Website:", ['www.usccr.gov']),
+   new Description("Description:", ['The Civil Rights Act of 1957 created the U.S. Commission on Civil Rights. Since then, Congress has reauthorized or extended the legislation creating the Commission several times; the last reauthorization was in 1994 by the Civil Rights Commission Amendments Act of 1994. \n Established as an independent, bipartisan, fact-finding federal agency, our mission is to inform the development of national civil rights policy and enhance enforcement of federal civil rights laws. We pursue this mission by studying alleged deprivations of voting rights and alleged discrimination based on race, color, religion, sex, age, disability, or national origin, or in the administration of justice. We play a vital role in advancing civil rights through objective and comprehensive investigation, research, and analysis on issues of fundamental concern to the federal government and the public.'])],
+  
+  [new Description("Website:", ['https://www.dol.gov/agencies/ebsa']),
+   new Description("Description:", ['EBSA is committed to educating and assisting over 200 million pension, health and other employee benefit plan participants and beneficiaries and more than 3 million plan sponsors and members of the employee benefit community. EBSA promotes voluntary compliance and facilitates self-regulation, working diligently to provide quality assistance to plan participants and beneficiaries. EBSA\'s goal in providing direct assistance is to raise the knowledge level of plan participants and beneficiaries, service providers and other interested parties and to ensure that they have access to available plan documents filed with the Department of Labor. This enables participants to better understand and exercise their rights under the law and, when possible, to recover any benefits to which they may be entitled.'])],
+  
+  [new Description("Website:", ['https://eeoc.custhelp.com/app/home']),
+   new Description("Description:", ['The U.S. Equal Employment Opportunity Commission (EEOC) is responsible for enforcing federal laws that make it illegal to discriminate against a job applicant or an employee because of the person\'s race, color, religion, sex (including pregnancy, gender identity, and sexual orientation), national origin, age (40 or older), disability or genetic information. It is also illegal to discriminate against a person because the person complained about discrimination, filed a charge of discrimination, or participated in an employment discrimination investigation or lawsuit.'])],
+  
+];
+
 // https://www.workplacefairness.org/federalagencies for federal agencies!
 export const ORGANIZATIONS = [
-  new Organization(
-    "o1",
-    "Wage Theft Coalition",
-    require("../images/wage-theft-coalition-logo.png"),
-    "The Santa Clara County Wage Theft Coalition actively works to end wage theft, defend workers’ rights, and enforce wage theft judgments.  We hope to accomplish this through policy advocacy, community organizing and outreach, direct action, education, leadership development, and resource coordination.  We work with affected workers and their families, particularly low-wage workers who have been victims of the crime of wage theft.",
-    "https://wagetheftcoalition.com/",
-    ["c3"]
-  ),
-  new Organization(
-    "o2",
-    "OSHA",
-    require("../images/osha-logo.png"),
-    "The Occupational Safety and Health Administration is an agency of the United States Department of Labor. OSHA ensure safe and healthful working conditions for working men and women by setting and enforcing standards and by providing training, outreach, education and assistance.",
-    "https://www.osha.gov/",
-    ["c4"]
-  ),
-  new Organization(
-    "o3",
-    "NLRB",
-    require("../images/NLRB-logo.png"),
-    "The National Labor Relations Board is an independent agency of the federal government of the United States with responsibilities for enforcing U.S. labor law in relation to collective bargaining and unfair labor practices.",
-    "https://www.nlrb.gov/",
-    ["c6"]
-  ),
-  new Organization(
-    "o4",
-    "PERB",
-    require("../images/PERB-logo.png"),
-    "The Public Employment Relations Board (PERB or Board) is a quasi-judicial administrative agency charged with administering the eight collective bargaining statutes covering employees of California’s public schools, colleges, and universities, employees of the State of California, employees of California local public agencies (cities, counties and special districts), trial court employees, trial court interpreters, supervisory employees of the Los Angeles County Metropolitan Transportation Authority, and judicial council employees.",
-    "https://perb.ca.gov/",
-    ["c6"]
-  ),
-  new Organization(
-    "o5",
-    "DFEH",
-    require("../images/DFEH-logo.png"),
-    "The Department of Fair Employment and Housing is the state agency charged with enforcing California’s civil rights laws. The mission of the DFEH is to protect the people of California from unlawful discrimination in employment, housing, and public accommodations and from hate violence and human trafficking.",
-    "https://www.dfeh.ca.gov/",
-    ["c2"]
-  ),
-  new Organization(
-    "o6",
-    "U.S. Commission on Civil Rights",
-    require("../images/commission-civil-rights-logo.png"),
-    "The Civil Rights Act of 1957 created the U.S. Commission on Civil Rights. Since then, Congress has reauthorized or extended the legislation creating the Commission several times; the last reauthorization was in 1994 by the Civil Rights Commission Amendments Act of 1994. \n Established as an independent, bipartisan, fact-finding federal agency, our mission is to inform the development of national civil rights policy and enhance enforcement of federal civil rights laws. We pursue this mission by studying alleged deprivations of voting rights and alleged discrimination based on race, color, religion, sex, age, disability, or national origin, or in the administration of justice. We play a vital role in advancing civil rights through objective and comprehensive investigation, research, and analysis on issues of fundamental concern to the federal government and the public.",
-    "www.usccr.gov",
-    ["c2"]
-  ),
-  new Organization(
-    "o7",
-    "EBSA",
-    require("../images/EBSA-logo.png"),
-    "EBSA is committed to educating and assisting over 200 million pension, health and other employee benefit plan participants and beneficiaries and more than 3 million plan sponsors and members of the employee benefit community. EBSA promotes voluntary compliance and facilitates self-regulation, working diligently to provide quality assistance to plan participants and beneficiaries. EBSA's goal in providing direct assistance is to raise the knowledge level of plan participants and beneficiaries, service providers and other interested parties and to ensure that they have access to available plan documents filed with the Department of Labor. This enables participants to better understand and exercise their rights under the law and, when possible, to recover any benefits to which they may be entitled.",
-    "https://www.dol.gov/agencies/ebsa",
-    ["c3"]
-  ),
-  new Organization(
-    "o8",
-    "EEOC",
-    require("../images/EEOC-logo.png"),
-    "The U.S. Equal Employment Opportunity Commission (EEOC) is responsible for enforcing federal laws that make it illegal to discriminate against a job applicant or an employee because of the person's race, color, religion, sex (including pregnancy, gender identity, and sexual orientation), national origin, age (40 or older), disability or genetic information. It is also illegal to discriminate against a person because the person complained about discrimination, filed a charge of discrimination, or participated in an employment discrimination investigation or lawsuit.",
-    "https://eeoc.custhelp.com/app/home",
-    ["c2"]
-  ),
+    new Organization(
+      'o1',
+      'WTC',
+      require('../images/wage-theft-coalition-logo.png'),
+      ORGANIZATION_DESCRIPTIONS[0],
+      ["c3"]
+    ),
+    new Organization(
+      'o2',
+      'OSHA',
+      require('../images/osha-logo.png'),
+      ORGANIZATION_DESCRIPTIONS[1],
+      ["c4"]
+      ),
+    new Organization(
+      'o3',
+      'NLRB',
+      require('../images/NLRB-logo.png'),
+      ORGANIZATION_DESCRIPTIONS[2],
+      ["c6"]
+      ),
+    new Organization(
+      'o4',
+      'PERB',
+      require('../images/PERB-logo.png'),
+      ORGANIZATION_DESCRIPTIONS[3],
+      ["c6"]
+      ),
+    new Organization(
+      'o5',
+      'DFEH',
+      require('../images/DFEH-logo.png'),
+      ORGANIZATION_DESCRIPTIONS[4],
+      ["c2"]
+      ),
+    new Organization(
+      'o6',
+      'USCCR',
+      require('../images/commission-civil-rights-logo.png'),
+      ORGANIZATION_DESCRIPTIONS[5],
+      ["c2"]
+    ),
+    new Organization(
+      'o7',
+      'EBSA',
+      require('../images/EBSA-logo.png'),
+      ORGANIZATION_DESCRIPTIONS[6],
+      ["c3"]
+    ),
+    new Organization(
+      'o8',
+      'EEOC',
+      require('../images/EEOC-logo.png'),
+      ORGANIZATION_DESCRIPTIONS[7],
+      ["c2"]
+    ),
 ];
+
+
+
 
 export const SUBRIGHTS = [
   new SubRight(
