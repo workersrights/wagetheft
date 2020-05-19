@@ -17,13 +17,10 @@ const EventsHomeScreen = (props) => {
 
   const dispatch = useDispatch();
   
-  useEffect(() => {
+  /*useEffect(() => {
     dispatch(eventActions.fetchEvents());
-  }, [dispatch]);
+  }, [dispatch]);*/
 
- // useEffect(() => {
-   // dispatch(eventActions.fetchYourEvents());
-  //}, [dispatch]);
 
   const renderEventModules = (itemData) => {
     return (
