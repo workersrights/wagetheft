@@ -16,10 +16,12 @@ const EventCategoryScreen = props => {
   
     const renderCards = (itemData) => {
       const parseDateString = (timeStr) => {
+        var moment = require('moment');
         const date = moment(timeStr).format("MMMM Mo, YYYY");
         return date.toString();
       };
       const parseTimeString = (timeStr) => {
+        var moment = require('moment');
         const date = moment(timeStr).format("LT");
         return date.toString();
       };
@@ -29,7 +31,7 @@ const EventCategoryScreen = props => {
             date={parseDateString(itemData.item.date)}
             time={parseTimeString(itemData.item.time)}
             location={itemData.item.location}
-            image={itemData.item.image}
+            image={itemData.item.imageUrl}
             pressAction={(id) => {
                 props.navigation.navigate({
                   routeName: "EventDetails",
