@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 import { useSelector } from 'react-redux';
-import * as moment from "moment";
 
 import EventCategoryCard from '../components/EventCategoryCard';
 
