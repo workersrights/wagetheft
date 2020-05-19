@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 import { useSelector } from 'react-redux';
+import * as moment from "moment";
 
 import EventCategoryCard from '../components/EventCategoryCard';
 
@@ -14,11 +15,19 @@ const EventCategoryScreen = props => {
     event => event.category === category);
   
     const renderCards = (itemData) => {
+      const parseDateString = (timeStr) => {
+        const date = moment(timeStr).format("MMMM Mo, YYYY");
+        return date.toString();
+      };
+      const parseTimeString = (timeStr) => {
+        const date = moment(timeStr).format("LT");
+        return date.toString();
+      };
         return (
           <EventCategoryCard
             title={itemData.item.title}
-            date={itemData.item.date}
-            time={itemData.item.time}
+            date={parseDateString(itemData.item.date)}
+            time={parseTimeString(itemData.item.time)}
             location={itemData.item.location}
             image={itemData.item.image}
             pressAction={(id) => {
