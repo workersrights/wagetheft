@@ -20,8 +20,6 @@ const styles = StyleSheet.create({
     height: 150,
     width: 150,
     margin: 10,
-    marginTop: 20,
-    marginBottom: 0,
     backgroundColor: Colors.lightOrange,
     borderRadius: 15,
     shadowOpacity: 0.25,

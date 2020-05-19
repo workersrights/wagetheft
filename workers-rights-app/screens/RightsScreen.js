@@ -54,6 +54,7 @@ const RightsScreen = (props) => {
     <View style={styles.screen}>
       <View style={styles.flatList}>
         <FlatList
+          contentContainerStyle={{ paddingVertical: 10 }}
           data={RIGHTSCATEGORIES}
           renderItem={renderGridItem}
           numColumns={2}

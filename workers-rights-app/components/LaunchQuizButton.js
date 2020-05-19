@@ -25,18 +25,19 @@ const LaunchQuizButton = (props) => {
 };
 const styles = StyleSheet.create({
   container: {
-    width: "60%",
+    width: "75%",
+    height: 80,
+    margin: 20,
 
     backgroundColor: Colors.darkOrange,
-    borderRadius: 100,
+    borderRadius: 50,
     shadowOpacity: 0.35,
     shadowColor: "black",
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 6,
     elevation: 3,
 
-    position: "absolute",
-    bottom: "5%",
+    position: "relative",
     justifyContent: "center",
     alignItems: "center",
   },
