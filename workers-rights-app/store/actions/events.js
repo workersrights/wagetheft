@@ -17,11 +17,9 @@ export const fetchEvents = () => {
                 key,
                 resData[key].title,
                 resData[key].date,
-                resData[key].time,
                 resData[key].image,
                 resData[key].organizer,
                 resData[key].location,
-                resData[key].price,
                 resData[key].category,
                 resData[key].description
             )
@@ -31,45 +29,18 @@ export const fetchEvents = () => {
     };
 };
 
-export const fetchYourEvents = () => {
-    return async dispatch => {
-        const response = await fetch('https://workers-rights-46c43.firebaseio.com/yourEvents.json');
-        
-        const resData = await response.json();
-        const loadedEvents = [];
-        
-        for(const key in resData) {
-            const e = new Event(
-                key,
-                resData[key].title,
-                resData[key].date,
-                resData[key].time,
-                resData[key].image,
-                resData[key].organizer,
-                resData[key].location,
-                resData[key].price,
-                resData[key].category,
-                resData[key].description
-            )
-            loadedEvents.push(e);
-        }
-        dispatch({type: FETCH_YOUR_EVENTS, yourEvents: loadedEvents});
-    };
-};
 
 
 export const setYourEvent = (
     title,
     date,
-    time,
     image,
     organizer,
     location,
-    price,
     category,
     description) => {
     return async dispatch => {
-        const response = await fetch('https://workers-rights-46c43.firebaseio.com/yourEvents.json', {
+        const response = await fetch('https://workers-rights-46c43.firebaseio.com/events.json', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -77,11 +48,9 @@ export const setYourEvent = (
             body: JSON.stringify({
                 title,
                 date,
-                time,
                 image,
                 organizer,
                 location,
-                price,
                 category,
                 description})
         });
