@@ -93,7 +93,7 @@ const ORGANIZATION_DESCRIPTIONS = [
 export const ORGANIZATIONS = [
     new Organization(
       'o1',
-      'Wage Theft Coalition',
+      'WTC',
       require('../images/wage-theft-coalition-logo.png'),
       ORGANIZATION_DESCRIPTIONS[0],
       ["c3"]
@@ -128,7 +128,7 @@ export const ORGANIZATIONS = [
       ),
     new Organization(
       'o6',
-      'U.S. Commission on Civil Rights',
+      'USCCR',
       require('../images/commission-civil-rights-logo.png'),
       ORGANIZATION_DESCRIPTIONS[5],
       ["c2"]
