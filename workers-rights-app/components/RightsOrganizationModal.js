@@ -1,12 +1,12 @@
 import React from "react";
 import {Dimensions, ScrollView, View, Text, Image, StyleSheet, Button } from "react-native";
 import Colors from "../constants/Colors";
-import {ORGANIZATIONS } from "../data/dummy-data";
+import ImportedData from "../data/FetchRightsData";
 import Modal from 'react-native-modal';
 import ModalCloseButton from "../components/ModalCloseButton.js"
 
 const RightsOrganizationModal = (props) => {
-  const selectedOrganization = ORGANIZATIONS.filter(
+  const selectedOrganization = ImportedData.getOraganizations().filter(
     (organization) => organization.id === props.organizationId
   )[0];
 
