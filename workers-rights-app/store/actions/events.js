@@ -2,13 +2,10 @@ import Event from '../../models/event'
 
 export const SET_YOUR_EVENT = 'SET_YOUR_EVENT';
 export const FETCH_EVENTS = 'FETCH_EVENTS';
-//export const FETCH_YOUR_EVENTS = 'FETCH_YOUR_EVENTS';
-//export const ADD_YOUR_EVENT = 'ADD_YOUR_EVENT';
-//export const REMOVE_YOUR_EVENT = 'REMOVE_YOUR_EVENT';
 
 
 /**
- * Fetches both all events are your events
+ * Fetches both all events and your events from the database
  */
 export const fetchEvents = () => {
     return async dispatch => {
@@ -40,7 +37,17 @@ export const fetchEvents = () => {
             const resData2 = await response2.json();
             const loadedYourEvents = [];
             for(const key in resData2) {
-                loadedYourEvents.push(loadedEvents.filter(event => event.id === key));
+                const e = new Event(
+                    key,
+                    resData[key].title,
+                    resData[key].date,
+                    resData[key].image,
+                    resData[key].organizer,
+                    resData[key].location,
+                    resData[key].category,
+                    resData[key].description
+                )
+                loadedYourEvents.push(e);
             }
 
             dispatch({type: FETCH_EVENTS, events: loadedEvents, yourEvents: loadedYourEvents});
@@ -55,7 +62,7 @@ export const fetchEvents = () => {
  * @param {*} id 
  * @param {*} title 
  * @param {*} date 
- * @param {*} imageUrl 
+ * @param {*} image 
  * @param {*} organizer 
  * @param {*} location 
  * @param {*} category 
@@ -65,7 +72,7 @@ export const addYourFavorites = (
     id,
     title,
     date,
-    imageUrl,
+    image,
     organizer,
     location,
     category,
@@ -73,14 +80,14 @@ export const addYourFavorites = (
     return async dispatch => {
         const response = await fetch(`https://workers-rights-46c43.firebaseio.com/testYourEvents/${id}.json`,
           {
-            method: 'POST',
+            method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 title,
                 date,
-                imageUrl,
+                image,
                 organizer,
                 location,
                 category,
@@ -95,13 +102,6 @@ export const addYourFavorites = (
 /**
  * Removes an event from your events
  * @param {*} id 
- * @param {*} title 
- * @param {*} date 
- * @param {*} imageUrl 
- * @param {*} organizer 
- * @param {*} location 
- * @param {*} category 
- * @param {*} description 
  */
 export const removeYourFavorites = id => {
     return async dispatch => {
@@ -119,11 +119,11 @@ export const setYourEvent = (
     id,
     title,
     date,
-    imageUrl,
+    image,
     organizer,
     location,
     category,
     description) => {
-    return (inYourEvent) ? addYourFavorites(id, title, date, imageUrl, organizer, location, category, description) :
+    return (!inYourEvent) ? addYourFavorites(id, title, date, image, organizer, location, category, description) :
         removeYourFavorites(id);
 };
