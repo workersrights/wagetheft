@@ -13,6 +13,8 @@ import RightsOrganizationModal from "../components/RightsOrganizationModal";
 
 import ImportedData from "../data/FetchRightsData";
 
+import ImportedData from "../data/FetchRightsData";
+
 const RightsDetailsScreen = (props) => {
   // Get the parent subright
   const parentSubRightId = props.navigation.getParam("subrightId");
@@ -40,7 +42,6 @@ const RightsDetailsScreen = (props) => {
     console.log("closeModalHandler() called.");
     setIsModalOpen(false);
   };
-
 
   // State Hooks for LearnMore modals.
   const [activeLearnMoreId, setActiveLearnMoreId] = useState("lm1");
