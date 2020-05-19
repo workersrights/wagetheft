@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
-import * as moment from "moment";
 
 const EventDetails = (props) => {
   const event = props.event;
