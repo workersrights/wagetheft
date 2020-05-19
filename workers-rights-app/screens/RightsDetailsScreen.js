@@ -13,8 +13,6 @@ import RightsOrganizationModal from "../components/RightsOrganizationModal";
 
 import ImportedData from "../data/FetchRightsData";
 
-import ImportedData from "../data/FetchRightsData";
-
 const RightsDetailsScreen = (props) => {
   // Get the parent subright
   const parentSubRightId = props.navigation.getParam("subrightId");
