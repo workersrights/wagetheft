@@ -32,6 +32,8 @@ const EventDetailsScreen = (props) => {
   // Handerler to dispatch the action
   const setYourEventHandeler = useCallback(() => {
       dispatch(setYourEvent(
+        inYourEvents,
+        event.id,
         event.title,
         event.date,
         event.imageUrl,
