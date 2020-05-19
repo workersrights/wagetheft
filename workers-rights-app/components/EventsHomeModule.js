@@ -18,15 +18,27 @@ const EventsHomeModule = (props) => {
   const allEvents = useSelector(state => state.events.allEvents);
   const yourEvents = useSelector(state => state.events.yourEvents);
  
-  const displayedEvents = (props.category === "Your Events") ? yourEvents : allEvents.filter(
-    event => event.category === props.category);
-  
-  const len = displayedEvents.length;
+  //if(allEvents === undefined || yourEvents === undefined)
+    //return;
 
   const parseTimeString = (timeStr) => {
-    const date = moment(timeStr).format("L");
-    return date.toString();
+       var moment = require('moment');
+       const date = moment(timeStr).format("LL");
+       return date.toString();
   };
+
+  const displayedEvents = (props.category === "Your Events") ? yourEvents : allEvents.filter(
+    event => event.category === props.category);
+
+  let len = 0;  
+  //if(displayedEvents !== undefined && displayedEvents[0]!== undefined) {
+    // Set a limit on how many cards an be rendered
+    len = displayedEvents.length;
+    const renderNum = 4;
+    while(len > renderNum){
+      displayedEvents.pop();
+    }
+  //}
 
   // Case where there are no events
   if(len === 0){
@@ -42,19 +54,13 @@ const EventsHomeModule = (props) => {
     </View>);
   }
 
-  // Set a limit on how many cards an be rendered
-  const renderNum = 4;
-  while(len > renderNum){
-    displayedEvents.pop();
-  }
-
   const renderHomeCards = (itemData) => {
     return (
       <EventsHomeCard
         title={itemData.item.title}
         date={parseTimeString(itemData.item.date)}
         location={itemData.item.location}
-        image={itemData.item.image}
+        image={itemData.item.imageUrl}
         pressAction={props.cardPress}
         id={itemData.item.id}
       />
