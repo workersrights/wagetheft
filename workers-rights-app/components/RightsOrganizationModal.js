@@ -25,7 +25,9 @@ const RightsOrganizationModal = (props) => {
       <View style={styles.modal}>
         <Text style={styles.title}>{selectedOrganization.title}</Text>
         <ModalCloseButton onCloseModal={props.onCloseModal}/>
-        <ScrollView contentContainerStyle={styles.scroll} >
+        <ScrollView 
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.scroll}>
           <View style={styles.imageContainer}>
               {/* image here */}
               <Image
