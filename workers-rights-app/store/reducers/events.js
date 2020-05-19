@@ -1,5 +1,5 @@
 import { EVENTS } from '../../data/dummy-data';
-import { SET_YOUR_EVENT, FETCH_EVENTS, FETCH_YOUR_EVENTS } from '../actions/events';
+import { SET_YOUR_EVENT, FETCH_EVENTS } from '../actions/events';
 
 const initialState = {
     allEvents: EVENTS,
@@ -10,9 +10,7 @@ const initialState = {
 const eventsReducer = (state = initialState, action) => {
     switch(action.type) {
         case FETCH_EVENTS:
-            return{allEvents: action.events}
-        case FETCH_YOUR_EVENTS:
-            return {yourEvents: action.yourEvents};
+            return { allEvents: action.events };
         case SET_YOUR_EVENT:
                 const existingIndex = state.yourEvents.findIndex(event => event.id===action.id);
                 if (existingIndex >=0){
