@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { View, StyleSheet, FlatList,ActivityIndicator, Button } from "react-native";
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import * as eventActions from '../store/actions/events';
 import EventsHomeModule from "../components/EventsHomeModule.js";
@@ -19,16 +19,10 @@ const EventsHomeScreen = (props) => {
   const dispatch = useDispatch();
   
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState();
 
   const loadEvents = useCallback (async () => {
-    setError(null);
     setIsLoading(true);
-    try{
-      await dispatch(eventActions.fetchEvents());
-    } catch (err) {
-      setError(err.message);
-    }
+    await dispatch(eventActions.fetchEvents());
     setIsLoading(false);
   }, [dispatch]);
 
@@ -72,14 +66,6 @@ const EventsHomeScreen = (props) => {
     );
   };
 
-  if(error){
-    return <View style = {styles.center}>
-      <Button 
-        title='Try Again' 
-        onPress={loadEvents} 
-        color={Colors.darkOrange} />
-    </View>
-  }
   if(isLoading) {
     return <View style = {styles.center}>
       <ActivityIndicator size = 'large' color = {Colors.darkOrange}/>
