@@ -3,8 +3,8 @@ import SubRight from "../models/subRight";
 import Organization from "../models/organization";
 import Event from "../models/event";
 import LearnMore from "../models/learnMore";
-import Description from '../models/description.js'
-
+import QuizOption from "../models/quizOption";
+import Description from '../models/description.js';
 
 export const RIGHTSCATEGORIES = [
   new RightsCategory(
@@ -146,8 +146,7 @@ export const ORGANIZATIONS = [
       require('../images/EEOC-logo.png'),
       ORGANIZATION_DESCRIPTIONS[7],
       ["c2"]
-    )
-
+    ),
 ];
 
 
@@ -162,7 +161,7 @@ export const SUBRIGHTS = [
     "💵",
     ["lm1", "lm2", "lm3"],
     "An employer has the right to make many types of deductions from an employee’s pay. These deductions include the cost of work-specific uniforms, tools, meals, lodging, and more. For anything that is for the employee’s benefit, the employer must first get the employee’s consent before providing the good or service and deducting the cost of the employee’s pay. However, there are limits on what employers can deduct from pay. ",
-    ["o1","o7"]
+    ["o1", "o7"]
   ),
   new SubRight(
     "w2",
@@ -172,7 +171,7 @@ export const SUBRIGHTS = [
     "💵",
     ["lm1", "lm2"],
     "Getting your final paycheck and being paid everything you are owed can be a tricky situation. What do you do with your accrued vacation days? What if your former employer doesn’t want to pay? Do you get paid during your two-week notice? This page can help answer many questions you may have. To learn more about your rights with respect to final pay, contact the following agencies and read the information below.",
-    ["o1","o7"]
+    ["o1", "o7"]
   ),
   new SubRight(
     "w3",
@@ -182,8 +181,8 @@ export const SUBRIGHTS = [
     "💵",
     [],
     "Surprisingly, there are no federal laws requiring meal and rest breaks. This area of the law has been left mostly to states with only 20 requiring meal breaks and 9 requiring rest breaks. However, most employers do provide meal breaks and may be required to provide breaks for specific religious or health reasons. To learn more about meal and rest breaks, read below.",
-    ["o1","o7"]
-    ),
+    ["o1", "o7"]
+  ),
   new SubRight(
     "w4",
     ["c3"],
@@ -192,8 +191,8 @@ export const SUBRIGHTS = [
     "💵",
     [],
     "The subject of overtime pay is one of the most confusing subject for workers seeking to learn more about their employment rights. Many workers do not understand whether or not they are eligible for overtime, or what they should do in the event their employer is not paying them correctly for the extra time that they work. Many of the overtime regulations have very different interpretations and may not yet have been clarified by court decisions. \n\nThis Overtime Pay page explains what types of work are covered by overtime laws, including which kinds of construction work are covered. It also explains how overtime pay is calculated, whether it applies to weekends/holidays, and how overtime pay may apply to salaried employees.",
-    ["o1","o7"]
-    ),
+    ["o1", "o7"]
+  ),
   new SubRight(
     "h1",
     ["c1"],
@@ -251,7 +250,7 @@ export const SUBRIGHTS = [
     require("../images/mistreatment-icon.png"),
     "✋",
     [],
-    "Sex or gender discrimination in employment involves treating someone unfavorably because of the person’s sex, whether they are applying for a job or are a current employee. Although women have made clear they have the ability to perform with the same skill and success in every endeavor engaged in by men, the issue of sex discrimination still holds many back. Sex discrimination, although predominantly an issue for women, can sometimes be directed towards men as well. Below, we answer many of the questions that commonly arise with respect to this issue.", 
+    "Sex or gender discrimination in employment involves treating someone unfavorably because of the person’s sex, whether they are applying for a job or are a current employee. Although women have made clear they have the ability to perform with the same skill and success in every endeavor engaged in by men, the issue of sex discrimination still holds many back. Sex discrimination, although predominantly an issue for women, can sometimes be directed towards men as well. Below, we answer many of the questions that commonly arise with respect to this issue.",
     ["o5", "o6", "o8"]
   ),
   new SubRight(
@@ -444,5 +443,112 @@ export const EVENTS = [
     0,
     "Social",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus proin nibh nisl condimentum id venenatis. Diam volutpat commodo sed egestas egestas. Placerat vestibulum lectus mauris ultrices eros. Id consectetur purus ut faucibus pulvinar elementum. Felis eget velit aliquet sagittis id. Eget nunc scelerisque viverra mauris. Nunc eget lorem dolor sed viverra ipsum nunc aliquet bibendum. Dui nunc mattis enim ut tellus elementum sagittis vitae. Id velit ut tortor pretium. Nulla facilisi nullam vehicula ipsum a. Enim neque volutpat ac tincidunt vitae semper quis lectus. Egestas congue quisque egestas diam in. Arcu dictum varius duis at consectetur lorem."
+  ),
+];
+
+export const QUIZOPTIONS = [
+  new QuizOption(
+    "qo1",
+    "Wage & Hour Problems",
+    require("../images/payments-icon.png"),
+    false,
+    ["qo7", "qo8", "qo9", "qo10"],
+    []
+  ),
+  new QuizOption(
+    "qo2",
+    "Mistreatment",
+    require("../images/mistreatment-icon.png"),
+    false,
+    ["qo7", "qo8", "qo13"],
+    []
+  ),
+  new QuizOption(
+    "qo3",
+    "Safety & Health",
+    require("../images/health-icon.png"),
+    false,
+    [],
+    []
+  ),
+  new QuizOption(
+    "qo4",
+    "Unions & Collective Action",
+    require("../images/unions-icon.png"),
+    false,
+    [],
+    []
+  ),
+  new QuizOption(
+    "qo5",
+    "Unemployment",
+    require("../images/unemployment-icon.png"),
+    false,
+    [],
+    []
+  ),
+  new QuizOption(
+    "qo6",
+    "Getting Hired",
+    require("../images/hiring-icon.png"),
+    false,
+    [],
+    []
+  ),
+  new QuizOption(
+    "qo7",
+    "Unpaid Wages",
+    require("../images/payments-icon.png"),
+    false,
+    ["qo11", "qo12"],
+    []
+  ),
+  new QuizOption(
+    "qo8",
+    "Paycheck Deductions",
+    require("../images/payments-icon.png"),
+    false,
+    [],
+    []
+  ),
+  new QuizOption(
+    "qo9",
+    "Tips & Commissions",
+    require("../images/payments-icon.png"),
+    false,
+    [],
+    []
+  ),
+  new QuizOption(
+    "qo10",
+    "Filing A Wage Claim",
+    require("../images/payments-icon.png"),
+    false,
+    [],
+    []
+  ),
+  new QuizOption(
+    "qo11",
+    "(LAST) My employer did not pay me overtime. Lorem Ipsum Long Text. Long Long Long Long Long Text.",
+    require("../images/payments-icon.png"),
+    true,
+    ["lm1", "lm2"],
+    ["w4"]
+  ),
+  new QuizOption(
+    "qo12",
+    "(LAST) My employer did not pay me the minimum wage.",
+    require("../images/payments-icon.png"),
+    true,
+    ["lm3"],
+    ["w2"]
+  ),
+  new QuizOption(
+    "qo13",
+    "(LAST) Mistreatment -> THIS",
+    require("../images/mistreatment-icon.png"),
+    true,
+    ["lm3"],
+    ["c3"]
   ),
 ];

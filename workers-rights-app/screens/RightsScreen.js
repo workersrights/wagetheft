@@ -4,6 +4,7 @@ import ImportedData from "../data/FetchRightsData";
 import Colors from "../constants/Colors";
 import RightsCategoryTile from "../components/RightsCategoryTile";
 import RightsCategoryModal from "../components/RightsCategoryModal";
+import LaunchQuizButton from "../components/LaunchQuizButton";
 
 const RightsScreen = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,12 +22,18 @@ const RightsScreen = (props) => {
 
   const advanceScreenHandler = () => {
     closeModalHandler();
-    
+
     props.navigation.navigate({
       routeName: activeCategoryId != "c7" ? "SubRights" : "FavoriteRights",
       params: {
         categoryId: activeCategoryId, // sending the rights category to the new screen
       },
+    });
+  };
+
+  const launchQuizHandler = () => {
+    props.navigation.navigate({
+      routeName: "QuizHome",
     });
   };
 
@@ -45,18 +52,22 @@ const RightsScreen = (props) => {
   // <RightsModal />
   return (
     <View style={styles.screen}>
-      <FlatList
-        data={ImportedData.getRightsCategories()}
-        renderItem={renderGridItem}
-        numColumns={2}
-      />
+      <View style={styles.flatList}>
+        <FlatList
+          contentContainerStyle={{ paddingVertical: 10 }}
+          data={ImportedData.getRightsCategories()}
+          renderItem={renderGridItem}
+          numColumns={2}
+        />
+        <RightsCategoryModal
+          isVisible={isModalOpen}
+          onCloseModal={closeModalHandler}
+          categoryId={activeCategoryId}
+          onAdvance={advanceScreenHandler}
+        ></RightsCategoryModal>
+      </View>
 
-      <RightsCategoryModal
-        isVisible={isModalOpen}
-        onCloseModal={closeModalHandler}
-        categoryId={activeCategoryId}
-        onAdvance={advanceScreenHandler}
-      ></RightsCategoryModal>
+      <LaunchQuizButton onPress={launchQuizHandler} />
     </View>
   );
 };
@@ -74,10 +85,16 @@ RightsScreen.navigationOptions = {
 };
 
 const styles = StyleSheet.create({
+  experiment: {
+    flex: 1,
+  },
   screen: {
     flex: 1,
     alignItems: "center",
-    margin: 10,
+  },
+  flatList: {
+    flex: 1,
+    alignItems: "center",
   },
 });
 
