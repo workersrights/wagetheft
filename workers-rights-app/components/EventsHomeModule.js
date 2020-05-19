@@ -8,7 +8,7 @@ import {
   Dimensions,
 } from "react-native";
 import { useSelector } from 'react-redux';
-
+import * as moment from "moment";
 
 import EventsHomeCard from "../components/EventsHomeCard.js";
 import Colors from '../constants/Colors';
@@ -17,12 +17,16 @@ const EventsHomeModule = (props) => {
 
   const allEvents = useSelector(state => state.events.allEvents);
   const yourEvents = useSelector(state => state.events.yourEvents);
-  console.log('ALL EVENTS --------------- \n');
-  console.log(allEvents);
+ 
   const displayedEvents = (props.category === "Your Events") ? yourEvents : allEvents.filter(
     event => event.category === props.category);
   
   const len = displayedEvents.length;
+
+  const parseTimeString = (timeStr) => {
+    const date = moment(timeStr).format("L");
+    return date.toString();
+  };
 
   // Case where there are no events
   if(len === 0){
@@ -48,7 +52,7 @@ const EventsHomeModule = (props) => {
     return (
       <EventsHomeCard
         title={itemData.item.title}
-        date={itemData.item.date}
+        date={parseTimeString(itemData.item.date)}
         location={itemData.item.location}
         image={itemData.item.image}
         pressAction={props.cardPress}
