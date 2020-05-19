@@ -13,6 +13,9 @@ import eventsReducer from './store/reducers/events';
 import rightReducer from './store/reducers/rights';
 import rightsReducer from "./store/reducers/rights";
 
+import ImportedData from './data/FetchRightsData.js'; 
+//import './data/PushDummyData'; // to push data to firebase
+
 enableScreens();
 
 const fetchFonts = () => {
