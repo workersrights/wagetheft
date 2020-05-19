@@ -8,7 +8,6 @@ import {
   Dimensions,
 } from "react-native";
 import { useSelector } from 'react-redux';
-import * as moment from "moment";
 
 import EventsHomeCard from "../components/EventsHomeCard.js";
 import Colors from '../constants/Colors';
