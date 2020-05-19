@@ -23,28 +23,28 @@ export const RIGHTSCATEGORIES = [
     "c3",
     "Getting Paid",
     require("../images/payments-icon.png"),
-    "",
-    ""
+    "Not getting paid what your employer owes you? Are you forced to work overtime, but not receiving any extra pay?",
+    "Get the facts on wage and hour laws here."
   ),
   new RightsCategory(
     "c4",
     "Safety & Health",
     require("../images/health-icon.png"),
-    "",
-    ""
+    "Is your workplace unsafe? Are you worried about getting hurt at work? Wondering what to do about it? Have questions about the workers' compensation system?",
+    "Find the answers here."
   ),
   new RightsCategory(
     "c5",
     "Unions",
     require("../images/unions-icon.png"),
-    "",
-    ""
+    "Facing an organizing campaign at work (or want to get involved in one)? Already a union member but don't understand how things work? Fired for organizing or joining a union?",
+    "This section covers information about your rights to organize and be in a union, and how unions work."
   ),
   new RightsCategory(
     "c6",
     "Unemployment",
     require("../images/unemployment-icon.png"),
-    "",
+    "Whether you were suddenly fired, laid off, or asked to resign, you'll want to know what happens now that you are out of a job.",
     ""
   ),
   // new RightsCategory(
