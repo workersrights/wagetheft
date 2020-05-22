@@ -145,7 +145,7 @@ function constructRightsCategories(db) {
             var temp = new RightsCategory(
                 data.val().id,
                 data.val().title,
-                data.val().image,
+                data.val().image, // STRING: NAME OF FILE
                 data.val().subtitle,
                 data.val().description
             );
