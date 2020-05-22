@@ -8,6 +8,8 @@ import { Portal } from "react-native-portalize";
 import RightsSheetContent from "../components/RightsSheetContent";
 import Colors from "../constants/Colors";
 import ImportedData from "../data/FetchRightsData";
+import RightsOrganizationModal from "../components/RightsOrganizationModal";
+
 
 const QuizResultsScreen = (props) => {
   // Get list of selectedQuizEnds
@@ -60,8 +62,25 @@ const QuizResultsScreen = (props) => {
       <OrganizationBox
         title={itemData.item.title}
         image={itemData.item.image}
+        onSelect={() => {
+          openModalHandler(itemData.item.id);
+        }}
       />
     );
+  };
+
+  // org modal stuff
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeOrganizationId, setActiveOrganizationId] = useState("o1");
+
+  const openModalHandler = (id) => {
+    setIsModalOpen(true);
+    setActiveOrganizationId(id);
+  };
+
+  const closeModalHandler = () => {
+    //console.log("closeModalHandler() called.");
+    setIsModalOpen(false);
   };
 
   // Modal  // State Hooks for LearnMore modals.
@@ -110,7 +129,14 @@ const QuizResultsScreen = (props) => {
           />
         ))}
 
-        {/* ------- MODAL ------- */}
+        {/* ------- ORG MODAL ------- */}
+        <RightsOrganizationModal
+            isVisible={isModalOpen}
+            onCloseModal={closeModalHandler}
+            organizationId={activeOrganizationId}
+        ></RightsOrganizationModal>
+
+        {/* ------- LEARNMORE MODAL ------- */}
         <Portal>
           <Modalize ref={modalizeRef} modalStyle={styles.modalize}>
             <View style={styles.modalizeContent}>
