@@ -9,7 +9,7 @@ npm-debug.*
 *.orig.*
 web-build/
 web-report/
-*ApiKeys.js
+*MyApiKeys.js
 
 # macOS
 .DS_Store
