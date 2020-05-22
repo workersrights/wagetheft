@@ -17,7 +17,6 @@ export default class ImportedData {
     // Setters
     static setRightsCategories(data) {
         this.rightsCategories = data;
-        console.log(this.rightsCategories[5]);
     }
     static setSubRights(data) {
         this.subRights = data;

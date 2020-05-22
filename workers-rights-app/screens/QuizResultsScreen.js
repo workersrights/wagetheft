@@ -1,12 +1,13 @@
 import React, { useState, useRef } from "react";
 import { View, Text, FlatList, ScrollView, StyleSheet } from "react-native";
-import { QUIZOPTIONS, SUBRIGHTS, ORGANIZATIONS } from "../data/dummy-data";
+import { QUIZOPTIONS } from "../data/dummy-data";
 import OrganizationBox from "../components/OrganizationBox";
 import LearnMoreItem from "../components/LearnMoreItem";
 import { Modalize } from "react-native-modalize"; // Credits to https://github.com/jeremybarbet/react-native-modalize
 import { Portal } from "react-native-portalize";
 import RightsSheetContent from "../components/RightsSheetContent";
 import Colors from "../constants/Colors";
+import ImportedData from "../data/FetchRightsData";
 
 const QuizResultsScreen = (props) => {
   // Get list of selectedQuizEnds
@@ -36,7 +37,7 @@ const QuizResultsScreen = (props) => {
       }
     }
   }
-  const relevantSubRights = SUBRIGHTS.filter((sr) =>
+  const relevantSubRights = ImportedData.getSubRights().filter((sr) =>
     relevantSubRightIds.includes(sr.id)
   );
 
@@ -49,7 +50,7 @@ const QuizResultsScreen = (props) => {
       }
     }
   }
-  const orgsToShow = ORGANIZATIONS.filter((org) =>
+  const orgsToShow = ImportedData.getOraganizations().filter((org) =>
     orgIdsToShow.includes(org.id)
   );
 
