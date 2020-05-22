@@ -23,7 +23,7 @@ const RightsCategoryModal = (props) => {
             <Text style={styles.title}>{selectedCategory.title}</Text>
             {/* image here */}
             <Image
-              source={{uri: selectedCategory.image}}
+              source={selectedCategory.image}
               resizeMode="contain"
               style={styles.image}
             />

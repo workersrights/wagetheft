@@ -57,6 +57,8 @@ export default class ImportedData {
         
         // Fetch rights categories
         arr1 = await constructRightsCategories(db);
+        arr1 = await fixImages(arr1);
+        arr1.sort((catA, catB) => (catA.id > catB.id) ? 1 : -1); // sort by cat id
         ImportedData.setRightsCategories(arr1);
 
         // Fetch subrights 
@@ -136,6 +138,10 @@ function constructSubrights(db) {
     });
 }
 
+function getImgStr() {
+    return "../images/hiring-icon.png";
+}
+
 function constructRightsCategories(db) {
     var ref = db.ref('rights-categories/');
     var tempRightsCategories = [];
@@ -145,7 +151,8 @@ function constructRightsCategories(db) {
             var temp = new RightsCategory(
                 data.val().id,
                 data.val().title,
-                data.val().image, // STRING: NAME OF FILE
+                // data.val().image, // STRING: NAME OF FILE
+                require("../images/unions-icon.png"),
                 data.val().subtitle,
                 data.val().description
             );
@@ -155,3 +162,23 @@ function constructRightsCategories(db) {
     });
 }
 
+
+function fixImages(arr1) { // janky, temporary fix
+    var catObj;
+    for(catObj of arr1) {
+        if(catObj.id == "c1") {
+            catObj.image = require("../images/hiring-icon.png");
+        } else if(catObj.id == "c2") {
+            catObj.image = require("../images/mistreatment-icon.png");
+        } else if(catObj.id == "c3") {
+            catObj.image = require("../images/payments-icon.png");
+        } else if(catObj.id == "c4") {
+            catObj.image = require("../images/health-icon.png");
+        } else if(catObj.id == "c5") {
+            catObj.image = require("../images/unions-icon.png");
+        } else if(catObj.id == "c6") {
+            catObj.image = require("../images/unemployment-icon.png");
+        }
+    }
+    return arr1;
+}

@@ -3,12 +3,10 @@ import { TouchableOpacity, View, Text, StyleSheet, Image } from "react-native";
 import Colors from "../constants/Colors";
 
 const RightsCategoryTile = (props) => {
-  var strImg = "../images/" + props.image;
-  console.log(strImg);
   return (
     <TouchableOpacity style={styles.gridItem} onPress={props.onSelect}>
       <View style={styles.container}>
-        <Image style={styles.imageStyle} source={{uri: strImg}} />
+        <Image style={styles.imageStyle} source={props.image} />
         <View style={styles.textContainer}>
           <Text>{props.title}</Text>
         </View>
