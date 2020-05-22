@@ -1,0 +1,18 @@
+Final Major TODOs:
+
+* Make portal! By Tuesday
+* Then: Populate data --> All of us, using Rights portal
+
+Mini UI changes:
+* Fix headers running into back buttons --> Alex
+
+Backend changes:
+* Finalize backend with image urls --> Manuka
+* Ensure Event backend is functional (the bug that Alex found) --> Manuka check, Victoria ensure
+
+AUTHENTICATION FAVORITE EVENTS
+* Staring on device -> have a persistent storage list for a list of unique identifiers for events --> Victoria
+
+If Time:
+* Localization / Tranlation! --> Manuka look into
+* If time: Twitter feed instead of Forums page
