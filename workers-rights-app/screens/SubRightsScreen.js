@@ -9,13 +9,16 @@ const SubRightsScreen = (props) => {
   const displayedSubRights = ImportedData.getSubRights().filter(
     (subright) => subright.categoryIds.indexOf(catId) >= 0
   );
+  const parentCategory = ImportedData.getRightsCategories().find(
+    (rightsCat) => rightsCat.id === catId
+  );
 
   const renderSubright = (itemData) => {
     return (
       <SubRightsItem
         title={itemData.item.title}
         emoji={itemData.item.emoji}
-        img={itemData.item.img}
+        img={parentCategory.image}
         onSelect={() => {
           props.navigation.navigate({
             routeName: "RightsDetails",
