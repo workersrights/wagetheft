@@ -57,7 +57,6 @@ export default class ImportedData {
         
         // Fetch rights categories
         arr1 = await constructRightsCategories(db);
-        arr1 = await fixImages(arr1);
         arr1.sort((catA, catB) => (catA.id > catB.id) ? 1 : -1); // sort by cat id
         ImportedData.setRightsCategories(arr1);
 
@@ -138,21 +137,17 @@ function constructSubrights(db) {
     });
 }
 
-function getImgStr() {
-    return "../images/hiring-icon.png";
-}
-
 function constructRightsCategories(db) {
-    var ref = db.ref('rights-categories/');
+    let ref = db.ref('rights-categories/');
     var tempRightsCategories = [];
 
     return ref.once("value").then(function(snapshot) {
         snapshot.forEach(function(data) {
+            let img = getCategoryIcon(data); // get correct icon for ctegory
             var temp = new RightsCategory(
                 data.val().id,
                 data.val().title,
-                // data.val().image, // STRING: NAME OF FILE
-                require("../images/unions-icon.png"),
+                img,
                 data.val().subtitle,
                 data.val().description
             );
@@ -162,23 +157,25 @@ function constructRightsCategories(db) {
     });
 }
 
-
-function fixImages(arr1) { // janky, temporary fix
-    var catObj;
-    for(catObj of arr1) {
-        if(catObj.id == "c1") {
-            catObj.image = require("../images/hiring-icon.png");
-        } else if(catObj.id == "c2") {
-            catObj.image = require("../images/mistreatment-icon.png");
-        } else if(catObj.id == "c3") {
-            catObj.image = require("../images/payments-icon.png");
-        } else if(catObj.id == "c4") {
-            catObj.image = require("../images/health-icon.png");
-        } else if(catObj.id == "c5") {
-            catObj.image = require("../images/unions-icon.png");
-        } else if(catObj.id == "c6") {
-            catObj.image = require("../images/unemployment-icon.png");
-        }
-    }
-    return arr1;
+// need to do this because require() needs a static string passed in...
+// using the data.val().image itself doesn't work...
+// eg. require("../images/" + data.val().image) throws an error
+// https://stackoverflow.com/questions/30854232/react-native-image-require-module-using-dynamic-names
+// using variables with dynamic content doesn't work either
+function getCategoryIcon(data) {
+    var img;
+    if(data.val().image == "hiring-icon.png") {
+        img = require("../images/hiring-icon.png");
+    } else if(data.val().image == "mistreatment-icon.png") {
+        img = require("../images/mistreatment-icon.png");
+    } else if(data.val().image == "payments-icon.png") {
+        img = require("../images/payments-icon.png");
+    } else if(data.val().image == "health-icon.png") {
+        img = require("../images/health-icon.png");
+    } else if(data.val().image == "unions-icon.png") {
+        img = require("../images/unions-icon.png");
+    } else if(data.val().image == "unemployment-icon.png") {
+        img = require("../images/unemployment-icon.png");
+    } 
+    return img;
 }
