@@ -12,7 +12,6 @@ export default class ImportedData {
     static subRights = [];
     static organizations = [];
     static learnMores = [];  
-    static count = 0;
     
     // Setters
     static setRightsCategories(data) {
@@ -27,9 +26,6 @@ export default class ImportedData {
     static setLearnMores(data) {
         this.learnMores = data;
     }
-    static increaseCount() {
-        this.count += 1;
-    }
   
     // Getters
     static getRightsCategories() {
@@ -43,9 +39,6 @@ export default class ImportedData {
     }
     static getLearnMores() {
         return this.learnMores;
-    }
-    static getCount() {
-        return this.count;
     }
 
     static async importAllData() {
@@ -77,12 +70,12 @@ export default class ImportedData {
 }
 
 function constructLearnMores(db) {
-    var ref = db.ref('learn-mores/');
+    let ref = db.ref('learn-mores/');
     var tempLearnMores = [];
 
     return ref.once("value").then(function(snapshot) {
         snapshot.forEach(function(data) {
-            var temp = new learnMore(
+            let temp = new learnMore(
                 data.val().id,
                 data.val().title,
                 data.val().image,
@@ -95,13 +88,13 @@ function constructLearnMores(db) {
 }
 
 function constructOrgs(db) {
-    var ref = db.ref('organizations/');
+    let ref = db.ref('organizations/');
     var tempOrgs = [];
 
     return ref.once("value").then(function(snapshot) {
         //console.log(snapshot.val());
         snapshot.forEach(function(data) {
-            var temp = new Organization(
+            let temp = new Organization(
                 data.val().id,
                 data.val().title,
                 data.val().image,
@@ -116,12 +109,12 @@ function constructOrgs(db) {
 }
 
 function constructSubrights(db) {
-    var ref = db.ref('subrights/');
+    let ref = db.ref('subrights/');
     var tempSubrights = [];
 
     return ref.once("value").then(function(snapshot) {
         snapshot.forEach(function(data) {
-            var temp = new SubRight(
+            let temp = new SubRight(
                 data.val().id, 
                 data.val().categoryIds,
                 data.val().title,
@@ -144,7 +137,7 @@ function constructRightsCategories(db) {
     return ref.once("value").then(function(snapshot) {
         snapshot.forEach(function(data) {
             let img = getCategoryIcon(data); // get correct icon for ctegory
-            var temp = new RightsCategory(
+            let temp = new RightsCategory(
                 data.val().id,
                 data.val().title,
                 img,
