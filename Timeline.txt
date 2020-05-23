@@ -7,7 +7,7 @@ Mini UI changes:
 * Fix headers running into back buttons --> Alex
 
 Backend changes:
-* Finalize backend with image urls --> Manuka
+* Finalize backend with image urls --> Manuka // DONE
 * Ensure Event backend is functional (the bug that Alex found) --> Manuka check, Victoria ensure
 
 AUTHENTICATION FAVORITE EVENTS
