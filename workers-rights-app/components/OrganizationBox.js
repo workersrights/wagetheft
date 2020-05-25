@@ -12,7 +12,7 @@ const OrganizationBox = props => {
     return (
         <TouchableOpacity onPress={props.onSelect} style={styles.box}>
                 <View style={{ flex: 4 }}>
-                    <Image source={props.image} style={styles.imgStyle}/>
+                    <Image source={{uri: props.image}} style={styles.imgStyle}/>
                 </View>
                 <View style={{ flex: 1, justifyContent: 'center', marginLeft: 25}}>
                     <Text numberOfLines={2} style={styles.orgTitle}>{props.title}</Text>

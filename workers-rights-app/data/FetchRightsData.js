@@ -12,12 +12,10 @@ export default class ImportedData {
     static subRights = [];
     static organizations = [];
     static learnMores = [];  
-    static count = 0;
     
     // Setters
     static setRightsCategories(data) {
         this.rightsCategories = data;
-        console.log(this.rightsCategories[5]);
     }
     static setSubRights(data) {
         this.subRights = data;
@@ -27,9 +25,6 @@ export default class ImportedData {
     }
     static setLearnMores(data) {
         this.learnMores = data;
-    }
-    static increaseCount() {
-        this.count += 1;
     }
   
     // Getters
@@ -45,9 +40,6 @@ export default class ImportedData {
     static getLearnMores() {
         return this.learnMores;
     }
-    static getCount() {
-        return this.count;
-    }
 
     static async importAllData() {
         if (!firebase.apps.length) { // only load once
@@ -58,6 +50,7 @@ export default class ImportedData {
         
         // Fetch rights categories
         arr1 = await constructRightsCategories(db);
+        arr1.sort((catA, catB) => (catA.id > catB.id) ? 1 : -1); // sort by cat id
         ImportedData.setRightsCategories(arr1);
 
         // Fetch subrights 
@@ -77,12 +70,12 @@ export default class ImportedData {
 }
 
 function constructLearnMores(db) {
-    var ref = db.ref('learn-mores/');
+    let ref = db.ref('learn-mores/');
     var tempLearnMores = [];
 
     return ref.once("value").then(function(snapshot) {
         snapshot.forEach(function(data) {
-            var temp = new learnMore(
+            let temp = new learnMore(
                 data.val().id,
                 data.val().title,
                 data.val().image,
@@ -95,13 +88,13 @@ function constructLearnMores(db) {
 }
 
 function constructOrgs(db) {
-    var ref = db.ref('organizations/');
+    let ref = db.ref('organizations/');
     var tempOrgs = [];
 
     return ref.once("value").then(function(snapshot) {
         //console.log(snapshot.val());
         snapshot.forEach(function(data) {
-            var temp = new Organization(
+            let temp = new Organization(
                 data.val().id,
                 data.val().title,
                 data.val().image,
@@ -116,12 +109,12 @@ function constructOrgs(db) {
 }
 
 function constructSubrights(db) {
-    var ref = db.ref('subrights/');
+    let ref = db.ref('subrights/');
     var tempSubrights = [];
 
     return ref.once("value").then(function(snapshot) {
         snapshot.forEach(function(data) {
-            var temp = new SubRight(
+            let temp = new SubRight(
                 data.val().id, 
                 data.val().categoryIds,
                 data.val().title,
@@ -138,15 +131,16 @@ function constructSubrights(db) {
 }
 
 function constructRightsCategories(db) {
-    var ref = db.ref('rights-categories/');
+    let ref = db.ref('rights-categories/');
     var tempRightsCategories = [];
 
     return ref.once("value").then(function(snapshot) {
         snapshot.forEach(function(data) {
-            var temp = new RightsCategory(
+            let img = getCategoryIcon(data); // get correct icon for ctegory
+            let temp = new RightsCategory(
                 data.val().id,
                 data.val().title,
-                data.val().image,
+                img,
                 data.val().subtitle,
                 data.val().description
             );
@@ -156,3 +150,25 @@ function constructRightsCategories(db) {
     });
 }
 
+// need to do this because require() needs a static string passed in...
+// using the data.val().image itself doesn't work...
+// eg. require("../images/" + data.val().image) throws an error
+// https://stackoverflow.com/questions/30854232/react-native-image-require-module-using-dynamic-names
+// using variables with dynamic content doesn't work either
+function getCategoryIcon(data) {
+    var img;
+    if(data.val().image == "hiring-icon.png") {
+        img = require("../images/hiring-icon.png");
+    } else if(data.val().image == "mistreatment-icon.png") {
+        img = require("../images/mistreatment-icon.png");
+    } else if(data.val().image == "payments-icon.png") {
+        img = require("../images/payments-icon.png");
+    } else if(data.val().image == "health-icon.png") {
+        img = require("../images/health-icon.png");
+    } else if(data.val().image == "unions-icon.png") {
+        img = require("../images/unions-icon.png");
+    } else if(data.val().image == "unemployment-icon.png") {
+        img = require("../images/unemployment-icon.png");
+    } 
+    return img;
+}

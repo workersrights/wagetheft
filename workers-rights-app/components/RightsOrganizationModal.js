@@ -32,7 +32,7 @@ const RightsOrganizationModal = (props) => {
               {/* image here */}
               <Image
                 resizeMode= "contain"
-                source={selectedOrganization.image}
+                source={{uri: selectedOrganization.image}}
                 style={styles.image}
               />
           </View>
@@ -41,7 +41,7 @@ const RightsOrganizationModal = (props) => {
           <View style={styles.description}>
             {selectedOrganization.description.map(desc => (
               <View style={styles.subheading}>
-                  {console.log(desc)}
+                  {/* {console.log(desc)} */}
                   <Text style={styles.subtitle}>{desc.title}</Text>
                   {desc.data.map(line => (
                     <Text style={styles.info}>{line}</Text>
