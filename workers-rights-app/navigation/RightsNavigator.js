@@ -62,7 +62,7 @@ const RightsTabNavigator = createBottomTabNavigator(
         },
       },
     },
-    Forum: {
+    Feed: {
       screen: FeedNavigator,
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
