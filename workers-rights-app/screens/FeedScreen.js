@@ -1,9 +1,8 @@
 import React from 'react';
 import {View, StyleSheet, Text, FlatList} from 'react-native';
-//import RightsTweets from './RightsTweets-old';
 import GetRightsTweets from "../data/GetRightsTweets"; // loads the data
 import TweetContainer from '../components/TweetContainer'; // component with Tweet UI
-import Colors from "../constants/Colors";
+import Colors from "../constants/Colors"; // for navigation styline
 
 const FeedScreen = props => {
   const renderGridItem = (itemData) => {
@@ -13,7 +12,6 @@ const FeedScreen = props => {
         screenName={itemData.item.screenName}
         text={itemData.item.text}
         userPhoto={itemData.item.userPhoto}
-        onSelect={() => {}}
       />
     );
   };
@@ -35,15 +33,13 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center'
     },
-    flatListStyle: {
-
-    }
+    flatListStyle: { }
 })
 
+// Style the top nav bar
 FeedScreen.navigationOptions = {
   headerTitle: "Your Rights Information Feed",
   headerStyle: {
-    // only color the background of the header if Android to fit the typical platform look
     backgroundColor: Platform.OS === "android" ? Colors.lightOrange : "",
   },
   headerTintColor: Colors.darkOrange,
