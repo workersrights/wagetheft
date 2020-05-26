@@ -1,18 +1,24 @@
 Final Major TODOs:
 
-* Make portal! By Tuesday
-* Then: Populate data --> All of us, using Rights portal
+* Finish Rights Portal By Tuesday --> Ryan
+* Then: use portal to populate data --> All of us, using Rights portal
 
-Mini UI changes:
+UI changes:
 * Fix headers running into back buttons --> Alex
+* Improve UI for Twitter feed --> Alex
+* To fix: on small screens, rights category modal text overlaps with button
 
 Backend changes:
-* Finalize backend with image urls --> Manuka // DONE
-* Ensure Event backend is functional (the bug that Alex found) --> Manuka check, Victoria ensure
+[DONE] Finalize backend with image urls --> Manuka
+* Ensure Event backend is functional (the bug that Alex found) --> Victoria
 
-AUTHENTICATION FAVORITE EVENTS
+!!AUTHENTICATION FAVORITE EVENTS
 * Staring on device -> have a persistent storage list for a list of unique identifiers for events --> Victoria
+
+Logic changes:
+* If no learn mores to display, do not display "Learn more: "
+* In Quiz, ensure that user cannot click next without selecting a quiz option
 
 If Time:
 * Localization / Tranlation! --> Manuka look into
-* If time: Twitter feed instead of Forums page
+[IN PROGRESS] Twitter feed instead of Forums page --> Manuka
