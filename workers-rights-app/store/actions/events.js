@@ -1,9 +1,11 @@
-import Event from '../../models/event'
+import Event from '../../models/event';
+import { getUniqueId } from 'react-native-device-info';
 
+export const SET_UNIQID = 'SET_UNIQID';
 export const SET_YOUR_EVENT = 'SET_YOUR_EVENT';
-export const FETCH_EVENTS = 'FETCH_EVENTS';
+export const FETCH_EVENTS = 'FETCH_EVENTS'
 
-
+const uniqId = getUniqueId();
 /**
  * Fetches both all events and your events from the database
  */
@@ -30,7 +32,7 @@ export const fetchEvents = () => {
                 loadedEvents.push(e);
             }
 
-            const response2 = await fetch('https://workers-rights-46c43.firebaseio.com/testYourEvents.json');
+            const response2 = await fetch(`https://workers-rights-46c43.firebaseio.com/users/${uniqId}.json`);
             if(!response2.ok){
                 throw new Error('Something went wrong!');
             }
@@ -78,7 +80,7 @@ export const addYourFavorites = (
     category,
     description) => {
     return async dispatch => {
-        const response = await fetch(`https://workers-rights-46c43.firebaseio.com/testYourEvents/${id}.json`,
+        const response = await fetch(`https://workers-rights-46c43.firebaseio.com/testYourEvents/users/${uniqId}.json`,
           {
             method: 'PUT',
             headers: {
@@ -105,7 +107,7 @@ export const addYourFavorites = (
  */
 export const removeYourFavorites = id => {
     return async dispatch => {
-        const response = await fetch(`https://workers-rights-46c43.firebaseio.com/testYourEvents/${id}.json`,
+        const response = await fetch(`https://workers-rights-46c43.firebaseio.com/testYourEvents/users/${uniqId}.json`,
           {
             method: 'DELETE'
           }
