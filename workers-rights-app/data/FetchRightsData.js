@@ -1,5 +1,5 @@
 import * as firebase from 'firebase';
-//import firebaseConfig from '../constants/MyApiKeys';
+import firebaseConfig from '../constants/MyApiKeys';
 import RightsCategory from "../models/rightsCategory";
 import SubRight from '../models/subRight';
 import Organization from '../models/organization';
@@ -155,4 +155,3 @@ function constructRightsCategories(db) {
         return tempRightsCategories;  
     });
 }
-
