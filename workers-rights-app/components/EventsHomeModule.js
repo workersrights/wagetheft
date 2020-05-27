@@ -31,8 +31,6 @@ const EventsHomeModule = (props) => {
   while(len > renderNum){
     displayedEvents.pop();
   }
-  const displayedEvents = (props.category === "Your Events") ? yourEvents : allEvents.filter(
-    event => event.category === props.category);
   
   // Case where there are no events
   if(len === 0){
