@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 
 const EventDetails = (props) => {
-  const event = props.event;
+  const event = props.event
 
   const parseDateString = (timeStr) => {
     var moment = require('moment');
@@ -14,6 +14,7 @@ const EventDetails = (props) => {
     const date = moment(timeStr).format("LT");
     return date.toString();
   };
+
 
   return (
     <View style={{ width: "100%", height: "100%" }}>

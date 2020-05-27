@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import Colors from "../constants/Colors";
-import { LEARNMORES } from "../data/dummy-data";
+import ImportedData from "../data/FetchRightsData";
 
 const LearnMoreItem = (props) => {
-  const selectedLearnMore = LEARNMORES.find(
+  const selectedLearnMore = ImportedData.getLearnMores().find(
     (learnmore) => learnmore.id === props.id
   );
 

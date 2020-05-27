@@ -129,4 +129,5 @@ export const setYourEvent = (
     description) => {
     return (!inYourEvent) ? addYourFavorites(id, title, date, image, organizer, location, category, description) :
         removeYourFavorites(id);
+
 };

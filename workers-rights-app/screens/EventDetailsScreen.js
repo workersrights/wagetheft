@@ -11,14 +11,14 @@ import CustomHeaderButton from "../components/CustomHeaderButton";
 
 const EventDetailsScreen = (props) => {
 
-  eventId = props.navigation.getParam("eventId");
+  const eventId = props.navigation.getParam("eventId");
   const inArray = e =>  e.id === eventId;
+
 
   // finds the event given the event id from the parent
   // and sets it as a param so that navigation options
   // can have access to it
-  event = useSelector(state => state.events.allEvents.find(inArray));
-  
+  const event = useSelector(state => state.events.allEvents.find(inArray));
   useEffect(() => {
     props.navigation.setParams({eventTitle: event.title})
 }, [event]);

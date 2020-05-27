@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { View, StyleSheet, FlatList,ActivityIndicator, Button } from "react-native";
+import { View, StyleSheet, FlatList, ActivityIndicator, Button } from "react-native";
 import { useDispatch } from 'react-redux';
 
 import * as eventActions from '../store/actions/events';

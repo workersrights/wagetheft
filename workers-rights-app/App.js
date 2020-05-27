@@ -12,10 +12,16 @@ import ReduxThunk from 'redux-thunk';
 import eventsReducer from './store/reducers/events';
 import rightsReducer from "./store/reducers/rights";
 
-//import ImportedData from './data/FetchRightsData.js'; 
+import ImportedData from './data/FetchRightsData.js'; 
 //import './data/PushDummyData'; // to push data to firebase
 
+
 enableScreens();
+
+async function loadAllData() {
+  fetchFonts();
+  const result = await ImportedData.importAllData();
+}
 
 const fetchFonts = () => {
   Font.loadAsync({
@@ -27,13 +33,13 @@ const fetchFonts = () => {
   });
 };
 
+
 export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
-
   if (!dataLoaded) {
     return (
       <AppLoading
-        startAsync={fetchFonts}
+        startAsync={loadAllData}
         onFinish={() => setDataLoaded(true)}
       />
     );
