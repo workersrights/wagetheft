@@ -17,9 +17,6 @@ const EventsHomeModule = (props) => {
   const allEvents = useSelector(state => state.events.allEvents);
   const yourEvents = useSelector(state => state.events.yourEvents);
  
-  //if(allEvents === undefined || yourEvents === undefined)
-    //return;
-
   const parseTimeString = (timeStr) => {
        var moment = require('moment');
        const date = moment(timeStr).format("LL");
@@ -28,17 +25,15 @@ const EventsHomeModule = (props) => {
 
   const displayedEvents = (props.category === "Your Events") ? yourEvents : allEvents.filter(
     event => event.category === props.category);
-
-  let len = 0;  
-  //if(displayedEvents !== undefined && displayedEvents[0]!== undefined) {
-    // Set a limit on how many cards an be rendered
-    len = displayedEvents.length;
-    const renderNum = 4;
-    while(len > renderNum){
-      displayedEvents.pop();
-    }
-  //}
-
+  
+  const len = displayedEvents.length;
+  const renderNum = 4;
+  while(len > renderNum){
+    displayedEvents.pop();
+  }
+  const displayedEvents = (props.category === "Your Events") ? yourEvents : allEvents.filter(
+    event => event.category === props.category);
+  
   // Case where there are no events
   if(len === 0){
     return(
@@ -52,7 +47,7 @@ const EventsHomeModule = (props) => {
       </View>
     </View>);
   }
-
+      
   const renderHomeCards = (itemData) => {
     return (
       <EventsHomeCard
