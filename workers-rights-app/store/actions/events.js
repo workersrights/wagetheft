@@ -1,11 +1,12 @@
 import Event from '../../models/event';
-import { getUniqueId } from 'react-native-device-info';
+import Constants from 'expo-constants';
 
 export const SET_UNIQID = 'SET_UNIQID';
 export const SET_YOUR_EVENT = 'SET_YOUR_EVENT';
 export const FETCH_EVENTS = 'FETCH_EVENTS'
 
-const uniqId = getUniqueId();
+const uniqId = Constants.installationId;
+console.log(uniqId)
 /**
  * Fetches both all events and your events from the database
  */
@@ -80,7 +81,7 @@ export const addYourFavorites = (
     category,
     description) => {
     return async dispatch => {
-        const response = await fetch(`https://workers-rights-46c43.firebaseio.com/testYourEvents/users/${uniqId}.json`,
+        const response = await fetch(`https://workers-rights-46c43.firebaseio.com/users/${uniqId}/${id}.json`,
           {
             method: 'PUT',
             headers: {
@@ -107,7 +108,7 @@ export const addYourFavorites = (
  */
 export const removeYourFavorites = id => {
     return async dispatch => {
-        const response = await fetch(`https://workers-rights-46c43.firebaseio.com/testYourEvents/users/${uniqId}.json`,
+        const response = await fetch(`https://workers-rights-46c43.firebaseio.com/testYourEvents/users/${uniqId}/${id}.json`,
           {
             method: 'DELETE'
           }
