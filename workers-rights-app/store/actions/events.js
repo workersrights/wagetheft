@@ -6,7 +6,7 @@ export const SET_YOUR_EVENT = 'SET_YOUR_EVENT';
 export const FETCH_EVENTS = 'FETCH_EVENTS'
 
 const uniqId = Constants.installationId;
-console.log(uniqId)
+
 /**
  * Fetches both all events and your events from the database
  */
@@ -40,6 +40,7 @@ export const fetchEvents = () => {
             const resData2 = await response2.json();
             const loadedYourEvents = [];
             for(const key in resData2) {
+                console.log(key);
                 const e = new Event(
                     key,
                     resData[key].title,
@@ -108,9 +109,9 @@ export const addYourFavorites = (
  */
 export const removeYourFavorites = id => {
     return async dispatch => {
-        const response = await fetch(`https://workers-rights-46c43.firebaseio.com/testYourEvents/users/${uniqId}/${id}.json`,
+        const response = await fetch(`https://workers-rights-46c43.firebaseio.com/users/${uniqId}/${id}.json`,
           {
-            method: 'DELETE'
+            method: 'DELETE',
           }
         );
         dispatch({type: SET_YOUR_EVENT, id: id});
@@ -127,6 +128,7 @@ export const setYourEvent = (
     location,
     category,
     description) => {
+        console.log(inYourEvent)
     return (!inYourEvent) ? addYourFavorites(id, title, date, image, organizer, location, category, description) :
         removeYourFavorites(id);
 
