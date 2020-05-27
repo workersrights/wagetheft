@@ -10,7 +10,6 @@ import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 
 import eventsReducer from './store/reducers/events';
-import rightReducer from './store/reducers/rights';
 import rightsReducer from "./store/reducers/rights";
 
 //import ImportedData from './data/FetchRightsData.js'; 
