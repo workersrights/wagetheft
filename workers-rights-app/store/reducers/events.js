@@ -1,4 +1,3 @@
-import { EVENTS } from '../../data/dummy-data';
 import { SET_YOUR_EVENT, FETCH_EVENTS } from '../actions/events';
 
 const initialState = {
