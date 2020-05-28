@@ -78,7 +78,6 @@ function constructLearnMores(db) {
             let temp = new learnMore(
                 data.val().id,
                 data.val().title,
-                data.val().image,
                 data.val().informationChunks
             )
             tempLearnMores.push(temp);
