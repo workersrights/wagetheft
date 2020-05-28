@@ -29,7 +29,7 @@ const RightsDetailsScreen = (props) => {
 
   // org modal stuff
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeOrganizationId, setActiveOrganizationId] = useState("o1");
+  const [activeOrganizationId, setActiveOrganizationId] = useState("");
 
   const openModalHandler = (id) => {
     setIsModalOpen(true);
@@ -47,7 +47,7 @@ const RightsDetailsScreen = (props) => {
   const renderOrgItem = (itemData) => {
     return (
       <OrganizationBox
-        title={itemData.item.title}
+        title={itemData.item.name}
         image={itemData.item.image}
         onSelect={() => {
           openModalHandler(itemData.item.id);
@@ -82,6 +82,7 @@ const RightsDetailsScreen = (props) => {
             horizontal={true}
             showsHorizontalScrollIndicator={false}
           />
+              
         </View>
 
         {/* ------------- LEARN MORE SECTION -------------- */}
@@ -96,12 +97,14 @@ const RightsDetailsScreen = (props) => {
           />
         ))}
       </ScrollView>
-
-      <RightsOrganizationModal
-        isVisible={isModalOpen}
-        onCloseModal={closeModalHandler}
-        organizationId={activeOrganizationId}
-      ></RightsOrganizationModal>
+     { 
+       activeOrganizationId !== "" &&
+        <RightsOrganizationModal
+          isVisible={isModalOpen}
+          onCloseModal={closeModalHandler}
+          organizationId={activeOrganizationId}
+        ></RightsOrganizationModal> 
+     }
 
       <Portal>
         <Modalize ref={modalizeRef} modalStyle={styles.modalize}>
