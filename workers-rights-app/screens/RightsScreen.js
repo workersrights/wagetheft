@@ -53,6 +53,7 @@ const RightsScreen = (props) => {
     <View style={styles.screen}>
       <View style={styles.flatList}>
         <FlatList
+          showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingVertical: 10 }}
           data={ImportedData.getRightsCategories()}
           renderItem={renderGridItem}

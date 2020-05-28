@@ -9,8 +9,8 @@ const RightsOrganizationModal = (props) => {
 
   const selectedOrganization =  ImportedData.getOraganizations().filter((organization) => 
                                                   organization.id === props.organizationId)[0];
-  console.log(selectedOrganization);
-  console.log(props.organizationId === "");
+  const deviceHeight = Dimensions.get("window").height;
+  const deviceWidth = Dimensions.get("window").width;
 
   return (
     <Modal 
