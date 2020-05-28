@@ -121,9 +121,12 @@ RightsDetailsScreen.navigationOptions = (navigationData) => {
   );
 
   if (parentSubRight.title.length > 25) {
-    return { headerTitle: parentSubRight.title.substring(0, 21) + "..." };
+    return {
+      headerTitle: parentSubRight.title.substring(0, 21) + "...",
+      headerBackTitle: "Back",
+    };
   } else {
-    return { headerTitle: parentSubRight.title };
+    return { headerTitle: parentSubRight.title, headerBackTitle: "Back" };
   }
 };
 
