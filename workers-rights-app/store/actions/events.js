@@ -10,7 +10,7 @@ export const setYourEvent = eventId => {
             body: JSON.stringify(eventId)
         });
         const resData = await response.json();
-        console.log(resData);
+        //console.log(resData);
 
         dispatch({ 
             type: SET_YOUR_EVENT, 
