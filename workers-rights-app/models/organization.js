@@ -1,7 +1,8 @@
 class Organization {
-    constructor(id, title, image, description, rights) {
+    constructor(id, name, abbrev, image, description, rights) {
         this.id = id;
-        this.title = title;
+        this.name = name;
+        this.abbrev = abbrev;
         this.image = image;
         this.description = description;
         this.rights = rights; // array of rights the agency helps with

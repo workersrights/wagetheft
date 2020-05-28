@@ -6,12 +6,11 @@ import Modal from 'react-native-modal';
 import ModalCloseButton from "../components/ModalCloseButton.js"
 
 const RightsOrganizationModal = (props) => {
-  const selectedOrganization = ImportedData.getOraganizations().filter(
-    (organization) => organization.id === props.organizationId
-  )[0];
 
-  const deviceWidth = Dimensions.get("window").width;
-  const deviceHeight = Dimensions.get("window").height;
+  const selectedOrganization =  ImportedData.getOraganizations().filter((organization) => 
+                                                  organization.id === props.organizationId)[0];
+  console.log(selectedOrganization);
+  console.log(props.organizationId === "");
 
   return (
     <Modal 
@@ -23,7 +22,7 @@ const RightsOrganizationModal = (props) => {
       onBackdropPress={props.onCloseModal}
       >
       <View style={styles.modal}>
-        <Text style={styles.title}>{selectedOrganization.title}</Text>
+        <Text style={styles.title}>{selectedOrganization.abbrev}</Text>
         <ModalCloseButton onCloseModal={props.onCloseModal}/>
         <ScrollView 
           showsVerticalScrollIndicator={false}

@@ -60,7 +60,7 @@ const QuizResultsScreen = (props) => {
   const renderOrgItem = (itemData) => {
     return (
       <OrganizationBox
-        title={itemData.item.title}
+        title={itemData.item.name}
         image={itemData.item.image}
         onSelect={() => {
           openModalHandler(itemData.item.id);
@@ -71,7 +71,7 @@ const QuizResultsScreen = (props) => {
 
   // org modal stuff
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeOrganizationId, setActiveOrganizationId] = useState("o1");
+  const [activeOrganizationId, setActiveOrganizationId] = useState("");
 
   const openModalHandler = (id) => {
     setIsModalOpen(true);
@@ -104,6 +104,7 @@ const QuizResultsScreen = (props) => {
         </Text>
 
         {/* Organization section */}
+       
         <Text style={styles.section}>
           Contact the following agencies for help:{" "}
         </Text>
@@ -129,11 +130,12 @@ const QuizResultsScreen = (props) => {
         ))}
 
         {/* ------- ORG MODAL ------- */}
+        {activeOrganizationId !== "" &&
         <RightsOrganizationModal
             isVisible={isModalOpen}
             onCloseModal={closeModalHandler}
             organizationId={activeOrganizationId}
-        ></RightsOrganizationModal>
+        ></RightsOrganizationModal>}
 
         {/* ------- LEARNMORE MODAL ------- */}
         <Portal>

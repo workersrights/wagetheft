@@ -94,11 +94,11 @@ function constructOrgs(db) {
         //console.log(snapshot.val());
         snapshot.forEach(function(data) {
             let temp = new Organization(
-                data.val().id,
-                data.val().title,
+                data.key,
+                data.val().name,
+                data.val().abbrev,
                 data.val().image,
                 data.val().description,
-                data.val().link,
                 data.val().rights
             )
             tempOrgs.push(temp);
