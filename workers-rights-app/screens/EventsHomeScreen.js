@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, FlatList } from "react-native";
-
+import Colors from "../constants/Colors";
 import EventsHomeModule from "../components/EventsHomeModule.js";
 
 const categoryTitles = [
@@ -12,7 +12,6 @@ const categoryTitles = [
 //In the EventCategoryScreen use props.navigation.categoryId or props.navigation.categoryTitle
 //This allows you to access the pertinent info from this screen
 const EventsHomeScreen = (props) => {
-
   const renderEventModules = (itemData) => {
     return (
       <EventsHomeModule
@@ -31,7 +30,7 @@ const EventsHomeScreen = (props) => {
             routeName: "EventDetails",
             params: {
               eventId: id,
-            }
+            },
           });
         }}
         lastIndex={itemData.index === categoryTitles.length - 1}
@@ -49,6 +48,18 @@ const EventsHomeScreen = (props) => {
       />
     </View>
   );
+};
+
+EventsHomeScreen.navigationOptions = {
+  headerTitle: "Events",
+  headerStyle: {
+    // only color the background of the header if Android to fit the typical platform look
+    backgroundColor: Platform.OS === "android" ? Colors.lightOrange : "",
+  },
+  headerTintColor: Colors.darkOrange,
+  headerTitleStyle: {
+    fontWeight: "bold",
+  },
 };
 
 const styles = StyleSheet.create({
