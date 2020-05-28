@@ -1,10 +1,10 @@
-import React from 'react';
-import {View, StyleSheet, Text, FlatList} from 'react-native';
+import React from "react";
+import { View, StyleSheet, Text, FlatList } from "react-native";
 import GetRightsTweets from "../data/GetRightsTweets"; // loads the data
-import TweetContainer from '../components/TweetContainer'; // component with Tweet UI
+import TweetContainer from "../components/TweetContainer"; // component with Tweet UI
 import Colors from "../constants/Colors"; // for navigation styline
 
-const FeedScreen = props => {
+const FeedScreen = (props) => {
   const renderGridItem = (itemData) => {
     return (
       <TweetContainer
@@ -16,25 +16,27 @@ const FeedScreen = props => {
     );
   };
 
-  return(
+  return (
     <View style={styles.screen}>
       <FlatList
-          contentContainerStyle={styles.flatListStyle}
-          data={GetRightsTweets.getLoadedTweets()}
-          renderItem={renderGridItem}
-          numColumns={1}
-        />
+        contentContainerStyle={styles.flatListStyle}
+        data={GetRightsTweets.getLoadedTweets()}
+        renderItem={renderGridItem}
+        numColumns={1}
+        showsVerticalScrollIndicator={false}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        alignItems: 'center'
-    },
-    flatListStyle: { }
-})
+  screen: {
+    flex: 1,
+    alignItems: "center",
+    paddingTop: 10,
+  },
+  flatListStyle: {},
+});
 
 // Style the top nav bar
 FeedScreen.navigationOptions = {
