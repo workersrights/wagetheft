@@ -17,20 +17,24 @@ const EventsHomeModule = (props) => {
   const allEvents = useSelector(state => state.events.allEvents);
   const yourEvents = useSelector(state => state.events.yourEvents);
  
-  const parseTimeString = (timeStr) => {
-       var moment = require('moment');
-       const date = moment(timeStr).format("LL");
-       return date.toString();
+  const parseDateString = (timeStr) => {
+    var moment = require('moment');
+    const date = moment(timeStr).format("MMMM Mo, YYYY");
+    return date.toString();
   };
 
-  const displayedEvents = (props.category === "Your Events") ? yourEvents : allEvents.filter(
-    event => event.category === props.category);
-  
-  const len = displayedEvents.length;
+  let n = 0;
   const renderNum = 4;
-  while(len > renderNum){
-    displayedEvents.pop();
+  const filterEvents = event => {
+    if(event.category === props.category && n <= renderNum) {
+      n++;
+      return true;
+    }
+    return false;
   }
+
+  const displayedEvents = (props.category === "Your Events") ? yourEvents : allEvents.filter(filterEvents);
+  const len = displayedEvents.length;
   
   // Case where there are no events
   if(len === 0){
@@ -50,7 +54,7 @@ const EventsHomeModule = (props) => {
     return (
       <EventsHomeCard
         title={itemData.item.title}
-        date={parseTimeString(itemData.item.date)}
+        date={parseDateString(itemData.item.date)}
         location={itemData.item.location}
         image={itemData.item.imageUrl}
         pressAction={props.cardPress}
