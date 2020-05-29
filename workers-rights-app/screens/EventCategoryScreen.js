@@ -59,7 +59,7 @@ const EventCategoryScreen = props => {
   const renderEmptyList = () => {
     return (
       <View style={styles.emptyListContainer}>
-        <Text style={styles.noEventsText}>Add some events by tapping on the star in each event!</Text>
+        <Text style={styles.noEventsText}>There are no events here. Add some by tapping on the star in each event!</Text>
       </View>
     );
   }
