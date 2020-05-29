@@ -25,7 +25,7 @@ export default class GetRightsTweets {
 
         let screenNames = ["NLRB", "CA_EDD", "USDOL"];
         for(var name of screenNames) {
-            const res = await getUserRecentTweets(twitterObj, name, 3);
+            const res = await getUserRecentTweets(twitterObj, name, 4);
             tempArr = [...tempArr, ...res]
         }
         shuffleArray(tempArr);
