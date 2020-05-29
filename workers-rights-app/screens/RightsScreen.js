@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { View, StyleSheet, FlatList, Platform } from "react-native";
+import { View, StyleSheet, FlatList, Platform, Dimensions } from "react-native";
 import ImportedData from "../data/FetchRightsData";
 import Colors from "../constants/Colors";
 import RightsCategoryTile from "../components/RightsCategoryTile";
@@ -49,15 +49,26 @@ const RightsScreen = (props) => {
     );
   };
 
+  const renderQuizButton = () => {
+    return (
+      <View>
+        <LaunchQuizButton onPress={launchQuizHandler} />
+
+      </View>
+    );
+  }
   // <RightsModal />
   return (
     <View style={styles.screen}>
       <View style={styles.flatList}>
         <FlatList
-          contentContainerStyle={{ paddingVertical: 10 }}
+         // contentContainerStyle={{ paddingVertical: 10 }}
           data={ImportedData.getRightsCategories()}
           renderItem={renderGridItem}
           numColumns={2}
+          ListHeaderComponent={renderQuizButton}
+          showsVerticalScrollIndicator={false}
+          ho
         />
         <RightsCategoryModal
           isVisible={isModalOpen}
@@ -67,7 +78,7 @@ const RightsScreen = (props) => {
         ></RightsCategoryModal>
       </View>
 
-      <LaunchQuizButton onPress={launchQuizHandler} />
+
     </View>
   );
 };
@@ -94,6 +105,7 @@ const styles = StyleSheet.create({
   },
   flatList: {
     flex: 1,
+    width: Dimensions.get('screen').width*0.86,
     alignItems: "center",
   },
 });
