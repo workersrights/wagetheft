@@ -17,7 +17,7 @@ const LaunchQuizButton = (props) => {
           />
         </View>
         <View style={styles.textContainer}>
-          <Text style={styles.text}>Don't know where to look? Take Quiz!</Text>
+          <Text style={styles.text}>Don't know where to look?   Take Quiz!</Text>
         </View>
       </View>
     </TouchableOpacity>
