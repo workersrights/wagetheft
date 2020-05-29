@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { View, StyleSheet, FlatList, ActivityIndicator, Button } from "react-native";
+import { View, StyleSheet, FlatList, ActivityIndicator, RefreshControl } from "react-native";
 import { useDispatch } from 'react-redux';
 
 import * as eventActions from '../store/actions/events';
@@ -19,14 +19,15 @@ const EventsHomeScreen = (props) => {
   const dispatch = useDispatch();
   
   const [isLoading, setIsLoading] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   const loadEvents = useCallback (async () => {
-    setIsLoading(true);
+    setIsRefreshing(true);
     await dispatch(eventActions.fetchEvents());
-    setIsLoading(false);
+    setIsRefreshing(false);
   }, [dispatch]);
 
-  // Listener if revisting page
+  //Listener if revisting page
   useEffect (() => {
     const willFocusSub = props.navigation.addListener('willFocus', loadEvents);
     return () => {
@@ -36,7 +37,10 @@ const EventsHomeScreen = (props) => {
 
   // Load events
   useEffect(() => {
-    loadEvents();
+    setIsLoading(true);
+    loadEvents().then(() => {
+      setIsLoading(false);
+    });
   }, [dispatch, loadEvents]);
 
 
@@ -74,6 +78,16 @@ const EventsHomeScreen = (props) => {
   return (
     <View style={styles.screen}>
       <FlatList
+        //onRefresh = {loadEvents}
+        //refreshing = {isRefreshing}
+        refreshControl={
+          <RefreshControl
+              refreshing={isRefreshing}
+              onRefresh={loadEvents}
+              tintColor={Colors.darkOrange}
+              colors={[Colors.darkOrange]} 
+           />
+        }
         style={{ paddingTop: 40 }}
         data={categoryTitles}
         renderItem={renderEventModules}
@@ -82,6 +96,7 @@ const EventsHomeScreen = (props) => {
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   screen: {
