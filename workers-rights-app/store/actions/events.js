@@ -40,17 +40,7 @@ export const fetchEvents = () => {
             const resData2 = await response2.json();
             const loadedYourEvents = [];
             for(const key in resData2) {
-                console.log(key);
-                const e = new Event(
-                    key,
-                    resData[key].title,
-                    resData[key].date,
-                    resData[key].image,
-                    resData[key].organizer,
-                    resData[key].location,
-                    resData[key].category,
-                    resData[key].description
-                )
+                const e = loadedEvents.find(event => event.id === key);
                 loadedYourEvents.push(e);
             }
 
@@ -128,7 +118,6 @@ export const setYourEvent = (
     location,
     category,
     description) => {
-        console.log(inYourEvent)
     return (!inYourEvent) ? addYourFavorites(id, title, date, image, organizer, location, category, description) :
         removeYourFavorites(id);
 
