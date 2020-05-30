@@ -66,7 +66,7 @@ const RightsScreen = (props) => {
           data={ImportedData.getRightsCategories()}
           renderItem={renderGridItem}
           numColumns={2}
-          ListHeaderComponent={renderQuizButton}
+          ListFooterComponent={renderQuizButton}
           showsVerticalScrollIndicator={false}
           ho
         />
