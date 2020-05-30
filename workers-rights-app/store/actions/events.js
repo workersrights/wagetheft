@@ -89,6 +89,7 @@ export const addYourFavorites = (
             })
           }
         );
+        console.log('added\n');
         dispatch({type: SET_YOUR_EVENT, id: id});
       };
 };
@@ -104,6 +105,7 @@ export const removeYourFavorites = id => {
             method: 'DELETE',
           }
         );
+        console.log('removed\n');
         dispatch({type: SET_YOUR_EVENT, id: id});
       };
 };
