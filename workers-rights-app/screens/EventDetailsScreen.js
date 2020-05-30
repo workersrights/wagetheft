@@ -27,7 +27,7 @@ const EventDetailsScreen = (props) => {
   const dispatch = useDispatch();
 
   // boolean if an event is in "Your Events"
-  const inYourEvents = useSelector(state => state.events.yourEvents.some(inArray));
+  let inYourEvents = useSelector(state => state.events.yourEvents.some(inArray));
   
   // Handerler to dispatch the action
   const setYourEventHandeler = useCallback(() => {
@@ -41,6 +41,7 @@ const EventDetailsScreen = (props) => {
         event.location,
         event.category,
         event.description));
+        inYourEvents = !inYourEvents;
   }, [dispatch, eventId]);
 
 
