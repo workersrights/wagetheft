@@ -1,10 +1,23 @@
-import React from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect, useCallback } from 'react';
+import { View, StyleSheet, FlatList, Text, RefreshControl, Dimensions } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 import EventCategoryCard from '../components/EventCategoryCard';
+import * as eventActions from '../store/actions/events';
+import Colors from '../constants/Colors';
 
 const EventCategoryScreen = props => {
+
+  const dispatch = useDispatch();
+
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const loadEvents = useCallback(async () => {
+    setIsRefreshing(true);
+    await dispatch(eventActions.fetchEvents());
+    setIsRefreshing(false);
+  }, [dispatch]);
 
   const allEvents = useSelector(state => state.events.allEvents);
   const yourEvents = useSelector(state => state.events.yourEvents);
@@ -17,10 +30,10 @@ const EventCategoryScreen = props => {
         return (
           <EventCategoryCard
             title={itemData.item.title}
-            date={itemData.item.date}
-            time={itemData.item.time}
+            date={itemData.item.Date()}
+            time={itemData.item.Time()}
             location={itemData.item.location}
-            image={itemData.item.image}
+            image={itemData.item.imageUrl}
             pressAction={(id) => {
                 props.navigation.navigate({
                   routeName: "EventDetails",
@@ -34,22 +47,62 @@ const EventCategoryScreen = props => {
         );
       };
     
-    return (
-       <View style={styles.container}>
-         <FlatList
-           data={displayedEvents}
-           renderItem={renderCards}
-           showsVerticalScrollIndicator={false}
-         />
-       </View>
+    const renderEmptyList = () => {
+      return (   
+        <View style={styles.emptyListContainer}>
+          <Text style={styles.noEventsText}>There are no events here. Add some by tapping on the star in each event!</Text>
+        </View>
     );
-}    
+  }
+
+  const renderSeparator = () => {
+    return(
+      <View style={styles.separator} />
+    );
+}
+ 
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={displayedEvents}
+        renderItem={renderCards}
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            refreshing={isRefreshing}
+            onRefresh={loadEvents}
+            tintColor={Colors.darkOrange}
+            colors={[Colors.darkOrange]}
+          />
+        }
+        ListEmptyComponent={renderEmptyList}
+        ItemSeparatorComponent={renderSeparator}
+      />
+    </View>
+  );
+}
 const styles = StyleSheet.create({      
     container: {
     flex: 1,
     alignItems: 'center',
     marginTop: 10,
     paddingHorizontal: 10
+    },
+    emptyListContainer: {
+      height: Dimensions.get('window').height * 0.5,
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 10
+    },
+    noEventsText: {
+      fontSize: 18,
+      fontFamily: "nunito-regular",
+      color: Colors.darkGray,
+      textAlign: 'center'
+    },
+    separator: {
+      borderBottomColor: Colors.darkGray,
+      borderBottomWidth: 0.5,
     }
 });
 
