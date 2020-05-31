@@ -4,12 +4,12 @@ Final Major TODOs:
 * Then: use portal to populate data --> All of us, using Rights portal
 
 UI changes:
-* Fix headers running into back buttons --> Alex
+* Fix headers running into back buttons --> Alex (DONE)
 * Improve UI for Twitter feed --> Alex
 * To fix: on small screens, rights category modal text overlaps with button
 
 Backend changes:
-[DONE] Finalize backend with image urls --> Manuka
+[DONE] Finalize backend with image urls --> Manuka (DONE)
 * Ensure Event backend is functional (the bug that Alex found) --> Victoria
 
 !!AUTHENTICATION FAVORITE EVENTS
@@ -22,3 +22,15 @@ Logic changes:
 If Time:
 * Localization / Tranlation! --> Manuka look into
 [IN PROGRESS] Twitter feed instead of Forums page --> Manuka
+
+TODOS (as of 28 May meeting)
+1) Populate rights:
+    - Getting Hired & Unions (Alex)
+    - Termination & Unemployment (Manuka)
+    - Safety & Health (Victoria)
+    - Getting Paid & Misc (Angel)
+    - Mistreatment (Ryan)
+2) Check on Victoria's branch
+3) Quiz logic changes (Next and Done problem - Ryan)
+4) Keep exploring ways to do multiple languages (after everything)
+5) Keep testing the UI, screenshot the things to fix, compile all of those by our weekend call (8pm Saturday)

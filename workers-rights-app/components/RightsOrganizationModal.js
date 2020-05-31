@@ -6,12 +6,11 @@ import Modal from 'react-native-modal';
 import ModalCloseButton from "../components/ModalCloseButton.js"
 
 const RightsOrganizationModal = (props) => {
-  const selectedOrganization = ImportedData.getOraganizations().filter(
-    (organization) => organization.id === props.organizationId
-  )[0];
 
-  const deviceWidth = Dimensions.get("window").width;
+  const selectedOrganization =  ImportedData.getOraganizations().filter((organization) => 
+                                                  organization.id === props.organizationId)[0];
   const deviceHeight = Dimensions.get("window").height;
+  const deviceWidth = Dimensions.get("window").width;
 
   return (
     <Modal 
@@ -23,7 +22,7 @@ const RightsOrganizationModal = (props) => {
       onBackdropPress={props.onCloseModal}
       >
       <View style={styles.modal}>
-        <Text style={styles.title}>{selectedOrganization.title}</Text>
+        <Text style={styles.title}>{selectedOrganization.abbrev}</Text>
         <ModalCloseButton onCloseModal={props.onCloseModal}/>
         <ScrollView 
           showsVerticalScrollIndicator={false}
@@ -32,7 +31,7 @@ const RightsOrganizationModal = (props) => {
               {/* image here */}
               <Image
                 resizeMode= "contain"
-                source={selectedOrganization.image}
+                source={{uri: selectedOrganization.image}}
                 style={styles.image}
               />
           </View>
@@ -41,7 +40,7 @@ const RightsOrganizationModal = (props) => {
           <View style={styles.description}>
             {selectedOrganization.description.map(desc => (
               <View style={styles.subheading}>
-                  {console.log(desc)}
+                  {/* {console.log(desc)} */}
                   <Text style={styles.subtitle}>{desc.title}</Text>
                   {desc.data.map(line => (
                     <Text style={styles.info}>{line}</Text>

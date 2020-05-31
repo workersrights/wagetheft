@@ -1,10 +1,16 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { View, StyleSheet, FlatList, ActivityIndicator, RefreshControl } from "react-native";
-import { useDispatch } from 'react-redux';
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  ActivityIndicator,
+  RefreshControl,
+} from "react-native";
+import { useDispatch } from "react-redux";
 
-import * as eventActions from '../store/actions/events';
+import * as eventActions from "../store/actions/events";
 import EventsHomeModule from "../components/EventsHomeModule.js";
-import Colors from '../constants/Colors';
+import Colors from "../constants/Colors";
 
 const categoryTitles = [
   { id: "t1", title: "Your Events" },
@@ -15,24 +21,23 @@ const categoryTitles = [
 //In the EventCategoryScreen use props.navigation.categoryId or props.navigation.categoryTitle
 //This allows you to access the pertinent info from this screen
 const EventsHomeScreen = (props) => {
-
   const dispatch = useDispatch();
-  
+
   const [isLoading, setIsLoading] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  const loadEvents = useCallback (async () => {
+  const loadEvents = useCallback(async () => {
     setIsRefreshing(true);
     await dispatch(eventActions.fetchEvents());
     setIsRefreshing(false);
   }, [dispatch]);
 
   //Listener if revisting page
-  useEffect (() => {
-    const willFocusSub = props.navigation.addListener('willFocus', loadEvents);
+  useEffect(() => {
+    const willFocusSub = props.navigation.addListener("willFocus", loadEvents);
     return () => {
       willFocusSub.remove();
-    }
+    };
   }, [loadEvents]);
 
   // Load events
@@ -42,7 +47,6 @@ const EventsHomeScreen = (props) => {
       setIsLoading(false);
     });
   }, [dispatch, loadEvents]);
-
 
   const renderEventModules = (itemData) => {
     return (
@@ -62,7 +66,7 @@ const EventsHomeScreen = (props) => {
             routeName: "EventDetails",
             params: {
               eventId: id,
-            }
+            },
           });
         }}
         lastIndex={itemData.index === categoryTitles.length - 1}
@@ -70,10 +74,12 @@ const EventsHomeScreen = (props) => {
     );
   };
 
-  if(isLoading) {
-    return <View style = {styles.center}>
-      <ActivityIndicator size = 'large' color = {Colors.darkOrange}/>
-    </View>
+  if (isLoading) {
+    return (
+      <View style={styles.center}>
+        <ActivityIndicator size="large" color={Colors.darkOrange} />
+      </View>
+    );
   }
   return (
     <View style={styles.screen}>
@@ -82,11 +88,11 @@ const EventsHomeScreen = (props) => {
         //refreshing = {isRefreshing}
         refreshControl={
           <RefreshControl
-              refreshing={isRefreshing}
-              onRefresh={loadEvents}
-              tintColor={Colors.darkOrange}
-              colors={[Colors.darkOrange]} 
-           />
+            refreshing={isRefreshing}
+            onRefresh={loadEvents}
+            tintColor={Colors.darkOrange}
+            colors={[Colors.darkOrange]}
+          />
         }
         style={{ paddingTop: 40 }}
         data={categoryTitles}
@@ -97,6 +103,17 @@ const EventsHomeScreen = (props) => {
   );
 };
 
+EventsHomeScreen.navigationOptions = {
+  headerTitle: "Events",
+  headerStyle: {
+    // only color the background of the header if Android to fit the typical platform look
+    backgroundColor: Platform.OS === "android" ? Colors.lightOrange : "",
+  },
+  headerTintColor: Colors.darkOrange,
+  headerTitleStyle: {
+    fontWeight: "bold",
+  },
+};
 
 const styles = StyleSheet.create({
   screen: {
@@ -105,9 +122,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   center: {
-    flex : 1,
-    justifyContent: 'center', 
-    alignItems: 'center'}
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
 
 export default EventsHomeScreen;

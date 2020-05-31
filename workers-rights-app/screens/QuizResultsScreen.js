@@ -1,12 +1,15 @@
 import React, { useState, useRef } from "react";
 import { View, Text, FlatList, ScrollView, StyleSheet } from "react-native";
-import { QUIZOPTIONS, SUBRIGHTS, ORGANIZATIONS } from "../data/dummy-data";
+import { QUIZOPTIONS } from "../data/dummy-data";
 import OrganizationBox from "../components/OrganizationBox";
 import LearnMoreItem from "../components/LearnMoreItem";
 import { Modalize } from "react-native-modalize"; // Credits to https://github.com/jeremybarbet/react-native-modalize
 import { Portal } from "react-native-portalize";
 import RightsSheetContent from "../components/RightsSheetContent";
 import Colors from "../constants/Colors";
+import ImportedData from "../data/FetchRightsData";
+import RightsOrganizationModal from "../components/RightsOrganizationModal";
+
 
 const QuizResultsScreen = (props) => {
   // Get list of selectedQuizEnds
@@ -36,7 +39,7 @@ const QuizResultsScreen = (props) => {
       }
     }
   }
-  const relevantSubRights = SUBRIGHTS.filter((sr) =>
+  const relevantSubRights = ImportedData.getSubRights().filter((sr) =>
     relevantSubRightIds.includes(sr.id)
   );
 
@@ -49,7 +52,7 @@ const QuizResultsScreen = (props) => {
       }
     }
   }
-  const orgsToShow = ORGANIZATIONS.filter((org) =>
+  const orgsToShow = ImportedData.getOraganizations().filter((org) =>
     orgIdsToShow.includes(org.id)
   );
 
@@ -57,10 +60,26 @@ const QuizResultsScreen = (props) => {
   const renderOrgItem = (itemData) => {
     return (
       <OrganizationBox
-        title={itemData.item.title}
+        title={itemData.item.name}
         image={itemData.item.image}
+        onSelect={() => {
+          openModalHandler(itemData.item.id);
+        }}
       />
     );
+  };
+
+  // org modal stuff
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeOrganizationId, setActiveOrganizationId] = useState("");
+
+  const openModalHandler = (id) => {
+    setIsModalOpen(true);
+    setActiveOrganizationId(id);
+  };
+
+  const closeModalHandler = () => {
+    setIsModalOpen(false);
   };
 
   // Modal  // State Hooks for LearnMore modals.
@@ -85,6 +104,7 @@ const QuizResultsScreen = (props) => {
         </Text>
 
         {/* Organization section */}
+       
         <Text style={styles.section}>
           Contact the following agencies for help:{" "}
         </Text>
@@ -109,7 +129,15 @@ const QuizResultsScreen = (props) => {
           />
         ))}
 
-        {/* ------- MODAL ------- */}
+        {/* ------- ORG MODAL ------- */}
+        {activeOrganizationId !== "" &&
+        <RightsOrganizationModal
+            isVisible={isModalOpen}
+            onCloseModal={closeModalHandler}
+            organizationId={activeOrganizationId}
+        ></RightsOrganizationModal>}
+
+        {/* ------- LEARNMORE MODAL ------- */}
         <Portal>
           <Modalize ref={modalizeRef} modalStyle={styles.modalize}>
             <View style={styles.modalizeContent}>

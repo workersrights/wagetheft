@@ -16,7 +16,6 @@ const RightsScreen = (props) => {
   };
 
   const closeModalHandler = () => {
-    //console.log("closeModalHandler() called.");
     setIsModalOpen(false);
   };
 
@@ -53,16 +52,16 @@ const RightsScreen = (props) => {
     return (
       <View>
         <LaunchQuizButton onPress={launchQuizHandler} />
-
       </View>
     );
-  }
+  };
   // <RightsModal />
   return (
     <View style={styles.screen}>
       <View style={styles.flatList}>
         <FlatList
-         // contentContainerStyle={{ paddingVertical: 10 }}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingVertical: 10 }}
           data={ImportedData.getRightsCategories()}
           renderItem={renderGridItem}
           numColumns={2}
@@ -77,8 +76,6 @@ const RightsScreen = (props) => {
           onAdvance={advanceScreenHandler}
         ></RightsCategoryModal>
       </View>
-
-
     </View>
   );
 };
@@ -105,7 +102,7 @@ const styles = StyleSheet.create({
   },
   flatList: {
     flex: 1,
-    width: Dimensions.get('screen').width*0.86,
+    width: Dimensions.get("screen").width * 0.86,
     alignItems: "center",
   },
 });

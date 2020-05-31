@@ -9,7 +9,7 @@ import SubRightsScreen from "../screens/SubRightsScreen";
 import RightsDetailsScreen from "../screens/RightsDetailsScreen";
 import FavoriteRightsScreen from "../screens/FavoriteRightsScreen";
 import EventsHomeScreen from "../screens/EventsHomeScreen";
-import ForumScreen from "../screens/ForumScreen";
+import FeedScren from "../screens/FeedScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 //import QuizNavigator from "../navigation/QuizNavigator"; This exists, but unused till we figure out how to display quiz above bottom tabs
@@ -19,6 +19,7 @@ import QuizResultsScreen from "../screens/QuizResultsScreen";
 
 import EventsNavigator from "./EventsNavigator";
 import Colors from "../constants/Colors";
+import FeedNavigator from "./FeedNavigation"; 
 
 const RightsNavigator = createStackNavigator(
   {
@@ -61,8 +62,8 @@ const RightsTabNavigator = createBottomTabNavigator(
         },
       },
     },
-    Forum: {
-      screen: ForumScreen,
+    Feed: {
+      screen: FeedNavigator,
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
           return (

@@ -9,8 +9,6 @@ import { Modalize } from "react-native-modalize"; // Credits to https://github.c
 import { Portal } from "react-native-portalize";
 import Colors from "../constants/Colors";
 import RightsOrganizationModal from "../components/RightsOrganizationModal";
-
-
 import ImportedData from "../data/FetchRightsData";
 
 const RightsDetailsScreen = (props) => {
@@ -19,17 +17,19 @@ const RightsDetailsScreen = (props) => {
   const parentSubRight = ImportedData.getSubRights().find(
     (subRight) => subRight.id === parentSubRightId
   );
-  console.log("parent subright: ", parentSubRight);
   // Get list of LearnMore Ids to display. Works on empty array as well.
-  const displayedLearnMoreIds = parentSubRight.learnMores ? parentSubRight.learnMores : []; // if empty
-  
-  
+  const displayedLearnMoreIds = parentSubRight.learnMores
+    ? parentSubRight.learnMores
+    : []; // if empty
+
   // Get list of relevant orgs to this specific subright
-  const relevantOrgs = ImportedData.getOraganizations().filter(org => (parentSubRight.organizations).includes(org.id));
+  const relevantOrgs = ImportedData.getOraganizations().filter((org) =>
+    parentSubRight.organizations.includes(org.id)
+  );
 
   // org modal stuff
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeOrganizationId, setActiveOrganizationId] = useState("o1");
+  const [activeOrganizationId, setActiveOrganizationId] = useState("");
 
   const openModalHandler = (id) => {
     setIsModalOpen(true);
@@ -37,7 +37,6 @@ const RightsDetailsScreen = (props) => {
   };
 
   const closeModalHandler = () => {
-    console.log("closeModalHandler() called.");
     setIsModalOpen(false);
   };
 
@@ -48,11 +47,11 @@ const RightsDetailsScreen = (props) => {
   const renderOrgItem = (itemData) => {
     return (
       <OrganizationBox
-        title={itemData.item.title}
+        title={itemData.item.name}
         image={itemData.item.image}
         onSelect={() => {
-            openModalHandler(itemData.item.id);
-          }}
+          openModalHandler(itemData.item.id);
+        }}
       />
     );
   };
@@ -62,56 +61,59 @@ const RightsDetailsScreen = (props) => {
     modalizeRef.current?.open();
   };
 
+  return (
+    <View style={styles.screen}>
+      <ScrollView
+        style={{ marginHorizontal: 20 }}
+        showsVerticalScrollIndicator={false}
+      >
+        {/* Initial subright description */}
+        <Text style={styles.section}>Description: </Text>
+        <Text>{parentSubRight.description}</Text>
 
-    
-
-    return(
-        <View style={styles.screen}>
-            <ScrollView style={{marginHorizontal: 20}} showsVerticalScrollIndicator={false}>
-                {/* Initial subright description */}
-                <Text style={styles.section}>Description: </Text>
-                <Text>{parentSubRight.description}</Text>
-                
-                {/* Organization section */}
-                <Text style={styles.section}>Contact the following agencies for help: </Text>
-                <View style={{ height: 230, marginTop: 20 }}> 
-                    <FlatList
-                        data={relevantOrgs}
-                        renderItem={renderOrgItem}
-                        horizontal={true}
-                        showsHorizontalScrollIndicator={false}
-                    />
-                </View>
-                
-              {/* ------------- LEARN MORE SECTION -------------- */}
-                <Text style={styles.section}>Learn more:</Text>
-                {displayedLearnMoreIds.map((displayedLearnMoreId) => (
-                  <LearnMoreItem
-                    id={displayedLearnMoreId}
-                    key={displayedLearnMoreId}
-                    onPress={() => {
-                      openLearnMoreHandler(displayedLearnMoreId);
-                    }}
-                  />
-                ))}
-            </ScrollView>
-
-
-            <RightsOrganizationModal
-                isVisible={isModalOpen}
-                onCloseModal={closeModalHandler}
-                organizationId={activeOrganizationId}
-            ></RightsOrganizationModal>
-
-            <Portal>
-              <Modalize ref={modalizeRef} modalStyle={styles.modalize}>
-                <View style={styles.modalizeContent}>
-                  <RightsSheetContent learnMoreId={activeLearnMoreId} />
-                </View>
-              </Modalize>
-            </Portal>      
+        {/* Organization section */}
+        <Text style={styles.section}>
+          Contact the following agencies for help:{" "}
+        </Text>
+        <View style={{ height: 230, marginTop: 20 }}>
+          <FlatList
+            data={relevantOrgs}
+            renderItem={renderOrgItem}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+          />
+              
         </View>
 
+        {/* ------------- LEARN MORE SECTION -------------- */}
+        <Text style={styles.section}>Learn more:</Text>
+        {displayedLearnMoreIds.map((displayedLearnMoreId) => (
+          <LearnMoreItem
+            id={displayedLearnMoreId}
+            key={displayedLearnMoreId}
+            onPress={() => {
+              openLearnMoreHandler(displayedLearnMoreId);
+            }}
+          />
+        ))}
+      </ScrollView>
+     { 
+       activeOrganizationId !== "" &&
+        <RightsOrganizationModal
+          isVisible={isModalOpen}
+          onCloseModal={closeModalHandler}
+          organizationId={activeOrganizationId}
+        ></RightsOrganizationModal> 
+     }
+
+      <Portal>
+        <Modalize ref={modalizeRef} modalStyle={styles.modalize}>
+          <View style={styles.modalizeContent}>
+            <RightsSheetContent learnMoreId={activeLearnMoreId} />
+          </View>
+        </Modalize>
+      </Portal>
+    </View>
   );
 };
 
@@ -120,20 +122,15 @@ RightsDetailsScreen.navigationOptions = (navigationData) => {
   const parentSubRight = ImportedData.getSubRights().find(
     (subright) => subright.id === subrightId
   );
-  return {
-    headerTitle: parentSubRight.title,
-    headerRight: () => (
-      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-        <Item
-          title="Fav"
-          iconName="ios-star-outline"
-          onPress={() => {
-            console.log("mark as favorite!");
-          }}
-        />
-      </HeaderButtons>
-    ),
-  };
+
+  if (parentSubRight.title.length > 25) {
+    return {
+      headerTitle: parentSubRight.title.substring(0, 21) + "...",
+      headerBackTitle: "Back",
+    };
+  } else {
+    return { headerTitle: parentSubRight.title, headerBackTitle: "Back" };
+  }
 };
 
 const styles = StyleSheet.create({
