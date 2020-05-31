@@ -14,11 +14,11 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import QuizHomeScreen from "../screens/QuizHomeScreen";
 import QuizContentScreen from "../screens/QuizContentScreen";
 import QuizResultsScreen from "../screens/QuizResultsScreen";
+import QuizEmptyScreen from "../screens/QuizEmptyScreen";
 
 import EventsNavigator from "./EventsNavigator";
-import FeedNavigator from "./FeedNavigation"; 
+import FeedNavigator from "./FeedNavigation";
 import Colors from "../constants/Colors";
-
 
 const RightsNavigator = createStackNavigator(
   {
@@ -30,6 +30,7 @@ const RightsNavigator = createStackNavigator(
     QuizHome: QuizHomeScreen,
     QuizContent: QuizContentScreen,
     QuizResults: QuizResultsScreen,
+    QuizEmpty: QuizEmptyScreen,
   },
   {
     // second argument: to configure the style of the navigator
@@ -79,7 +80,7 @@ const RightsTabNavigator = createBottomTabNavigator(
           );
         },
       },
-    }
+    },
   },
   {
     initialRouteName: "Rights",

@@ -7,8 +7,10 @@ const LearnMoreItem = (props) => {
   const selectedLearnMore = ImportedData.getLearnMores().find(
     (learnmore) => learnmore.id === props.id
   );
-  if(!selectedLearnMore) { return null; } // if learn more id does not exist, return
-  
+  if (!selectedLearnMore) {
+    return null;
+  } // if learn more id does not exist, return
+
   return (
     <TouchableOpacity onPress={props.onPress} style={styles.box}>
       <View style={styles.txtContainer}>
