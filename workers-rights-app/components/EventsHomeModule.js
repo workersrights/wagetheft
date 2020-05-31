@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { useSelector } from 'react-redux';
 
-
 import EventsHomeCard from "../components/EventsHomeCard.js";
 import Colors from '../constants/Colors';
 
@@ -17,13 +16,26 @@ const EventsHomeModule = (props) => {
 
   const allEvents = useSelector(state => state.events.allEvents);
   const yourEvents = useSelector(state => state.events.yourEvents);
+ 
+  const parseDateString = (timeStr) => {
+    var moment = require('moment');
+    const date = moment(timeStr).format("MMMM Mo, YYYY");
+    return date.toString();
+  };
 
-  const displayedEvents = (props.category === "Your Events") ? yourEvents : allEvents.filter(
-    event => event.category === props.category);
-  
-  
+  let n = 0;
+  const renderNum = 4;
+  const filterEvents = event => {
+    if(event.category === props.category && n <= renderNum) {
+      n++;
+      return true;
+    }
+    return false;
+  }
+
+  const displayedEvents = (props.category === "Your Events") ? yourEvents : allEvents.filter(filterEvents);
   const len = displayedEvents.length;
-
+  
   // Case where there are no events
   if(len === 0){
     return(
@@ -37,20 +49,14 @@ const EventsHomeModule = (props) => {
       </View>
     </View>);
   }
-
-  // Set a limit on how many cards an be rendered
-  const renderNum = 4;
-  while(len > renderNum){
-    displayedEvents.pop();
-  }
-
+      
   const renderHomeCards = (itemData) => {
     return (
       <EventsHomeCard
         title={itemData.item.title}
-        date={itemData.item.date}
+        date={parseDateString(itemData.item.date)}
         location={itemData.item.location}
-        image={itemData.item.image}
+        image={itemData.item.imageUrl}
         pressAction={props.cardPress}
         id={itemData.item.id}
       />

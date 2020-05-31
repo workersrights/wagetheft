@@ -10,12 +10,21 @@ import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 
 import eventsReducer from './store/reducers/events';
-import rightReducer from './store/reducers/rights';
 import rightsReducer from "./store/reducers/rights";
 
 import ImportedData from './data/FetchRightsData.js'; 
 //import './data/PushDummyData'; // to push data to firebase
 
+import { YellowBox } from 'react-native';
+import _ from 'lodash';
+
+YellowBox.ignoreWarnings(['Setting a timer']);
+const _console = _.clone(console);
+console.warn = message => {
+  if (message.indexOf('Setting a timer') <= -1) {
+    _console.warn(message);
+  }
+};
 
 enableScreens();
 

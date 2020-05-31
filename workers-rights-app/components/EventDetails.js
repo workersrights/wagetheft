@@ -2,15 +2,16 @@ import React from "react";
 import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 
 const EventDetails = (props) => {
-  const event = props.event;
+  const event = props.event
+
   return (
     <View style={{ width: "100%", height: "100%" }}>
       <View style={styles.headingImageContainer}>
-        <Image source={{ uri: event.image }} style={styles.image} />
+        <Image source={{ uri: event.imageUrl }} style={styles.image} />
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.infoContainer}>
-          <Text style={styles.lightText}>{event.date}</Text>
+          <Text style={styles.lightText}>{event.Date("ddd, MMMM Mo, YYYY")}</Text>
           <Text style={styles.titleText}>{event.title}</Text>
           <View style={styles.rowContainer}>
             <View style={styles.iconNtextContainer}>
@@ -29,7 +30,7 @@ const EventDetails = (props) => {
                   source={require("../images/clock.png")}
                 />
               </View>
-              <Text style={styles.lightText}>{event.time}</Text>
+              <Text style={styles.lightText}>{event.Time()}</Text>
             </View>
           </View>
         </View>
