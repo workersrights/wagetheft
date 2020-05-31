@@ -14,7 +14,7 @@ const EventsHomeCard = (props) => {
   let TouchablePlatformSpecific =
     Platform.OS === "ios" ? TouchableOpacity : TouchableNativeFeedback;
 
-  return (
+    return (
     <TouchablePlatformSpecific
       onPress={() => {
         props.pressAction(props.id);

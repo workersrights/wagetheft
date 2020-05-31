@@ -1,8 +1,5 @@
 Final Major TODOs:
 
-* Finish Rights Portal By Tuesday --> Ryan
-* Then: use portal to populate data --> All of us, using Rights portal
-
 UI changes:
 * Fix headers running into back buttons --> Alex (DONE)
 * Improve UI for Twitter feed --> Alex
@@ -34,3 +31,15 @@ TODOS (as of 28 May meeting)
 3) Quiz logic changes (Next and Done problem - Ryan)
 4) Keep exploring ways to do multiple languages (after everything)
 5) Keep testing the UI, screenshot the things to fix, compile all of those by our weekend call (8pm Saturday)
+
+============================== UI Bugs ==============================
+NEED to fix:
+
+LearnMores need to truncate text better. Long texts overflow sideways but seem to stick within 2 lines.
+LearnMore title not centralized. Seems to have a constant padding from the left but not from the right.
+Quiz results page needs to be an empty page if no rights selected.
+Improvements:
+
+LearnMore content needs larger padding (nicer).
+Make twitter posts clickable?
+Add done button to Quiz UI

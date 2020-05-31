@@ -17,7 +17,7 @@ const LaunchQuizButton = (props) => {
           />
         </View>
         <View style={styles.textContainer}>
-          <Text style={styles.text}>Don't know where to look? Take Quiz!</Text>
+          <Text style={styles.text}>Don't know where to look?   Take Quiz!</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -25,9 +25,11 @@ const LaunchQuizButton = (props) => {
 };
 const styles = StyleSheet.create({
   container: {
-    width: "75%",
+    flex: 1,
     height: 80,
-    margin: 20,
+    marginLeft: 10,
+    marginRight: 20,
+    marginVertical: 20,
 
     backgroundColor: Colors.darkOrange,
     borderRadius: 50,

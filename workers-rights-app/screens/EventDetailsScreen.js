@@ -24,13 +24,26 @@ const EventDetailsScreen = (props) => {
   const dispatch = useDispatch();
 
   // boolean if an event is in "Your Events"
-  const inYourEvents = useSelector((state) =>
+  let inYourEvents = useSelector((state) =>
     state.events.yourEvents.some(inArray)
   );
 
   // Handerler to dispatch the action
   const setYourEventHandeler = useCallback(() => {
-    dispatch(setYourEvent(eventId));
+    dispatch(
+      setYourEvent(
+        inYourEvents,
+        event.id,
+        event.title,
+        event.date,
+        event.imageUrl,
+        event.organizer,
+        event.location,
+        event.category,
+        event.description
+      )
+    );
+    inYourEvents = !inYourEvents;
   }, [dispatch, eventId]);
 
   // Handeler and inYourEvents becomes a params
