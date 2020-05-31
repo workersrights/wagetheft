@@ -35,11 +35,20 @@ TODOS (as of 28 May meeting)
 ============================== UI Bugs ==============================
 NEED to fix:
 
-LearnMores need to truncate text better. Long texts overflow sideways but seem to stick within 2 lines.
-LearnMore title not centralized. Seems to have a constant padding from the left but not from the right.
-Quiz results page needs to be an empty page if no rights selected.
+1) LearnMores need to truncate text better. Long texts overflow sideways but seem to stick within 2 lines. Change the titles to make it fit. (Impose a character count limit)
+2) LearnMore title not centralized. Seems to have a constant padding from the left but not from the right.
+3) Quiz results page needs to be an empty page if no rights selected. Also, add done button to Quiz UI
+4) Tiles & Take Quiz button need to be dynamically sized (%) so that the flatlist doesn't scroll around.
+5) Fix the Rights Category Modal text overlap issue. Reduce padding and limit text. Impose a maxHeight for modal.
+6) The flatlist on the Quiz page can also be panned around. Fix the learnMore touchable size.
+7) In Events page, when there are no "Your Events", there's a lack of space between "Your Events" and "Social".
+8) The border shadows for Events cards are also being cut off
+9) Make tweets clickable, add dates, sort the tweets by date.
+10) Change the titling and add the question mark pop up thing for the Twitter Feed
+
+******* NAME FOR THE APP!!!!!!!!!!!!!!!!!!!!!! + ICON *********
+
 Improvements:
 
 LearnMore content needs larger padding (nicer).
-Make twitter posts clickable?
-Add done button to Quiz UI
+Fix the loading thing for events
