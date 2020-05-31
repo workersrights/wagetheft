@@ -1,16 +1,19 @@
 import { EVENTS } from '../../data/dummy-data';
-import { SET_YOUR_EVENT } from '../actions/events';
+import { SET_YOUR_EVENT, FETCH_EVENTS  } from '../actions/events';
 
 const initialState = {
     allEvents: EVENTS,
     yourEvents: [],
-    social: [],
-    workshops: []
 };
 
 
 const eventsReducer = (state = initialState, action) => {
     switch(action.type) {
+        case FETCH_EVENTS:
+            return { 
+                allEvents: action.events,
+                yourEvents: action.yourEvents
+             };
         case SET_YOUR_EVENT:
                 const existingIndex = state.yourEvents.findIndex(event => event.id===action.id);
                 if (existingIndex >=0){
