@@ -21,7 +21,7 @@ If Time:
 [IN PROGRESS] Twitter feed instead of Forums page --> Manuka
 
 TODOS (as of 28 May meeting)
-1) Populate rights:
+1) Populate rights: (by 31 May)
     - Getting Hired & Unions (Alex)
     - Termination & Unemployment (Manuka)
     - Safety & Health (Victoria)
@@ -35,16 +35,18 @@ TODOS (as of 28 May meeting)
 ============================== UI Bugs ==============================
 NEED to fix:
 
-1) LearnMores need to truncate text better. Long texts overflow sideways but seem to stick within 2 lines. Change the titles to make it fit. (Impose a character count limit)
-2) LearnMore title not centralized. Seems to have a constant padding from the left but not from the right.
-3) Quiz results page needs to be an empty page if no rights selected. Also, add done button to Quiz UI
-4) Tiles & Take Quiz button need to be dynamically sized (%) so that the flatlist doesn't scroll around.
-5) Fix the Rights Category Modal text overlap issue. Reduce padding and limit text. Impose a maxHeight for modal.
-6) The flatlist on the Quiz page can also be panned around. Fix the learnMore touchable size.
-7) In Events page, when there are no "Your Events", there's a lack of space between "Your Events" and "Social".
-8) The border shadows for Events cards are also being cut off
-9) Make tweets clickable, add dates, sort the tweets by date.
-10) Change the titling and add the question mark pop up thing for the Twitter Feed
+1) LearnMores need to truncate text better. Long texts overflow sideways but seem to stick within 2 lines. 
+   Change the titles to make it fit. (Impose a character count limit). --> Alex
+2) LearnMore title not centralized. Seems to have a constant padding from the left but not from the right. --> Ryan
+3) Quiz results page needs to be an empty page if no rights selected. Also, add done button to Quiz UI --> Ryan
+4) Tiles & Take Quiz button need to be dynamically sized (%) so that the flatlist doesn't scroll around. --> Alex
+5) Fix the Rights Category Modal text overlap issue. Reduce padding and limit text. Impose a maxHeight for modal. --> Angel
+6) The flatlist on the Quiz page can also be panned around. Fix the learnMore touchable size. --> Angel
+7) In Events page, when there are no "Your Events", there's a lack of space between "Your Events" and "Social". --> Victoria
+8) The border shadows for Events cards are also being cut off. --> Victoria
+9) The org shadows for org cards are being cut off. --> Manuka
+10) Make tweets clickable, add dates, sort the tweets by date. --> Manuka
+11) Change the titling and add the question mark pop up thing for the Twitter Feed. --> Victoria
 
 ******* NAME FOR THE APP!!!!!!!!!!!!!!!!!!!!!! + ICON *********
 
