@@ -10,13 +10,13 @@ import { setYourEvent } from "../store/actions/events";
 import CustomHeaderButton from "../components/CustomHeaderButton";
 
 const EventDetailsScreen = (props) => {
-  eventId = props.navigation.getParam("eventId");
+  const eventId = props.navigation.getParam("eventId");
   const inArray = (e) => e.id === eventId;
 
   // finds the event given the event id from the parent
   // and sets it as a param so that navigation options
   // can have access to it
-  event = useSelector((state) => state.events.allEvents.find(inArray));
+  const event = useSelector((state) => state.events.allEvents.find(inArray));
   useEffect(() => {
     props.navigation.setParams({ eventTitle: event.title });
   }, [event]);
@@ -24,13 +24,23 @@ const EventDetailsScreen = (props) => {
   const dispatch = useDispatch();
 
   // boolean if an event is in "Your Events"
-  const inYourEvents = useSelector((state) =>
+  let inYourEvents = useSelector((state) =>
     state.events.yourEvents.some(inArray)
   );
 
   // Handerler to dispatch the action
   const setYourEventHandeler = useCallback(() => {
-    dispatch(setYourEvent(eventId));
+    dispatch(setYourEvent(
+      inYourEvents,
+      event.id,
+      event.title,
+      event.date,
+      event.imageUrl,
+      event.organizer,
+      event.location,
+      event.category,
+      event.description));
+      inYourEvents = !inYourEvents;
   }, [dispatch, eventId]);
 
   // Handeler and inYourEvents becomes a params
