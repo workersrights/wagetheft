@@ -76,8 +76,9 @@ function constructLearnMores(db) {
 
   return ref.once("value").then(function (snapshot) {
     snapshot.forEach(function (data) {
+      console.log(data.key);
       let temp = new learnMore(
-        data.val().id,
+        data.key,
         data.val().title,
         data.val().informationChunks
       );
@@ -92,7 +93,6 @@ function constructOrgs(db) {
   var tempOrgs = [];
 
   return ref.once("value").then(function (snapshot) {
-    //console.log(snapshot.val());
     snapshot.forEach(function (data) {
       let temp = new Organization(
         data.key,
