@@ -18,7 +18,10 @@ const RightsSheetContent = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Image source={selectedLearnMore.image} style={styles.titleImage} />
+        <Image
+          source={require("../images/question.png")}
+          style={styles.titleImage}
+        />
         <Text style={styles.titleText}>{selectedLearnMore.title}</Text>
       </View>
       {informationChunks.map((chunk) => (
@@ -38,7 +41,8 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     flexDirection: "row",
-    marginVertical: 20,
+    margin: 20,
+    marginHorizontal: 30,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -56,9 +60,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: "justify",
     marginVertical: 10,
+    marginHorizontal: 5,
   },
   body: {
     textAlign: "justify",
+    marginHorizontal: 3,
   },
 });
 

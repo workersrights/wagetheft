@@ -134,20 +134,15 @@ const QuizContentScreen = (props) => {
         style={styles.nextPageButtonStyle}
         titleStyle={styles.buttonTitleStyle}
         onPress={() => {
-          // Step 1: add currentQuizEnds into globalQuizEnds
-          /*
-          for (const [index, quizEnd] of currentQuizEnds.entries()) {
-            if (!globalQuizEnds.includes(quizEnd)) {
-              globalQuizEnds.push(quizEnd);
-            }
-          }
-          */
-
-          // Step 2: navigate to QuizContent or QuizResults based on whether all current selections are quizEnds
+          // navigate to QuizContent or QuizResults based on whether all current selections are quizEnds
           if (currentQuizEnds.length === selectedQOIds.length) {
-            props.navigation.push("QuizResults", {
-              selectedQuizEnds: globalQuizEnds,
-            });
+            if (currentQuizEnds.length > 0) {
+              props.navigation.push("QuizResults", {
+                selectedQuizEnds: globalQuizEnds,
+              });
+            } else {
+              props.navigation.push("QuizEmpty");
+            }
           } else {
             props.navigation.push("QuizContent", {
               quizPageNo: quizPageNo + 1,
