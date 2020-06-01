@@ -9,17 +9,16 @@ import SubRightsScreen from "../screens/SubRightsScreen";
 import RightsDetailsScreen from "../screens/RightsDetailsScreen";
 import FavoriteRightsScreen from "../screens/FavoriteRightsScreen";
 import EventsHomeScreen from "../screens/EventsHomeScreen";
-import FeedScren from "../screens/FeedScreen";
-import SettingsScreen from "../screens/SettingsScreen";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 //import QuizNavigator from "../navigation/QuizNavigator"; This exists, but unused till we figure out how to display quiz above bottom tabs
 import QuizHomeScreen from "../screens/QuizHomeScreen";
 import QuizContentScreen from "../screens/QuizContentScreen";
 import QuizResultsScreen from "../screens/QuizResultsScreen";
+import QuizEmptyScreen from "../screens/QuizEmptyScreen";
 
 import EventsNavigator from "./EventsNavigator";
+import FeedNavigator from "./FeedNavigation";
 import Colors from "../constants/Colors";
-import FeedNavigator from "./FeedNavigation"; 
 
 const RightsNavigator = createStackNavigator(
   {
@@ -28,10 +27,10 @@ const RightsNavigator = createStackNavigator(
     },
     SubRights: SubRightsScreen,
     RightsDetails: RightsDetailsScreen,
-    FavoriteRights: FavoriteRightsScreen,
     QuizHome: QuizHomeScreen,
     QuizContent: QuizContentScreen,
     QuizResults: QuizResultsScreen,
+    QuizEmpty: QuizEmptyScreen,
   },
   {
     // second argument: to configure the style of the navigator
@@ -62,16 +61,6 @@ const RightsTabNavigator = createBottomTabNavigator(
         },
       },
     },
-    Feed: {
-      screen: FeedNavigator,
-      navigationOptions: {
-        tabBarIcon: (tabInfo) => {
-          return (
-            <Icon name="forum-outline" size={25} color={tabInfo.tintColor} />
-          );
-        },
-      },
-    },
     Rights: {
       screen: RightsNavigator,
       navigationOptions: {
@@ -82,17 +71,12 @@ const RightsTabNavigator = createBottomTabNavigator(
         },
       },
     },
-    // Favorites: {screen: FavoritesScreen, navigationOptions: {
-    //   tabBarIcon: (tabInfo) => {
-    //     return <Ionicons name='ios-star' size={25} color={tabInfo.tintColor}/>
-    //   }
-    // }},
-    Settings: {
-      screen: SettingsScreen,
+    Feed: {
+      screen: FeedNavigator,
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
           return (
-            <Ionicons name="md-settings" size={25} color={tabInfo.tintColor} />
+            <Icon name="forum-outline" size={25} color={tabInfo.tintColor} />
           );
         },
       },

@@ -41,7 +41,9 @@ const RightsDetailsScreen = (props) => {
   };
 
   // State Hooks for LearnMore modals.
-  const [activeLearnMoreId, setActiveLearnMoreId] = useState("lm1");
+  const [activeLearnMoreId, setActiveLearnMoreId] = useState(
+    "-M7LY3fU0-iSv0HX94zB"
+  ); // Corresponds to lm1. Needs to be initialized with any garbage learnMore, otherwise app will crash because
   const modalizeRef = useRef(null);
 
   const renderOrgItem = (itemData) => {
@@ -82,7 +84,6 @@ const RightsDetailsScreen = (props) => {
             horizontal={true}
             showsHorizontalScrollIndicator={false}
           />
-              
         </View>
 
         {/* ------------- LEARN MORE SECTION -------------- */}
@@ -97,14 +98,13 @@ const RightsDetailsScreen = (props) => {
           />
         ))}
       </ScrollView>
-     { 
-       activeOrganizationId !== "" &&
+      {activeOrganizationId !== "" && (
         <RightsOrganizationModal
           isVisible={isModalOpen}
           onCloseModal={closeModalHandler}
           organizationId={activeOrganizationId}
-        ></RightsOrganizationModal> 
-     }
+        ></RightsOrganizationModal>
+      )}
 
       <Portal>
         <Modalize ref={modalizeRef} modalStyle={styles.modalize}>
