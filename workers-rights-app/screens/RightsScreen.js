@@ -67,7 +67,6 @@ const RightsScreen = (props) => {
           numColumns={2}
           ListFooterComponent={renderQuizButton}
           showsVerticalScrollIndicator={false}
-          ho
         />
         <RightsCategoryModal
           isVisible={isModalOpen}
