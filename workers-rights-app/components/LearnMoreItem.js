@@ -1,5 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Platform,
+  TouchableNativeFeedback,
+} from "react-native";
 import Colors from "../constants/Colors";
 import ImportedData from "../data/FetchRightsData";
 
@@ -11,39 +19,57 @@ const LearnMoreItem = (props) => {
     return null;
   } // if learn more id does not exist, return
 
+  let TouchablePlatformSpecific =
+    Platform.OS === "ios" ? TouchableOpacity : TouchableNativeFeedback;
+
   return (
-    <TouchableOpacity onPress={props.onPress} style={styles.box}>
-      <View style={styles.txtContainer}>
-        <Image source={require("../images/question.png")} />
+    <TouchablePlatformSpecific onPress={props.onPress}>
+      <View style={styles.container}>
+        <View style={styles.imageContainer}>
+          <Image
+            source={require("../images/question.png")}
+            style={{ width: "100%", height: "100%" }}
+          />
+        </View>
         <Text numberOfLines={2} style={styles.subrightstxt}>
           {selectedLearnMore.title}
         </Text>
       </View>
-    </TouchableOpacity>
+    </TouchablePlatformSpecific>
   );
 };
 
 const styles = StyleSheet.create({
-  box: {
+  container: {
+    flexDirection: "row",
     alignItems: "center",
-    padding: 10,
-    margin: 7,
+    width: "100%",
+    height: 60,
+    marginVertical: 5,
+    paddingLeft: 10,
+    paddingRight: 5,
     borderRadius: 8,
-    shadowOpacity: 0.25,
-    shadowOffset: { width: 2, height: 5 },
-    elevation: 3,
     backgroundColor: Colors.lightOrange,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 2,
+  },
+
+  imageContainer: {
+    width: 40,
+    height: 40,
+    marginRight: 10,
+    alignItems: "center",
+    justifyContent: "center",
   },
   subrightstxt: {
-    fontSize: 15,
-    paddingHorizontal: 15,
-  },
-  txtContainer: {
-    flexDirection: "row",
-    width: "100%",
-    alignItems: "center",
+    fontSize: 14,
     flex: 1,
-    paddingHorizontal: 5,
   },
 });
 
