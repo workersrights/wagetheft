@@ -9,6 +9,7 @@ const SubRightsScreen = (props) => {
   const displayedSubRights = ImportedData.getSubRights().filter(
     (subright) => subright.categoryIds.indexOf(catId) >= 0
   );
+  displayedSubRights.sort((subA, subB) => (subA.title > subB.title ? 1 : -1));
   const parentCategory = ImportedData.getRightsCategories().find(
     (rightsCat) => rightsCat.id === catId
   );

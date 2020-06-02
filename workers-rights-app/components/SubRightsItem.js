@@ -27,6 +27,8 @@ const styles = StyleSheet.create({
   },
   subrightstxt: {
     fontSize: 16,
+    paddingHorizontal: 2,
+    textAlign: "center"
   },
   txtContainer: {
     flexDirection: "row",
