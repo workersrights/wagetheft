@@ -4,33 +4,29 @@ import Colors from "../constants/Colors";
 
 const LaunchQuizButton = (props) => {
   return (
-    <TouchableOpacity
-      style={styles.container}
-      onPress={props.onPress}
-      activeOpacity={0.6}
-    >
-      <View style={styles.buttonContent}>
+    <TouchableOpacity onPress={props.onPress} activeOpacity={0.6}>
+      <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image
             source={require("../images/question-white.png")}
             style={styles.iconStyle}
           />
         </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.text}>Don't know where to look?   Take Quiz!</Text>
-        </View>
+        <Text style={styles.text}>Don't know where to look? Take a Quiz!</Text>
       </View>
     </TouchableOpacity>
   );
 };
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    width: 320,
     height: 80,
-    marginLeft: 10,
-    marginRight: 20,
-    marginVertical: 20,
-
+    marginTop: 10,
+    marginBottom: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
     backgroundColor: Colors.darkOrange,
     borderRadius: 50,
     shadowOpacity: 0.35,
@@ -38,40 +34,23 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 6,
     elevation: 3,
-
-    position: "relative",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  buttonContent: {
-    flexDirection: "row",
-    flex: 1,
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "space-around",
   },
   imageContainer: {
-    margin: 10,
+    width: 50,
+    height: 50,
+    marginRight: 10,
     justifyContent: "center",
     alignItems: "center",
   },
   iconStyle: {
-    shadowOpacity: 0.4,
-    shadowColor: "black",
-    shadowOffset: { width: 0, height: 2 },
-    overflow: "visible",
-  },
-  textContainer: {
-    width: "70%",
-    margin: 10,
+    width: "100%",
+    height: "100%",
   },
   text: {
+    flex: 1,
+    fontSize: 16,
     width: "100%",
     color: "white",
-    textAlign: "center",
   },
 });
 
