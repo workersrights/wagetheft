@@ -66,7 +66,11 @@ const RightsDetailsScreen = (props) => {
   return (
     <View style={styles.screen}>
       <ScrollView
-        style={{ marginHorizontal: 20 }}
+        style={{
+          paddingLeft: 20,
+          paddingRight: 20,
+          width: "100%",
+        }}
         showsVerticalScrollIndicator={false}
       >
         {/* Initial subright description */}
