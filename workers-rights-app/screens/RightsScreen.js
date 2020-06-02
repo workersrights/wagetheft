@@ -58,23 +58,25 @@ const RightsScreen = (props) => {
   // <RightsModal />
   return (
     <View style={styles.screen}>
-      <View style={styles.flatList}>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingVertical: 10 }}
-          data={ImportedData.getRightsCategories()}
-          renderItem={renderGridItem}
-          numColumns={2}
-          ListFooterComponent={renderQuizButton}
-          showsVerticalScrollIndicator={false}
-        />
-        <RightsCategoryModal
-          isVisible={isModalOpen}
-          onCloseModal={closeModalHandler}
-          categoryId={activeCategoryId}
-          onAdvance={advanceScreenHandler}
-        ></RightsCategoryModal>
-      </View>
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        style={{ width: "100%" }}
+        contentContainerStyle={{
+          width: "100%",
+          alignItems: "center",
+        }}
+        data={ImportedData.getRightsCategories()}
+        renderItem={renderGridItem}
+        numColumns={2}
+        ListFooterComponent={renderQuizButton}
+        showsVerticalScrollIndicator={false}
+      />
+      <RightsCategoryModal
+        isVisible={isModalOpen}
+        onCloseModal={closeModalHandler}
+        categoryId={activeCategoryId}
+        onAdvance={advanceScreenHandler}
+      ></RightsCategoryModal>
     </View>
   );
 };
@@ -82,7 +84,6 @@ const RightsScreen = (props) => {
 RightsScreen.navigationOptions = {
   headerTitle: "Rights Information",
   headerStyle: {
-    // only color the background of the header if Android to fit the typical platform look
     backgroundColor: Platform.OS === "android" ? Colors.lightOrange : "",
   },
   headerTintColor: Colors.darkOrange,
@@ -92,17 +93,9 @@ RightsScreen.navigationOptions = {
 };
 
 const styles = StyleSheet.create({
-  experiment: {
-    flex: 1,
-  },
   screen: {
     flex: 1,
-    alignItems: "center",
-  },
-  flatList: {
-    flex: 1,
-    width: Dimensions.get("screen").width * 0.86,
-    alignItems: "center",
+    paddingTop: 10,
   },
 });
 
