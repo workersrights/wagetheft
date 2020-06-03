@@ -8,10 +8,7 @@ const FeedScreen = (props) => {
   const renderGridItem = (itemData) => {
     return (
       <TweetContainer
-        name={itemData.item.name}
-        screenName={itemData.item.screenName}
-        text={itemData.item.text}
-        userPhoto={itemData.item.userPhoto}
+        {...itemData.item}
       />
     );
   };

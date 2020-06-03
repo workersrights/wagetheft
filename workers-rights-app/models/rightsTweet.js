@@ -6,6 +6,7 @@ class RightsTweet {
         this.userPhoto = userPhoto;
         this.text = text;
         this.time = time;
+        this.link = `https://twitter.com/${this.screenName}/status/${this.id}`;
     }
 }
 

@@ -1,9 +1,15 @@
 import React from "react";
 import { Dimensions, View, Text, StyleSheet, Image } from "react-native";
+import * as Linking from 'expo-linking';
+import { TouchableNativeFeedback } from "react-native-gesture-handler";
 
 const TweetContainer = (props) => {
   return (
-    <View style={styles.container}>
+    <TouchableNativeFeedback 
+      style={styles.touch}
+      onPress={()=>{Linking.openURL(props.link)}}
+    >
+    <View style={styles.container} >
       <View style={styles.userInfoContainer}>
         <View style={styles.photoContainer}>
           <Image
@@ -18,10 +24,13 @@ const TweetContainer = (props) => {
       </View>
       <Text style={styles.tweetText}>{props.text}</Text>
     </View>
+    </TouchableNativeFeedback>
   );
 };
 
 const styles = StyleSheet.create({
+  touch: {
+  },
   container: {
     width: Dimensions.get("window").width * 0.95,
     flexDirection: "column",
@@ -34,6 +43,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 1,
     elevation: 2,
+    margin: "0.5%",
   },
 
   userInfoContainer: {
