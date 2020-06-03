@@ -76,6 +76,7 @@ EventDetailsScreen.navigationOptions = (navigationData) => {
         <Item
           title="Fav"
           iconName={inYourEvents ? "ios-star" : "ios-star-outline"}
+          iconSize={23}
           onPress={setYourEvent}
         />
       </HeaderButtons>
