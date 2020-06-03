@@ -86,13 +86,13 @@ const styles = StyleSheet.create({
     height: 192,
     width: "100%",
     marginLeft: Dimensions.get("window").width * 0.067,
-    marginBottom: 40,
+    marginBottom: 20,
   },
   noEventsContainer: {
     height: 70,
     width: "100%",
     marginLeft: Dimensions.get("window").width * 0.067,
-    marginBottom: 40,
+    marginBottom: 60,
   },
   containerLast: {
     height: 192,
