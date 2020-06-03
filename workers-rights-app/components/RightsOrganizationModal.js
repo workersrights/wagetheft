@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   },
   description: {
     flex:1,
-    paddingHorizontal: "5%",
+    paddingHorizontal: "1%",
     textAlign: "center",
   },
   info :{

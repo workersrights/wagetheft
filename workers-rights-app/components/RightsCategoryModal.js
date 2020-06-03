@@ -43,7 +43,8 @@ const RightsCategoryModal = (props) => {
 const styles = StyleSheet.create({
   modal: {
     width: "80%",
-    height: "80%", // Hard-coded value to fit iPhone 6/7/8. Dynamic sizing, anyone?
+    height: "80%", // Hard-coded value to fit iPhone 6/7/8. Dynamic sizing, anyone?,
+    maxHeight: 450,
     backgroundColor: Colors.lightOrange,
     borderRadius: 8,
     shadowOpacity: 0.25,
@@ -55,8 +56,8 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     flex: 1,
-    padding: 30,
-    paddingTop: 50,
+    padding: 10,
+    paddingTop: 30,
     alignItems: "center",
   },
   title: {
