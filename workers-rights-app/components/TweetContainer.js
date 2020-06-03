@@ -1,11 +1,13 @@
 import React from "react";
 import { Dimensions, View, Text, StyleSheet, Image } from "react-native";
 import * as Linking from 'expo-linking';
-import { TouchableNativeFeedback } from "react-native-gesture-handler";
+import { TouchableNativeFeedback, TouchableOpacity } from "react-native-gesture-handler";
 
 const TweetContainer = (props) => {
+  let TouchablePlatformSpecific =
+    Platform.OS === "ios" ? TouchableOpacity : TouchableNativeFeedback;
   return (
-    <TouchableNativeFeedback 
+    <TouchablePlatformSpecific 
       style={styles.touch}
       onPress={()=>{Linking.openURL(props.link)}}
     >
@@ -24,7 +26,7 @@ const TweetContainer = (props) => {
       </View>
       <Text style={styles.tweetText}>{props.text}</Text>
     </View>
-    </TouchableNativeFeedback>
+    </TouchablePlatformSpecific>
   );
 };
 
