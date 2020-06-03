@@ -4,9 +4,19 @@ import * as Linking from 'expo-linking';
 import { TouchableNativeFeedback, TouchableOpacity } from "react-native-gesture-handler";
 
 const TweetContainer = (props) => {
+  let INPUT_FORMAT = "ddd MMM D HH:mm:ss ZZ YYYY"; // Twitter API format
+  let OUTPUT_FORMAT = "MMMM Mo, YYYY"; // Desired format to display
+
+  const getDateStr = () => {
+    var moment = require('moment');
+    const date = moment(props.time, INPUT_FORMAT).format(OUTPUT_FORMAT);
+    return date.toString();
+  }
+
   let TouchablePlatformSpecific =
-    Platform.OS === "ios" ? TouchableOpacity : TouchableNativeFeedback;
-  return (
+  Platform.OS === "ios" ? TouchableOpacity : TouchableNativeFeedback;
+
+    return (
     <TouchablePlatformSpecific 
       style={styles.touch}
       onPress={()=>{Linking.openURL(props.link)}}
@@ -26,7 +36,7 @@ const TweetContainer = (props) => {
           </View>
         </View>
         <View style={{alignSelf: "center"}}>
-          <Text style={styles.tweetText}>Tu, June 2</Text>
+          <Text style={styles.tweetText}>{getDateStr()}</Text>
         </View>
       </View>
       <Text style={styles.tweetText}>{props.text}</Text>
