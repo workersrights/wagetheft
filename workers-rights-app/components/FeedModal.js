@@ -5,8 +5,8 @@ import ModalCloseButton from "./ModalCloseButton.js";
 import Modal from "react-native-modal"
 
 const FeedModal = (props) => {
-  
   return (
+    <View>
     <Modal 
       isVisible={props.isVisible} 
       onBackButtonPress={props.onCloseModal}
@@ -18,38 +18,35 @@ const FeedModal = (props) => {
             <Text style={styles.title}>Rights Twitter Feed</Text>
             {/* image here */}
             <Image
-              source={ require("../images/twitter-outline.png")}
+              source={ require("../images/twitter-logo.png")}
               resizeMode="contain"
               style={styles.image}
             />
             {/* Subtitle and description here */}
             <Text style={styles.title}>What is this for?</Text>
             <Text style={styles.description}>
-              This section has twitter posts from different Worker's Rights groups and organization. 
+              This section has twitter posts from different Worker's Rights groups and organizations.
+              Feel free to scroll through the posts and tap on them to read more!
             </Text>
           </View>
         </View>
     </Modal>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   modal: {
     width: "80%",
-    height: "80%", // Hard-coded value to fit iPhone 6/7/8. Dynamic sizing, anyone?
+    height: 260, // Hard-coded value to fit iPhone 6/7/8. Dynamic sizing, anyone?
     backgroundColor: Colors.lightOrange,
     borderRadius: 8,
-    shadowOpacity: 0.25,
-    shadowColor: "black",
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 6,
-    elevation: 3,
     alignSelf: "center"
   },
   modalContent: {
     flex: 1,
     padding: 30,
-    paddingTop: 50,
+    paddingTop: 35,
     alignItems: "center",
   },
   title: {
@@ -59,7 +56,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   description: {
-    padding: 10,
+    paddingTop: 10,
     textAlign: "center",
   },
   image: {
