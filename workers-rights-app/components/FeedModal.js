@@ -25,7 +25,7 @@ const FeedModal = (props) => {
             {/* Subtitle and description here */}
             <Text style={styles.title}>What is this for?</Text>
             <Text style={styles.description}>
-              This section has twitter posts from different Worker's Rights groups and organizations.
+              This section has twitter posts from different Workers' Rights groups and organizations to help you stay up to date with recent rights news and laws.
               Feel free to scroll through the posts and tap on them to read more!
             </Text>
           </View>
@@ -38,7 +38,7 @@ const FeedModal = (props) => {
 const styles = StyleSheet.create({
   modal: {
     width: "80%",
-    height: 260, // Hard-coded value to fit iPhone 6/7/8. Dynamic sizing, anyone?
+    height: 310, // Hard-coded value to fit iPhone 6/7/8. Dynamic sizing, anyone?
     backgroundColor: Colors.lightOrange,
     borderRadius: 8,
     alignSelf: "center"
