@@ -23,7 +23,8 @@ const RightsDetailsScreen = (props) => {
     : []; // if empty
 
   // Get list of relevant orgs to this specific subright
-  const relevantOrgs = ImportedData.getOraganizations().filter((org) =>
+  console.log(parentSubRight.organizations === undefined)
+  const relevantOrgs = (parentSubRight.organizations === undefined) ? [] : ImportedData.getOraganizations().filter((org) =>
     parentSubRight.organizations.includes(org.id)
   );
 
@@ -103,6 +104,8 @@ const RightsDetailsScreen = (props) => {
           />
         ))}
       </ScrollView>
+
+      {/* --------------- Org Modal Section --------------- */}
       {activeOrganizationId !== "" && (
         <RightsOrganizationModal
           isVisible={isModalOpen}
