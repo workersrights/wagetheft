@@ -4,8 +4,8 @@ import * as Linking from 'expo-linking';
 import { TouchableNativeFeedback, TouchableOpacity } from "react-native-gesture-handler";
 
 const TweetContainer = (props) => {
-  let INPUT_FORMAT = "ddd MMM D HH:mm:ss ZZ YYYY"; // Twitter API format
-  let OUTPUT_FORMAT = "MMMM Mo, YYYY"; // Desired format to display
+  let INPUT_FORMAT = "ddd MMM DD HH:mm:ss ZZ YYYY"; // Twitter API format
+  let OUTPUT_FORMAT = "MMMM Do, YYYY"; // Desired format to display
 
   const getDateStr = () => {
     var moment = require('moment');
