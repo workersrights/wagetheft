@@ -23,7 +23,6 @@ const RightsDetailsScreen = (props) => {
     : []; // if empty
 
   // Get list of relevant orgs to this specific subright
-  console.log(parentSubRight.organizations === undefined)
   const relevantOrgs = (parentSubRight.organizations === undefined) ? [] : ImportedData.getOraganizations().filter((org) =>
     parentSubRight.organizations.includes(org.id)
   );
