@@ -12,10 +12,10 @@ import Colors from '../constants/Colors';
 const OrganizationBox = props => {
     return (
         <TouchableOpacity onPress={props.onSelect} style={styles.box}>
-                <View style={{ flex: 4 }}>
+                <View style={styles.imageContainer}>
                     <Image source={{uri: props.image}} style={styles.imgStyle}/>
                 </View>
-                <View style={{ flex: 1, justifyContent: 'center', marginLeft: 25}}>
+                <View style={styles.titleContainer}>
                     <Text numberOfLines={2} style={styles.orgTitle}>{props.title}</Text>
                 </View>
         </TouchableOpacity>
@@ -27,12 +27,21 @@ const styles = StyleSheet.create({
         height: 229,
         width: 284,
         marginRight: 15,
+    },
+    imageContainer: {
+        flex: 4,
         borderRadius: 6,
         shadowOpacity: 0.25,
         shadowColor: "black",
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 4,
         elevation: 5,
+        margin: "2%"
+    },
+    titleContainer: {
+        flex:1,
+        justifyContent: 'center',
+        marginLeft: 25,
     },
     orgTitle: {
         fontSize: 16,
