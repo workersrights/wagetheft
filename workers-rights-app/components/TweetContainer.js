@@ -1,9 +1,17 @@
 import React from "react";
 import { Dimensions, View, Text, StyleSheet, Image } from "react-native";
+import * as Linking from 'expo-linking';
+import { TouchableNativeFeedback, TouchableOpacity } from "react-native-gesture-handler";
 
 const TweetContainer = (props) => {
+  let TouchablePlatformSpecific =
+    Platform.OS === "ios" ? TouchableOpacity : TouchableNativeFeedback;
   return (
-    <View style={styles.container}>
+    <TouchablePlatformSpecific 
+      style={styles.touch}
+      onPress={()=>{Linking.openURL(props.link)}}
+    >
+    <View style={styles.container} >
       <View style={styles.userInfoContainer}>
         <View style={styles.photoContainer}>
           <Image
@@ -18,6 +26,7 @@ const TweetContainer = (props) => {
       </View>
       <Text style={styles.tweetText}>{props.text}</Text>
     </View>
+    </TouchablePlatformSpecific>
   );
 };
 
@@ -34,6 +43,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 1,
     elevation: 2,
+    margin: "0.5%",
   },
 
   userInfoContainer: {
