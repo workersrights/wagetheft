@@ -5,10 +5,7 @@ import { TouchableNativeFeedback } from "react-native-gesture-handler";
 
 const TweetContainer = (props) => {
   return (
-    <TouchableNativeFeedback 
-      style={styles.touch}
-      onPress={()=>{Linking.openURL(props.link)}}
-    >
+    <TouchableNativeFeedback onPress={()=>{Linking.openURL(props.link)}}>
     <View style={styles.container} >
       <View style={styles.userInfoContainer}>
         <View style={styles.photoContainer}>
@@ -29,8 +26,6 @@ const TweetContainer = (props) => {
 };
 
 const styles = StyleSheet.create({
-  touch: {
-  },
   container: {
     width: Dimensions.get("window").width * 0.95,
     flexDirection: "column",
