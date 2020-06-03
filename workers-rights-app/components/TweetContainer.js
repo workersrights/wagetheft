@@ -12,16 +12,21 @@ const TweetContainer = (props) => {
       onPress={()=>{Linking.openURL(props.link)}}
     >
     <View style={styles.container} >
-      <View style={styles.userInfoContainer}>
-        <View style={styles.photoContainer}>
-          <Image
-            style={styles.userPhoto}
-            source={{ uri: props.userPhoto }}
-          ></Image>
+      <View style={styles.tweetHeader}>
+        <View style={styles.userInfoContainer}>
+          <View style={styles.photoContainer}>
+            <Image
+              style={styles.userPhoto}
+              source={{ uri: props.userPhoto }}
+            ></Image>
+          </View>
+          <View style={styles.userNamesContainer}>
+            <Text style={styles.tweetUserName}>{props.name}</Text>
+            <Text style={styles.tweetUserHandle}> {"@" + props.screenName} </Text>
+          </View>
         </View>
-        <View style={styles.userNamesContainer}>
-          <Text style={styles.tweetUserName}>{props.name}</Text>
-          <Text style={styles.tweetUserHandle}> {"@" + props.screenName} </Text>
+        <View style={{alignSelf: "center"}}>
+          <Text style={styles.tweetText}>Tu, June 2</Text>
         </View>
       </View>
       <Text style={styles.tweetText}>{props.text}</Text>
@@ -33,7 +38,6 @@ const TweetContainer = (props) => {
 const styles = StyleSheet.create({
   container: {
     width: Dimensions.get("window").width * 0.95,
-    flexDirection: "column",
     backgroundColor: "white",
     marginBottom: 10,
     borderRadius: 5,
@@ -44,6 +48,11 @@ const styles = StyleSheet.create({
     shadowRadius: 1,
     elevation: 2,
     margin: "0.5%",
+  },
+
+  tweetHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between"
   },
 
   userInfoContainer: {
