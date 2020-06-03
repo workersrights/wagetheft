@@ -81,6 +81,7 @@ const RightsDetailsScreen = (props) => {
         <Text style={styles.section}>
           Contact the following agencies for help:{" "}
         </Text>
+        <Text>(Tap on an organization for more information)</Text>
         <View style={{ height: 230, marginTop: 20 }}>
           <FlatList
             data={relevantOrgs}

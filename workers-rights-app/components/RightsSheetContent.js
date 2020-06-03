@@ -37,7 +37,7 @@ const RightsSheetContent = (props) => {
 const styles = StyleSheet.create({
   container: {
     margin: 20,
-    marginVertical: 40,
+    marginVertical: 20,
   },
   titleContainer: {
     flexDirection: "row",
@@ -48,9 +48,11 @@ const styles = StyleSheet.create({
   },
   titleImage: {
     margin: 10,
+    width: 40,
+    height: 40
   },
   titleText: {
-    margin: 10,
+    marginHorizontal: 10,
     fontWeight: "bold",
     fontSize: 20,
     color: Colors.darkOrange,
