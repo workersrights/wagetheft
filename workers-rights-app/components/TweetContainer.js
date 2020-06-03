@@ -31,8 +31,6 @@ const TweetContainer = (props) => {
 };
 
 const styles = StyleSheet.create({
-  touch: {
-  },
   container: {
     width: Dimensions.get("window").width * 0.95,
     flexDirection: "column",
