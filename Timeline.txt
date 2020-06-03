@@ -44,7 +44,7 @@ NEED to fix:
 6) The flatlist on the Quiz page can also be panned around. Fix the learnMore touchable size. --> Angel
 7) In Events page, when there are no "Your Events", there's a lack of space between "Your Events" and "Social". --> Victoria
 8) The border shadows for Events cards are also being cut off. --> Victoria
-9) The org shadows for org cards are being cut off. --> Manuka
+9) [DONE] The org shadows for org cards are being cut off. --> Manuka
 10) Make tweets clickable, add dates, sort the tweets by date. --> Manuka
 11) Change the titling and add the question mark pop up thing for the Twitter Feed. --> Victoria
 

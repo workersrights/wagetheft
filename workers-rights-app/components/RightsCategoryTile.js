@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, View, Text, StyleSheet, Image } from "react-native";
+import { TouchableOpacity, View, Text, StyleSheet, Image, Dimensions } from "react-native";
 import Colors from "../constants/Colors";
 
 const RightsCategoryTile = (props) => {
@@ -15,10 +15,11 @@ const RightsCategoryTile = (props) => {
   );
 };
 
+var tileWidth = Dimensions.get("window").width * 0.38;
 const styles = StyleSheet.create({
   gridItem: {
-    height: 150,
-    width: 150,
+    width: tileWidth,
+    height: tileWidth,
     margin: 10,
     backgroundColor: Colors.lightOrange,
     borderRadius: 15,

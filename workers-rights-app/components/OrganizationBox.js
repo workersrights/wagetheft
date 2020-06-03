@@ -4,7 +4,8 @@ import {
     Text,
     StyleSheet,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    Dimensions
 } from "react-native";
 import Colors from '../constants/Colors';
 
@@ -27,10 +28,11 @@ const styles = StyleSheet.create({
         width: 284,
         marginRight: 15,
         borderRadius: 6,
-        shadowOpacity: 0.5,
-        shadowColor: 'black',
+        shadowOpacity: 0.25,
+        shadowColor: "black",
         shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 6
+        shadowRadius: 4,
+        elevation: 5,
     },
     orgTitle: {
         fontSize: 16,
