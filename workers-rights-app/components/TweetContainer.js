@@ -36,7 +36,7 @@ const TweetContainer = (props) => {
           </View>
         </View>
         <View style={{alignSelf: "center"}}>
-          <Text style={styles.tweetText}>{getDateStr()}</Text>
+          <Text style={styles.dateText}>{getDateStr()}</Text>
         </View>
       </View>
       <Text style={styles.tweetText}>{props.text}</Text>
@@ -104,6 +104,11 @@ const styles = StyleSheet.create({
     fontFamily: "nunito-regular",
     fontSize: 10,
   },
+
+  dateText: {
+    fontFamily: "nunito-light",
+    fontSize: 12,
+  }
 });
 
 export default TweetContainer;
