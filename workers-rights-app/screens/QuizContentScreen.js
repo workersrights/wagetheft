@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, FlatList, StyleSheet, Button } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Button,
+  TouchableOpacity,
+} from "react-native";
 import Colors from "../constants/Colors";
 import { QUIZOPTIONS } from "../data/dummy-data";
 import QuizOptionItem from "../components/QuizOptionItem";
@@ -170,11 +177,12 @@ QuizContentScreen.navigationOptions = (props) => {
     headerBackTitle: "Previous",
 
     headerRight: () => (
-      <Button
-        title="Quit"
-        color={Colors.darkOrange}
+      <TouchableOpacity
+        style={{ paddingHorizontal: 15 }}
         onPress={() => props.navigation.navigate("Rights")}
-      />
+      >
+        <Text style={styles.doneButton}>Quit</Text>
+      </TouchableOpacity>
     ),
   };
 };
@@ -205,6 +213,10 @@ const styles = StyleSheet.create({
   },
   buttonTitleStyle: {
     fontSize: 16,
+  },
+  doneButton: {
+    fontSize: 17,
+    color: Colors.darkOrange,
   },
 });
 

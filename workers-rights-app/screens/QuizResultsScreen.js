@@ -3,7 +3,7 @@ import {
   View,
   Text,
   FlatList,
-  Button,
+  TouchableOpacity,
   ScrollView,
   StyleSheet,
 } from "react-native";
@@ -173,11 +173,12 @@ QuizResultsScreen.navigationOptions = (props) => {
     headerBackTitle: "Back To Quiz",
 
     headerRight: () => (
-      <Button
-        title="Done"
-        color={Colors.darkOrange}
+      <TouchableOpacity
+        style={{ paddingHorizontal: 15 }}
         onPress={() => props.navigation.navigate("Rights")}
-      />
+      >
+        <Text style={styles.doneButton}>Done</Text>
+      </TouchableOpacity>
     ),
   };
 };
@@ -211,6 +212,10 @@ const styles = StyleSheet.create({
   },
   modalizeContent: {
     flex: 1,
+  },
+  doneButton: {
+    fontSize: 17,
+    color: Colors.darkOrange,
   },
 });
 

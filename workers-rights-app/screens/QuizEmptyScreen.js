@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Image, Button, StyleSheet } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import Colors from "../constants/Colors";
 import QuizHomeScreen from "./QuizHomeScreen";
 
@@ -37,11 +37,12 @@ QuizEmptyScreen.navigationOptions = (props) => {
     },
 
     headerRight: () => (
-      <Button
-        title="Quit"
-        color={Colors.darkOrange}
+      <TouchableOpacity
+        style={{ paddingHorizontal: 15 }}
         onPress={() => props.navigation.navigate("Rights")}
-      />
+      >
+        <Text style={styles.doneButton}>Quit</Text>
+      </TouchableOpacity>
     ),
   };
 };
@@ -63,6 +64,10 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     margin: 10,
+  },
+  doneButton: {
+    fontSize: 17,
+    color: Colors.darkOrange,
   },
 });
 
