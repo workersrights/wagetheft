@@ -1,5 +1,12 @@
 import React, { useState, useRef } from "react";
-import { View, Text, FlatList, ScrollView, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  ScrollView,
+  StyleSheet,
+} from "react-native";
 import { QUIZOPTIONS } from "../data/dummy-data";
 import OrganizationBox from "../components/OrganizationBox";
 import LearnMoreItem from "../components/LearnMoreItem";
@@ -9,7 +16,7 @@ import RightsSheetContent from "../components/RightsSheetContent";
 import Colors from "../constants/Colors";
 import ImportedData from "../data/FetchRightsData";
 import RightsOrganizationModal from "../components/RightsOrganizationModal";
-
+import CustomHeaderButton from "../components/CustomHeaderButton";
 
 const QuizResultsScreen = (props) => {
   // Get list of selectedQuizEnds
@@ -104,7 +111,7 @@ const QuizResultsScreen = (props) => {
         </Text>
 
         {/* Organization section */}
-       
+
         <Text style={styles.section}>
           Contact the following agencies for help:{" "}
         </Text>
@@ -130,12 +137,13 @@ const QuizResultsScreen = (props) => {
         ))}
 
         {/* ------- ORG MODAL ------- */}
-        {activeOrganizationId !== "" &&
-        <RightsOrganizationModal
+        {activeOrganizationId !== "" && (
+          <RightsOrganizationModal
             isVisible={isModalOpen}
             onCloseModal={closeModalHandler}
-            organizationId={activeOrganizationId}
-        ></RightsOrganizationModal>}
+            id={activeOrganizationId}
+          ></RightsOrganizationModal>
+        )}
 
         {/* ------- LEARNMORE MODAL ------- */}
         <Portal>
@@ -150,17 +158,29 @@ const QuizResultsScreen = (props) => {
   );
 };
 
-QuizResultsScreen.navigationOptions = {
-  headerTitle: "Quiz Results",
-  headerStyle: {
-    // only color the background of the header if Android to fit the typical platform look
-    backgroundColor: Platform.OS === "android" ? Colors.lightOrange : "",
-  },
-  headerTintColor: Colors.darkOrange,
-  headerTitleStyle: {
-    fontWeight: "bold",
-  },
-  headerBackTitle: "Back To Quiz",
+QuizResultsScreen.navigationOptions = (props) => {
+  return {
+    headerTitle: "Quiz Results",
+
+    headerStyle: {
+      // only color the background of the header if Android to fit the typical platform look
+      backgroundColor: Platform.OS === "android" ? Colors.lightOrange : "",
+    },
+    headerTintColor: Colors.darkOrange,
+    headerTitleStyle: {
+      fontWeight: "bold",
+    },
+    headerBackTitle: "Back To Quiz",
+
+    headerRight: () => (
+      <TouchableOpacity
+        style={{ paddingHorizontal: 15 }}
+        onPress={() => props.navigation.navigate("Rights")}
+      >
+        <Text style={styles.doneButton}>Done</Text>
+      </TouchableOpacity>
+    ),
+  };
 };
 
 const styles = StyleSheet.create({
@@ -192,6 +212,10 @@ const styles = StyleSheet.create({
   },
   modalizeContent: {
     flex: 1,
+  },
+  doneButton: {
+    fontSize: 17,
+    color: Colors.darkOrange,
   },
 });
 

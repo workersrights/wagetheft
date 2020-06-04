@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, FlatList, StyleSheet, Button } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Button,
+  TouchableOpacity,
+} from "react-native";
 import Colors from "../constants/Colors";
 import { QUIZOPTIONS } from "../data/dummy-data";
 import QuizOptionItem from "../components/QuizOptionItem";
@@ -156,17 +163,28 @@ const QuizContentScreen = (props) => {
   );
 };
 
-QuizContentScreen.navigationOptions = {
-  headerTitle: "Quiz",
-  headerStyle: {
-    // only color the background of the header if Android to fit the typical platform look
-    backgroundColor: Platform.OS === "android" ? Colors.lightOrange : "",
-  },
-  headerTintColor: Colors.darkOrange,
-  headerTitleStyle: {
-    fontWeight: "bold",
-  },
-  headerBackTitle: "Previous",
+QuizContentScreen.navigationOptions = (props) => {
+  return {
+    headerTitle: "Quiz",
+    headerStyle: {
+      // only color the background of the header if Android to fit the typical platform look
+      backgroundColor: Platform.OS === "android" ? Colors.lightOrange : "",
+    },
+    headerTintColor: Colors.darkOrange,
+    headerTitleStyle: {
+      fontWeight: "bold",
+    },
+    headerBackTitle: "Previous",
+
+    headerRight: () => (
+      <TouchableOpacity
+        style={{ paddingHorizontal: 15 }}
+        onPress={() => props.navigation.navigate("Rights")}
+      >
+        <Text style={styles.doneButton}>Quit</Text>
+      </TouchableOpacity>
+    ),
+  };
 };
 
 const styles = StyleSheet.create({
@@ -195,6 +213,10 @@ const styles = StyleSheet.create({
   },
   buttonTitleStyle: {
     fontSize: 16,
+  },
+  doneButton: {
+    fontSize: 17,
+    color: Colors.darkOrange,
   },
 });
 
