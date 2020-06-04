@@ -1,6 +1,6 @@
 import Event from "../../models/event";
 import Constants from "expo-constants";
-
+import { insertEvent, fetchYourEvents, deleteEvent } from '../../helpers/db';
 export const SET_UNIQID = "SET_UNIQID";
 export const SET_YOUR_EVENT = "SET_YOUR_EVENT";
 export const FETCH_EVENTS = "FETCH_EVENTS";
@@ -35,25 +35,26 @@ export const fetchEvents = () => {
         loadedEvents.push(e);
       }
 
-      const response2 = await fetch(
-        `https://workers-rights-46c43.firebaseio.com/users/${uniqId}.json`
-      );
-      if (!response2.ok) {
-        throw new Error("Something went wrong!");
-      }
-      const resData2 = await response2.json();
-      const loadedYourEvents = [];
-      for (const key in resData2) {
-        const e = loadedEvents.find((event) => event.id === key);
-        loadedYourEvents.push(e);
-      }
-
+      const dbResult = await fetchYourEvents();
+      const arr = dbResult.rows._array;
+      const loadedYourEvents = arr.map(e => new Event(
+        e.id,
+        e.title,
+        e.date,
+        e.imageUrl,
+        e.organizer,
+        e.location,
+        e.category,
+        e.description
+      ));
+      
       dispatch({
         type: FETCH_EVENTS,
         events: loadedEvents,
         yourEvents: loadedYourEvents,
       });
-    } catch (err) {
+    } 
+    catch (err) {
       throw err;
     }
   };
@@ -81,26 +82,15 @@ export const addYourFavorites = (
   description
 ) => {
   return async (dispatch) => {
-    const response = await fetch(
-      `https://workers-rights-46c43.firebaseio.com/users/${uniqId}/${id}.json`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title,
-          date,
-          image,
-          organizer,
-          location,
-          category,
-          description,
-        }),
-      }
-    );
-    console.log("added\n");
-    dispatch({ type: SET_YOUR_EVENT, id: id });
+    try {
+      await insertEvent(id, title, date, image, organizer, location, category, description);
+      dispatch({ type: SET_YOUR_EVENT, id: id });
+
+    }
+    catch(err) {
+      throw err;
+    }
+    
   };
 };
 
@@ -110,13 +100,7 @@ export const addYourFavorites = (
  */
 export const removeYourFavorites = (id) => {
   return async (dispatch) => {
-    const response = await fetch(
-      `https://workers-rights-46c43.firebaseio.com/users/${uniqId}/${id}.json`,
-      {
-        method: "DELETE",
-      }
-    );
-    console.log("removed\n");
+    await deleteEvent(id);
     dispatch({ type: SET_YOUR_EVENT, id: id });
   };
 };
