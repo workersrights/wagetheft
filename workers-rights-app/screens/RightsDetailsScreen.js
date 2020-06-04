@@ -109,7 +109,7 @@ const RightsDetailsScreen = (props) => {
         <RightsOrganizationModal
           isVisible={isModalOpen}
           onCloseModal={closeModalHandler}
-          organizationId={activeOrganizationId}
+          id={activeOrganizationId}
         ></RightsOrganizationModal>
       )}
 
