@@ -14,6 +14,7 @@
     "expo": "~36.0.0",
     "expo-constants": "~8.0.0",
     "expo-linking": "^1.0.1",
+    "expo-sqlite": "^8.0.0",
     "firebase": "^7.14.4",
     "ionicons": "^5.0.1",
     "moment": "^2.26.0",
