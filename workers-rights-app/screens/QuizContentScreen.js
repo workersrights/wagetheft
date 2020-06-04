@@ -156,17 +156,27 @@ const QuizContentScreen = (props) => {
   );
 };
 
-QuizContentScreen.navigationOptions = {
-  headerTitle: "Quiz",
-  headerStyle: {
-    // only color the background of the header if Android to fit the typical platform look
-    backgroundColor: Platform.OS === "android" ? Colors.lightOrange : "",
-  },
-  headerTintColor: Colors.darkOrange,
-  headerTitleStyle: {
-    fontWeight: "bold",
-  },
-  headerBackTitle: "Previous",
+QuizContentScreen.navigationOptions = (props) => {
+  return {
+    headerTitle: "Quiz",
+    headerStyle: {
+      // only color the background of the header if Android to fit the typical platform look
+      backgroundColor: Platform.OS === "android" ? Colors.lightOrange : "",
+    },
+    headerTintColor: Colors.darkOrange,
+    headerTitleStyle: {
+      fontWeight: "bold",
+    },
+    headerBackTitle: "Previous",
+
+    headerRight: () => (
+      <Button
+        title="Quit"
+        color={Colors.darkOrange}
+        onPress={() => props.navigation.navigate("Rights")}
+      />
+    ),
+  };
 };
 
 const styles = StyleSheet.create({
