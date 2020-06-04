@@ -32,14 +32,6 @@ const EventsHomeScreen = (props) => {
     setIsRefreshing(false);
   }, [dispatch]);
 
-  //Listener if revisting page
-  useEffect(() => {
-    const willFocusSub = props.navigation.addListener("willFocus", loadEvents);
-    return () => {
-      willFocusSub.remove();
-    };
-  }, [loadEvents]);
-
   // Load events
   useEffect(() => {
     setIsLoading(true);
