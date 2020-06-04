@@ -19,14 +19,6 @@ const EventCategoryScreen = props => {
     setIsRefreshing(false);
   }, [dispatch]);
 
-  // Load events
-  useEffect(() => {
-    setIsLoading(true);
-    loadEvents().then(() => {
-      setIsLoading(false);
-    });
-  }, [dispatch, loadEvents]);
-
   const allEvents = useSelector(state => state.events.allEvents);
   const yourEvents = useSelector(state => state.events.yourEvents);
   const category = props.navigation.getParam("categoryTitle");
