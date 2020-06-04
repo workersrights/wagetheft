@@ -7,7 +7,9 @@ const SubRightsItem = (props) => {
     <TouchableOpacity onPress={props.onSelect} style={styles.subrights}>
       <View style={styles.txtContainer}>
         <Image style={styles.icon} source={props.img} />
-        <Text style={styles.subrightstxt}>{props.title}</Text>
+        <View style={styles.contentContainer}>
+          <Text style={styles.subrightstxt}>{props.title}</Text>
+        </View>
         <Text style={styles.subrightstxt}>→</Text>
       </View>
     </TouchableOpacity>
@@ -25,10 +27,13 @@ const styles = StyleSheet.create({
     elevation: 3,
     backgroundColor: Colors.lightOrange,
   },
+  contentContainer: {
+    maxWidth: "80%",
+  },
   subrightstxt: {
     fontSize: 16,
     paddingHorizontal: 2,
-    textAlign: "center"
+    textAlign: "center",
   },
   txtContainer: {
     flexDirection: "row",
