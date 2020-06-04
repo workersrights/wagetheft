@@ -8,7 +8,7 @@ import ModalCloseButton from "../components/ModalCloseButton.js"
 const RightsOrganizationModal = (props) => {
 
   const selectedOrganization =  ImportedData.getOraganizations().filter((organization) => 
-                                                  organization.id === props.organizationId)[0];
+                                                  organization.id === props.id)[0];
   const deviceHeight = Dimensions.get("window").height;
   const deviceWidth = Dimensions.get("window").width;
 
