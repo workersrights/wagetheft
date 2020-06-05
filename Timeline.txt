@@ -12,7 +12,7 @@ TODOS (as of 28 May meeting)
     - Getting Paid & Misc (Angel)
     - Mistreatment (Ryan)
 2) Check on Victoria's branch
-3) Quiz logic changes (Next and Done problem - Ryan)
+3) [DONE] Quiz logic changes (Next and Done problem - Ryan)
 
 +
 * Change Firebase settings for better security. For now, anyone can completely wipe out the database. --> Alex, Manuka
@@ -23,8 +23,8 @@ NEED to fix:
 
 1) LearnMores need to truncate text better. Long texts overflow sideways but seem to stick within 2 lines.
    Change the titles to make it fit. (Impose a character count limit). --> Alex
-2) LearnMore title not centralized. Seems to have a constant padding from the left but not from the right. --> Ryan
-3) Quiz results page needs to be an empty page if no rights selected. Also, add done button to Quiz UI --> Ryan
+2) [DONE] LearnMore title not centralized. Seems to have a constant padding from the left but not from the right. --> Ryan
+3) [DONE] Quiz results page needs to be an empty page if no rights selected. Also, add done button to Quiz UI --> Ryan
 4) Tiles & Take Quiz button need to be dynamically sized (%) so that the flatlist doesn't scroll around. --> Alex
 5) [DONE] Fix the Rights Category Modal text overlap issue. Reduce padding and limit text. Impose a maxHeight for modal. --> Angel
 6) The flatlist on the Quiz page can also be panned around. Fix the learnMore touchable size. --> Angel
@@ -37,7 +37,7 @@ NEED to fix:
 ******* [DONE] NAME FOR THE APP!!!!!!!!!!!!!!!!!!!!!! + ICON *********
 
 Improvements:
-LearnMore content needs larger padding (nicer).
+[DONE] LearnMore content needs larger padding (nicer).
 Fix the loading thing for events
 
 
