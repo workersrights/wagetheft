@@ -37,19 +37,31 @@ const EventsHomeModule = (props) => {
   const len = displayedEvents.length;
   
   // Case where there are no events
-  if(len === 0){
-    return(
-    <View style={styles.noEventsContainer}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.categoryText}>{props.category}</Text>
-      </View>
-      <View style={styles.noEventsTextCotainer}>
-        <Text style={styles.noEventsText}>There are no events in this category.</Text>
-        <Text style={styles.noEventsText}>Add some by tapping on the star in each event!</Text>
-      </View>
-    </View>);
+  if(len === 0 ){
+    if(props.category === 'Your Events') {
+      return(
+      <View style={styles.noEventsContainer}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.categoryText}>{props.category}</Text>
+        </View>
+        <View style={styles.noEventsTextCotainer}>
+          <Text style={styles.noEventsText}>There are no events in this category.</Text>
+          <Text style={styles.noEventsText}>Add some by tapping on the star in each event!</Text>
+        </View>
+      </View>);
+    } else {
+      return(
+        <View style={styles.noEventsContainer}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.categoryText}>{props.category}</Text>
+          </View>
+          <View style={styles.noEventsTextCotainer}>
+            <Text style={styles.noEventsText}>There are no events in this category at this time. Come back another time to see if some are added!</Text>
+          </View>
+        </View>);
+    }
   }
-      
+
   const renderHomeCards = (itemData) => {
     return (
       <EventsHomeCard
