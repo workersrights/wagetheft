@@ -1,4 +1,5 @@
 import { SET_YOUR_EVENT, FETCH_EVENTS } from '../actions/events';
+import { compareEvents } from '../../models/event';
 
 const initialState = {
     allEvents: [],
@@ -19,8 +20,11 @@ const eventsReducer = (state = initialState, action) => {
                     const updatedYourEvents = [...state.yourEvents];
                     updatedYourEvents.splice(existingIndex, 1);
                     return {...state, yourEvents: updatedYourEvents};
-                } else 
-                    return {...state, yourEvents: state.yourEvents.concat(state.allEvents.find(event => event.id===action.id))};
+                } else {
+                    let arr = state.yourEvents.concat(state.allEvents.find(event => event.id===action.id));
+                    arr.sort(compareEvents)
+                    return {...state, yourEvents: arr};
+                }
         default:
             return state;    
     }
