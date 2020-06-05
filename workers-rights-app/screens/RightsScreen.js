@@ -68,7 +68,7 @@ const RightsScreen = (props) => {
         data={ImportedData.getRightsCategories()}
         renderItem={renderGridItem}
         numColumns={2}
-        ListFooterComponent={renderQuizButton}
+        //ListFooterComponent={renderQuizButton}
         showsVerticalScrollIndicator={false}
       />
       <RightsCategoryModal
