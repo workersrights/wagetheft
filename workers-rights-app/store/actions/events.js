@@ -1,4 +1,4 @@
-import Event, { compareEvents } from "../../models/event";
+import Event, { compareEvents, hasHappened } from "../../models/event";
 import Constants from "expo-constants";
 import { insertEvent, fetchYourEvents, deleteEvent } from '../../helpers/db';
 export const SET_UNIQID = "SET_UNIQID";
