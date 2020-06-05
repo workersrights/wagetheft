@@ -7,9 +7,11 @@ import {
   RefreshControl,
 } from "react-native";
 import { useDispatch } from "react-redux";
-
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import CustomHeaderButton from '../components/CustomHeaderButton';
 import * as eventActions from "../store/actions/events";
 import EventsHomeModule from "../components/EventsHomeModule.js";
+import EventModal from '../components/EventModal';
 import Colors from "../constants/Colors";
 
 const categoryTitles = [
@@ -25,6 +27,11 @@ const EventsHomeScreen = (props) => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    props.navigation.setParams({ setIsModalOpen: setIsModalOpen });
+  }, [isModalOpen]);
 
   const loadEvents = useCallback(async () => {
     setIsRefreshing(true);
@@ -91,20 +98,37 @@ const EventsHomeScreen = (props) => {
         renderItem={renderEventModules}
         showsVerticalScrollIndicator={false}
       />
+      <EventModal 
+        isVisible={isModalOpen}
+        onCloseModal={() => {setIsModalOpen(false);}}
+      />
     </View>
   );
 };
 
-EventsHomeScreen.navigationOptions = {
-  headerTitle: "Events",
-  headerStyle: {
-    // only color the background of the header if Android to fit the typical platform look
-    backgroundColor: Platform.OS === "android" ? Colors.lightOrange : "",
-  },
-  headerTintColor: Colors.darkOrange,
-  headerTitleStyle: {
-    fontWeight: "bold",
-  },
+EventsHomeScreen.navigationOptions = navigationData =>{
+  const setIsModalOpen = navigationData.navigation.getParam('setIsModalOpen');
+  return {
+    headerTitle: "Events",
+    headerStyle: {
+      // only color the background of the header if Android to fit the typical platform look
+      backgroundColor: Platform.OS === "android" ? Colors.lightOrange : "",
+    },
+    headerTintColor: Colors.darkOrange,
+    headerTitleStyle: {
+      fontWeight: "bold",
+    },
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        <Item
+          title="Help"
+          iconName="ios-help-circle-outline"
+          iconSize={30}
+          onPress={() => { setIsModalOpen(true); }}
+        />
+      </HeaderButtons>
+    )
+  };
 };
 
 const styles = StyleSheet.create({
