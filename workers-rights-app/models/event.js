@@ -43,3 +43,10 @@ export const compareEvents = (e1, e2) => {
 
   return (date1.isBefore(date2)) ? -1 : 1;
 }
+
+export const hasHappened = e => {
+  var moment = require('moment');
+  const today = moment().endOf('day');
+  const date = moment(e.date);
+  return date.isBefore(today);
+}
