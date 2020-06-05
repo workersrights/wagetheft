@@ -14,6 +14,10 @@ TODOS (as of 28 May meeting)
 2) Check on Victoria's branch
 3) Quiz logic changes (Next and Done problem - Ryan)
 
++
+* Change Firebase settings for better security. For now, anyone can completely wipe out the database. --> Alex, Manuka
+* Complete / add more information in the organizations data. Some organizations have very little info. --> Manuka
+
 ============================== UI Bugs ==============================
 NEED to fix:
 
