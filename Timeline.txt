@@ -42,13 +42,13 @@ NEED to fix:
 4) Tiles & Take Quiz button need to be dynamically sized (%) so that the flatlist doesn't scroll around. --> Alex
 5) [DONE] Fix the Rights Category Modal text overlap issue. Reduce padding and limit text. Impose a maxHeight for modal. --> Angel
 6) The flatlist on the Quiz page can also be panned around. Fix the learnMore touchable size. --> Angel
-7) In Events page, when there are no "Your Events", there's a lack of space between "Your Events" and "Social". --> Victoria
-8) The border shadows for Events cards are also being cut off. --> Victoria
+7) [DONE]In Events page, when there are no "Your Events", there's a lack of space between "Your Events" and "Social". --> Victoria
+8) [DONE}The border shadows for Events cards are also being cut off. --> Victoria
 9) [DONE] The org shadows for org cards are being cut off. --> Manuka
 10)[DONE] Make tweets clickable, add dates, sort the tweets by date. --> Manuka
 11)[DONE] Change the titling and add the question mark pop up thing for the Twitter Feed. --> Victoria
 
-******* NAME FOR THE APP!!!!!!!!!!!!!!!!!!!!!! + ICON *********
+******* [DONE] NAME FOR THE APP!!!!!!!!!!!!!!!!!!!!!! + ICON *********
 
 Improvements:
 
