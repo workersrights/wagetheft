@@ -11,10 +11,11 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon":"./assets/WA-icon-rounded.png",
     "splash": {
       "image": "./assets/loading-screen.png",
       "resizeMode": "cover",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#fcbs56"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -24,6 +25,12 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android":{
+      "adaptiveIcon": {
+        "foregroundImage":"./assets/WA-icon-rounded.png",
+        "backgroundColor":"#fcbs56"
+      }
     },
     "description": ""
   }
