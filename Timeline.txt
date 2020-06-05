@@ -1,66 +1,60 @@
 Final Major TODOs
 
-Logic changes:
-* If no learn mores to display, do not display "Learn more: "
-* In Quiz, ensure that user cannot click next without selecting a quiz option
-
-TODOS (as of 28 May meeting)
-1) Populate rights: (by 31 May)
+0) Populate rights:
     - Getting Hired & Unions (Alex)
     - Termination & Unemployment (Manuka)
     - Safety & Health (Victoria)
     - Getting Paid & Misc (Angel)
     - Mistreatment (Ryan)
-2) Check on Victoria's branch
-3) [DONE] Quiz logic changes (Next and Done problem - Ryan)
+    - Miscellaneous? Angel?
 
-+
-* Change Firebase settings for better security. For now, anyone can completely wipe out the database. --> Alex, Manuka
-* Complete / add more information in the organizations data. Some organizations have very little info. --> Manuka
+1) Presentation --> All
+2) Discuss quiz implementation --> All
+3) User authentication for editing of firebase info --> Alex (portal), Manuka (app)
+4) Delete events that have past? (Cloud function) Delete the "organizations" field on events or not? --> Victoria
+5) Collate our populated data (our own individual write-ups) into 1 document to send to WTC --> Send to Ryan
+6) Complete / add more information in the organizations data. Some organizations have very little info.
 
-============================== UI Bugs ==============================
-NEED to fix:
+******* [DONE] NAME FOR THE APP!!!!!!!!!!!!!!!!!!!!!! + ICON *********
 
-1) LearnMores need to truncate text better. Long texts overflow sideways but seem to stick within 2 lines.
+
+============================== TODO after initial launch ==============================
+Improvements:
+* Fix the loading thing for events --> Victoria / Alex
+* Localization / Translation! Figure out a way to store the translated text in Firebase or other platform --> All
+* Find cleaner way to fetching the data --> Manuka
+
+
+============================== Completed Tasks ==============================
+
+UI Bugs
+1) [DONE] LearnMores need to truncate text better. Long texts overflow sideways but seem to stick within 2 lines.
    Change the titles to make it fit. (Impose a character count limit). --> Alex
 2) [DONE] LearnMore title not centralized. Seems to have a constant padding from the left but not from the right. --> Ryan
 3) [DONE] Quiz results page needs to be an empty page if no rights selected. Also, add done button to Quiz UI --> Ryan
 4) Tiles & Take Quiz button need to be dynamically sized (%) so that the flatlist doesn't scroll around. --> Alex
 5) [DONE] Fix the Rights Category Modal text overlap issue. Reduce padding and limit text. Impose a maxHeight for modal. --> Angel
-6) The flatlist on the Quiz page can also be panned around. Fix the learnMore touchable size. --> Angel
+6) [DONE] The flatlist on the Quiz page can also be panned around. Fix the learnMore touchable size. --> Angel
 7) [DONE]In Events page, when there are no "Your Events", there's a lack of space between "Your Events" and "Social". --> Victoria
 8) [DONE}The border shadows for Events cards are also being cut off. --> Victoria
 9) [DONE] The org shadows for org cards are being cut off. --> Manuka
 10)[DONE] Make tweets clickable, add dates, sort the tweets by date. --> Manuka
 11)[DONE] Change the titling and add the question mark pop up thing for the Twitter Feed. --> Victoria
-
-******* [DONE] NAME FOR THE APP!!!!!!!!!!!!!!!!!!!!!! + ICON *********
-
-Improvements:
-[DONE] LearnMore content needs larger padding (nicer).
-Fix the loading thing for events
-
-
-============================== TODO after initial launch ==============================
-If Time:
-* Localization / Translation! Figure out a way to store the translated text in Firebase or other platform
-
-
-
-============================== Completed Tasks ==============================
-
-UI changes:
 * [DONE] Fix headers running into back buttons --> Alex
 * [DONE] Improve UI for Twitter feed --> Alex
 * [DONE] To fix: on small screens, rights category modal text overlaps with button
+[DONE] LearnMore content needs larger padding (nicer).
+4) [DONE] Keep testing the UI, screenshot the things to fix, compile all of those by our weekend call (8pm Saturday)
 
 Backend changes:
 [DONE] Finalize backend with image urls --> Manuka (DONE)
 * [DONE] Ensure Event backend is functional (the bug that Alex found) --> Victoria
 
-!!AUTHENTICATION FAVORITE EVENTS
+Logic
+2) [DONE] Check on Victoria's branch
+3) [DONE] Quiz logic changes (Next and Done problem - Ryan)
 * [DONE] Staring on device -> have a persistent storage list for a list of unique identifiers for events --> Victoria
+* [DONE] In Quiz, ensure that user cannot click next without selecting a quiz option
 
+Features
 [DONE] Twitter feed instead of Forums page --> Manuka
-
-4) [DONE] Keep testing the UI, screenshot the things to fix, compile all of those by our weekend call (8pm Saturday)
