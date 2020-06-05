@@ -1,4 +1,4 @@
-import Event from "../../models/event";
+import Event, { compareEvents } from "../../models/event";
 import Constants from "expo-constants";
 import { insertEvent, fetchYourEvents, deleteEvent } from '../../helpers/db';
 export const SET_UNIQID = "SET_UNIQID";
@@ -20,7 +20,7 @@ export const fetchEvents = () => {
         throw new Error("Something went wrong!");
       }
       const resData = await response.json();
-      const loadedEvents = [];
+      let loadedEvents = [];
       for (const key in resData) {
         const e = new Event(
           key,
@@ -37,7 +37,7 @@ export const fetchEvents = () => {
 
       const dbResult = await fetchYourEvents();
       const arr = dbResult.rows._array;
-      const loadedYourEvents = arr.map(e => new Event(
+      let loadedYourEvents = arr.map(e => new Event(
         e.id,
         e.title,
         e.date,
@@ -50,8 +50,8 @@ export const fetchEvents = () => {
       
       dispatch({
         type: FETCH_EVENTS,
-        events: loadedEvents,
-        yourEvents: loadedYourEvents,
+        events: loadedEvents.sort(compareEvents),
+        yourEvents: loadedYourEvents.sort(compareEvents),
       });
     } 
     catch (err) {
