@@ -4,9 +4,6 @@ Logic changes:
 * If no learn mores to display, do not display "Learn more: "
 * In Quiz, ensure that user cannot click next without selecting a quiz option
 
-If Time:
-* Localization / Tranlation! --> Manuka look into
-
 TODOS (as of 28 May meeting)
 1) Populate rights: (by 31 May)
     - Getting Hired & Unions (Alex)
@@ -16,8 +13,6 @@ TODOS (as of 28 May meeting)
     - Mistreatment (Ryan)
 2) Check on Victoria's branch
 3) Quiz logic changes (Next and Done problem - Ryan)
-4) Keep exploring ways to do multiple languages (after everything)
-5) [DONE] Keep testing the UI, screenshot the things to fix, compile all of those by our weekend call (8pm Saturday)
 
 ============================== UI Bugs ==============================
 NEED to fix:
@@ -38,9 +33,14 @@ NEED to fix:
 ******* NAME FOR THE APP!!!!!!!!!!!!!!!!!!!!!! + ICON *********
 
 Improvements:
-
 LearnMore content needs larger padding (nicer).
 Fix the loading thing for events
+
+
+============================== TODO after initial launch ==============================
+If Time:
+* Localization / Translation! Figure out a way to store the translated text in Firebase or other platform
+
 
 
 ============================== Completed Tasks ==============================
@@ -58,3 +58,5 @@ Backend changes:
 * [DONE] Staring on device -> have a persistent storage list for a list of unique identifiers for events --> Victoria
 
 [DONE] Twitter feed instead of Forums page --> Manuka
+
+4) [DONE] Keep testing the UI, screenshot the things to fix, compile all of those by our weekend call (8pm Saturday)
