@@ -4,24 +4,39 @@ import * as Linking from 'expo-linking';
 import { TouchableNativeFeedback, TouchableOpacity } from "react-native-gesture-handler";
 
 const TweetContainer = (props) => {
+  let INPUT_FORMAT = "ddd MMM DD HH:mm:ss ZZ YYYY"; // Twitter API format
+  let OUTPUT_FORMAT = "MMMM Do, YYYY"; // Desired format to display
+
+  const getDateStr = () => {
+    var moment = require('moment');
+    const date = moment(props.time, INPUT_FORMAT).format(OUTPUT_FORMAT);
+    return date.toString();
+  }
+
   let TouchablePlatformSpecific =
-    Platform.OS === "ios" ? TouchableOpacity : TouchableNativeFeedback;
-  return (
+  Platform.OS === "ios" ? TouchableOpacity : TouchableNativeFeedback;
+
+    return (
     <TouchablePlatformSpecific 
       style={styles.touch}
       onPress={()=>{Linking.openURL(props.link)}}
     >
     <View style={styles.container} >
-      <View style={styles.userInfoContainer}>
-        <View style={styles.photoContainer}>
-          <Image
-            style={styles.userPhoto}
-            source={{ uri: props.userPhoto }}
-          ></Image>
+      <View style={styles.tweetHeader}>
+        <View style={styles.userInfoContainer}>
+          <View style={styles.photoContainer}>
+            <Image
+              style={styles.userPhoto}
+              source={{ uri: props.userPhoto }}
+            ></Image>
+          </View>
+          <View style={styles.userNamesContainer}>
+            <Text style={styles.tweetUserName}>{props.name}</Text>
+            <Text style={styles.tweetUserHandle}> {"@" + props.screenName} </Text>
+          </View>
         </View>
-        <View style={styles.userNamesContainer}>
-          <Text style={styles.tweetUserName}>{props.name}</Text>
-          <Text style={styles.tweetUserHandle}> {"@" + props.screenName} </Text>
+        <View style={{alignSelf: "center"}}>
+          <Text style={styles.dateText}>{getDateStr()}</Text>
         </View>
       </View>
       <Text style={styles.tweetText}>{props.text}</Text>
@@ -33,7 +48,6 @@ const TweetContainer = (props) => {
 const styles = StyleSheet.create({
   container: {
     width: Dimensions.get("window").width * 0.95,
-    flexDirection: "column",
     backgroundColor: "white",
     marginBottom: 10,
     borderRadius: 5,
@@ -44,6 +58,11 @@ const styles = StyleSheet.create({
     shadowRadius: 1,
     elevation: 2,
     margin: "0.5%",
+  },
+
+  tweetHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between"
   },
 
   userInfoContainer: {
@@ -85,6 +104,11 @@ const styles = StyleSheet.create({
     fontFamily: "nunito-regular",
     fontSize: 10,
   },
+
+  dateText: {
+    fontFamily: "nunito-light",
+    fontSize: 12,
+  }
 });
 
 export default TweetContainer;
