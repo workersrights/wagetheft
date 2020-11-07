@@ -4,7 +4,6 @@ import ImportedData from "../data/FetchRightsData";
 import Colors from "../constants/Colors";
 import RightsCategoryTile from "../components/RightsCategoryTile";
 import RightsCategoryModal from "../components/RightsCategoryModal";
-import LaunchQuizButton from "../components/LaunchQuizButton";
 
 const RightsScreen = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,12 +29,6 @@ const RightsScreen = (props) => {
     });
   };
 
-  const launchQuizHandler = () => {
-    props.navigation.navigate({
-      routeName: "QuizHome",
-    });
-  };
-
   const renderGridItem = (itemData) => {
     return (
       <RightsCategoryTile
@@ -48,13 +41,6 @@ const RightsScreen = (props) => {
     );
   };
 
-  const renderQuizButton = () => {
-    return (
-      <View>
-        <LaunchQuizButton onPress={launchQuizHandler} />
-      </View>
-    );
-  };
   // <RightsModal />
   return (
     <View style={styles.screen}>
@@ -68,7 +54,6 @@ const RightsScreen = (props) => {
         data={ImportedData.getRightsCategories()}
         renderItem={renderGridItem}
         numColumns={2}
-        //ListFooterComponent={renderQuizButton}
         showsVerticalScrollIndicator={false}
       />
       <RightsCategoryModal

@@ -9,11 +9,6 @@ import SubRightsScreen from "../screens/SubRightsScreen";
 import RightsDetailsScreen from "../screens/RightsDetailsScreen";
 import FavoriteRightsScreen from "../screens/FavoriteRightsScreen";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-//import QuizNavigator from "../navigation/QuizNavigator"; This exists, but unused till we figure out how to display quiz above bottom tabs
-import QuizHomeScreen from "../screens/QuizHomeScreen";
-import QuizContentScreen from "../screens/QuizContentScreen";
-import QuizResultsScreen from "../screens/QuizResultsScreen";
-import QuizEmptyScreen from "../screens/QuizEmptyScreen";
 
 import Colors from "../constants/Colors";
 
@@ -24,10 +19,6 @@ const RightsNavigator = createStackNavigator(
     },
     SubRights: SubRightsScreen,
     RightsDetails: RightsDetailsScreen,
-    QuizHome: QuizHomeScreen,
-    QuizContent: QuizContentScreen,
-    QuizResults: QuizResultsScreen,
-    QuizEmpty: QuizEmptyScreen,
   },
   {
     // second argument: to configure the style of the navigator
