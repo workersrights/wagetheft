@@ -11,7 +11,6 @@ import ReduxThunk from 'redux-thunk';
 import rightsReducer from "./store/reducers/rights";
 import ImportedData from './data/FetchRightsData.js'; 
 //import './data/PushDummyData'; // to push data to firebase
-import { init } from './helpers/db'
 
 // Get rid of a warning
 import { YellowBox } from 'react-native';
@@ -41,8 +40,6 @@ const fetchFonts = () => {
   });
 };
 
-// load local database 
-init().then(() => {});
 
 export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
