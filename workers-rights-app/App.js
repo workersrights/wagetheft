@@ -1,33 +1,15 @@
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
 import RightsNavigator from "./navigation/RightsNavigator";
-import { Host } from "react-native-portalize";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
 import { enableScreens } from 'react-native-screens';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import ReduxThunk from 'redux-thunk';
-import rightsReducer from "./store/reducers/rights";
 import ImportedData from './data/FetchRightsData.js'; 
-//import './data/PushDummyData'; // to push data to firebase
-
-// Get rid of a warning
-import { YellowBox } from 'react-native';
-import _ from 'lodash';
-YellowBox.ignoreWarnings(['Setting a timer']);
-const _console = _.clone(console);
-console.warn = message => {
-  if (message.indexOf('Setting a timer') <= -1) {
-    _console.warn(message);
-  }
-};
 
 enableScreens();
 
 async function loadAllData() {
   fetchFonts();
-  const result = await ImportedData.importAllData();
+  await ImportedData.importAllData();
 }
 
 const fetchFonts = () => {
@@ -40,7 +22,6 @@ const fetchFonts = () => {
   });
 };
 
-
 export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
   if (!dataLoaded) {
@@ -52,25 +33,8 @@ export default function App() {
     );
   }
 
-  const rootreducer = combineReducers({
-    rights: rightsReducer,
-  });
-  const store = createStore(rootreducer, applyMiddleware(ReduxThunk));
-
   return (
-    <Host >
-      <Provider store={store}>
-        <RightsNavigator />
-      </Provider>
-    </Host>
+    <RightsNavigator />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
