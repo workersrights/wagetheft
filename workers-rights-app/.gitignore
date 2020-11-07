@@ -11,6 +11,6 @@ web-build/
 web-report/
 *MyApiKeys.js
 *MyTwitterKeys.js
-
+.vscode/
 # macOS
 .DS_Store
