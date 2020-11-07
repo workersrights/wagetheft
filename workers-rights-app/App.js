@@ -8,11 +8,9 @@ import { enableScreens } from 'react-native-screens';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
-import eventsReducer from './store/reducers/events';
 import rightsReducer from "./store/reducers/rights";
 import ImportedData from './data/FetchRightsData.js'; 
 //import './data/PushDummyData'; // to push data to firebase
-import { init } from './helpers/db'
 
 // Get rid of a warning
 import { YellowBox } from 'react-native';
@@ -42,8 +40,6 @@ const fetchFonts = () => {
   });
 };
 
-// load local database 
-init().then(() => {});
 
 export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -58,7 +54,6 @@ export default function App() {
 
   const rootreducer = combineReducers({
     rights: rightsReducer,
-    events: eventsReducer
   });
   const store = createStore(rootreducer, applyMiddleware(ReduxThunk));
 
