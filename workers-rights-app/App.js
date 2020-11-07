@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import RightsNavigator from "./navigation/RightsNavigator";
+import { Host } from "react-native-portalize";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
 import { enableScreens } from 'react-native-screens';
@@ -12,6 +13,7 @@ import ImportedData from './data/FetchRightsData.js';
  * operating system behavior and optimizations around screens
  * 
  */
+
 enableScreens();
 
 /*
@@ -20,6 +22,7 @@ enableScreens();
  * Friebase. 
  * 
  */
+
 async function loadAllData() {
   fetchFonts();
   await ImportedData.importAllData();
@@ -32,6 +35,7 @@ async function loadAllData() {
  * that is resolved after fetching is complete
  * 
  */
+
 const fetchFonts = () => {
   Font.loadAsync({
     "nunito-light": require("./assets/fonts/Nunito-Light.ttf"),
@@ -54,7 +58,9 @@ export default function App() {
   }
 
   return (
-    <RightsNavigator />
+    <Host >
+        <RightsNavigator />
+    </Host>
   );
 }
 
