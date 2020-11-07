@@ -5,13 +5,33 @@ import { AppLoading } from "expo";
 import { enableScreens } from 'react-native-screens';
 import ImportedData from './data/FetchRightsData.js'; 
 
+/*
+ * 
+ * Provides native primitives to represent screens instead of 
+ * plain <View> components in order to better take advantage of 
+ * operating system behavior and optimizations around screens
+ * 
+ */
 enableScreens();
 
+/*
+ * 
+ * Asynchronous function to import data into rights from 
+ * Friebase. 
+ * 
+ */
 async function loadAllData() {
   fetchFonts();
   await ImportedData.importAllData();
 }
 
+/*
+ * 
+ * Function loads the functions into the app by calling the 
+ * Expo Font.loadAsync function which returns a promise 
+ * that is resolved after fetching is complete
+ * 
+ */
 const fetchFonts = () => {
   Font.loadAsync({
     "nunito-light": require("./assets/fonts/Nunito-Light.ttf"),
