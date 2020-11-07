@@ -15,7 +15,6 @@ import QuizContentScreen from "../screens/QuizContentScreen";
 import QuizResultsScreen from "../screens/QuizResultsScreen";
 import QuizEmptyScreen from "../screens/QuizEmptyScreen";
 
-import FeedNavigator from "./FeedNavigation";
 import Colors from "../constants/Colors";
 
 const RightsNavigator = createStackNavigator(
@@ -58,17 +57,7 @@ const RightsTabNavigator = createBottomTabNavigator(
           );
         },
       },
-    },
-    Feed: {
-      screen: FeedNavigator,
-      navigationOptions: {
-        tabBarIcon: (tabInfo) => {
-          return (
-            <Icon name="forum-outline" size={25} color={tabInfo.tintColor} />
-          );
-        },
-      },
-    },
+    }
   },
   {
     initialRouteName: "Rights",
