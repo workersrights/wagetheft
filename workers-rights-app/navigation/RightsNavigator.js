@@ -8,7 +8,6 @@ import RightsScreen from "../screens/RightsScreen";
 import SubRightsScreen from "../screens/SubRightsScreen";
 import RightsDetailsScreen from "../screens/RightsDetailsScreen";
 import FavoriteRightsScreen from "../screens/FavoriteRightsScreen";
-import EventsHomeScreen from "../screens/EventsHomeScreen";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 //import QuizNavigator from "../navigation/QuizNavigator"; This exists, but unused till we figure out how to display quiz above bottom tabs
 import QuizHomeScreen from "../screens/QuizHomeScreen";
@@ -16,7 +15,6 @@ import QuizContentScreen from "../screens/QuizContentScreen";
 import QuizResultsScreen from "../screens/QuizResultsScreen";
 import QuizEmptyScreen from "../screens/QuizEmptyScreen";
 
-import EventsNavigator from "./EventsNavigator";
 import FeedNavigator from "./FeedNavigation";
 import Colors from "../constants/Colors";
 
@@ -51,16 +49,6 @@ const RightsNavigator = createStackNavigator(
 // have 1 stack per tab
 const RightsTabNavigator = createBottomTabNavigator(
   {
-    Events: {
-      screen: EventsNavigator,
-      navigationOptions: {
-        tabBarIcon: (tabInfo) => {
-          return (
-            <Ionicons name="ios-calendar" size={25} color={tabInfo.tintColor} />
-          );
-        },
-      },
-    },
     Rights: {
       screen: RightsNavigator,
       navigationOptions: {
