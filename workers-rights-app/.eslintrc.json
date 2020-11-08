@@ -5,5 +5,12 @@
         "prettier/prettier": ["error"],
         "global-require": "off",
         "react/jsx-filename-extension": "off"
-    }
+    },
+    "settings": {
+        "import/resolver": {
+          "node": {
+            "extensions": [".js", ".jsx", ".json", ".native.js"]
+          }
+        }
+      }
   }
