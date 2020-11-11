@@ -4,7 +4,8 @@
     "rules": {
         "prettier/prettier": ["error"],
         "global-require": "off",
-        "react/jsx-filename-extension": "off"
+        "react/jsx-filename-extension": "off",
+        "no-use-before-define": ["error", { "variables": false }]
     },
     "settings": {
         "import/resolver": {

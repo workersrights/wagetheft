@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { View, StyleSheet, FlatList, Platform } from "react-native";
-import ImportedData from "../data/FetchRightsData";
+import PropTypes from "prop-types";
+import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
 import Colors from "../constants/Colors";
 import RightsCategoryTile from "../components/RightsCategoryTile";
 import RightsCategoryModal from "../components/RightsCategoryModal";
 
 /*
- * 
+ *
  * Function Component Definiton: Rights Screen
- * 
+ *
  */
 
 const RightsScreen = (props) => {
@@ -25,29 +26,29 @@ const RightsScreen = (props) => {
   };
 
   /*
-  * 
-  * Functions is called on Modal advance. Tells the navigation flow
-  * to navigate to the subRights page with the given categoryID
-  * 
-  */
+   *
+   * Functions is called on Modal advance. Tells the navigation flow
+   * to navigate to the subRights page with the given categoryID
+   *
+   */
 
   const advanceScreenHandler = () => {
     closeModalHandler();
 
     props.navigation.navigate({
-      routeName:  "SubRights", 
+      routeName: "SubRights",
       params: {
-        categoryId: activeCategoryId, 
+        categoryId: activeCategoryId,
       },
     });
   };
 
   /*
-  * 
-  * Functions called by the Flatlist component. Used to render the list of 
-  * RightsCategoryTiles.
-  * 
-  */
+   *
+   * Functions called by the Flatlist component. Used to render the list of
+   * RightsCategoryTiles.
+   *
+   */
 
   const renderGridItem = (itemData) => {
     return (
@@ -73,7 +74,6 @@ const RightsScreen = (props) => {
         data={ImportedData.getRightsCategories()}
         renderItem={renderGridItem}
         numColumns={2}
-        showsVerticalScrollIndicator={false}
       />
       <RightsCategoryModal
         isVisible={isModalOpen}
@@ -85,13 +85,12 @@ const RightsScreen = (props) => {
   );
 };
 
-
 /*
- * 
+ *
  * Set up the layout of the navigation header. Provides the color
- * title, and font weights of the header and header text of the 
- * Rights Screen. 
- * 
+ * title, and font weights of the header and header text of the
+ * Rights Screen.
+ *
  */
 RightsScreen.navigationOptions = {
   headerTitle: "Rights Information",
@@ -110,5 +109,11 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
 });
+
+RightsScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default RightsScreen;
