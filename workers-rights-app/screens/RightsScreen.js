@@ -12,7 +12,7 @@ import RightsCategoryModal from "../components/RightsCategoryModal";
  *
  */
 
-const RightsScreen = (props) => {
+const RightsScreen = ({ navigation }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeCategoryId, setActiveCategoryId] = useState("c1");
 
@@ -35,7 +35,7 @@ const RightsScreen = (props) => {
   const advanceScreenHandler = () => {
     closeModalHandler();
 
-    props.navigation.navigate({
+    navigation.navigate({
       routeName: "SubRights",
       params: {
         categoryId: activeCategoryId,
