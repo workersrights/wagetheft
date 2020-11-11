@@ -10,11 +10,11 @@ import RightsDetailsScreen from "../screens/RightsDetailsScreen";
 import Colors from "../constants/Colors";
 
 /*
- * 
+ *
  * Creates the rights stack navigation flow. Designates
- * the screens on the rights navigation stack as well as 
- * the styling for the headers of the stack.  
- * 
+ * the screens on the rights navigation stack as well as
+ * the styling for the headers of the stack.
+ *
  */
 const RightsNavigator = createStackNavigator(
   {
@@ -42,10 +42,10 @@ const RightsNavigator = createStackNavigator(
 );
 
 /*
- * 
- * Creates the tab navigator for the app. Designates the intial starting 
+ *
+ * Creates the tab navigator for the app. Designates the intial starting
  * screen as the Rights screen and configures the look of the tab bar.
- * 
+ *
  */
 const RightsTabNavigator = createBottomTabNavigator(
   {
@@ -53,10 +53,12 @@ const RightsTabNavigator = createBottomTabNavigator(
       screen: RightsNavigator,
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
-          return <Ionicons name="ios-book" size={25} color={tabInfo.tintColor} />
+          return (
+            <Ionicons name="ios-book" size={25} color={tabInfo.tintColor} />
+          );
         },
       },
-    }
+    },
   },
   {
     initialRouteName: "Rights",

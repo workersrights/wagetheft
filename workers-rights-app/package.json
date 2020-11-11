@@ -13,11 +13,13 @@
     "deprecated-react-native-listview": "0.0.6",
     "expo": "~36.0.0",
     "expo-constants": "~8.0.0",
+    "expo-font": "~8.0.0",
     "expo-linking": "^1.0.1",
     "expo-sqlite": "^8.0.0",
     "firebase": "^7.14.4",
     "ionicons": "^5.0.1",
     "moment": "^2.26.0",
+    "prop-types": "^15.7.2",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
@@ -43,7 +45,16 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "babel-preset-expo": "~8.0.0"
+    "babel-preset-expo": "~8.0.0",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.1.2"
   },
   "private": true
 }
