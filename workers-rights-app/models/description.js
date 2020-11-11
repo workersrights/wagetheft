@@ -1,8 +1,8 @@
 class Description {
-	constructor(title, data) {
-		this.title = title;
-		this.data = data;
-	}
+  constructor(title, data) {
+    this.title = title;
+    this.data = data;
+  }
 }
 
 export default Description;
