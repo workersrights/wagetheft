@@ -3,7 +3,6 @@
     "name": "Workers App",
     "slug": "workers-rights-app",
     "privacy": "public",
-    "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
       "android",
@@ -11,7 +10,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon":"./assets/WA-icon.png",
+    "icon": "./assets/WA-icon.png",
     "splash": {
       "image": "./assets/loading-screen.png",
       "resizeMode": "cover",
@@ -28,12 +27,12 @@
       "buildNumber": "1.0.0",
       "supportsTablet": false
     },
-    "android":{
+    "android": {
       "package": "com.workersrightsstudio.workersrights",
       "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage":"./assets/WA-icon-rounded.png",
-        "backgroundColor":"#fcbs56"
+        "foregroundImage": "./assets/WA-icon-rounded.png",
+        "backgroundColor": "#fcbs56"
       }
     },
     "description": ""
