@@ -20,11 +20,11 @@ import Colors from "../constants/Colors";
 
 const RightsCategoryTile = ({ onSelect, image, title }) => {
   return (
-    <TouchableOpacity style={styles.gridItem} onPress={onSelect}>
+    <TouchableOpacity style={styles.gridItem} onPress={onSelect} testID="tile">
       <View style={styles.container}>
         <Image style={styles.imageStyle} source={image} />
         <View style={styles.textContainer}>
-          <Text>{title}</Text>
+          <Text testID="text">{title}</Text>
         </View>
       </View>
     </TouchableOpacity>
