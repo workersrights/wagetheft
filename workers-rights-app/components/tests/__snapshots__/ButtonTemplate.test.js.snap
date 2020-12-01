@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`<ButtonTemplate /> Tests should match snapshot 1`] = `
 <View
   accessible={true}
   focusable={true}
@@ -35,6 +35,7 @@ exports[`renders correctly 1`] = `
       "width": "60%",
     }
   }
+  testID="button"
 >
   <Text
     style={
@@ -42,6 +43,7 @@ exports[`renders correctly 1`] = `
         "color": "white",
       }
     }
+    testID="text"
   >
     Test Title
   </Text>
