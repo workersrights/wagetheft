@@ -32,7 +32,7 @@ async function loadAllData() {
     "nunito-bold": require("./assets/fonts/Nunito-Bold.ttf"),
     "nunito-extrabold": require("./assets/fonts/Nunito-ExtraBold.ttf"),
   });
-  await ImportedData.importAllData();
+  await ImportedData.importAllData(); // pull all rights information from firebase before app loads
 }
 
 export default function App() {
