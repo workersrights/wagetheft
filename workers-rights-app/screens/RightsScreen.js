@@ -6,6 +6,8 @@ import Colors from "../constants/Colors";
 import RightsCategoryTile from "../components/RightsCategoryTile";
 import RightsCategoryModal from "../components/RightsCategoryModal";
 
+import Amplify, { Analytics } from "aws-amplify"; // for analytics
+
 /*
  *
  * Function Component Definiton: Rights Screen
@@ -56,6 +58,7 @@ const RightsScreen = ({ navigation }) => {
         title={itemData.item.title}
         image={itemData.item.image}
         onSelect={() => {
+          Analytics.record("User clicked rights category");
           openModalHandler(itemData.item.id);
         }}
       />

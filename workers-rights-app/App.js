@@ -6,6 +6,11 @@ import { AppLoading } from "expo";
 import RightsNavigator from "./navigation/RightsNavigator";
 import ImportedData from "./data/FetchRightsData"; // eslint-disable-line
 
+import Amplify, { Analytics } from "aws-amplify";
+import config from "./aws-exports";
+Amplify.configure(config);
+// record("event name", {username: "random"}, {metricsoption: "blabla"})
+
 /*
  *
  * Provides native primitives to represent screens instead of
@@ -25,6 +30,7 @@ enableScreens();
  */
 
 async function loadAllData() {
+  Analytics.record("User opened application");
   await Font.loadAsync({
     "nunito-light": require("./assets/fonts/Nunito-Light.ttf"),
     "nunito-regular": require("./assets/fonts/Nunito-Regular.ttf"),
