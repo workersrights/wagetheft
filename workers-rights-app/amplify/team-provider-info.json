@@ -10,6 +10,11 @@
       "StackName": "amplify-workersrightsapp-mobile-21048",
       "StackId": "arn:aws:cloudformation:us-east-1:796697368533:stack/amplify-workersrightsapp-mobile-21048/8d73dac0-35cd-11eb-b999-0aa73eec129d",
       "AmplifyAppId": "d17nwvaup5737a"
+    },
+    "categories": {
+      "auth": {
+        "cognito641516b7": {}
+      }
     }
   }
 }
