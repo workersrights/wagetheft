@@ -1,5 +1,6 @@
 import * as firebase from "firebase";
-import firebaseConfig from "../constants/MyApiKeys";
+// import firebaseConfig from "../constants/MyApiKeys";
+import firebaseConfig from "../constants/MyApiKeysTest";
 import RightsCategory from "../models/rightsCategory";
 import SubRight from "../models/subRight";
 import Organization from "../models/organization";
@@ -41,7 +42,7 @@ export default class ImportedData {
     return this.learnMores;
   }
 
-  static async importAllData() {
+  static async importAllData(lang) {
     if (!firebase.apps.length) {
       // only load once
       firebase.initializeApp(firebaseConfig);
@@ -49,29 +50,35 @@ export default class ImportedData {
     // Get a reference to the database service
     var db = firebase.database();
 
+    // Set correct language for data
+    const supportedLanguages = ["en", "es"];
+    if(!supportedLanguages.includes(lang)) {
+      lang = "en"; // if not supported language, default to english
+    }
+
     // Fetch rights categories
-    arr1 = await constructRightsCategories(db);
+    arr1 = await constructRightsCategories(db, lang);
     arr1.sort((catA, catB) => (catA.id > catB.id ? 1 : -1)); // sort by cat id
     ImportedData.setRightsCategories(arr1);
 
     // Fetch subrights
-    arr2 = await constructSubrights(db);
+    arr2 = await constructSubrights(db, lang);
     ImportedData.setSubRights(arr2);
 
     // Fetch organizations
-    arr3 = await constructOrgs(db);
+    arr3 = await constructOrgs(db, lang);
     ImportedData.setOrganizations(arr3);
 
     // Fetch learn mores
-    arr4 = await constructLearnMores(db);
+    arr4 = await constructLearnMores(db, lang);
     ImportedData.setLearnMores(arr4);
 
     return; // return after all fetches are done
   }
 }
 
-function constructLearnMores(db) {
-  let ref = db.ref("learn-mores/");
+function constructLearnMores(db, lang) {
+  let ref = db.ref(lang + "/learn-mores/");
   var tempLearnMores = [];
 
   return ref.once("value").then(function (snapshot) {
@@ -87,8 +94,8 @@ function constructLearnMores(db) {
   });
 }
 
-function constructOrgs(db) {
-  let ref = db.ref("organizations/");
+function constructOrgs(db, lang) {
+  let ref = db.ref(lang + "/organizations/");
   var tempOrgs = [];
 
   return ref.once("value").then(function (snapshot) {
@@ -107,8 +114,8 @@ function constructOrgs(db) {
   });
 }
 
-function constructSubrights(db) {
-  let ref = db.ref("subrights/");
+function constructSubrights(db, lang) {
+  let ref = db.ref(lang + "/subrights/");
   var tempSubrights = [];
 
   return ref.once("value").then(function (snapshot) {
@@ -129,8 +136,8 @@ function constructSubrights(db) {
   });
 }
 
-function constructRightsCategories(db) {
-  let ref = db.ref("rights-categories/");
+function constructRightsCategories(db, lang) {
+  let ref = db.ref(lang + "/rights-categories/");
   var tempRightsCategories = [];
 
   return ref.once("value").then(function (snapshot) {

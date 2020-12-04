@@ -5,6 +5,8 @@ import * as Font from "expo-font";
 import { AppLoading } from "expo";
 import RightsNavigator from "./navigation/RightsNavigator";
 import ImportedData from "./data/FetchRightsData"; // eslint-disable-line
+import { NativeModules, Platform } from 'react-native'; // for language
+
 
 /*
  *
@@ -32,7 +34,17 @@ async function loadAllData() {
     "nunito-bold": require("./assets/fonts/Nunito-Bold.ttf"),
     "nunito-extrabold": require("./assets/fonts/Nunito-ExtraBold.ttf"),
   });
-  await ImportedData.importAllData();
+  
+  // Get device language
+  let deviceLanguage = 
+  Platform.OS === 'ios'
+    ? NativeModules.SettingsManager.settings.AppleLocale ||
+      NativeModules.SettingsManager.settings.AppleLanguages[0] // iOS 13
+    : NativeModules.I18nManager.localeIdentifier;
+  console.log("Device language: ", deviceLanguage); // eg. Device language:  fr_BE, or en
+  //deviceLanguage = "es";
+
+  await ImportedData.importAllData(deviceLanguage);
 }
 
 export default function App() {
