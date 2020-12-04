@@ -58,7 +58,11 @@ const RightsScreen = ({ navigation }) => {
         title={itemData.item.title}
         image={itemData.item.image}
         onSelect={() => {
-          Analytics.record("User clicked rights category");
+          Analytics.record({
+            name: "User clicked rights category",
+            attributes: {category: itemData.item.title}
+          });
+          //Analytics.record("User clicked rights category");
           openModalHandler(itemData.item.id);
         }}
       />
