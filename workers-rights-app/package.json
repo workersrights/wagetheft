@@ -17,6 +17,7 @@
   "dependencies": {
     "@expo/vector-icons": "^10.0.0",
     "@react-native-community/masked-view": "0.1.10",
+    "aws-amplify": "^3.3.11",
     "deprecated-react-native-listview": "0.0.6",
     "expo": "^39.0.0",
     "expo-constants": "~9.2.0",
