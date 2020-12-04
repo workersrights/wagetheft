@@ -10,6 +10,8 @@ npm-debug.*
 web-build/
 web-report/
 *MyApiKeys.js
+*Keys.js
+*Keys*
 *MyTwitterKeys.js
 .vscode/
 # macOS
