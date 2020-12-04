@@ -1,0 +1,15 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-workersrightsapp-mobile-21048-authRole",
+      "UnauthRoleArn": "arn:aws:iam::796697368533:role/amplify-workersrightsapp-mobile-21048-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::796697368533:role/amplify-workersrightsapp-mobile-21048-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-workersrightsapp-mobile-21048-deployment",
+      "UnauthRoleName": "amplify-workersrightsapp-mobile-21048-unauthRole",
+      "StackName": "amplify-workersrightsapp-mobile-21048",
+      "StackId": "arn:aws:cloudformation:us-east-1:796697368533:stack/amplify-workersrightsapp-mobile-21048/8d73dac0-35cd-11eb-b999-0aa73eec129d",
+      "AmplifyAppId": "d17nwvaup5737a"
+    }
+  }
+}
