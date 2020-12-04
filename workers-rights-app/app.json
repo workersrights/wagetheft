@@ -35,6 +35,18 @@
         "backgroundColor": "#fcbs56"
       }
     },
-    "description": ""
+    "description": "",
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "workers-rights",
+            "project": "workers-rights-app",
+            "authToken": "ac2bd158773b478fa59efdd5c0bcf59dcbb01d160729479a96b58175ca4fe5e6" 
+          }
+        }
+      ]
+    }
   }
 }
