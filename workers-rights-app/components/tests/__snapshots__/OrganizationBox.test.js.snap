@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<OrganizationBox /> Tests should match snapshot 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "height": 229,
+      "marginRight": 15,
+      "opacity": 1,
+      "width": 284,
+    }
+  }
+  testID="orgBox"
+>
+  <View
+    style={
+      Object {
+        "borderRadius": 6,
+        "elevation": 5,
+        "flex": 4,
+        "margin": "2%",
+        "shadowColor": "black",
+        "shadowOffset": Object {
+          "height": 2,
+          "width": 0,
+        },
+        "shadowOpacity": 0.25,
+        "shadowRadius": 4,
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": "1",
+        }
+      }
+      style={
+        Object {
+          "borderRadius": 6,
+          "flex": 1,
+          "height": null,
+          "resizeMode": "cover",
+          "width": null,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "justifyContent": "center",
+        "marginLeft": 25,
+      }
+    }
+  >
+    <Text
+      numberOfLines={2}
+      style={
+        Object {
+          "fontFamily": "nunito-semibold",
+          "fontSize": 16,
+        }
+      }
+      testID="text"
+    >
+      Test Title
+    </Text>
+  </View>
+</View>
+`;

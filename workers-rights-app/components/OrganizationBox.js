@@ -12,12 +12,12 @@ import PropTypes from "prop-types";
 
 const OrganizationBox = ({ onSelect, image, title }) => {
   return (
-    <TouchableOpacity onPress={onSelect} style={styles.box}>
+    <TouchableOpacity onPress={onSelect} style={styles.box} testID="orgBox">
       <View style={styles.imageContainer}>
         <Image source={{ uri: image }} style={styles.imgStyle} />
       </View>
       <View style={styles.titleContainer}>
-        <Text numberOfLines={2} style={styles.orgTitle}>
+        <Text numberOfLines={2} style={styles.orgTitle} testID="text">
           {title}
         </Text>
       </View>
