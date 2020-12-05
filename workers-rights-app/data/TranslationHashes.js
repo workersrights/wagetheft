@@ -5,18 +5,17 @@ The hashes are stored, mapped to the corresponding english string, and then conv
 */
 
 var data = require('./workers-rights-46c43-export.json');
-console.log(data["subrights"]);
 var keyToEnglish = {};
 
 rightsCategoriesWork();
 subrightsWork();
+learnMoresWork();
 
-console.log(data["subrights"]);
-console.log(keyToEnglish);
+//console.log(data["learn-mores"]);
 
 // Write result to file
 saveDataToJsonFile(data, "data/workers-data-with-hashes-vf.json");
-saveDataToJsonFile(keyToEnglish, "data/translation.json");
+saveDataToJsonFile(keyToEnglish, "data/translation-vf.json");
 
 
 function rightsCategoriesWork() {
@@ -68,7 +67,27 @@ function subrightsWork() {
     }
 }
 
+function learnMoresWork() {
+    /*
+    English text strings concerned: title, objects in informationChunks
+    */
+    let learnmores = data["learn-mores"];
+    for(var key in learnmores) {
+        let title = learnmores[key]["title"];
+        let titleHash = stringToHash(title);
+        keyToEnglish[titleHash] = {"en": title};
+        learnmores[key]["title"] = titleHash;
 
+        for(var elem in learnmores[key]["informationChunks"]) { // eg. 0, 1, 2
+            for(var chunk in learnmores[key]["informationChunks"][elem]) { // eg. header, body
+                let chunkText = learnmores[key]["informationChunks"][elem][chunk]; // actual text
+                let chunkTextHash = stringToHash(chunkText);
+                keyToEnglish[chunkTextHash] = {"en": chunkText};
+                learnmores[key]["informationChunks"][elem][chunk] = chunkTextHash;
+            }
+        }
+    }
+}
 
 
 

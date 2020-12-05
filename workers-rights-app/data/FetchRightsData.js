@@ -73,7 +73,7 @@ export default class ImportedData {
     ImportedData.setOrganizations(arr3);
 
     // Fetch learn mores
-    arr4 = await constructLearnMores(db);
+    arr4 = await constructLearnMores(db, hashToPhrase);
     ImportedData.setLearnMores(arr4);
 
     console.log("Finished fetching all data from firebase! Should be run FIRST"); // make sure async stuff works
@@ -90,7 +90,7 @@ function constructHashToPhrase(db, lang) {
       if (snapshot.child(data.key + "/" + lang).exists()) { // if lang translation exists
         hashToPhrase[data.key] = data.val()[lang];
       } else { // if no translation, default to english
-        console.log("Lang doesn't exist! Defaulting to english.");
+        // console.log("Lang doesn't exist! Defaulting to english.");
         hashToPhrase[data.key] = data.val()["en"];
       }
       
@@ -100,16 +100,28 @@ function constructHashToPhrase(db, lang) {
 
 }
 
-function constructLearnMores(db) {
+function getInformationChunksWithoutHashes(informationChunks, hashToPhrase) {
+  for(var elem in informationChunks) { // eg. 0, 1, 2
+    for(var chunk in informationChunks[elem]) { // eg. header, body
+        let chunkHash = informationChunks[elem][chunk];
+        informationChunks[elem][chunk] = hashToPhrase[chunkHash]; // replace by true string!
+    }
+  }
+  
+  return informationChunks;
+}
+
+function constructLearnMores(db, hashToPhrase) {
   let ref = db.ref("learn-mores/");
   var tempLearnMores = [];
 
   return ref.once("value").then(function (snapshot) {
+    
     snapshot.forEach(function (data) {
       let temp = new learnMore(
         data.key,
-        data.val().title,
-        data.val().informationChunks
+        hashToPhrase[data.val().title], //data.val().title
+        getInformationChunksWithoutHashes(data.val().informationChunks, hashToPhrase) // data.val().informationChunks 
       );
       tempLearnMores.push(temp);
     });
