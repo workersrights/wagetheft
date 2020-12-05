@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RightsCategoryTile /> Tests should match snapshot 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#FFF6EB",
+      "borderRadius": 15,
+      "elevation": 3,
+      "height": 285,
+      "margin": 10,
+      "opacity": 1,
+      "shadowColor": "black",
+      "shadowOffset": Object {
+        "height": 2,
+        "width": 0,
+      },
+      "shadowOpacity": 0.25,
+      "shadowRadius": 6,
+      "width": 285,
+    }
+  }
+  testID="tile"
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+        "padding": 10,
+      }
+    }
+  >
+    <Image
+      source={1}
+      style={
+        Object {
+          "height": 80,
+          "position": "absolute",
+          "top": "20%",
+          "width": 80,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "bottom": "10%",
+          "position": "absolute",
+        }
+      }
+    >
+      <Text
+        testID="text"
+      >
+        Test Title
+      </Text>
+    </View>
+  </View>
+</View>
+`;

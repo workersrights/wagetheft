@@ -13,11 +13,17 @@ import Colors from "../constants/Colors";
 
 const SubRightsItem = ({ onSelect, img, title }) => {
   return (
-    <TouchableOpacity onPress={onSelect} style={styles.subrights}>
+    <TouchableOpacity
+      onPress={onSelect}
+      style={styles.subrights}
+      testID="subItem"
+    >
       <View style={styles.txtContainer}>
         <Image style={styles.icon} source={img} />
         <View style={styles.contentContainer}>
-          <Text style={styles.subrightstxt}>{title}</Text>
+          <Text style={styles.subrightstxt} testID="text">
+            {title}
+          </Text>
         </View>
         <Text style={styles.subrightstxt}>→</Text>
       </View>

@@ -24,7 +24,7 @@ const LearnMoreItem = ({ id, onPress }) => {
     Platform.OS === "ios" ? TouchableOpacity : TouchableNativeFeedback;
 
   return (
-    <TouchablePlatformSpecific onPress={onPress}>
+    <TouchablePlatformSpecific onPress={onPress} testID="learnMore">
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image
