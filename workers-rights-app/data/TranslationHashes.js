@@ -1,16 +1,22 @@
+/*
+This file takes an existing JSON file of data and replaces the relevant english strings by HASHES; the new
+file with hashes is then saved as a new JSON file.
+The hashes are stored, mapped to the corresponding english string, and then converted to a JSON file.
+*/
+
 var data = require('./workers-rights-46c43-export.json');
+console.log(data["subrights"]);
 var keyToEnglish = {};
 
 rightsCategoriesWork();
+subrightsWork();
 
+console.log(data["subrights"]);
 console.log(keyToEnglish);
-keyToEnglishJson = JSON.stringify(keyToEnglish);
-console.log(keyToEnglishJson);
-saveDataToJsonFile(keyToEnglish, "data/translation.json");
-
 
 // Write result to file
-saveDataToJsonFile(data, "data/workers-data-v2.json");
+saveDataToJsonFile(data, "data/workers-data-with-hashes-vf.json");
+saveDataToJsonFile(keyToEnglish, "data/translation.json");
 
 
 function rightsCategoriesWork() {
@@ -35,6 +41,30 @@ function rightsCategoriesWork() {
         rightsCategories[key]["description"] = descriptionHash;
         rightsCategories[key]["title"] = titleHash;
         rightsCategories[key]["subtitle"] = subtitleHash;
+    }
+}
+
+function subrightsWork() {
+    /*
+    English text strings concerned: description, title
+    */
+    let subrights = data["subrights"];
+    for(var key in subrights) {
+        // Store english phrases
+        let description = subrights[key]["description"];
+        let title = subrights[key]["title"];
+
+        // Get hashes
+        let descriptionHash = stringToHash(description);
+        let titleHash = stringToHash(title);
+
+        // Store hash/phrase in keyToEnglish
+        keyToEnglish[descriptionHash] = {"en": description};
+        keyToEnglish[titleHash] = {"en": title};
+
+        // Modify JSON object to have hash instead, persists
+        subrights[key]["description"] = descriptionHash;
+        subrights[key]["title"] = titleHash;
     }
 }
 

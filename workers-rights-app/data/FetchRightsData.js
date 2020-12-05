@@ -56,13 +56,16 @@ export default class ImportedData {
       lang = "en"; // if not supported language, default to english
     }
 
+    // Get correct strings for given language
+    let hashToPhrase = await constructHashToPhrase(db, lang);
+
     // Fetch rights categories
-    arr1 = await constructRightsCategories(db);
+    arr1 = await constructRightsCategories(db, hashToPhrase);
     arr1.sort((catA, catB) => (catA.id > catB.id ? 1 : -1)); // sort by cat id
     ImportedData.setRightsCategories(arr1);
 
     // Fetch subrights
-    arr2 = await constructSubrights(db);
+    arr2 = await constructSubrights(db, hashToPhrase);
     ImportedData.setSubRights(arr2);
 
     // Fetch organizations
@@ -76,6 +79,25 @@ export default class ImportedData {
     console.log("Finished fetching all data from firebase! Should be run FIRST"); // make sure async stuff works
     return; // return after all fetches are done
   }
+}
+
+function constructHashToPhrase(db, lang) {
+  let ref = db.ref("translation");
+  var hashToPhrase = {};
+
+  return ref.once("value").then(function (snapshot) {
+    snapshot.forEach(function (data) {
+      if (snapshot.child(data.key + "/" + lang).exists()) { // if lang translation exists
+        hashToPhrase[data.key] = data.val()[lang];
+      } else { // if no translation, default to english
+        console.log("Lang doesn't exist! Defaulting to english.");
+        hashToPhrase[data.key] = data.val()["en"];
+      }
+      
+    });
+    return hashToPhrase;
+  });
+
 }
 
 function constructLearnMores(db) {
@@ -115,7 +137,7 @@ function constructOrgs(db) {
   });
 }
 
-function constructSubrights(db) {
+function constructSubrights(db, hashToPhrase) {
   let ref = db.ref("subrights/");
   var tempSubrights = [];
 
@@ -124,11 +146,11 @@ function constructSubrights(db) {
       let temp = new SubRight(
         data.val().id,
         data.val().categoryIds,
-        data.val().title,
+        hashToPhrase[data.val().title],
         data.val().img,
         data.val().emoji,
         data.val().learnMores,
-        data.val().description,
+        hashToPhrase[data.val().description],
         data.val().organizations
       );
       tempSubrights.push(temp);
@@ -137,7 +159,7 @@ function constructSubrights(db) {
   });
 }
 
-function constructRightsCategories(db) {
+function constructRightsCategories(db, hashToPhrase) {
   let ref = db.ref("rights-categories/");
   var tempRightsCategories = [];
 
@@ -146,10 +168,10 @@ function constructRightsCategories(db) {
       let img = getCategoryIcon(data); // get correct icon for ctegory
       let temp = new RightsCategory(
         data.val().id,
-        data.val().title,
+        hashToPhrase[data.val().title], // get language sentence from hash 
         img,
-        data.val().subtitle,
-        data.val().description
+        hashToPhrase[data.val().subtitle],
+        hashToPhrase[data.val().description]
       );
       tempRightsCategories.push(temp);
     });
