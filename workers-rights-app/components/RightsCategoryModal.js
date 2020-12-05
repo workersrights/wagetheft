@@ -22,6 +22,7 @@ const RightsCategoryModal = ({
   onCloseModal,
   onAdvance,
 }) => {
+  console.log("Importing data now for rights category modal! Should be run SECOND");
   const selectedCategory = ImportedData.getRightsCategories().filter(
     (category) => category.id === categoryId
   )[0];

@@ -57,28 +57,29 @@ export default class ImportedData {
     }
 
     // Fetch rights categories
-    arr1 = await constructRightsCategories(db, lang);
+    arr1 = await constructRightsCategories(db);
     arr1.sort((catA, catB) => (catA.id > catB.id ? 1 : -1)); // sort by cat id
     ImportedData.setRightsCategories(arr1);
 
     // Fetch subrights
-    arr2 = await constructSubrights(db, lang);
+    arr2 = await constructSubrights(db);
     ImportedData.setSubRights(arr2);
 
     // Fetch organizations
-    arr3 = await constructOrgs(db, lang);
+    arr3 = await constructOrgs(db);
     ImportedData.setOrganizations(arr3);
 
     // Fetch learn mores
-    arr4 = await constructLearnMores(db, lang);
+    arr4 = await constructLearnMores(db);
     ImportedData.setLearnMores(arr4);
 
+    console.log("Finished fetching all data from firebase! Should be run FIRST"); // make sure async stuff works
     return; // return after all fetches are done
   }
 }
 
-function constructLearnMores(db, lang) {
-  let ref = db.ref(lang + "/learn-mores/");
+function constructLearnMores(db) {
+  let ref = db.ref("learn-mores/");
   var tempLearnMores = [];
 
   return ref.once("value").then(function (snapshot) {
@@ -94,8 +95,8 @@ function constructLearnMores(db, lang) {
   });
 }
 
-function constructOrgs(db, lang) {
-  let ref = db.ref(lang + "/organizations/");
+function constructOrgs(db) {
+  let ref = db.ref("organizations/");
   var tempOrgs = [];
 
   return ref.once("value").then(function (snapshot) {
@@ -114,8 +115,8 @@ function constructOrgs(db, lang) {
   });
 }
 
-function constructSubrights(db, lang) {
-  let ref = db.ref(lang + "/subrights/");
+function constructSubrights(db) {
+  let ref = db.ref("subrights/");
   var tempSubrights = [];
 
   return ref.once("value").then(function (snapshot) {
@@ -136,8 +137,8 @@ function constructSubrights(db, lang) {
   });
 }
 
-function constructRightsCategories(db, lang) {
-  let ref = db.ref(lang + "/rights-categories/");
+function constructRightsCategories(db) {
+  let ref = db.ref("rights-categories/");
   var tempRightsCategories = [];
 
   return ref.once("value").then(function (snapshot) {
