@@ -57,6 +57,7 @@ export default class ImportedData {
     }
 
     // Get correct strings for given language
+    // i.e. construct mapping like "1317869524" --> "Getting Hired" if selected language is English
     let hashToPhrase = await constructHashToPhrase(db, lang);
 
     // Fetch rights categories
@@ -81,6 +82,11 @@ export default class ImportedData {
   }
 }
 
+/*
+Function that constructs mapping from hash to phrase in the language selected by the user
+(or defaulted to English if translation not available). Returns an array that looks like
+this: {"1317869524": "Getting Hired", "-936704732": "Safety & Healthy"} for easy lookup.
+*/
 function constructHashToPhrase(db, lang) {
   let ref = db.ref("translation");
   var hashToPhrase = {};
@@ -93,13 +99,35 @@ function constructHashToPhrase(db, lang) {
         // console.log("Lang doesn't exist! Defaulting to english.");
         hashToPhrase[data.key] = data.val()["en"];
       }
-      
     });
     return hashToPhrase;
   });
-
 }
 
+function constructRightsCategories(db, hashToPhrase) {
+  let ref = db.ref("rights-categories/");
+  var tempRightsCategories = [];
+
+  return ref.once("value").then(function (snapshot) {
+    snapshot.forEach(function (data) {
+      let img = getCategoryIcon(data); // get correct icon for ctegory
+      let temp = new RightsCategory(
+        data.val().id,
+        hashToPhrase[data.val().title], // get language sentence from hash 
+        img,
+        hashToPhrase[data.val().subtitle],
+        hashToPhrase[data.val().description]
+      );
+      tempRightsCategories.push(temp);
+    });
+    return tempRightsCategories;
+  });
+}
+
+/*
+Function that takes in json object of informationChunks containing hashes in the chunks,
+and returns a new version of informationChunks that contains the actual text instead of hashes.
+*/
 function getInformationChunksWithoutHashes(informationChunks, hashToPhrase) {
   for(var elem in informationChunks) { // eg. 0, 1, 2
     for(var chunk in informationChunks[elem]) { // eg. header, body
@@ -120,7 +148,7 @@ function constructLearnMores(db, hashToPhrase) {
     snapshot.forEach(function (data) {
       let temp = new learnMore(
         data.key,
-        hashToPhrase[data.val().title], //data.val().title
+        hashToPhrase[data.val().title], 
         getInformationChunksWithoutHashes(data.val().informationChunks, hashToPhrase) // data.val().informationChunks 
       );
       tempLearnMores.push(temp);
@@ -171,25 +199,6 @@ function constructSubrights(db, hashToPhrase) {
   });
 }
 
-function constructRightsCategories(db, hashToPhrase) {
-  let ref = db.ref("rights-categories/");
-  var tempRightsCategories = [];
-
-  return ref.once("value").then(function (snapshot) {
-    snapshot.forEach(function (data) {
-      let img = getCategoryIcon(data); // get correct icon for ctegory
-      let temp = new RightsCategory(
-        data.val().id,
-        hashToPhrase[data.val().title], // get language sentence from hash 
-        img,
-        hashToPhrase[data.val().subtitle],
-        hashToPhrase[data.val().description]
-      );
-      tempRightsCategories.push(temp);
-    });
-    return tempRightsCategories;
-  });
-}
 
 // need to do this because require() needs a static string passed in...
 // using the data.val().image itself doesn't work...

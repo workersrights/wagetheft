@@ -2,6 +2,7 @@
 This file takes an existing JSON file of data and replaces the relevant english strings by HASHES; the new
 file with hashes is then saved as a new JSON file.
 The hashes are stored, mapped to the corresponding english string, and then converted to a JSON file.
+I uploaded these files manually to Firebase for simplicity... will only need to be done once. Never again.
 */
 
 var data = require('./workers-rights-46c43-export.json');
