@@ -19,11 +19,17 @@ import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
  */
 
 const RightsDetailsScreen = ({ navigation }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeOrganizationId, setActiveOrganizationId] = useState("");
+  const [activeLearnMoreId, setActiveLearnMoreId] = useState("");
+  const modalizeRef = useRef(null);
+
   // Get the parent subright
   const parentSubRightId = navigation.getParam("subrightId");
   const parentSubRight = ImportedData.getSubRights().find(
     (subRight) => subRight.id === parentSubRightId
   );
+
   // Get list of LearnMore Ids to display. Works on empty array as well.
   const displayedLearnMoreIds = parentSubRight.learnMores
     ? parentSubRight.learnMores
@@ -37,9 +43,6 @@ const RightsDetailsScreen = ({ navigation }) => {
           parentSubRight.organizations.includes(org.id)
         );
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeOrganizationId, setActiveOrganizationId] = useState("");
-
   const openModalHandler = (id) => {
     setIsModalOpen(true);
     setActiveOrganizationId(id);
@@ -48,12 +51,6 @@ const RightsDetailsScreen = ({ navigation }) => {
   const closeModalHandler = () => {
     setIsModalOpen(false);
   };
-
-  // Corresponds to lm1. Needs to be initialized with any garbage learnMore, otherwise app will crash because
-  const [activeLearnMoreId, setActiveLearnMoreId] = useState(
-    "-M7LY3fU0-iSv0HX94zB"
-  );
-  const modalizeRef = useRef(null);
 
   /*
    *
@@ -122,7 +119,11 @@ const RightsDetailsScreen = ({ navigation }) => {
       )}
 
       <Portal>
-        <Modalize ref={modalizeRef} modalStyle={styles.modalize}>
+        <Modalize
+          ref={modalizeRef}
+          modalStyle={styles.modalize}
+          modalTopOffset={50}
+        >
           <View style={styles.modalizeContent}>
             <RightsSheetContent learnMoreId={activeLearnMoreId} />
           </View>
