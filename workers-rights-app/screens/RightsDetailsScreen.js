@@ -21,10 +21,7 @@ import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
 const RightsDetailsScreen = ({ navigation }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeOrganizationId, setActiveOrganizationId] = useState("");
-  // Corresponds to lm1. Needs to be initialized with any garbage learnMore, otherwise app will crash because
-  const [activeLearnMoreId, setActiveLearnMoreId] = useState(
-    "-M7LY3fU0-iSv0HX94zB"
-  );
+  const [activeLearnMoreId, setActiveLearnMoreId] = useState("");
   const modalizeRef = useRef(null);
 
   // Get the parent subright
@@ -32,6 +29,7 @@ const RightsDetailsScreen = ({ navigation }) => {
   const parentSubRight = ImportedData.getSubRights().find(
     (subRight) => subRight.id === parentSubRightId
   );
+
   // Get list of LearnMore Ids to display. Works on empty array as well.
   const displayedLearnMoreIds = parentSubRight.learnMores
     ? parentSubRight.learnMores
