@@ -12,6 +12,13 @@ import PropTypes from "prop-types";
 import Colors from "../constants/Colors";
 import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
 
+/*
+ * Functional Component Defintion: LearnMoreItem
+ *
+ * This component outlines the look and feel of a LearnMoreItem
+ * on the final Rights Screen.
+ *
+ */
 const LearnMoreItem = ({ id, onPress }) => {
   const selectedLearnMore = ImportedData.getLearnMores().find(
     (learnmore) => learnmore.id === id
