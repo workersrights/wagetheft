@@ -55,10 +55,12 @@ const RightsOrganizationModal = ({ id, isVisible, onCloseModal }) => {
 
           <View style={styles.description}>
             {selectedOrganization.description.map((desc) => (
-              <View style={styles.subheading}>
+              <View style={styles.subheading} key={desc.title}>
                 <Text style={styles.subtitle}>{desc.title}</Text>
                 {desc.data.map((line) => (
-                  <Text style={styles.info}>{line}</Text>
+                  <Text style={styles.info} key={line}>
+                    {line}
+                  </Text>
                 ))}
               </View>
             ))}

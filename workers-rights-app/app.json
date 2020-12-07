@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Workers App",
+    "name": "Workers App (Dec 6 v2)",
     "slug": "workers-rights-app",
     "privacy": "public",
     "platforms": [
@@ -35,7 +35,7 @@
         "backgroundColor": "#fcbs56"
       }
     },
-    "description": "",
+    "description": "Test version deployed Dec 6, v2.",
     "hooks": {
       "postPublish": [
         {
