@@ -3,7 +3,6 @@
     "name": "Workers App (Dec 6 v2)",
     "slug": "workers-rights-app",
     "privacy": "public",
-    "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
       "android",
@@ -36,6 +35,18 @@
         "backgroundColor": "#fcbs56"
       }
     },
-    "description": "Test version deployed Dec 6, v2."
+    "description": "Test version deployed Dec 6, v2.",
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "workers-rights",
+            "project": "workers-rights-app",
+            "authToken": "ac2bd158773b478fa59efdd5c0bcf59dcbb01d160729479a96b58175ca4fe5e6" 
+          }
+        }
+      ]
+    }
   }
 }
