@@ -60,7 +60,7 @@ async function loadAllData() {
       NativeModules.SettingsManager.settings.AppleLanguages[0] // iOS 13
     : NativeModules.I18nManager.localeIdentifier;
   console.log("Device language: ", deviceLanguage); // eg. Device language:  fr_BE, or en
-  deviceLanguage = "es";
+  // deviceLanguage = "es";
 
   await ImportedData.importAllData(deviceLanguage);
 }
