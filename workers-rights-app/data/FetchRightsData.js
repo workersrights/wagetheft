@@ -52,7 +52,7 @@ export default class ImportedData {
 
     // Set correct language for data
     const supportedLanguages = ["en", "es"];
-    if(!supportedLanguages.includes(lang)) {
+    if (!supportedLanguages.includes(lang)) {
       lang = "en"; // if not supported language, default to english
     }
 
@@ -77,7 +77,9 @@ export default class ImportedData {
     arr4 = await constructLearnMores(db, hashToPhrase);
     ImportedData.setLearnMores(arr4);
 
-    console.log("Finished fetching all data from firebase! Should be run FIRST"); // make sure async stuff works
+    console.log(
+      "Finished fetching all data from firebase! Should be run FIRST"
+    ); // make sure async stuff works
     return; // return after all fetches are done
   }
 }
@@ -93,9 +95,11 @@ function constructHashToPhrase(db, lang) {
 
   return ref.once("value").then(function (snapshot) {
     snapshot.forEach(function (data) {
-      if (snapshot.child(data.key + "/" + lang).exists()) { // if lang translation exists
+      if (snapshot.child(data.key + "/" + lang).exists()) {
+        // if lang translation exists
         hashToPhrase[data.key] = data.val()[lang];
-      } else { // if no translation, default to english
+      } else {
+        // if no translation, default to english
         // console.log("Lang doesn't exist! Defaulting to english.");
         hashToPhrase[data.key] = data.val()["en"];
       }
@@ -113,7 +117,7 @@ function constructRightsCategories(db, hashToPhrase) {
       let img = getCategoryIcon(data); // get correct icon for ctegory
       let temp = new RightsCategory(
         data.val().id,
-        hashToPhrase[data.val().title], // get language sentence from hash 
+        hashToPhrase[data.val().title], // get language sentence from hash
         img,
         hashToPhrase[data.val().subtitle],
         hashToPhrase[data.val().description]
@@ -129,13 +133,15 @@ Function that takes in json object of informationChunks containing hashes in the
 and returns a new version of informationChunks that contains the actual text instead of hashes.
 */
 function getInformationChunksWithoutHashes(informationChunks, hashToPhrase) {
-  for(var elem in informationChunks) { // eg. 0, 1, 2
-    for(var chunk in informationChunks[elem]) { // eg. header, body
-        let chunkHash = informationChunks[elem][chunk];
-        informationChunks[elem][chunk] = hashToPhrase[chunkHash]; // replace by true string!
+  for (var elem in informationChunks) {
+    // eg. 0, 1, 2
+    for (var chunk in informationChunks[elem]) {
+      // eg. header, body
+      let chunkHash = informationChunks[elem][chunk];
+      informationChunks[elem][chunk] = hashToPhrase[chunkHash]; // replace by true string!
     }
   }
-  
+
   return informationChunks;
 }
 
@@ -144,12 +150,14 @@ function constructLearnMores(db, hashToPhrase) {
   var tempLearnMores = [];
 
   return ref.once("value").then(function (snapshot) {
-    
     snapshot.forEach(function (data) {
       let temp = new learnMore(
         data.key,
-        hashToPhrase[data.val().title], 
-        getInformationChunksWithoutHashes(data.val().informationChunks, hashToPhrase) // data.val().informationChunks 
+        hashToPhrase[data.val().title],
+        getInformationChunksWithoutHashes(
+          data.val().informationChunks,
+          hashToPhrase
+        ) // data.val().informationChunks
       );
       tempLearnMores.push(temp);
     });
@@ -188,7 +196,6 @@ function constructSubrights(db, hashToPhrase) {
         data.val().categoryIds,
         hashToPhrase[data.val().title],
         data.val().img,
-        data.val().emoji,
         data.val().learnMores,
         hashToPhrase[data.val().description],
         data.val().organizations
@@ -198,7 +205,6 @@ function constructSubrights(db, hashToPhrase) {
     return tempSubrights;
   });
 }
-
 
 // need to do this because require() needs a static string passed in...
 // using the data.val().image itself doesn't work...
