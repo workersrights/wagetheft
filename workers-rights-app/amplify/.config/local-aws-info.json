@@ -1,0 +1,7 @@
+{
+    "mobile": {
+        "configLevel": "project",
+        "useProfile": true,
+        "profileName": "workersrights"
+    }
+}

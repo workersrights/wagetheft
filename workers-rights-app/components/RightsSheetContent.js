@@ -16,6 +16,9 @@ const RightsSheetContent = ({ learnMoreId }) => {
   const selectedLearnMore = ImportedData.getLearnMores().find(
     (learnmore) => learnmore.id === learnMoreId
   );
+  if (!selectedLearnMore) {
+    return null;
+  }
   const informationChunks = selectedLearnMore.informationChunks; //eslint-disable-line
   return (
     <View style={styles.container}>

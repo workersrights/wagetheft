@@ -10,6 +10,8 @@ import Colors from "../constants/Colors";
 import RightsOrganizationModal from "../components/RightsOrganizationModal";
 import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
 
+import Amplify, { Analytics } from "aws-amplify"; // for analytics
+
 /*
  *
  * Functional Component Defintion: RightsDetailsScreen
@@ -19,11 +21,17 @@ import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
  */
 
 const RightsDetailsScreen = ({ navigation }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeOrganizationId, setActiveOrganizationId] = useState("");
+  const [activeLearnMoreId, setActiveLearnMoreId] = useState("");
+  const modalizeRef = useRef(null);
+
   // Get the parent subright
   const parentSubRightId = navigation.getParam("subrightId");
   const parentSubRight = ImportedData.getSubRights().find(
     (subRight) => subRight.id === parentSubRightId
   );
+
   // Get list of LearnMore Ids to display. Works on empty array as well.
   const displayedLearnMoreIds = parentSubRight.learnMores
     ? parentSubRight.learnMores
@@ -37,9 +45,6 @@ const RightsDetailsScreen = ({ navigation }) => {
           parentSubRight.organizations.includes(org.id)
         );
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeOrganizationId, setActiveOrganizationId] = useState("");
-
   const openModalHandler = (id) => {
     setIsModalOpen(true);
     setActiveOrganizationId(id);
@@ -48,12 +53,6 @@ const RightsDetailsScreen = ({ navigation }) => {
   const closeModalHandler = () => {
     setIsModalOpen(false);
   };
-
-  // Corresponds to lm1. Needs to be initialized with any garbage learnMore, otherwise app will crash because
-  const [activeLearnMoreId, setActiveLearnMoreId] = useState(
-    "-M7LY3fU0-iSv0HX94zB"
-  );
-  const modalizeRef = useRef(null);
 
   /*
    *
@@ -68,6 +67,7 @@ const RightsDetailsScreen = ({ navigation }) => {
         title={itemData.item.name}
         image={itemData.item.image}
         onSelect={() => {
+          Analytics.record("User clicked organization box");
           openModalHandler(itemData.item.id);
         }}
       />
@@ -107,6 +107,7 @@ const RightsDetailsScreen = ({ navigation }) => {
             id={displayedLearnMoreId}
             key={displayedLearnMoreId}
             onPress={() => {
+              Analytics.record("User clicked learn more");
               openLearnMoreHandler(displayedLearnMoreId);
             }}
           />
@@ -122,7 +123,11 @@ const RightsDetailsScreen = ({ navigation }) => {
       )}
 
       <Portal>
-        <Modalize ref={modalizeRef} modalStyle={styles.modalize}>
+        <Modalize
+          ref={modalizeRef}
+          modalStyle={styles.modalize}
+          modalTopOffset={50}
+        >
           <View style={styles.modalizeContent}>
             <RightsSheetContent learnMoreId={activeLearnMoreId} />
           </View>
