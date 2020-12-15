@@ -35,7 +35,6 @@ const SubRightsScreen = ({ navigation }) => {
     return (
       <SubRightsItem
         title={itemData.item.title}
-        emoji={itemData.item.emoji}
         img={parentCategory.image}
         onSelect={() => {
           Analytics.record("User clicked sub rights");
