@@ -3,7 +3,8 @@ import { enableScreens } from "react-native-screens";
 import { Host } from "react-native-portalize";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
-import RightsNavigator from "./navigation/RightsNavigator";
+import InitialNavigator from "./navigation/InitialNavigator";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import ImportedData from "./data/FetchRightsData"; // eslint-disable-line
 import { NativeModules, Platform } from 'react-native'; // for language
 
@@ -78,7 +79,7 @@ export default function App() {
 
   return (
     <Host>
-      <RightsNavigator />
+      <InitialNavigator />
     </Host>
   );
 }

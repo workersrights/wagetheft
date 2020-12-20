@@ -1,20 +1,66 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, FlatList, Platform } from "react-native";
 import PropTypes from "prop-types";
 import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
 import Colors from "../constants/Colors";
 import RightsCategoryTile from "../components/RightsCategoryTile";
 import RightsCategoryModal from "../components/RightsCategoryModal";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import Amplify, { Analytics } from "aws-amplify"; // for analytics
 
 /*
- *
  * Function Component Definiton: Rights Screen
- *
  */
 
 const RightsScreen = ({ navigation }) => {
+  /* A function to store a marker on user's device to mark user as not a new user.
+   */
+  const rememberUser = async (value) => {
+    try {
+      await AsyncStorage.setItem('@seen_Before', value)
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  /* NOT USED. A function to help a developer delete a key from local storage.
+   */
+  const forgetUser = async (key) => {
+    try {
+      await AsyncStorage.removeItem(key);
+      return true;
+    }
+    catch (e) {
+      return false;
+    }
+  };
+
+  /* useEffect checks if this user has opened the app before. 
+   * If not, will navigate to intro screens.
+   */
+  useEffect(() => {
+    const recognizeUser = async () => {
+      try {
+        const value = await AsyncStorage.getItem('@seen_Before', value);
+        if (value !== null) {
+          navigation.navigate({
+            routeName: "Rights",
+          });
+        }
+        else {
+          rememberUser('1');
+          navigation.navigate({
+            routeName: "Intro",
+          });
+        }
+      } catch (e) {
+          console.log(e);
+      }
+    };
+    recognizeUser();
+  }, [])
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeCategoryId, setActiveCategoryId] = useState("c1");
 
@@ -101,6 +147,8 @@ const RightsScreen = ({ navigation }) => {
  */
 RightsScreen.navigationOptions = {
   headerTitle: "Rights Information",
+  headerLeft: null,
+  headerShown: true,
   headerStyle: {
     backgroundColor: Platform.OS === "android" ? Colors.lightOrange : "",
   },
