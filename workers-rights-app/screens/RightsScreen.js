@@ -44,12 +44,16 @@ const RightsScreen = ({ navigation }) => {
       try {
         const value = await AsyncStorage.getItem('@seen_Before', value);
         if (value !== null) {
+          // Seen before! Keep going to Rights Screen.
           navigation.navigate({
-            routeName: "Rights",
+            //routeName: "Rights",
+            routeName: "Intro",
           });
+          forgetUser('@seen_Before');
         }
         else {
-          rememberUser('1');
+          // Not seen before, store a value in user's device to mark as seen!
+          //rememberUser('1');
           navigation.navigate({
             routeName: "Intro",
           });
@@ -147,7 +151,6 @@ const RightsScreen = ({ navigation }) => {
  */
 RightsScreen.navigationOptions = {
   headerTitle: "Rights Information",
-  headerLeft: null,
   headerShown: true,
   headerStyle: {
     backgroundColor: Platform.OS === "android" ? Colors.lightOrange : "",

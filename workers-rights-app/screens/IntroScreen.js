@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Animated, Dimensions, FlatList, TouchableOpacity, TouchableHighlight } from 'react-native';
 import { ScalingDot } from 'react-native-animated-pagination-dots';
-import { Dropdown } from 'react-native-material-dropdown-v2';
+import { Dropdown } from 'react-native-material-dropdown-v2-fixed';
 import Colors from "../constants/Colors";
 import IntroConfirmationModal from '../components/IntroConfirmationModal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -71,9 +71,10 @@ const IntroScreen = ({navigation}) => {
                 onChangeText={(value, index, data) => {
                     setAppLanguage(value);
                 }}
-                baseColor={Colors.darkGray}
+                baseColor={Colors.darkOrange}
                 textColor={Colors.darkGray}
                 containerStyle={styles.dropDownStyle}
+                useNativeDriver={false}
             />
         </View>
     );
@@ -112,11 +113,11 @@ const IntroScreen = ({navigation}) => {
      */
     const languageNextButton = (
         <View>
-            <TouchableHighlight 
+            <TouchableOpacity 
                 style={styles.next}
                 onPress={() => scrollRight()}>
                 <Text>Next</Text>
-            </TouchableHighlight>
+            </TouchableOpacity>
         </View>
     );
 
