@@ -116,7 +116,7 @@ function constructRightsCategories(db, hashToPhrase) {
     snapshot.forEach(function (data) {
       let img = getCategoryIcon(data); // get correct icon for ctegory
       let temp = new RightsCategory(
-        data.val().id,
+        data.key,
         hashToPhrase[data.val().title], // get language sentence from hash
         img,
         hashToPhrase[data.val().subtitle],
@@ -192,8 +192,8 @@ function constructSubrights(db, hashToPhrase) {
   return ref.once("value").then(function (snapshot) {
     snapshot.forEach(function (data) {
       let temp = new SubRight(
-        data.val().id,
-        data.val().categoryIds,
+        data.key,
+        data.val().categoryIDs,
         hashToPhrase[data.val().title],
         data.val().img,
         data.val().learnMores,
