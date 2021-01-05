@@ -5,6 +5,25 @@ import * as Font from "expo-font";
 import { AppLoading } from "expo";
 import RightsNavigator from "./navigation/RightsNavigator";
 import ImportedData from "./data/FetchRightsData"; // eslint-disable-line
+import { NativeModules, Platform } from 'react-native'; // for language
+
+
+/************* SET UP ANALYTICS *************/ 
+import Amplify, { Analytics } from "aws-amplify";
+import config from "./aws-exports";
+Amplify.configure(config);
+// record("event name", {username: "random"}, {metricsoption: "blabla"})
+
+/************* SET UP CRASH REPORTING *************/ 
+import * as Sentry from 'sentry-expo';
+import DSN from "./constants/SentryKeys.js";
+
+Sentry.init({
+  dsn: DSN,
+  enableInExpoDevelopment: true,
+  debug: false, // Sentry will try to print out useful debugging information if something goes wrong with sending an event. Set this to `false` in production.
+});
+
 
 /*
  *
@@ -25,6 +44,7 @@ enableScreens();
  */
 
 async function loadAllData() {
+  Analytics.record("User opened application");
   await Font.loadAsync({
     "nunito-light": require("./assets/fonts/Nunito-Light.ttf"),
     "nunito-regular": require("./assets/fonts/Nunito-Regular.ttf"),
@@ -32,7 +52,17 @@ async function loadAllData() {
     "nunito-bold": require("./assets/fonts/Nunito-Bold.ttf"),
     "nunito-extrabold": require("./assets/fonts/Nunito-ExtraBold.ttf"),
   });
-  await ImportedData.importAllData(); // pull all rights information from firebase before app loads
+  
+  // Get device language
+  let deviceLanguage = 
+  Platform.OS === 'ios'
+    ? NativeModules.SettingsManager.settings.AppleLocale ||
+      NativeModules.SettingsManager.settings.AppleLanguages[0] // iOS 13
+    : NativeModules.I18nManager.localeIdentifier;
+  console.log("Device language: ", deviceLanguage); // eg. Device language:  fr_BE, or en
+  // deviceLanguage = "es";
+
+  await ImportedData.importAllData(deviceLanguage);
 }
 
 export default function App() {

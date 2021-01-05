@@ -1,0 +1,49 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-workersrightsapp-mobile-21048-authRole",
+      "UnauthRoleArn": "arn:aws:iam::796697368533:role/amplify-workersrightsapp-mobile-21048-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::796697368533:role/amplify-workersrightsapp-mobile-21048-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-workersrightsapp-mobile-21048-deployment",
+      "UnauthRoleName": "amplify-workersrightsapp-mobile-21048-unauthRole",
+      "StackName": "amplify-workersrightsapp-mobile-21048",
+      "StackId": "arn:aws:cloudformation:us-east-1:796697368533:stack/amplify-workersrightsapp-mobile-21048/8d73dac0-35cd-11eb-b999-0aa73eec129d",
+      "AmplifyAppId": "d17nwvaup5737a"
+    }
+  },
+  "auth": {
+    "cognito641516b7": {
+      "service": "Cognito",
+      "serviceType": "managed",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-workersrightsapp-mobile-21048-deployment/amplify-cfn-templates/auth/cognito641516b7-cloudformation-template.yml",
+        "logicalId": "authcognito641516b7"
+      },
+      "lastPushTimeStamp": "2020-12-04T01:49:50.661Z",
+      "output": {
+        "IdentityPoolId": "us-east-1:f114d0df-841f-4fc8-839c-c23ea979feb8",
+        "IdentityPoolName": "workersrightsapp_identitypool_f74932e8__mobile"
+      },
+      "lastPushDirHash": "k2ZH+ho9hAQhKnCja6VGpOFabxg="
+    }
+  },
+  "analytics": {
+    "workersrights": {
+      "service": "Pinpoint",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-workersrightsapp-mobile-21048-deployment/amplify-cfn-templates/analytics/pinpoint-cloudformation-template.json",
+        "logicalId": "analyticsworkersrights"
+      },
+      "lastPushTimeStamp": "2020-12-04T01:49:50.661Z",
+      "output": {
+        "appName": "workersrights-mobile",
+        "Region": "us-east-1",
+        "Id": "5d91ff0b6c76420abce84c4872b768b5"
+      },
+      "lastPushDirHash": "HVXQovQd5QlqbOGSCiKxuca1xZc="
+    }
+  }
+}

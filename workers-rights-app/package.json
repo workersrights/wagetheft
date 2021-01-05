@@ -17,15 +17,18 @@
   "dependencies": {
     "@expo/vector-icons": "^10.0.0",
     "@react-native-community/masked-view": "0.1.10",
+    "@react-native-community/netinfo": "^5.9.9",
+    "aws-amplify": "^3.3.11",
     "deprecated-react-native-listview": "0.0.6",
     "expo": "^39.0.0",
     "expo-constants": "~9.2.0",
     "expo-font": "~8.3.0",
     "expo-linking": "^1.0.1",
-    "expo-sqlite": "~8.4.0",
-    "firebase": "7.9.0",
+    "expo-sqlite": "^8.0.0",
+    "firebase": "^7.9.0",
     "ionicons": "^5.0.1",
     "moment": "^2.26.0",
+    "node-fetch": "^2.6.1",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -48,7 +51,8 @@
     "react-portalize": "^2.0.2",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "sentry-expo": "^3.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

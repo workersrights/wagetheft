@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, StyleSheet, FlatList, Platform } from "react-native";
 import PropTypes from "prop-types";
+import { Analytics } from "aws-amplify"; // for analytics
 import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
 import Colors from "../constants/Colors";
 import RightsCategoryTile from "../components/RightsCategoryTile";
@@ -14,7 +15,7 @@ import RightsCategoryModal from "../components/RightsCategoryModal";
 
 const RightsScreen = ({ navigation }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeCategoryId, setActiveCategoryId] = useState("c1");
+  const [activeCategoryId, setActiveCategoryId] = useState("");
 
   const openModalHandler = (id) => {
     setIsModalOpen(true);
@@ -56,6 +57,10 @@ const RightsScreen = ({ navigation }) => {
         title={itemData.item.title}
         image={itemData.item.image}
         onSelect={() => {
+          Analytics.record({
+            name: "User clicked rights category",
+            attributes: { category: itemData.item.title },
+          });
           openModalHandler(itemData.item.id);
         }}
       />
@@ -75,12 +80,13 @@ const RightsScreen = ({ navigation }) => {
         renderItem={renderGridItem}
         numColumns={2}
       />
-      <RightsCategoryModal
-        isVisible={isModalOpen}
-        onCloseModal={closeModalHandler}
-        categoryId={activeCategoryId}
-        onAdvance={advanceScreenHandler}
-      />
+      {isModalOpen ? (
+        <RightsCategoryModal
+          onCloseModal={closeModalHandler}
+          categoryId={activeCategoryId}
+          onAdvance={advanceScreenHandler}
+        />
+      ) : null}
     </View>
   );
 };

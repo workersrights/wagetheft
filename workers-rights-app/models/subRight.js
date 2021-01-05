@@ -4,7 +4,6 @@ class SubRight {
     categoryIds,
     title,
     img,
-    emoji,
     learnMores,
     description,
     organizations
@@ -13,7 +12,6 @@ class SubRight {
     this.categoryIds = categoryIds;
     this.title = title;
     this.img = img;
-    this.emoji = emoji;
     this.learnMores = learnMores;
     this.description = description;
     this.organizations = organizations;

@@ -16,19 +16,14 @@ import ButtonTemplate from "./ButtonTemplate";
  *
  */
 
-const RightsCategoryModal = ({
-  categoryId,
-  isVisible,
-  onCloseModal,
-  onAdvance,
-}) => {
+const RightsCategoryModal = ({ categoryId, onCloseModal, onAdvance }) => {
   const selectedCategory = ImportedData.getRightsCategories().filter(
     (category) => category.id === categoryId
   )[0];
 
   return (
     <Modal
-      isVisible={isVisible}
+      isVisible
       onBackButtonPress={onCloseModal}
       onBackdropPress={onCloseModal}
     >
@@ -89,7 +84,6 @@ const styles = StyleSheet.create({
 
 RightsCategoryModal.propTypes = {
   categoryId: PropTypes.string.isRequired,
-  isVisible: PropTypes.bool.isRequired,
   onCloseModal: PropTypes.func.isRequired,
   onAdvance: PropTypes.func.isRequired,
 };

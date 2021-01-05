@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import SubRightsItem from "../components/SubRightsItem";
 import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
 
+import Amplify, { Analytics } from "aws-amplify"; // for analytics
+
 /*
  *
  * Functional Component Defintion: SubRightsScreen
@@ -33,9 +35,9 @@ const SubRightsScreen = ({ navigation }) => {
     return (
       <SubRightsItem
         title={itemData.item.title}
-        emoji={itemData.item.emoji}
         img={parentCategory.image}
         onSelect={() => {
+          Analytics.record("User clicked sub rights");
           navigation.navigate({
             routeName: "RightsDetails",
             params: {

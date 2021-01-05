@@ -1,0 +1,21 @@
+{
+    "appName": "workersrights",
+    "roleName": "pinpointLambdaRole4c190d94",
+    "cloudformationPolicyName": "cloudformationPolicy4c190d94",
+    "cloudWatchPolicyName": "cloudWatchPolicy4c190d94",
+    "pinpointPolicyName": "pinpointPolicy4c190d94",
+    "authPolicyName": "pinpoint_amplify_4c190d94",
+    "unauthPolicyName": "pinpoint_amplify_4c190d94",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}

@@ -10,6 +10,8 @@ import Colors from "../constants/Colors";
 import RightsOrganizationModal from "../components/RightsOrganizationModal";
 import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
 
+import Amplify, { Analytics } from "aws-amplify"; // for analytics
+
 /*
  *
  * Functional Component Defintion: RightsDetailsScreen
@@ -65,6 +67,7 @@ const RightsDetailsScreen = ({ navigation }) => {
         title={itemData.item.name}
         image={itemData.item.image}
         onSelect={() => {
+          Analytics.record("User clicked organization box");
           openModalHandler(itemData.item.id);
         }}
       />
@@ -104,6 +107,7 @@ const RightsDetailsScreen = ({ navigation }) => {
             id={displayedLearnMoreId}
             key={displayedLearnMoreId}
             onPress={() => {
+              Analytics.record("User clicked learn more");
               openLearnMoreHandler(displayedLearnMoreId);
             }}
           />
