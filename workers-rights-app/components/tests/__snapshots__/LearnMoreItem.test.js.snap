@@ -1,3 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LearnMoreItem /> Tests should match snapshot 1`] = `null`;
+exports[`<LearnMoreItem /> Tests should match snapshot 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+  testID="learnMore"
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFF6EB",
+        "borderRadius": 8,
+        "elevation": 2,
+        "flexDirection": "row",
+        "height": 60,
+        "marginHorizontal": "0.5%",
+        "marginVertical": 5,
+        "paddingLeft": 10,
+        "paddingRight": 5,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 1,
+          "width": 0,
+        },
+        "shadowOpacity": 0.2,
+        "shadowRadius": 1.41,
+        "width": "99%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "height": 40,
+          "justifyContent": "center",
+          "marginRight": 10,
+          "width": 40,
+        }
+      }
+    >
+      <Image
+        source={1}
+        style={
+          Object {
+            "height": "100%",
+            "width": "100%",
+          }
+        }
+      />
+    </View>
+    <Text
+      numberOfLines={2}
+      style={
+        Object {
+          "flex": 1,
+          "fontSize": 14,
+        }
+      }
+      testID="text"
+    >
+      Dummy Title
+    </Text>
+  </View>
+</View>
+`;

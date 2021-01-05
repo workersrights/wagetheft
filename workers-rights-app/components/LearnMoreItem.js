@@ -39,7 +39,7 @@ const LearnMoreItem = ({ id, onPress }) => {
             style={{ width: "100%", height: "100%" }}
           />
         </View>
-        <Text numberOfLines={2} style={styles.subrightstxt}>
+        <Text numberOfLines={2} style={styles.subrightstxt} testID="text">
           {selectedLearnMore.title}
         </Text>
       </View>
