@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ButtonTemplate/> Tests should match snapshot 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#FC8E56",
+      "borderColor": "#FC8E56",
+      "borderRadius": 8,
+      "borderStyle": "solid",
+      "borderWidth": 2,
+      "bottom": 40,
+      "elevation": 3,
+      "justifyContent": "center",
+      "opacity": 1,
+      "padding": 10,
+      "position": "absolute",
+      "shadowColor": "black",
+      "shadowOffset": Object {
+        "height": 2,
+        "width": 0,
+      },
+      "shadowOpacity": 0.25,
+      "shadowRadius": 6,
+      "width": "60%",
+    }
+  }
+  testID="buttonTemp"
+>
+  <Text
+    style={
+      Object {
+        "color": "white",
+      }
+    }
+  >
+    Test Title
+  </Text>
+</View>
+`;

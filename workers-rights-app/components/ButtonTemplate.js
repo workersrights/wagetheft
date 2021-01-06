@@ -17,6 +17,7 @@ const ButtonTemplate = ({ style, onPress, titleStyle, title }) => {
       style={{ ...styles.container, ...style }}
       onPress={onPress}
       activeOpacity={0.6}
+      testID="buttonTemp"
     >
       <Text style={{ ...styles.titleStyle, ...titleStyle }}>{title}</Text>
     </TouchableOpacity>
