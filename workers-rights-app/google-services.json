@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "644811155639",
+    "firebase_url": "https://workers-rights-46c43.firebaseio.com",
+    "project_id": "workers-rights-46c43",
+    "storage_bucket": "workers-rights-46c43.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644811155639:android:d0ed3008c3d45b6c30c532",
+        "android_client_info": {
+          "package_name": "com.workersrightsstudio.workersrights"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644811155639-618dc2huijn9nb0v6pev48klr15ju1ro.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0BjUaea6_jRH6ylGnwEtSn_vTKULUVmU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644811155639-618dc2huijn9nb0v6pev48klr15ju1ro.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

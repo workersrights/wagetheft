@@ -1,12 +1,11 @@
 {
   "expo": {
-    "name": "Workers App",
+    "name": "Worker's App",
     "slug": "workers-rights-app",
     "privacy": "public",
     "platforms": [
       "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -14,7 +13,7 @@
     "splash": {
       "image": "./assets/loading-screen.png",
       "resizeMode": "cover",
-      "backgroundColor": "#fcbs56"
+      "backgroundColor": "#FC8E56"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -23,14 +22,16 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.workersrightsstudio.workersrights",
+      "bundleIdentifier": "com.workersrightsstudio.workersright",
       "buildNumber": "1.0.0",
-      "supportsTablet": false
+      "supportsTablet": false, 
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "package": "com.workersrightsstudio.workersrights",
       "versionCode": 1,
       "permissions": [],
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
