@@ -24,7 +24,7 @@
     "ios": {
       "bundleIdentifier": "com.workersrightsstudio.workersright",
       "buildNumber": "1.0.0",
-      "supportsTablet": false, 
+      "supportsTablet": false,
       "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
@@ -45,10 +45,13 @@
           "config": {
             "organization": "workers-rights",
             "project": "workers-rights-app",
-            "authToken": "ac2bd158773b478fa59efdd5c0bcf59dcbb01d160729479a96b58175ca4fe5e6" 
+            "authToken": "ac2bd158773b478fa59efdd5c0bcf59dcbb01d160729479a96b58175ca4fe5e6"
           }
         }
       ]
-    }
+    },
+    "plugins": [
+      "sentry-expo"
+    ]
   }
 }
