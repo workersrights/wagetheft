@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { enableScreens } from "react-native-screens";
 import { Host } from "react-native-portalize";
 import * as Font from "expo-font";
-import { AppLoading } from "expo";
+import AppLoading from "expo-app-loading";
 import { NativeModules, Platform } from "react-native"; // for language
 import Amplify, { Analytics } from "aws-amplify";
 import * as Sentry from "sentry-expo";
@@ -63,6 +63,7 @@ export default function App() {
       <AppLoading
         startAsync={loadAllData}
         onFinish={() => setDataLoaded(true)}
+        onError={console.warn}
       />
     );
   }
