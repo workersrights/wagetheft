@@ -9552,10 +9552,10 @@
     "prop-types" "^15.6.2"
     "react-native-animatable" "1.3.3"
 
-"react-native-modalize@^1.3.7-rc.24":
-  "integrity" "sha512-QkFB5546hS7uAKLwuXR/iacFcnTIf8K49Jn8K6dANYdYqUrkPyt5LDbMWK3jcz2rnSPSHnzYSKlRlOuMnNewwg=="
-  "resolved" "https://registry.npmjs.org/react-native-modalize/-/react-native-modalize-1.3.7-rc.28.tgz"
-  "version" "1.3.7-rc.28"
+"react-native-modalize@^2.0.13":
+  "integrity" "sha512-BMJlpTnpeDVp5LbbE6kdO+3+yLzowRvPgcIu1QCCM+//uY7oON4VcL8ISilSgAfOYeNQc6vhaD5chVtmpTl/dw=="
+  "resolved" "https://registry.npmjs.org/react-native-modalize/-/react-native-modalize-2.0.13.tgz"
+  "version" "2.0.13"
 
 "react-native-platform-touchable@^1.1.1":
   "integrity" "sha1-/eSsxl7qWF0osWTQw3FqQhKaaOQ="
