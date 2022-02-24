@@ -224,6 +224,8 @@ function getCategoryIcon(data) {
     img = require("../images/unions-icon.png");
   } else if (data.val().image == "unemployment-icon.png") {
     img = require("../images/unemployment-icon.png");
+  } else if (data.val().image === "timeoff-icon.png") {
+    img = require("../images/timeoff-icon.png");
   }
   return img;
 }
