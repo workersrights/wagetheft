@@ -7,7 +7,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest",
-    "eas-build-pre-install": "echo $AWS_EXPORTS_JS_BASE64 | base64 --decode > ./aws-exports.js"
+    "eas-build-pre-install": "echo $AWS_EXPORTS_JS_BASE64 | base64 --decode > ./aws-exports.js; echo $SENTRYKEYS_JS_BASE64 | base64 --decode > ./constants/SentryKeys.js; echo MYAPIKEYS_JS_BASE64 | base64 --decode > ./constants/MyApiKeys.js"
   },
   "jest": {
     "preset": "jest-expo",
