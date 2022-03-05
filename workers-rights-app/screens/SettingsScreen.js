@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Button, StyleSheet } from "react-native";
-import * as Linking from 'expo-linking';
+import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
+import * as Linking from "expo-linking";
 import Colors from "../constants/Colors";
 
 /*
@@ -9,15 +9,18 @@ import Colors from "../constants/Colors";
  *
  */
 const SettingsScreen = () => {
-    return (
-        <View style={styles.button}>
-            <Button
-                color={Colors.darkGray}
-                title={"Terms and Conditions"}
-                onPress={() => Linking.openURL("https://google.com")}>
-            </Button>
-        </View>
+  const onPressPrivacyPolicy = () => {
+    Linking.openURL(
+      "https://workers-rights-portal.herokuapp.com/privacy-policy"
     );
+  };
+  return (
+    <View style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={onPressPrivacyPolicy}>
+        <Text style={styles.text}>Privacy Policy</Text>
+      </TouchableOpacity>
+    </View>
+  );
 };
 
 /*
@@ -26,19 +29,26 @@ const SettingsScreen = () => {
  *
  */
 SettingsScreen.navigationOptions = {
-    headerTitle: "Settings",
+  headerTitle: "Settings",
 };
 
-
 const styles = StyleSheet.create({
+  container: {
+    paddingTop: 10,
+    flexDirection: "column",
+    justifyContent: "flex-start",
+  },
   button: {
     padding: 10,
-    borderWidth: 1,
-    borderRadius: 10,
     marginVertical: 5,
-    marginHorizontal: 10, 
-    borderColor: Colors.gray,
-    backgroundColor: 'white'
+    marginHorizontal: 10,
+    backgroundColor: "white",
+    alignItems: "center",
+    borderRadius: 10,
+  },
+  text: {
+    color: Colors.darkGray,
+    fontSize: 18,
   },
 });
 
