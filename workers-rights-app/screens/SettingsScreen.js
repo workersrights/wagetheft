@@ -15,7 +15,7 @@ const SettingsScreen = () => {
     );
   };
   return (
-    <View style={styles.button}>
+    <View style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={onPressPrivacyPolicy}>
         <Text style={styles.text}>Privacy Policy</Text>
       </TouchableOpacity>
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
   },
   button: {
-    padding: 10,
+    padding: 15,
     marginVertical: 5,
     marginHorizontal: 10,
     backgroundColor: "white",
