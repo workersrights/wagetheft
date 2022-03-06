@@ -14,6 +14,7 @@ web-report/
 *Keys*
 *MyTwitterKeys.js
 .vscode/
+google-service-account-key.json
 # macOS
 .DS_Store
 
