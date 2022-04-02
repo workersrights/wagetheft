@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { View, StyleSheet, FlatList, Platform } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import PropTypes from "prop-types";
 import { Analytics } from "aws-amplify"; // for analytics
 import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
-import Colors from "../constants/Colors";
 import RightsCategoryTile from "../components/RightsCategoryTile";
 import RightsCategoryModal from "../components/RightsCategoryModal";
 
@@ -37,7 +36,7 @@ const RightsScreen = ({ navigation }) => {
     closeModalHandler();
 
     navigation.navigate({
-      routeName: "SubRights",
+      name: "SubRights",
       params: {
         categoryId: activeCategoryId,
       },
@@ -89,24 +88,6 @@ const RightsScreen = ({ navigation }) => {
       ) : null}
     </View>
   );
-};
-
-/*
- *
- * Set up the layout of the navigation header. Provides the color
- * title, and font weights of the header and header text of the
- * Rights Screen.
- *
- */
-RightsScreen.navigationOptions = {
-  headerTitle: "Rights Information",
-  headerStyle: {
-    backgroundColor: Platform.OS === "android" ? Colors.lightOrange : "",
-  },
-  headerTintColor: Colors.darkOrange,
-  headerTitleStyle: {
-    fontWeight: "bold",
-  },
 };
 
 const styles = StyleSheet.create({

@@ -1,10 +1,9 @@
 import React from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import PropTypes from "prop-types";
+import { Analytics } from "aws-amplify"; // for analytics
 import SubRightsItem from "../components/SubRightsItem";
 import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
-
-import Amplify, { Analytics } from "aws-amplify"; // for analytics
 
 /*
  *
@@ -14,8 +13,8 @@ import Amplify, { Analytics } from "aws-amplify"; // for analytics
  *
  */
 
-const SubRightsScreen = ({ navigation }) => {
-  const catId = navigation.getParam("categoryId");
+const SubRightsScreen = ({ navigation, route }) => {
+  const catId = route.params.categoryId;
   const displayedSubRights = ImportedData.getSubRights().filter(
     (subright) => subright.categoryIds.indexOf(catId) >= 0
   );
@@ -39,7 +38,7 @@ const SubRightsScreen = ({ navigation }) => {
         onSelect={() => {
           Analytics.record("User clicked sub rights");
           navigation.navigate({
-            routeName: "RightsDetails",
+            name: "RightsDetails",
             params: {
               subrightId: itemData.item.id,
             },
@@ -61,24 +60,6 @@ const SubRightsScreen = ({ navigation }) => {
   );
 };
 
-/*
- *
- * Sets the header of the SubRightsScreen to the category
- * title associated with the categoryid passed in from the
- * RightsScreen
- *
- */
-SubRightsScreen.navigationOptions = (navigationData) => {
-  const catId = navigationData.navigation.getParam("categoryId");
-  const selectedCategory = ImportedData.getRightsCategories().find(
-    (cat) => cat.id === catId
-  );
-
-  return {
-    headerTitle: selectedCategory.title,
-  };
-};
-
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
@@ -89,7 +70,11 @@ const styles = StyleSheet.create({
 SubRightsScreen.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
-    getParam: PropTypes.func.isRequired,
+  }).isRequired,
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      categoryId: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
 };
 

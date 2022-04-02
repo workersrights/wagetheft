@@ -3443,16 +3443,6 @@
     "color" "^3.1.3"
     "react-native-iphone-x-helper" "^1.3.0"
 
-"@react-navigation/core@^3.7.9":
-  "integrity" "sha512-EknbzM8OI9A5alRxXtQRV5Awle68B+z1QAxNty5DxmlS3BNfmduWNGnim159ROyqxkuDffK9L/U/Tbd45mx+Jg=="
-  "resolved" "https://registry.npmjs.org/@react-navigation/core/-/core-3.7.9.tgz"
-  "version" "3.7.9"
-  dependencies:
-    "hoist-non-react-statics" "^3.3.2"
-    "path-to-regexp" "^1.8.0"
-    "query-string" "^6.13.6"
-    "react-is" "^16.13.0"
-
 "@react-navigation/core@^5.16.1":
   "integrity" "sha512-3AToC7vPNeSNcHFLd1h71L6u34hfXoRAS1CxF9Fc4uC8uOrVqcNvphpeFbE0O9Bw6Zpl0BnMFl7E5gaL3KGzNA=="
   "resolved" "https://registry.npmjs.org/@react-navigation/core/-/core-5.16.1.tgz"
@@ -3463,14 +3453,6 @@
     "nanoid" "^3.1.15"
     "query-string" "^6.13.6"
     "react-is" "^16.13.0"
-
-"@react-navigation/native@^3.8.4":
-  "integrity" "sha512-gXSVcL7bfFDyVkvyg1FiAqTCIgZub5K1X/TZqURBs2CPqDpfX1OsCtB9D33eTF14SpbfgHW866btqrrxoCACfg=="
-  "resolved" "https://registry.npmjs.org/@react-navigation/native/-/native-3.8.4.tgz"
-  "version" "3.8.4"
-  dependencies:
-    "hoist-non-react-statics" "^3.3.2"
-    "react-native-safe-area-view" "^0.14.9"
 
 "@react-navigation/native@^5.9.8":
   "integrity" "sha512-DNbcDHXQPSFDLn51kkVVJjT3V7jJy2GztNYZe/2bEg29mi5QEcHHcpifjMCtyFKntAOWzKlG88UicIQ17UEghg=="
@@ -6628,11 +6610,6 @@
   dependencies:
     "source-map" "^0.7.3"
 
-"hoist-non-react-statics@^2.3.1":
-  "integrity" "sha512-rqcy4pJo55FTTLWt+bU8ukscqHeE/e9KWvsOW2b/a3afxQZhwkQdT1rPPCJ0rYXdj4vNcasY8zHTH+jF/qStxw=="
-  "resolved" "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz"
-  "version" "2.5.5"
-
 "hoist-non-react-statics@^3.1.0", "hoist-non-react-statics@^3.3.0", "hoist-non-react-statics@^3.3.2":
   "integrity" "sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw=="
   "resolved" "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz"
@@ -9172,7 +9149,7 @@
   "resolved" "https://registry.npmjs.org/path-parse/-/path-parse-1.0.7.tgz"
   "version" "1.0.7"
 
-"path-to-regexp@^1.7.0", "path-to-regexp@^1.8.0":
+"path-to-regexp@^1.7.0":
   "integrity" "sha512-n43JRhlUKUAlibEJhPeir1ncUID16QnEjNpwzNdO3Lm4ywrBpBZ5oLD0I6br9evr1Y9JTqwRtAh7JLoOzAQdVA=="
   "resolved" "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-1.8.0.tgz"
   "version" "1.8.0"
@@ -9470,11 +9447,6 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
 
-"react-lifecycles-compat@^3.0.4":
-  "integrity" "sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA=="
-  "resolved" "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz"
-  "version" "3.0.4"
-
 "react-native-animatable@1.3.3":
   "integrity" "sha512-2ckIxZQAsvWn25Ho+DK3d1mXIgj7tITkrS4pYDvx96WyOttSvzzFeQnM2od0+FUMzILbdHDsDEqZvnz1DYNQ1w=="
   "resolved" "https://registry.npmjs.org/react-native-animatable/-/react-native-animatable-1.3.3.tgz"
@@ -9542,11 +9514,6 @@
   "resolved" "https://registry.npmjs.org/react-native-modalize/-/react-native-modalize-2.0.13.tgz"
   "version" "2.0.13"
 
-"react-native-platform-touchable@^1.1.1":
-  "integrity" "sha1-/eSsxl7qWF0osWTQw3FqQhKaaOQ="
-  "resolved" "https://registry.npmjs.org/react-native-platform-touchable/-/react-native-platform-touchable-1.1.1.tgz"
-  "version" "1.1.1"
-
 "react-native-portalize@^0.4.0":
   "integrity" "sha512-Wnji2K1WbVTz3qTpYRjaVEo5DkYA194Yal9xEgX9q8Ts9dTwVs/rXk94LPBCgJL3ofsLRcigSTJMTnkMVc8OUg=="
   "resolved" "https://registry.npmjs.org/react-native-portalize/-/react-native-portalize-0.4.0.tgz"
@@ -9578,13 +9545,6 @@
   "resolved" "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-3.3.2.tgz"
   "version" "3.3.2"
 
-"react-native-safe-area-view@^0.14.9":
-  "integrity" "sha512-WII/ulhpVyL/qbYb7vydq7dJAfZRBcEhg4/UWt6F6nAKpLa3gAceMOxBxI914ppwSP/TdUsandFy6lkJQE0z4A=="
-  "resolved" "https://registry.npmjs.org/react-native-safe-area-view/-/react-native-safe-area-view-0.14.9.tgz"
-  "version" "0.14.9"
-  dependencies:
-    "hoist-non-react-statics" "^2.3.1"
-
 "react-native-screens@^3.4.0", "react-native-screens@~3.10.1":
   "integrity" "sha512-bMKSpwMeqAoXBqTJiDEG1ogM1cMk66sEmpp/4dGqdX59v+OwMqPeTuBk37qaSuS7gPOFFKsNW2X3ymGvBT4iEw=="
   "resolved" "https://registry.npmjs.org/react-native-screens/-/react-native-screens-3.10.2.tgz"
@@ -9597,11 +9557,6 @@
   "integrity" "sha512-z3SGLF0mHT+OlJDq7B7h/jXPjWcdBT3V14Le5L2PjntjjWM3+EJzq2BcXDwV+v67KFNJic5pgA26cCmseYek6w=="
   "resolved" "https://registry.npmjs.org/react-native-status-bar-height/-/react-native-status-bar-height-2.6.0.tgz"
   "version" "2.6.0"
-
-"react-native-tab-view@^2.15.2":
-  "integrity" "sha512-ac2DmT7+l13wzIFqtbfXn4wwfgtPoKzWjjZyrK1t+T8sdemuUvD4zIt+UImg03fu3s3VD8Wh/fBrIdcqQyZJWg=="
-  "resolved" "https://registry.npmjs.org/react-native-tab-view/-/react-native-tab-view-2.16.0.tgz"
-  "version" "2.16.0"
 
 "react-native-twitter@^0.2.1":
   "integrity" "sha512-JJ8pt24LGItsID3H3WVDxO07UjTd5yByMFmeR0WDApDJtnBBOzyfNWWC9k7dh/QEjrHLqIX23BFlkH/Wfqfh6Q=="
@@ -9671,39 +9626,6 @@
     "use-subscription" "^1.0.0"
     "whatwg-fetch" "^3.0.0"
     "ws" "^6.1.4"
-
-"react-navigation-header-buttons@^3.0.5":
-  "integrity" "sha512-b1AsL9k6Klp72CnAq4IF0xgw94FClBIsUr/pGUKa1PI+mStdF0AYZzi9qtYgqQNDIOpqxQ2xYUM9azL2VmPUeQ=="
-  "resolved" "https://registry.npmjs.org/react-navigation-header-buttons/-/react-navigation-header-buttons-3.0.5.tgz"
-  "version" "3.0.5"
-  dependencies:
-    "react-native-platform-touchable" "^1.1.1"
-
-"react-navigation-stack@^2.3.9":
-  "integrity" "sha512-3LE1PFsFV9v4PUlZRATMotqs6H7MOOpIKtjyP+l8D1cyzYmsMQh3EFikeDfzGQUXIvy8VyLAMtcEssicQPYvFA=="
-  "resolved" "https://registry.npmjs.org/react-navigation-stack/-/react-navigation-stack-2.10.4.tgz"
-  "version" "2.10.4"
-  dependencies:
-    "color" "^3.1.3"
-    "react-native-iphone-x-helper" "^1.3.0"
-
-"react-navigation-tabs@^2.8.11":
-  "integrity" "sha512-8w/fiX+gGIyxYWBUT6Fg/26DTggjzK4lPfnLTP1pR7DUfYGLf2/f/aJWqiIJt6U4k/19tzpr4sXQqG7fX6PLjg=="
-  "resolved" "https://registry.npmjs.org/react-navigation-tabs/-/react-navigation-tabs-2.11.2.tgz"
-  "version" "2.11.2"
-  dependencies:
-    "hoist-non-react-statics" "^3.3.2"
-    "react-lifecycles-compat" "^3.0.4"
-    "react-native-iphone-x-helper" "^1.3.0"
-    "react-native-tab-view" "^2.15.2"
-
-"react-navigation@^4.3.5":
-  "integrity" "sha512-08Nzy1aKEd73496CsuzN49vLFmxPKYF5WpKGgGvkQ10clB79IRM2BtAfVl6NgPKuUM8FXq1wCsrjo/c5ftl5og=="
-  "resolved" "https://registry.npmjs.org/react-navigation/-/react-navigation-4.4.4.tgz"
-  "version" "4.4.4"
-  dependencies:
-    "@react-navigation/core" "^3.7.9"
-    "@react-navigation/native" "^3.8.4"
 
 "react-portalize@^2.0.2":
   "integrity" "sha512-yLVPtGdIyizsUlArYJFgEpTjX4cIpqt1H0Pz4sdyVXrKL/Fve56SOOTRczh5PkpKhOowgfV1wNaibdFnlr8/Nw=="

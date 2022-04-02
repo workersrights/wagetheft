@@ -3,14 +3,13 @@ import { View, Text, StyleSheet, ScrollView, FlatList } from "react-native";
 import { Modalize } from "react-native-modalize";
 import { Portal } from "react-native-portalize";
 import PropTypes from "prop-types";
+import { Analytics } from "aws-amplify"; // for analytics
 import OrganizationBox from "../components/OrganizationBox";
 import LearnMoreItem from "../components/LearnMoreItem";
 import RightsSheetContent from "../components/RightsSheetContent";
 import Colors from "../constants/Colors";
 import RightsOrganizationModal from "../components/RightsOrganizationModal";
 import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
-
-import Amplify, { Analytics } from "aws-amplify"; // for analytics
 
 /*
  *
@@ -20,14 +19,14 @@ import Amplify, { Analytics } from "aws-amplify"; // for analytics
  *
  */
 
-const RightsDetailsScreen = ({ navigation }) => {
+const RightsDetailsScreen = ({ route }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeOrganizationId, setActiveOrganizationId] = useState("");
   const [activeLearnMoreId, setActiveLearnMoreId] = useState("");
   const modalizeRef = useRef(null);
 
   // Get the parent subright
-  const parentSubRightId = navigation.getParam("subrightId");
+  const parentSubRightId = route.params.subrightId;
   const parentSubRight = ImportedData.getSubRights().find(
     (subRight) => subRight.id === parentSubRightId
   );
@@ -137,29 +136,6 @@ const RightsDetailsScreen = ({ navigation }) => {
   );
 };
 
-/*
- *
- * Sets the header of the RightsDetailScreen to the category
- * title associated with the subrightID passed in from the
- * SubRightsScreen
- *
- */
-
-RightsDetailsScreen.navigationOptions = (navigationData) => {
-  const subrightId = navigationData.navigation.getParam("subrightId");
-  const parentSubRight = ImportedData.getSubRights().find(
-    (subright) => subright.id === subrightId
-  );
-
-  if (parentSubRight.title.length > 25) {
-    return {
-      headerTitle: `${parentSubRight.title.substring(0, 21)}...`,
-      headerBackTitle: "Back",
-    };
-  }
-  return { headerTitle: parentSubRight.title, headerBackTitle: "Back" };
-};
-
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
@@ -188,8 +164,10 @@ const styles = StyleSheet.create({
 });
 
 RightsDetailsScreen.propTypes = {
-  navigation: PropTypes.shape({
-    getParam: PropTypes.func.isRequired,
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      subrightId: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
 };
 
