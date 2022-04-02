@@ -110,10 +110,8 @@ const RightsTabNavigator = () => {
     <Tab.Navigator
       screenOptions={{
         initialRouteName: "Rights",
-        tabBarOptions: {
-          activeTintColor: Colors.darkOrange,
-        },
       }}
+      tabBarOptions={{ activeTintColor: Colors.darkOrange }}
     >
       <Tab.Screen
         name="Rights"
