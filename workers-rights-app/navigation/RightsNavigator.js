@@ -110,11 +110,12 @@ const RightsTabNavigator = () => {
     <Tab.Navigator
       screenOptions={{
         initialRouteName: "Rights",
+        tabBarActiveTintColor: Colors.darkOrange,
+        headerShown: false,
       }}
-      tabBarOptions={{ activeTintColor: Colors.darkOrange }}
     >
       <Tab.Screen
-        name="Rights"
+        name="Rights Information Tab"
         component={RightsNavigator}
         options={{
           tabBarLabel: "Rights",
@@ -124,7 +125,7 @@ const RightsTabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Settings"
+        name="Settings Tab"
         component={SettingsNavigator}
         options={{
           tabBarLabel: "Settings",
