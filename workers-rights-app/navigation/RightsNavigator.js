@@ -8,7 +8,7 @@ import RightsScreen from "../screens/RightsScreen";
 import SubRightsScreen from "../screens/SubRightsScreen";
 import RightsDetailsScreen from "../screens/RightsDetailsScreen";
 import Colors from "../constants/Colors";
-import SettingsScreen from "../screens/SettingsScreen"
+import SettingsScreen from "../screens/SettingsScreen";
 
 /*
  *
@@ -52,8 +52,8 @@ const RightsNavigator = createStackNavigator(
 const SettingsNavigator = createStackNavigator(
   {
     Settings: {
-      screen: SettingsScreen
-    }
+      screen: SettingsScreen,
+    },
   },
   {
     defaultNavigationOptions: {
@@ -97,7 +97,7 @@ const RightsTabNavigator = createBottomTabNavigator(
       },
     },
   },
-  
+
   {
     initialRouteName: "Rights",
     tabBarOptions: {
