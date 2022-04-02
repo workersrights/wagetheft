@@ -76,9 +76,6 @@ export default class ImportedData {
     arr4 = await constructLearnMores(db, hashToPhrase);
     ImportedData.setLearnMores(arr4);
 
-    console.log(
-      "Finished fetching all data from firebase! Should be run FIRST"
-    ); // make sure async stuff works
     return; // return after all fetches are done
   }
 }
