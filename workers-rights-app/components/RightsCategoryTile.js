@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  TouchableOpacity,
+  TouchableHighlight,
   View,
   Text,
   StyleSheet,
@@ -20,23 +20,28 @@ import Colors from "../constants/Colors";
 
 const RightsCategoryTile = ({ onSelect, image, title }) => {
   return (
-    <TouchableOpacity style={styles.gridItem} onPress={onSelect}>
-      <View style={styles.container}>
-        <Image style={styles.imageStyle} source={image} />
-        <View style={styles.textContainer}>
-          <Text>{title}</Text>
+    <TouchableHighlight onPress={onSelect} style={styles.touchable}>
+      <View style={styles.gridItem}>
+        <View style={styles.container}>
+          <Image style={styles.imageStyle} source={image} />
+          <View style={styles.textContainer}>
+            <Text>{title}</Text>
+          </View>
         </View>
       </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 
 const tileWidth = Dimensions.get("window").width * 0.38;
 const styles = StyleSheet.create({
+  touchable: {
+    margin: 10,
+    borderRadius: 15,
+  },
   gridItem: {
     width: tileWidth,
     height: tileWidth,
-    margin: 10,
     backgroundColor: Colors.lightOrange,
     borderRadius: 15,
     shadowOpacity: 0.25,

@@ -3,10 +3,8 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity,
+  TouchableHighlight,
   Image,
-  Platform,
-  TouchableNativeFeedback,
 } from "react-native";
 import PropTypes from "prop-types";
 import Colors from "../constants/Colors";
@@ -27,11 +25,8 @@ const LearnMoreItem = ({ id, onPress }) => {
     return null;
   }
 
-  const TouchablePlatformSpecific =
-    Platform.OS === "ios" ? TouchableOpacity : TouchableNativeFeedback;
-
   return (
-    <TouchablePlatformSpecific onPress={onPress}>
+    <TouchableHighlight onPress={onPress} style={styles.touchable}>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image
@@ -43,18 +38,20 @@ const LearnMoreItem = ({ id, onPress }) => {
           {selectedLearnMore.title}
         </Text>
       </View>
-    </TouchablePlatformSpecific>
+    </TouchableHighlight>
   );
 };
 
 const styles = StyleSheet.create({
+  touchable: {
+    borderRadius: 8,
+    marginVertical: 5,
+  },
   container: {
     flexDirection: "row",
     alignItems: "center",
-    width: "99%",
+    width: "100%",
     height: 60,
-    marginHorizontal: "0.5%",
-    marginVertical: 5,
     paddingLeft: 10,
     paddingRight: 5,
     borderRadius: 8,

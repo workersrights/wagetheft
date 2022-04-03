@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableHighlight,
+  Image,
+} from "react-native";
 import PropTypes from "prop-types";
 import Colors from "../constants/Colors";
 
@@ -13,27 +19,38 @@ import Colors from "../constants/Colors";
 
 const SubRightsItem = ({ onSelect, img, title }) => {
   return (
-    <TouchableOpacity onPress={onSelect} style={styles.subrights}>
-      <View style={styles.txtContainer}>
-        <Image style={styles.icon} source={img} />
-        <View style={styles.contentContainer}>
-          <Text style={styles.subrightstxt}>{title}</Text>
+    <TouchableHighlight onPress={onSelect} style={styles.touchable}>
+      <View style={styles.subrights}>
+        <View style={styles.txtContainer}>
+          <Image style={styles.icon} source={img} />
+          <View style={styles.contentContainer}>
+            <Text style={styles.subrightstxt}>{title}</Text>
+          </View>
+          <Text style={styles.subrightstxt}>→</Text>
         </View>
-        <Text style={styles.subrightstxt}>→</Text>
       </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 
 const styles = StyleSheet.create({
+  touchable: {
+    margin: 5,
+    borderRadius: 8,
+  },
   subrights: {
+    width: "100%",
     alignItems: "center",
     padding: 15,
-    margin: 7,
     borderRadius: 8,
-    shadowOpacity: 0.25,
-    shadowOffset: { width: 2, height: 5 },
-    elevation: 3,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 2,
     backgroundColor: Colors.lightOrange,
   },
   contentContainer: {

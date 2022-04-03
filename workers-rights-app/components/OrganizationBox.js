@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableHighlight,
+} from "react-native";
 import PropTypes from "prop-types";
 
 /*
@@ -12,16 +18,16 @@ import PropTypes from "prop-types";
 
 const OrganizationBox = ({ onSelect, image, title }) => {
   return (
-    <TouchableOpacity onPress={onSelect} style={styles.box}>
-      <View style={styles.imageContainer}>
+    <View style={styles.box}>
+      <TouchableHighlight onPress={onSelect} style={styles.imageContainer}>
         <Image source={{ uri: image }} style={styles.imgStyle} />
-      </View>
+      </TouchableHighlight>
       <View style={styles.titleContainer}>
         <Text numberOfLines={2} style={styles.orgTitle}>
           {title}
         </Text>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { TouchableHighlight, Text, StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
 import Colors from "../constants/Colors";
 
@@ -13,20 +13,20 @@ import Colors from "../constants/Colors";
 
 const ButtonTemplate = ({ style, onPress, titleStyle, title }) => {
   return (
-    <TouchableOpacity
-      style={{ ...styles.container, ...style }}
-      onPress={onPress}
-      activeOpacity={0.6}
-    >
-      <Text style={{ ...styles.titleStyle, ...titleStyle }}>{title}</Text>
-    </TouchableOpacity>
+    <TouchableHighlight onPress={onPress} style={styles.touchable}>
+      <View style={{ ...styles.container, ...style }}>
+        <Text style={{ ...styles.titleStyle, ...titleStyle }}>{title}</Text>
+      </View>
+    </TouchableHighlight>
   );
 };
 
 const styles = StyleSheet.create({
+  touchable: {
+    borderRadius: 8,
+  },
   container: {
     width: "60%",
-
     backgroundColor: Colors.darkOrange,
     borderRadius: 8,
     borderStyle: "solid",
@@ -37,12 +37,8 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 6,
     elevation: 3,
-    padding: 10,
-
-    position: "absolute",
-    bottom: 40,
-    justifyContent: "center",
-    alignItems: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
   },
   titleStyle: {
     color: "white",
