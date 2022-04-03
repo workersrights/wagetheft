@@ -37,7 +37,7 @@
     },
     "ios": {
       "bundleIdentifier": "com.workersrightsstudio.workersright",
-      "buildNumber": "1.0.1",
+      "buildNumber": "1.0.2",
       "supportsTablet": false,
       "googleServicesFile": "./GoogleService-Info.plist"
     },
