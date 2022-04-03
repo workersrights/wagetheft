@@ -46,7 +46,6 @@ export default class ImportedData {
     if (!firebase.apps.length) {
       // only load once
       firebase.initializeApp(firebaseConfig);
-      FBAnalytics.setDebugModeEnabled(true);
     }
     // Get a reference to the database service
     var db = firebase.database();
