@@ -4,14 +4,12 @@ import { Host } from "react-native-portalize";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { NativeModules, Platform } from "react-native"; // for language
-import Amplify, { Analytics } from "aws-amplify";
+import * as FBAnalytics from "expo-firebase-analytics";
 import * as Sentry from "sentry-expo";
 import RightsNavigator from "./navigation/RightsNavigator";
 import ImportedData from "./data/FetchRightsData"; // eslint-disable-line
-import config from "./aws-exports";
 import DSN from "./constants/SentryKeys";
 
-Amplify.configure(config);
 Sentry.init({
   dsn: DSN,
   enableInExpoDevelopment: true,
@@ -37,7 +35,7 @@ enableScreens();
  */
 
 async function loadAllData() {
-  Analytics.record("User opened application");
+  FBAnalytics.logEvent("AppStart", { purpose: "User Started the app" });
   await Font.loadAsync({
     "nunito-light": require("./assets/fonts/Nunito-Light.ttf"),
     "nunito-regular": require("./assets/fonts/Nunito-Regular.ttf"),

@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import PropTypes from "prop-types";
+import * as FBAnalytics from "expo-firebase-analytics";
 import Colors from "../constants/Colors";
 import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
 
@@ -19,6 +20,9 @@ const RightsSheetContent = ({ learnMoreId }) => {
   if (!selectedLearnMore) {
     return null;
   }
+  FBAnalytics.logEvent("learnMore_tile_click", {
+    clickDetails: `Clicked ${selectedLearnMore.title}`,
+  });
   const informationChunks = selectedLearnMore.informationChunks; //eslint-disable-line
   return (
     <View style={styles.container}>
