@@ -12,7 +12,6 @@ import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
  * that appears as a result of pressing a LearnMoreItem.
  *
  */
-
 const RightsSheetContent = ({ learnMoreId }) => {
   const selectedLearnMore = ImportedData.getLearnMores().find(
     (learnmore) => learnmore.id === learnMoreId
@@ -23,7 +22,20 @@ const RightsSheetContent = ({ learnMoreId }) => {
   FBAnalytics.logEvent("learnMore_tile_click", {
     clickDetails: `Clicked ${selectedLearnMore.title}`,
   });
-  const informationChunks = selectedLearnMore.informationChunks; //eslint-disable-line
+
+  const loadInformationChunks = () => {
+    const { informationChunks } = selectedLearnMore;
+    if (typeof informationChunks === "undefined" || informationChunks == null) {
+      return null;
+    }
+    return informationChunks.map((chunk) => (
+      <View key={informationChunks.indexOf(chunk)}>
+        <Text style={styles.header}>{chunk.header}</Text>
+        <Text style={styles.body}>{chunk.body}</Text>
+      </View>
+    ));
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -33,12 +45,7 @@ const RightsSheetContent = ({ learnMoreId }) => {
         />
         <Text style={styles.titleText}>{selectedLearnMore.title}</Text>
       </View>
-      {informationChunks.map((chunk) => (
-        <View key={informationChunks.indexOf(chunk)}>
-          <Text style={styles.header}>{chunk.header}</Text>
-          <Text style={styles.body}>{chunk.body}</Text>
-        </View>
-      ))}
+      {loadInformationChunks()}
     </View>
   );
 };
