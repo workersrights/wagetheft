@@ -21,6 +21,20 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "web": {
+      "config": {
+        "firebase": {
+          "apiKey": "AIzaSyCV8Jid2f4kNljXXU57pZY2UwQi8Xt37TI",
+          "authDomain": "workers-rights-46c43.firebaseapp.com",
+          "databaseURL": "https://workers-rights-46c43.firebaseio.com",
+          "projectId": "workers-rights-46c43",
+          "storageBucket": "workers-rights-46c43.appspot.com",
+          "messagingSenderId": "644811155639",
+          "appId": "1:644811155639:web:52538cfe0bbe6d9d30c532",
+          "measurementId": "G-F58YYCVGK0"
+        }
+      }
+    },
     "ios": {
       "bundleIdentifier": "com.workersrightsstudio.workersright",
       "buildNumber": "1.0.1",

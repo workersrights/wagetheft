@@ -1,4 +1,5 @@
 import * as firebase from "firebase";
+import * as FBAnalytics from "expo-firebase-analytics";
 import firebaseConfig from "../constants/MyApiKeys";
 import RightsCategory from "../models/rightsCategory";
 import SubRight from "../models/subRight";
@@ -45,6 +46,7 @@ export default class ImportedData {
     if (!firebase.apps.length) {
       // only load once
       firebase.initializeApp(firebaseConfig);
+      FBAnalytics.setDebugModeEnabled(true);
     }
     // Get a reference to the database service
     var db = firebase.database();

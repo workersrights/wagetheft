@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import PropTypes from "prop-types";
-import { Analytics } from "aws-amplify"; // for analytics
+import * as FBAnalytics from "expo-firebase-analytics";
 import SubRightsItem from "../components/SubRightsItem";
 import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
 
@@ -36,7 +36,9 @@ const SubRightsScreen = ({ navigation, route }) => {
         title={itemData.item.title}
         img={parentCategory.image}
         onSelect={() => {
-          Analytics.record("User clicked sub rights");
+          FBAnalytics.logEvent("subright_tile_click", {
+            clickDetails: `Clicked ${itemData.item.title}`,
+          });
           navigation.navigate({
             name: "RightsDetails",
             params: {

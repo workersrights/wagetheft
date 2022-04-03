@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import PropTypes from "prop-types";
-import { Analytics } from "aws-amplify"; // for analytics
+import * as FBAnalytics from "expo-firebase-analytics";
 import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
 import RightsCategoryTile from "../components/RightsCategoryTile";
 import RightsCategoryModal from "../components/RightsCategoryModal";
@@ -56,9 +56,8 @@ const RightsScreen = ({ navigation }) => {
         title={itemData.item.title}
         image={itemData.item.image}
         onSelect={() => {
-          Analytics.record({
-            name: "User clicked rights category",
-            attributes: { category: itemData.item.title },
+          FBAnalytics.logEvent("category_tile_click", {
+            clickDetails: `Clicked ${itemData.item.title}`,
           });
           openModalHandler(itemData.item.id);
         }}

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView, FlatList } from "react-native";
 import { Modalize } from "react-native-modalize";
 import { Portal } from "react-native-portalize";
 import PropTypes from "prop-types";
-import { Analytics } from "aws-amplify"; // for analytics
+import * as FBAnalytics from "expo-firebase-analytics";
 import OrganizationBox from "../components/OrganizationBox";
 import LearnMoreItem from "../components/LearnMoreItem";
 import RightsSheetContent from "../components/RightsSheetContent";
@@ -66,7 +66,9 @@ const RightsDetailsScreen = ({ route }) => {
         title={itemData.item.name}
         image={itemData.item.image}
         onSelect={() => {
-          Analytics.record("User clicked organization box");
+          FBAnalytics.logEvent("org_tile_click", {
+            clickDetails: `Clicked ${itemData.item.name} org box`,
+          });
           openModalHandler(itemData.item.id);
         }}
       />
@@ -106,7 +108,6 @@ const RightsDetailsScreen = ({ route }) => {
             id={displayedLearnMoreId}
             key={displayedLearnMoreId}
             onPress={() => {
-              Analytics.record("User clicked learn more");
               openLearnMoreHandler(displayedLearnMoreId);
             }}
           />
