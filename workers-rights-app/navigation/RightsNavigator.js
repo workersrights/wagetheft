@@ -112,6 +112,15 @@ const RightsTabNavigator = () => {
         initialRouteName: "Rights",
         tabBarActiveTintColor: Colors.darkOrange,
         headerShown: false,
+        tabBarStyle: {
+          backgroundColor: "#ffffff",
+          borderTopWidth: 0,
+          elevation: 20,
+          shadowOpacity: 0.25,
+          shadowColor: "black",
+          shadowOffset: { width: 0, height: 0 },
+          shadowRadius: 2,
+        },
       }}
     >
       <Tab.Screen
@@ -139,7 +148,7 @@ const RightsTabNavigator = () => {
 };
 
 const RootNavigator = () => (
-  <NavigationContainer>
+  <NavigationContainer theme={{ colors: { background: "rgb(255, 255, 255)" } }}>
     <RightsTabNavigator />
   </NavigationContainer>
 );
