@@ -30,16 +30,16 @@ const RightsCategoryModal = ({ categoryId, onCloseModal, onAdvance }) => {
       <View style={styles.modal}>
         <View style={styles.modalContent}>
           <ModalCloseButton onCloseModal={onCloseModal} />
-          <Text style={styles.title}>{selectedCategory.title}</Text>
-          <Image
-            source={selectedCategory.image}
-            resizeMode="contain"
-            style={styles.image}
-          />
-          <Text style={styles.title}>{selectedCategory.subtitle}</Text>
+          <View style={styles.imageContainer}>
+            <Image
+              source={selectedCategory.image}
+              resizeMode="contain"
+              style={styles.image}
+            />
+          </View>
+          <Text style={styles.subtitle}>{selectedCategory.subtitle}</Text>
           <Text style={styles.description}>{selectedCategory.description}</Text>
-
-          <ButtonTemplate onPress={onAdvance} title="Read more →" />
+          <ButtonTemplate onPress={onAdvance} title="Read more" />
         </View>
       </View>
     </Modal>
@@ -48,9 +48,7 @@ const RightsCategoryModal = ({ categoryId, onCloseModal, onAdvance }) => {
 
 const styles = StyleSheet.create({
   modal: {
-    width: "80%",
-    height: "80%",
-    maxHeight: 450,
+    width: "85%",
     backgroundColor: Colors.lightOrange,
     borderRadius: 8,
     shadowOpacity: 0.25,
@@ -61,24 +59,35 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   modalContent: {
-    flex: 1,
-    padding: 10,
+    paddingHorizontal: 10,
     paddingTop: 30,
+    paddingBottom: 30,
     alignItems: "center",
   },
-  title: {
-    paddingHorizontal: 10,
-    fontWeight: "bold",
+  description: {
+    fontFamily: "nunito-semibold",
     fontSize: 16,
+    marginBottom: 20,
+    color: "#424C55",
     textAlign: "center",
   },
-  description: {
-    padding: 10,
+  subtitle: {
+    fontFamily: "nunito-extrabold",
+    fontSize: 16,
+    marginBottom: 20,
+    color: "#424C55",
     textAlign: "center",
   },
   image: {
-    width: "30%",
-    height: "30%",
+    width: "100%",
+    height: "100%",
+  },
+  imageContainer: {
+    width: 90,
+    height: 90,
+    marginBottom: 25,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
