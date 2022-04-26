@@ -28,10 +28,8 @@ const ModalCloseButton = ({ onCloseModal }) => {
 const styles = StyleSheet.create({
   modalCloseButton: {
     position: "absolute",
-    paddingTop: "4%",
-    paddingRight: "3%",
-    top: 0,
-    right: 0,
+    top: 5,
+    right: 10,
   },
 });
 

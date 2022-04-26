@@ -15,10 +15,15 @@ import RightsCategoryModal from "../components/RightsCategoryModal";
 const RightsScreen = ({ navigation }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeCategoryId, setActiveCategoryId] = useState("");
+  const [activeCategory, setActiveCategory] = useState({});
 
   const openModalHandler = (id) => {
-    setIsModalOpen(true);
+    const selectedCategory = ImportedData.getRightsCategories().filter(
+      (category) => category.id === id
+    )[0];
+    setActiveCategory(selectedCategory);
     setActiveCategoryId(id);
+    setIsModalOpen(true);
   };
 
   const closeModalHandler = () => {
@@ -78,13 +83,12 @@ const RightsScreen = ({ navigation }) => {
         renderItem={renderGridItem}
         numColumns={2}
       />
-      {isModalOpen ? (
-        <RightsCategoryModal
-          onCloseModal={closeModalHandler}
-          categoryId={activeCategoryId}
-          onAdvance={advanceScreenHandler}
-        />
-      ) : null}
+      <RightsCategoryModal
+        showModal={isModalOpen}
+        onCloseModal={closeModalHandler}
+        selectedCategory={activeCategory}
+        onAdvance={advanceScreenHandler}
+      />
     </View>
   );
 };
