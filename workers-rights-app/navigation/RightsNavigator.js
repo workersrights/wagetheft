@@ -49,6 +49,7 @@ const RightsNavigator = () => {
           );
           return {
             title: selectedCategory.title,
+            headerBackTitle: "Back",
           };
         }}
       />
