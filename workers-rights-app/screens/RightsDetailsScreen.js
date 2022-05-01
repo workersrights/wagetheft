@@ -8,7 +8,6 @@ import OrganizationBox from "../components/OrganizationBox";
 import LearnMoreItem from "../components/LearnMoreItem";
 import RightsSheetContent from "../components/RightsSheetContent";
 import Colors from "../constants/Colors";
-import RightsOrganizationModal from "../components/RightsOrganizationModal";
 import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
 
 /*
@@ -20,8 +19,6 @@ import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
  */
 
 const RightsDetailsScreen = ({ route, navigation }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeOrganizationId, setActiveOrganizationId] = useState("");
   const [activeLearnMoreId, setActiveLearnMoreId] = useState("");
   const modalizeRef = useRef(null);
 
@@ -51,12 +48,6 @@ const RightsDetailsScreen = ({ route, navigation }) => {
         org,
       },
     });
-    // setIsModalOpen(true);
-    // setActiveOrganizationId(id);
-  };
-
-  const closeModalHandler = () => {
-    setIsModalOpen(false);
   };
 
   /*
@@ -120,14 +111,6 @@ const RightsDetailsScreen = ({ route, navigation }) => {
         ))}
       </ScrollView>
 
-      {activeOrganizationId !== "" && (
-        <RightsOrganizationModal
-          isVisible={isModalOpen}
-          onCloseModal={closeModalHandler}
-          id={activeOrganizationId}
-        />
-      )}
-
       <Portal>
         <Modalize
           ref={modalizeRef}
@@ -175,6 +158,9 @@ RightsDetailsScreen.propTypes = {
     params: PropTypes.shape({
       subrightId: PropTypes.string.isRequired,
     }).isRequired,
+  }).isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
 

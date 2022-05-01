@@ -18,7 +18,7 @@ const buildOrg = (id, abbrev, addresses, description, image, name, website) => {
   if (
     typeof id !== "string" ||
     typeof abbrev !== "string" ||
-    typeof addresses !== "object" ||
+    typeof addresses !== "string" ||
     typeof description !== "string" ||
     typeof image !== "string" ||
     typeof name !== "string" ||
@@ -27,13 +27,15 @@ const buildOrg = (id, abbrev, addresses, description, image, name, website) => {
     return null;
   }
 
+  const addressesParsed = JSON.parse(addresses);
+
   return new Organization(
     id,
-    abbrev,
-    addresses,
-    description,
-    image,
     name,
+    abbrev,
+    image,
+    description,
+    addressesParsed,
     website
   );
 };

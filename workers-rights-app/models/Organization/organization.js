@@ -1,10 +1,10 @@
 class Organization {
-  #id; 
-  #name; 
-  #abbrev; 
-  #image; 
-  #description; 
-  #addresses; 
+  #id;
+  #name;
+  #abbrev;
+  #image;
+  #description;
+  #addresses;
   #website;
 
   constructor(id, name, abbrev, image, description, addresses, website) {
@@ -17,31 +17,31 @@ class Organization {
     this.#website = website;
   }
 
-  get #id() {
-    return this.#id; 
+  get id() {
+    return this.#id;
   }
 
-  get #name() {
+  get name() {
     return this.#name;
   }
 
-  get #abbrev() {
+  get abbrev() {
     return this.#abbrev;
   }
 
-  get #image() {
+  get image() {
     return this.#image;
   }
 
-  get #description() {
+  get description() {
     return this.#description;
   }
 
-  get #addresses() {
+  get addresses() {
     return this.#addresses;
   }
 
-  get #website() {
+  get website() {
     return this.#website;
   }
 }
