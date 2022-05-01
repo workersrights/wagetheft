@@ -19,7 +19,7 @@ import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
  *
  */
 
-const RightsDetailsScreen = ({ route }) => {
+const RightsDetailsScreen = ({ route, navigation }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeOrganizationId, setActiveOrganizationId] = useState("");
   const [activeLearnMoreId, setActiveLearnMoreId] = useState("");
@@ -44,9 +44,15 @@ const RightsDetailsScreen = ({ route }) => {
           parentSubRight.organizations.includes(org.id)
         );
 
-  const openModalHandler = (id) => {
-    setIsModalOpen(true);
-    setActiveOrganizationId(id);
+  const openModalHandler = (org) => {
+    navigation.navigate({
+      name: "OrgsModal",
+      params: {
+        org,
+      },
+    });
+    // setIsModalOpen(true);
+    // setActiveOrganizationId(id);
   };
 
   const closeModalHandler = () => {
@@ -69,7 +75,7 @@ const RightsDetailsScreen = ({ route }) => {
           FBAnalytics.logEvent("org_tile_click", {
             clickDetails: `Clicked ${itemData.item.name} org box`,
           });
-          openModalHandler(itemData.item.id);
+          openModalHandler(itemData.item);
         }}
       />
     );

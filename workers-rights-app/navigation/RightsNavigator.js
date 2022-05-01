@@ -9,6 +9,7 @@ import SubRightsScreen from "../screens/SubRightsScreen";
 import RightsDetailsScreen from "../screens/RightsDetailsScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import Colors from "../constants/Colors";
+import OrgsScreen from "../screens/OrgsScreen";
 import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
 
 const Stack = createStackNavigator();
@@ -69,6 +70,23 @@ const RightsNavigator = () => {
             };
           }
           return { title: parentSubRight.title, headerBackTitle: "Back" };
+        }}
+      />
+      <Stack.Screen
+        name="OrgsModal"
+        component={OrgsScreen}
+        options={({ route }) => {
+          const orgName = route.params.org.name;
+          if (orgName.length > 25) {
+            return {
+              title: `${orgName.substring(0, 21)}...`,
+              presentation: "modal",
+            };
+          }
+          return {
+            title: orgName,
+            presentation: "modal",
+          };
         }}
       />
     </Stack.Navigator>
