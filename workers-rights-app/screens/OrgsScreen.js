@@ -5,6 +5,7 @@ import {
   Text,
   Image,
   TouchableHighlight,
+  ScrollView,
 } from "react-native";
 import * as Linking from "expo-linking";
 import PropTypes from "prop-types";
@@ -79,23 +80,25 @@ const OrgsScreen = ({ route }) => {
       <View style={styles.imgContainer}>
         <Image source={{ uri: org.image }} style={styles.img} />
       </View>
-      <View style={styles.bodyContainer}>
-        <View style={styles.buttonsContainer}>{renderModalButtons()}</View>
-        <View style={styles.textContainer}>
-          <Text style={styles.headerText}>Website:</Text>
-          <TouchableHighlight
-            style={styles.touchableStyle}
-            underlayColor="rgba(83, 83, 83, 0.05)"
-            onPress={onPressWebLink}
-          >
-            <Text style={styles.websiteLink}>{org.website}</Text>
-          </TouchableHighlight>
+      <ScrollView contentContainerStyle={{ paddingBottom: 25 }}>
+        <View style={styles.bodyContainer}>
+          <View style={styles.buttonsContainer}>{renderModalButtons()}</View>
+          <View style={styles.textContainer}>
+            <Text style={styles.headerText}>Website:</Text>
+            <TouchableHighlight
+              style={styles.touchableStyle}
+              underlayColor="rgba(83, 83, 83, 0.05)"
+              onPress={onPressWebLink}
+            >
+              <Text style={styles.websiteLink}>{org.website}</Text>
+            </TouchableHighlight>
+          </View>
+          <View style={styles.textContainer}>
+            <Text style={styles.headerText}>Description:</Text>
+            <Text style={styles.descriptionText}>{org.description}</Text>
+          </View>
         </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.headerText}>Description:</Text>
-          <Text style={styles.descriptionText}>{org.description}</Text>
-        </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -139,6 +142,9 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     marginTop: 25,
+  },
+  screen: {
+    flex: 1,
   },
 });
 
