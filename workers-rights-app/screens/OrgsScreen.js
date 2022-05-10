@@ -16,7 +16,7 @@ import OrgModalButton from "../components/OrgModalButton";
 import { findNearestAddress, isPhone } from "../data/AddressUtils";
 
 const OrgsScreen = ({ route }) => {
-  const [buttonList, setButtonList] = useState(null);
+  const [buttonList, setButtonList] = useState([]);
 
   const createModalButtons = useCallback(
     (currLocation, addresses, locationGranted) => {
@@ -84,7 +84,6 @@ const OrgsScreen = ({ route }) => {
       setButtonList([]);
       return;
     }
-
     const { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
       // TODO: WHAT HAPPENS WHEN THE USER DOES NOT ALLOW LOCATION PERMISSION
@@ -92,7 +91,6 @@ const OrgsScreen = ({ route }) => {
       setButtonList(buttons);
       return;
     }
-
     const currLocation = await Location.getCurrentPositionAsync();
     const buttons = createModalButtons(
       currLocation,

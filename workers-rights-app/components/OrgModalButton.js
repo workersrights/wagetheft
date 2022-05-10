@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TouchableHighlight,
 } from "react-native";
+import * as Linking from "expo-linking";
 import PropTypes from "prop-types";
 import Colors from "../constants/Colors";
 import OrgModalButtonTypes from "../constants/OrgModalButtonTypes";
@@ -27,7 +28,7 @@ const OrgModalButton = ({ type, exStyles, address, locationGranted }) => {
 
   const grantedLocationAction = () => {
     if (type === OrgModalButtonTypes.call) {
-      console.log(address.phone);
+      Linking.openURL(`tel:${address.phone}`);
     } else if (type === OrgModalButtonTypes.directions) {
       console.log(address);
     } else if (type === OrgModalButtonTypes.contacts) {
