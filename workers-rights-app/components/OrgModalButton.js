@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -11,30 +11,46 @@ import PropTypes from "prop-types";
 import Colors from "../constants/Colors";
 import OrgModalButtonTypes from "../constants/OrgModalButtonTypes";
 
-const OrgModalButton = ({ type, exStyles }) => {
-  const [image, setImage] = useState(require("../images/telephone.png"));
-  const [text, setText] = useState("Call Us");
+const OrgModalButton = ({ type, exStyles, address, locationGranted }) => {
+  let image = "";
+  let text = "";
+  if (type === OrgModalButtonTypes.call) {
+    image = require("../images/telephone.png");
+    text = "Call Us";
+  } else if (type === OrgModalButtonTypes.directions) {
+    image = require("../images/placeholder.png");
+    text = "Get Directions";
+  } else if (type === OrgModalButtonTypes.contacts) {
+    image = require("../images/contact-book.png");
+    text = "Add to Contacts";
+  }
 
-  useEffect(() => {
-    let tempImg = "";
-    let tempText = "";
+  const grantedLocationAction = () => {
     if (type === OrgModalButtonTypes.call) {
-      tempImg = require("../images/telephone.png");
-      tempText = "Call Us";
+      console.log(address.phone);
     } else if (type === OrgModalButtonTypes.directions) {
-      tempImg = require("../images/placeholder.png");
-      tempText = "Get Directions";
+      console.log(address);
     } else if (type === OrgModalButtonTypes.contacts) {
-      tempImg = require("../images/contact-book.png");
-      tempText = "Add to Contacts";
+      console.log("Add to Contacts");
     }
+  };
 
-    setImage(tempImg);
-    setText(tempText);
-  }, []);
+  const rejectedLocationAction = () => {
+    if (type === OrgModalButtonTypes.call) {
+      console.log("Location Denied: Phone");
+    } else if (type === OrgModalButtonTypes.directions) {
+      console.log("Location denied: Directions");
+    } else if (type === OrgModalButtonTypes.contacts) {
+      console.log("Location Denied: Contacts");
+    }
+  };
 
   const onPressButton = () => {
-    console.log("Pressed Button");
+    if (locationGranted) {
+      grantedLocationAction();
+    } else {
+      rejectedLocationAction();
+    }
   };
 
   return (

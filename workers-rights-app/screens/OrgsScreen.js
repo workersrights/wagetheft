@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import {
   View,
   StyleSheet,
@@ -9,80 +9,115 @@ import {
 } from "react-native";
 import * as Linking from "expo-linking";
 import PropTypes from "prop-types";
+import * as Location from "expo-location";
 import Colors from "../constants/Colors";
 import OrgModalButtonTypes from "../constants/OrgModalButtonTypes";
 import OrgModalButton from "../components/OrgModalButton";
+import { findNearestAddress, isPhone } from "../data/AddressUtils";
 
 const OrgsScreen = ({ route }) => {
-  const [org, setOrg] = useState({});
+  const [buttonList, setButtonList] = useState(null);
+
+  const createModalButtons = useCallback(
+    (currLocation, addresses, locationGranted) => {
+      const closestAddress = findNearestAddress(
+        addresses,
+        currLocation.coords.latitude,
+        currLocation.coords.longitude
+      );
+
+      const buttons = [];
+      if (!isPhone(addresses)) {
+        buttons.push(
+          <OrgModalButton
+            key={OrgModalButtonTypes.call}
+            type={OrgModalButtonTypes.call}
+            locationGranted={locationGranted}
+            address={closestAddress}
+          />
+        );
+        buttons.push(
+          <OrgModalButton
+            key={OrgModalButtonTypes.contacts}
+            type={OrgModalButtonTypes.contacts}
+            exStyles={{ marginLeft: 15 }}
+            locationGranted={locationGranted}
+            address={closestAddress}
+          />
+        );
+      } else {
+        buttons.push(
+          <OrgModalButton
+            key={OrgModalButtonTypes.call}
+            type={OrgModalButtonTypes.call}
+            locationGranted={locationGranted}
+            address={closestAddress}
+          />
+        );
+        buttons.push(
+          <OrgModalButton
+            key={OrgModalButtonTypes.directions}
+            type={OrgModalButtonTypes.directions}
+            exStyles={{ marginHorizontal: 15 }}
+            locationGranted={locationGranted}
+            address={closestAddress}
+          />
+        );
+        buttons.push(
+          <OrgModalButton
+            key={OrgModalButtonTypes.contacts}
+            type={OrgModalButtonTypes.contacts}
+            locationGranted={locationGranted}
+            address={closestAddress}
+          />
+        );
+      }
+
+      return buttons;
+    },
+    []
+  );
+
+  const fetchCurrLocation = useCallback(async () => {
+    const organization = route.params.org;
+    if (Object.keys(organization.addresses).length === 0) {
+      setButtonList([]);
+      return;
+    }
+
+    const { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      // TODO: WHAT HAPPENS WHEN THE USER DOES NOT ALLOW LOCATION PERMISSION
+      const buttons = createModalButtons(null, organization.addresses, false);
+      setButtonList(buttons);
+      return;
+    }
+
+    const currLocation = await Location.getCurrentPositionAsync();
+    const buttons = createModalButtons(
+      currLocation,
+      organization.addresses,
+      true
+    );
+    setButtonList(buttons);
+  }, [createModalButtons]);
 
   useEffect(() => {
-    setOrg(route.params.org);
-  }, [route]);
-
-  const renderModalButtons = () => {
-    const buttons = [];
-    if (
-      org == null ||
-      org.addresses == null ||
-      Object.keys(org.addresses).length === 0
-    ) {
-      return buttons;
-    }
-    if (
-      Object.keys(org.addresses).length === 1 &&
-      Object.values(org.addresses)[0].street === "%phone%"
-    ) {
-      buttons.push(
-        <OrgModalButton
-          key={OrgModalButtonTypes.call}
-          type={OrgModalButtonTypes.call}
-        />
-      );
-      buttons.push(
-        <OrgModalButton
-          key={OrgModalButtonTypes.contacts}
-          type={OrgModalButtonTypes.contacts}
-          exStyles={{ marginLeft: 15 }}
-        />
-      );
-    } else {
-      buttons.push(
-        <OrgModalButton
-          key={OrgModalButtonTypes.call}
-          type={OrgModalButtonTypes.call}
-        />
-      );
-      buttons.push(
-        <OrgModalButton
-          key={OrgModalButtonTypes.directions}
-          type={OrgModalButtonTypes.directions}
-          exStyles={{ marginHorizontal: 15 }}
-        />
-      );
-      buttons.push(
-        <OrgModalButton
-          key={OrgModalButtonTypes.contacts}
-          type={OrgModalButtonTypes.contacts}
-        />
-      );
-    }
-
-    return buttons;
-  };
+    fetchCurrLocation();
+  }, [route, fetchCurrLocation]);
 
   const onPressWebLink = () => {
-    Linking.openURL(org.website);
+    Linking.openURL(route.params.org);
   };
 
   return (
     <View style={styles.screen}>
       <View style={styles.imgContainer}>
-        <Image source={{ uri: org.image }} style={styles.img} />
+        <Image source={{ uri: route.params.org.image }} style={styles.img} />
       </View>
       <ScrollView contentContainerStyle={{ paddingBottom: 25 }}>
         <View style={styles.bodyContainer}>
-          <View style={styles.buttonsContainer}>{renderModalButtons()}</View>
+          <View style={styles.buttonsContainer}>{buttonList}</View>
           <View style={styles.textContainer}>
             <Text style={styles.headerText}>Website:</Text>
             <TouchableHighlight
@@ -90,12 +125,14 @@ const OrgsScreen = ({ route }) => {
               underlayColor="rgba(83, 83, 83, 0.05)"
               onPress={onPressWebLink}
             >
-              <Text style={styles.websiteLink}>{org.website}</Text>
+              <Text style={styles.websiteLink}>{route.params.org.website}</Text>
             </TouchableHighlight>
           </View>
           <View style={styles.textContainer}>
             <Text style={styles.headerText}>Description:</Text>
-            <Text style={styles.descriptionText}>{org.description}</Text>
+            <Text style={styles.descriptionText}>
+              {route.params.org.description}
+            </Text>
           </View>
         </View>
       </ScrollView>
@@ -155,6 +192,7 @@ OrgsScreen.propTypes = {
         image: PropTypes.string.isRequired,
         website: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
+        addresses: PropTypes.shape({}).isRequired,
       }).isRequired,
     }).isRequired,
   }).isRequired,

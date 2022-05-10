@@ -3,10 +3,7 @@
     "name": "Worker's App",
     "slug": "workers-rights-app",
     "privacy": "public",
-    "platforms": [
-      "ios",
-      "android"
-    ],
+    "platforms": ["ios", "android"],
     "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,9 +15,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "web": {
       "config": {
         "firebase": {
@@ -39,7 +34,10 @@
       "bundleIdentifier": "com.workersrightsstudio.workersright",
       "buildNumber": "1.0.2",
       "supportsTablet": false,
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "This app uses your location to recommend helpfull organizations nearest to you. This app does not collect or store location data."
+      }
     },
     "android": {
       "package": "com.workersrightsstudio.workersrights",
@@ -64,8 +62,6 @@
         }
       ]
     },
-    "plugins": [
-      "sentry-expo"
-    ]
+    "plugins": ["sentry-expo"]
   }
 }
