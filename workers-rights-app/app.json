@@ -36,7 +36,8 @@
       "supportsTablet": false,
       "googleServicesFile": "./GoogleService-Info.plist",
       "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "This app uses your location to recommend helpfull organizations nearest to you. This app does not collect or store location data."
+        "NSLocationWhenInUseUsageDescription": "This app uses your location to recommend helpfull organizations nearest to you. This app does not collect or store location data.",
+        "NSContactsUsageDescription": "WorkersApp requests access to your contacts to add organizations to your contacts for future use."
       }
     },
     "android": {

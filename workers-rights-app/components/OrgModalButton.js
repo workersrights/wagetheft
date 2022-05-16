@@ -9,10 +9,17 @@ import {
 } from "react-native";
 import * as Linking from "expo-linking";
 import PropTypes from "prop-types";
+import * as Contacts from "expo-contacts";
 import Colors from "../constants/Colors";
 import OrgModalButtonTypes from "../constants/OrgModalButtonTypes";
 
-const OrgModalButton = ({ type, exStyles, address, locationGranted }) => {
+const OrgModalButton = ({
+  orgName,
+  type,
+  exStyles,
+  address,
+  locationGranted,
+}) => {
   let image = "";
   let text = "";
   if (type === OrgModalButtonTypes.call) {
@@ -26,13 +33,64 @@ const OrgModalButton = ({ type, exStyles, address, locationGranted }) => {
     text = "Add to Contacts";
   }
 
-  const grantedLocationAction = () => {
+  const addToContacts = async () => {
+    const { status } = await Contacts.requestPermissionsAsync();
+    if (status !== "granted") {
+      return;
+    }
+
+    const { data } = await Contacts.getContactsAsync({
+      fields: [
+        Contacts.Fields.FirstName,
+        Contacts.Fields.PhoneNumbers,
+        Contacts.Fields.Addresses,
+      ],
+      name: orgName,
+    });
+
+    if (data.length > 0) {
+      const existingContact = data[0];
+      if (existingContact.id == null) {
+        return;
+      }
+      await Contacts.presentFormAsync(existingContact.id);
+      return;
+    }
+
+    const phoneNumbersToAdd = [
+      {
+        number: address.phone,
+      },
+    ];
+    const addressesToAdd = [];
+    if (address.street !== "") {
+      const addressToAdd = {
+        street: address.street,
+        city: address.city,
+        country: "United States of America",
+        region: address.state,
+        postalCode: address.zip,
+        label: orgName,
+      };
+      addressesToAdd.push(addressToAdd);
+    }
+
+    const newContact = {
+      firstName: orgName,
+      addresses: addressesToAdd,
+      phoneNumbers: phoneNumbersToAdd,
+    };
+
+    Contacts.presentFormAsync(null, newContact, { isNew: true });
+  };
+
+  const grantedLocationAction = async () => {
     if (type === OrgModalButtonTypes.call) {
       Linking.openURL(`tel:${address.phone}`);
     } else if (type === OrgModalButtonTypes.directions) {
       console.log(address);
     } else if (type === OrgModalButtonTypes.contacts) {
-      console.log("Add to Contacts");
+      addToContacts();
     }
   };
 

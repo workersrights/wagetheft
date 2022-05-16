@@ -19,7 +19,7 @@ const OrgsScreen = ({ route }) => {
   const [buttonList, setButtonList] = useState([]);
 
   const createModalButtons = useCallback(
-    (currLocation, addresses, locationGranted) => {
+    (currLocation, name, addresses, locationGranted) => {
       const closestAddress = findNearestAddress(
         addresses,
         currLocation.coords.latitude,
@@ -27,9 +27,10 @@ const OrgsScreen = ({ route }) => {
       );
 
       const buttons = [];
-      if (!isPhone(addresses)) {
+      if (isPhone(addresses)) {
         buttons.push(
           <OrgModalButton
+            orgName={name}
             key={OrgModalButtonTypes.call}
             type={OrgModalButtonTypes.call}
             locationGranted={locationGranted}
@@ -38,6 +39,7 @@ const OrgsScreen = ({ route }) => {
         );
         buttons.push(
           <OrgModalButton
+            orgName={name}
             key={OrgModalButtonTypes.contacts}
             type={OrgModalButtonTypes.contacts}
             exStyles={{ marginLeft: 15 }}
@@ -48,6 +50,7 @@ const OrgsScreen = ({ route }) => {
       } else {
         buttons.push(
           <OrgModalButton
+            orgName={name}
             key={OrgModalButtonTypes.call}
             type={OrgModalButtonTypes.call}
             locationGranted={locationGranted}
@@ -56,6 +59,7 @@ const OrgsScreen = ({ route }) => {
         );
         buttons.push(
           <OrgModalButton
+            orgName={name}
             key={OrgModalButtonTypes.directions}
             type={OrgModalButtonTypes.directions}
             exStyles={{ marginHorizontal: 15 }}
@@ -65,6 +69,7 @@ const OrgsScreen = ({ route }) => {
         );
         buttons.push(
           <OrgModalButton
+            orgName={name}
             key={OrgModalButtonTypes.contacts}
             type={OrgModalButtonTypes.contacts}
             locationGranted={locationGranted}
@@ -87,13 +92,19 @@ const OrgsScreen = ({ route }) => {
     const { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
       // TODO: WHAT HAPPENS WHEN THE USER DOES NOT ALLOW LOCATION PERMISSION
-      const buttons = createModalButtons(null, organization.addresses, false);
+      const buttons = createModalButtons(
+        null,
+        organization.name,
+        organization.addresses,
+        false
+      );
       setButtonList(buttons);
       return;
     }
     const currLocation = await Location.getCurrentPositionAsync();
     const buttons = createModalButtons(
       currLocation,
+      organization.name,
       organization.addresses,
       true
     );
