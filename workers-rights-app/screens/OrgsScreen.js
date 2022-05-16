@@ -19,20 +19,19 @@ const OrgsScreen = ({ route }) => {
   const [buttonList, setButtonList] = useState([]);
 
   const createModalButtons = useCallback(
-    (currLocation, name, addresses, locationGranted) => {
+    (currLocation, org, addresses, locationGranted) => {
       const closestAddressCoords = findNearestAddress(
         addresses,
         currLocation.coords.latitude,
         currLocation.coords.longitude
       );
-
       const closestAddress = addresses[closestAddressCoords];
 
       const buttons = [];
       if (isPhone(addresses)) {
         buttons.push(
           <OrgModalButton
-            orgName={name}
+            orgName={org.name}
             key={OrgModalButtonTypes.call}
             type={OrgModalButtonTypes.call}
             locationGranted={locationGranted}
@@ -42,7 +41,7 @@ const OrgsScreen = ({ route }) => {
         );
         buttons.push(
           <OrgModalButton
-            orgName={name}
+            orgName={org.name}
             key={OrgModalButtonTypes.contacts}
             type={OrgModalButtonTypes.contacts}
             exStyles={{ marginLeft: 15 }}
@@ -54,7 +53,7 @@ const OrgsScreen = ({ route }) => {
       } else {
         buttons.push(
           <OrgModalButton
-            orgName={name}
+            orgName={org.name}
             key={OrgModalButtonTypes.call}
             type={OrgModalButtonTypes.call}
             locationGranted={locationGranted}
@@ -64,7 +63,7 @@ const OrgsScreen = ({ route }) => {
         );
         buttons.push(
           <OrgModalButton
-            orgName={name}
+            orgName={org.name}
             key={OrgModalButtonTypes.directions}
             type={OrgModalButtonTypes.directions}
             exStyles={{ marginHorizontal: 15 }}
@@ -75,7 +74,7 @@ const OrgsScreen = ({ route }) => {
         );
         buttons.push(
           <OrgModalButton
-            orgName={name}
+            orgName={org.name}
             key={OrgModalButtonTypes.contacts}
             type={OrgModalButtonTypes.contacts}
             locationGranted={locationGranted}
@@ -111,7 +110,7 @@ const OrgsScreen = ({ route }) => {
     const currLocation = await Location.getCurrentPositionAsync();
     const buttons = createModalButtons(
       currLocation,
-      organization.name,
+      organization,
       organization.addresses,
       true
     );
@@ -209,6 +208,7 @@ OrgsScreen.propTypes = {
         website: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
         addresses: PropTypes.shape({}).isRequired,
+        name: PropTypes.string.isRequired,
       }).isRequired,
     }).isRequired,
   }).isRequired,
