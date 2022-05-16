@@ -10,7 +10,8 @@ const findNearestAddress = (addresses, searchLat, searchLong) => {
       closestDistance[1] = latLongString;
     }
   }
-  return addresses[closestDistance[1]];
+
+  return closestDistance[1];
 };
 
 const convertStringToCoords = (coords) => {
@@ -52,4 +53,4 @@ const isPhone = (addresses) => {
   return false;
 };
 
-export { findNearestAddress, isPhone };
+export { findNearestAddress, isPhone, convertStringToCoords };

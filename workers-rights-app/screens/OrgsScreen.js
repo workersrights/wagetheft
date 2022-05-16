@@ -20,11 +20,13 @@ const OrgsScreen = ({ route }) => {
 
   const createModalButtons = useCallback(
     (currLocation, name, addresses, locationGranted) => {
-      const closestAddress = findNearestAddress(
+      const closestAddressCoords = findNearestAddress(
         addresses,
         currLocation.coords.latitude,
         currLocation.coords.longitude
       );
+
+      const closestAddress = addresses[closestAddressCoords];
 
       const buttons = [];
       if (isPhone(addresses)) {
@@ -35,6 +37,7 @@ const OrgsScreen = ({ route }) => {
             type={OrgModalButtonTypes.call}
             locationGranted={locationGranted}
             address={closestAddress}
+            coords={closestAddressCoords}
           />
         );
         buttons.push(
@@ -45,6 +48,7 @@ const OrgsScreen = ({ route }) => {
             exStyles={{ marginLeft: 15 }}
             locationGranted={locationGranted}
             address={closestAddress}
+            coords={closestAddressCoords}
           />
         );
       } else {
@@ -55,6 +59,7 @@ const OrgsScreen = ({ route }) => {
             type={OrgModalButtonTypes.call}
             locationGranted={locationGranted}
             address={closestAddress}
+            coords={closestAddressCoords}
           />
         );
         buttons.push(
@@ -65,6 +70,7 @@ const OrgsScreen = ({ route }) => {
             exStyles={{ marginHorizontal: 15 }}
             locationGranted={locationGranted}
             address={closestAddress}
+            coords={closestAddressCoords}
           />
         );
         buttons.push(
@@ -74,6 +80,7 @@ const OrgsScreen = ({ route }) => {
             type={OrgModalButtonTypes.contacts}
             locationGranted={locationGranted}
             address={closestAddress}
+            coords={closestAddressCoords}
           />
         );
       }

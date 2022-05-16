@@ -10,8 +10,10 @@ import {
 import * as Linking from "expo-linking";
 import PropTypes from "prop-types";
 import * as Contacts from "expo-contacts";
+import openMap from "react-native-open-maps";
 import Colors from "../constants/Colors";
 import OrgModalButtonTypes from "../constants/OrgModalButtonTypes";
+import { convertStringToCoords } from "../data/AddressUtils";
 
 const OrgModalButton = ({
   orgName,
@@ -19,6 +21,7 @@ const OrgModalButton = ({
   exStyles,
   address,
   locationGranted,
+  coords,
 }) => {
   let image = "";
   let text = "";
@@ -84,11 +87,20 @@ const OrgModalButton = ({
     Contacts.presentFormAsync(null, newContact, { isNew: true });
   };
 
+  const getDirections = () => {
+    const [lat, long] = convertStringToCoords(coords);
+    openMap({
+      latitude: lat,
+      longitude: long,
+      query: orgName,
+    });
+  };
+
   const grantedLocationAction = async () => {
     if (type === OrgModalButtonTypes.call) {
       Linking.openURL(`tel:${address.phone}`);
     } else if (type === OrgModalButtonTypes.directions) {
-      console.log(address);
+      getDirections();
     } else if (type === OrgModalButtonTypes.contacts) {
       addToContacts();
     }
