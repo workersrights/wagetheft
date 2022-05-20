@@ -83,32 +83,37 @@ const RightsDetailsScreen = ({ route, navigation }) => {
         style={styles.scrollViewStyle}
         showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.section}>Description: </Text>
-        <Text>{parentSubRight.description}</Text>
+        <View style={styles.descriptionSection}>
+          <Text style={styles.section}>Description: </Text>
+          <Text>{parentSubRight.description}</Text>
 
-        <Text style={styles.section}>
-          Contact the following agencies for help:
-        </Text>
-        <Text>(Tap on an organization for more information)</Text>
+          <Text style={styles.section}>
+            Contact the following agencies for help:
+          </Text>
+          <Text>(Tap on an organization for more information)</Text>
+        </View>
         <View style={styles.orgContainer}>
           <FlatList
             data={relevantOrgs}
             renderItem={renderOrgItem}
             horizontal
             showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ paddingLeft: 20 }}
           />
         </View>
 
-        <Text style={styles.section}>Learn more:</Text>
-        {displayedLearnMoreIds.map((displayedLearnMoreId) => (
-          <LearnMoreItem
-            id={displayedLearnMoreId}
-            key={displayedLearnMoreId}
-            onPress={() => {
-              openLearnMoreHandler(displayedLearnMoreId);
-            }}
-          />
-        ))}
+        <View style={styles.learnMoresSection}>
+          <Text style={styles.section}>Learn more:</Text>
+          {displayedLearnMoreIds.map((displayedLearnMoreId) => (
+            <LearnMoreItem
+              id={displayedLearnMoreId}
+              key={displayedLearnMoreId}
+              onPress={() => {
+                openLearnMoreHandler(displayedLearnMoreId);
+              }}
+            />
+          ))}
+        </View>
       </ScrollView>
 
       <Portal>
@@ -130,6 +135,12 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
   },
+  descriptionSection: {
+    paddingHorizontal: 20,
+  },
+  learnMoresSection: {
+    paddingHorizontal: 20,
+  },
   section: {
     fontSize: 16,
     fontWeight: "700",
@@ -143,12 +154,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   orgContainer: {
-    height: 230,
     marginTop: 20,
   },
   scrollViewStyle: {
-    paddingLeft: 20,
-    paddingRight: 20,
     width: "100%",
   },
 });
