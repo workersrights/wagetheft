@@ -1,9 +1,7 @@
 import * as firebase from "firebase";
-import * as FBAnalytics from "expo-firebase-analytics";
 import firebaseConfig from "../constants/MyApiKeys";
 import RightsCategory from "../models/rightsCategory";
 import SubRight from "../models/subRight";
-import Organization from "../models/organization";
 import learnMore from "../models/learnMore";
 import buildOrg from "../models/Organization/organizationBuilder";
 
@@ -164,7 +162,7 @@ function constructLearnMores(db, hashToPhrase) {
 }
 
 function constructOrgs(db) {
-  let ref = db.ref("organizations2/");
+  let ref = db.ref("organizations/");
   var tempOrgs = [];
 
   return ref.once("value").then(function (snapshot) {
