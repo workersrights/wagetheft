@@ -4,15 +4,59 @@ import { Ionicons } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import PropTypes from "prop-types";
 import RightsScreen from "../screens/RightsScreen";
 import SubRightsScreen from "../screens/SubRightsScreen";
 import RightsDetailsScreen from "../screens/RightsDetailsScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import Colors from "../constants/Colors";
+import OrgsScreen from "../screens/OrgsScreen";
+import ContactOrgsScreen from "../screens/ContactOrgsScreen";
 import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+
+const OrgModalStack = ({ route }) => {
+  const orgName = route.params.org.name;
+  let title = orgName;
+
+  if (orgName.length > 25) {
+    title = `${orgName.substring(0, 21)}...`;
+  }
+
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: Platform.OS === "android" ? Colors.lightOrange : "",
+        },
+        headerTintColor: Colors.darkOrange,
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+      }}
+    >
+      <Stack.Screen
+        name="OrgsModal"
+        component={OrgsScreen}
+        options={{
+          headerTitle: title,
+          headerBackTitle: "Back",
+        }}
+        initialParams={{ org: route.params.org }}
+      />
+      <Stack.Screen
+        name="ContactList"
+        component={ContactOrgsScreen}
+        options={{
+          headerTitle: title,
+          headerBackTitle: "Back",
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 
 /*
  *
@@ -70,6 +114,11 @@ const RightsNavigator = () => {
           }
           return { title: parentSubRight.title, headerBackTitle: "Back" };
         }}
+      />
+      <Stack.Screen
+        name="OrgStack"
+        component={OrgModalStack}
+        options={{ headerShown: false, presentation: "modal" }}
       />
     </Stack.Navigator>
   );
@@ -153,5 +202,15 @@ const RootNavigator = () => (
     <RightsTabNavigator />
   </NavigationContainer>
 );
+
+OrgModalStack.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      org: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default RootNavigator;

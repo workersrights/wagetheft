@@ -1,10 +1,9 @@
 import * as firebase from "firebase";
-import * as FBAnalytics from "expo-firebase-analytics";
 import firebaseConfig from "../constants/MyApiKeys";
 import RightsCategory from "../models/rightsCategory";
 import SubRight from "../models/subRight";
-import Organization from "../models/organization";
 import learnMore from "../models/learnMore";
+import buildOrg from "../models/Organization/organizationBuilder";
 
 export default class ImportedData {
   constructor() {}
@@ -168,15 +167,16 @@ function constructOrgs(db) {
 
   return ref.once("value").then(function (snapshot) {
     snapshot.forEach(function (data) {
-      let temp = new Organization(
+      const org = buildOrg(
         data.key,
-        data.val().name,
         data.val().abbrev,
-        data.val().image,
+        data.val().addresses,
         data.val().description,
-        data.val().rights
+        data.val().image,
+        data.val().name,
+        data.val().website
       );
-      tempOrgs.push(temp);
+      tempOrgs.push(org);
     });
     return tempOrgs;
   });

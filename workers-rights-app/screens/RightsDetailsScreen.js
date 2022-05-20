@@ -8,7 +8,6 @@ import OrganizationBox from "../components/OrganizationBox";
 import LearnMoreItem from "../components/LearnMoreItem";
 import RightsSheetContent from "../components/RightsSheetContent";
 import Colors from "../constants/Colors";
-import RightsOrganizationModal from "../components/RightsOrganizationModal";
 import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
 
 /*
@@ -19,9 +18,7 @@ import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
  *
  */
 
-const RightsDetailsScreen = ({ route }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeOrganizationId, setActiveOrganizationId] = useState("");
+const RightsDetailsScreen = ({ route, navigation }) => {
   const [activeLearnMoreId, setActiveLearnMoreId] = useState("");
   const modalizeRef = useRef(null);
 
@@ -44,13 +41,13 @@ const RightsDetailsScreen = ({ route }) => {
           parentSubRight.organizations.includes(org.id)
         );
 
-  const openModalHandler = (id) => {
-    setIsModalOpen(true);
-    setActiveOrganizationId(id);
-  };
-
-  const closeModalHandler = () => {
-    setIsModalOpen(false);
+  const openModalHandler = (org) => {
+    navigation.navigate({
+      name: "OrgStack",
+      params: {
+        org,
+      },
+    });
   };
 
   /*
@@ -69,7 +66,7 @@ const RightsDetailsScreen = ({ route }) => {
           FBAnalytics.logEvent("org_tile_click", {
             clickDetails: `Clicked ${itemData.item.name} org box`,
           });
-          openModalHandler(itemData.item.id);
+          openModalHandler(itemData.item);
         }}
       />
     );
@@ -86,41 +83,38 @@ const RightsDetailsScreen = ({ route }) => {
         style={styles.scrollViewStyle}
         showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.section}>Description: </Text>
-        <Text>{parentSubRight.description}</Text>
+        <View style={styles.descriptionSection}>
+          <Text style={styles.section}>Description: </Text>
+          <Text>{parentSubRight.description}</Text>
 
-        <Text style={styles.section}>
-          Contact the following agencies for help:
-        </Text>
-        <Text>(Tap on an organization for more information)</Text>
+          <Text style={styles.section}>
+            Contact the following agencies for help:
+          </Text>
+          <Text>(Tap on an organization for more information)</Text>
+        </View>
         <View style={styles.orgContainer}>
           <FlatList
             data={relevantOrgs}
             renderItem={renderOrgItem}
             horizontal
             showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ paddingLeft: 20 }}
           />
         </View>
 
-        <Text style={styles.section}>Learn more:</Text>
-        {displayedLearnMoreIds.map((displayedLearnMoreId) => (
-          <LearnMoreItem
-            id={displayedLearnMoreId}
-            key={displayedLearnMoreId}
-            onPress={() => {
-              openLearnMoreHandler(displayedLearnMoreId);
-            }}
-          />
-        ))}
+        <View style={styles.learnMoresSection}>
+          <Text style={styles.section}>Learn more:</Text>
+          {displayedLearnMoreIds.map((displayedLearnMoreId) => (
+            <LearnMoreItem
+              id={displayedLearnMoreId}
+              key={displayedLearnMoreId}
+              onPress={() => {
+                openLearnMoreHandler(displayedLearnMoreId);
+              }}
+            />
+          ))}
+        </View>
       </ScrollView>
-
-      {activeOrganizationId !== "" && (
-        <RightsOrganizationModal
-          isVisible={isModalOpen}
-          onCloseModal={closeModalHandler}
-          id={activeOrganizationId}
-        />
-      )}
 
       <Portal>
         <Modalize
@@ -141,6 +135,12 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
   },
+  descriptionSection: {
+    paddingHorizontal: 20,
+  },
+  learnMoresSection: {
+    paddingHorizontal: 20,
+  },
   section: {
     fontSize: 16,
     fontWeight: "700",
@@ -154,12 +154,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   orgContainer: {
-    height: 230,
     marginTop: 20,
   },
   scrollViewStyle: {
-    paddingLeft: 20,
-    paddingRight: 20,
     width: "100%",
   },
 });
@@ -169,6 +166,9 @@ RightsDetailsScreen.propTypes = {
     params: PropTypes.shape({
       subrightId: PropTypes.string.isRequired,
     }).isRequired,
+  }).isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
 

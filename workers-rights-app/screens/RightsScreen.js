@@ -51,7 +51,7 @@ const RightsScreen = ({ navigation }) => {
   /*
    *
    * Functions called by the Flatlist component. Used to render the list of
-   * RightsCategoryTiles.
+   * les.
    *
    */
 
