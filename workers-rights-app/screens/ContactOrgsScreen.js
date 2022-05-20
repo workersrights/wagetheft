@@ -1,10 +1,11 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
+import OrganizationContactBox from "../components/OrganizationContactBox";
 
 const ContactOrgsScreen = ({ route }) => {
   return (
     <View style={styles.screen}>
-      <Text>{route.params.org.name}</Text>
+      <OrganizationContactBox />
     </View>
   );
 };
@@ -13,7 +14,8 @@ const styles = StyleSheet.create({
   screen: {
     height: "100%",
     width: "100%",
-    backgroundColor: "#ff0000",
+    paddingHorizontal: 15,
+    paddingVertical: 25,
   },
 });
 
