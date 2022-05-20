@@ -50,4 +50,4 @@ const isPhone = (address) => {
   return false;
 };
 
-export { findNearestAddress, isPhone, convertStringToCoords, haversineDist };
+export { findNearestAddress, isPhone, haversineDist };
