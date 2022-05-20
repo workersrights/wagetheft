@@ -10,6 +10,7 @@ import {
 import * as Linking from "expo-linking";
 import PropTypes from "prop-types";
 import * as Location from "expo-location";
+import * as Contacts from "expo-contacts";
 import Colors from "../constants/Colors";
 import OrgModalButtonTypes from "../constants/OrgModalButtonTypes";
 import OrgModalButton from "../components/OrgModalButton";
@@ -18,118 +19,127 @@ import { findNearestAddress, isPhone } from "../data/AddressUtils";
 const OrgsScreen = ({ route, navigation }) => {
   const [buttonList, setButtonList] = useState([]);
 
-  const createModalButtons = useCallback(
-    (currLocation, org, addresses, locationGranted) => {
-      const closestAddressCoords = findNearestAddress(
-        addresses,
-        currLocation.coords.latitude,
-        currLocation.coords.longitude
-      );
-      const closestAddress = addresses[closestAddressCoords];
+  // const createModalButtons = useCallback(
+  //   (currLocation, org, addresses, locationGranted) => {
+  //     const closestAddressCoords = findNearestAddress(
+  //       addresses,
+  //       currLocation.coords.latitude,
+  //       currLocation.coords.longitude
+  //     );
+  //     const closestAddress = addresses[closestAddressCoords];
 
-      const buttons = [];
-      if (isPhone(addresses)) {
-        buttons.push(
-          <OrgModalButton
-            orgName={org.name}
-            key={OrgModalButtonTypes.call}
-            type={OrgModalButtonTypes.call}
-            locationGranted={locationGranted}
-            address={closestAddress}
-            coords={closestAddressCoords}
-          />
-        );
-        buttons.push(
-          <OrgModalButton
-            orgName={org.name}
-            key={OrgModalButtonTypes.contacts}
-            type={OrgModalButtonTypes.contacts}
-            exStyles={{ marginLeft: 15 }}
-            locationGranted={locationGranted}
-            address={closestAddress}
-            coords={closestAddressCoords}
-          />
-        );
-      } else {
-        buttons.push(
-          <OrgModalButton
-            orgName={org.name}
-            key={OrgModalButtonTypes.call}
-            type={OrgModalButtonTypes.call}
-            locationGranted={locationGranted}
-            address={closestAddress}
-            coords={closestAddressCoords}
-          />
-        );
-        buttons.push(
-          <OrgModalButton
-            orgName={org.name}
-            key={OrgModalButtonTypes.directions}
-            type={OrgModalButtonTypes.directions}
-            exStyles={{ marginHorizontal: 15 }}
-            locationGranted={locationGranted}
-            address={closestAddress}
-            coords={closestAddressCoords}
-          />
-        );
-        buttons.push(
-          <OrgModalButton
-            orgName={org.name}
-            key={OrgModalButtonTypes.contacts}
-            type={OrgModalButtonTypes.contacts}
-            locationGranted={locationGranted}
-            address={closestAddress}
-            coords={closestAddressCoords}
-          />
-        );
-      }
+  //     const buttons = [];
+  //     if (isPhone(addresses)) {
+  //       buttons.push(
+  //         <OrgModalButton
+  //           orgName={org.name}
+  //           key={OrgModalButtonTypes.call}
+  //           type={OrgModalButtonTypes.call}
+  //           locationGranted={locationGranted}
+  //           address={closestAddress}
+  //           coords={closestAddressCoords}
+  //         />
+  //       );
+  //       buttons.push(
+  //         <OrgModalButton
+  //           orgName={org.name}
+  //           key={OrgModalButtonTypes.contacts}
+  //           type={OrgModalButtonTypes.contacts}
+  //           exStyles={{ marginLeft: 15 }}
+  //           locationGranted={locationGranted}
+  //           address={closestAddress}
+  //           coords={closestAddressCoords}
+  //         />
+  //       );
+  //     } else {
+  //       buttons.push(
+  //         <OrgModalButton
+  //           orgName={org.name}
+  //           key={OrgModalButtonTypes.call}
+  //           type={OrgModalButtonTypes.call}
+  //           locationGranted={locationGranted}
+  //           address={closestAddress}
+  //           coords={closestAddressCoords}
+  //         />
+  //       );
+  //       buttons.push(
+  //         <OrgModalButton
+  //           orgName={org.name}
+  //           key={OrgModalButtonTypes.directions}
+  //           type={OrgModalButtonTypes.directions}
+  //           exStyles={{ marginHorizontal: 15 }}
+  //           locationGranted={locationGranted}
+  //           address={closestAddress}
+  //           coords={closestAddressCoords}
+  //         />
+  //       );
+  //       buttons.push(
+  //         <OrgModalButton
+  //           orgName={org.name}
+  //           key={OrgModalButtonTypes.contacts}
+  //           type={OrgModalButtonTypes.contacts}
+  //           locationGranted={locationGranted}
+  //           address={closestAddress}
+  //           coords={closestAddressCoords}
+  //         />
+  //       );
+  //     }
 
-      return buttons;
-    },
-    []
-  );
+  //     return buttons;
+  //   },
+  //   []
+  // );
 
-  const fetchCurrLocation = useCallback(async () => {
-    const organization = route.params.org;
-    if (Object.keys(organization.addresses).length === 0) {
-      setButtonList([]);
-      return;
-    }
-    const { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== "granted") {
-      // TODO: WHAT HAPPENS WHEN THE USER DOES NOT ALLOW LOCATION PERMISSION
-      const buttons = createModalButtons(
-        null,
-        organization.name,
-        organization.addresses,
-        false
-      );
-      setButtonList(buttons);
-      return;
-    }
-    const currLocation = await Location.getCurrentPositionAsync();
-    const buttons = createModalButtons(
-      currLocation,
-      organization,
-      organization.addresses,
-      true
-    );
-    setButtonList(buttons);
-  }, [createModalButtons]);
+  // const fetchCurrLocation = useCallback(async () => {
+  //   const organization = route.params.org;
+  //   if (Object.keys(organization.addresses).length === 0) {
+  //     setButtonList([]);
+  //     return;
+  //   }
+  //   const { status } = await Location.requestForegroundPermissionsAsync();
+  //   if (status !== "granted") {
+  //     // TODO: WHAT HAPPENS WHEN THE USER DOES NOT ALLOW LOCATION PERMISSION
+  //     const buttons = createModalButtons(
+  //       null,
+  //       organization.name,
+  //       organization.addresses,
+  //       false
+  //     );
+  //     setButtonList(buttons);
+  //     return;
+  //   }
+  //   const currLocation = await Location.getCurrentPositionAsync();
+  //   const buttons = createModalButtons(
+  //     currLocation,
+  //     organization,
+  //     organization.addresses,
+  //     true
+  //   );
+  //   setButtonList(buttons);
+  // }, [createModalButtons]);
 
-  useEffect(() => {
-    fetchCurrLocation();
-  }, [route, fetchCurrLocation]);
+  // useEffect(() => {
+  //   fetchCurrLocation();
+  // }, [route, fetchCurrLocation]);
 
   const onPressWebLink = () => {
     Linking.openURL(route.params.org.website);
   };
 
-  const onPressContactOrgs = () => {
+  const onPressContactOrgs = async () => {
+    const locationPermissions =
+      await Location.requestForegroundPermissionsAsync();
+    const contactPermissions = await Contacts.requestPermissionsAsync();
+
+    const locationAccess = locationPermissions.status === "granted";
+    const contactsAccess = contactPermissions.status === "granted";
+
     navigation.navigate({
       name: "ContactList",
       params: {
         org: route.params.org,
+        contactsAccess,
+        locationAccess,
       },
     });
   };

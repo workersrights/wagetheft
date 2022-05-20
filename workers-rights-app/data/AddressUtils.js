@@ -27,7 +27,7 @@ const convertStringToCoords = (coords) => {
 const haversineDist = (lat1, long1, lat2, long2) => {
   const latDiff = (lat1 - lat2) / 2;
   const longDiff = (long1 - long2) / 2;
-  const radiusEarth = 6371; // km
+  const radiusEarth = 3961; // mi
 
   const dLat = (latDiff * Math.PI) / 180;
   const dLong = (longDiff * Math.PI) / 180;
@@ -42,15 +42,12 @@ const haversineDist = (lat1, long1, lat2, long2) => {
   return radiusEarth * c;
 };
 
-const isPhone = (addresses) => {
-  if (
-    Object.keys(addresses).length === 1 &&
-    Object.values(addresses)[0].street === "%phone%"
-  ) {
+const isPhone = (address) => {
+  if (address.street === "%phone%") {
     return true;
   }
 
   return false;
 };
 
-export { findNearestAddress, isPhone, convertStringToCoords };
+export { findNearestAddress, isPhone, convertStringToCoords, haversineDist };
