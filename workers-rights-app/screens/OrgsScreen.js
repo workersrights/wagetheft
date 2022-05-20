@@ -15,7 +15,7 @@ import OrgModalButtonTypes from "../constants/OrgModalButtonTypes";
 import OrgModalButton from "../components/OrgModalButton";
 import { findNearestAddress, isPhone } from "../data/AddressUtils";
 
-const OrgsScreen = ({ route }) => {
+const OrgsScreen = ({ route, navigation }) => {
   const [buttonList, setButtonList] = useState([]);
 
   const createModalButtons = useCallback(
@@ -122,7 +122,16 @@ const OrgsScreen = ({ route }) => {
   }, [route, fetchCurrLocation]);
 
   const onPressWebLink = () => {
-    Linking.openURL(route.params.org);
+    Linking.openURL(route.params.org.website);
+  };
+
+  const onPressContactOrgs = () => {
+    navigation.navigate({
+      name: "ContactList",
+      params: {
+        org: route.params.org,
+      },
+    });
   };
 
   return (
@@ -132,7 +141,17 @@ const OrgsScreen = ({ route }) => {
       </View>
       <ScrollView contentContainerStyle={{ paddingBottom: 25 }}>
         <View style={styles.bodyContainer}>
-          <View style={styles.buttonsContainer}>{buttonList}</View>
+          <TouchableHighlight
+            style={{ borderRadius: 10, marginTop: 25, width: "85%" }}
+            underlayColor="rgba(83, 83, 83, 0.05)"
+            onPress={onPressContactOrgs}
+          >
+            <View style={styles.contactButton}>
+              <Text style={styles.buttonText}>
+                Contact Nearest Organization
+              </Text>
+            </View>
+          </TouchableHighlight>
           <View style={styles.textContainer}>
             <Text style={styles.headerText}>Website:</Text>
             <TouchableHighlight
@@ -174,6 +193,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   textContainer: {
+    width: "100%",
     marginTop: 25,
   },
   websiteLink: {
@@ -187,16 +207,25 @@ const styles = StyleSheet.create({
   },
   bodyContainer: {
     paddingHorizontal: 25,
-  },
-  buttonsContainer: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-start",
     alignItems: "center",
-    marginTop: 25,
   },
   screen: {
     flex: 1,
+  },
+  contactButton: {
+    borderRadius: 10,
+    backgroundColor: Colors.darkOrange,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 10,
+    width: "100%",
+  },
+  buttonText: {
+    fontFamily: "nunito-bold",
+    fontSize: 16,
+    textAlign: "center",
+    color: "#ffffff",
   },
 });
 

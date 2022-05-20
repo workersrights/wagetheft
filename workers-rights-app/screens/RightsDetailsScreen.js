@@ -43,7 +43,7 @@ const RightsDetailsScreen = ({ route, navigation }) => {
 
   const openModalHandler = (org) => {
     navigation.navigate({
-      name: "OrgsModal",
+      name: "OrgStack",
       params: {
         org,
       },
