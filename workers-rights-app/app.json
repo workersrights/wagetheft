@@ -32,17 +32,17 @@
     },
     "ios": {
       "bundleIdentifier": "com.workersrightsstudio.workersright",
-      "buildNumber": "1.0.2",
+      "buildNumber": "1.0.3",
       "supportsTablet": false,
       "googleServicesFile": "./GoogleService-Info.plist",
       "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "This app uses your location to recommend helpfull organizations nearest to you. This app does not collect or store location data.",
-        "NSContactsUsageDescription": "WorkersApp requests access to your contacts to add organizations to your contacts for future use."
+        "NSLocationWhenInUseUsageDescription": "This app uses your location to recommend helpful organizations nearest to you. This app does not collect or store location data.",
+        "NSContactsUsageDescription": "WorkersApp requests access to your contacts to add organizations to your contacts for your future use."
       }
     },
     "android": {
       "package": "com.workersrightsstudio.workersrights",
-      "versionCode": 2,
+      "versionCode": 3,
       "permissions": [],
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
