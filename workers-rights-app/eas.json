@@ -12,7 +12,11 @@
         "buildType": "apk"
       }
     },
-    "production": {}
+    "production": {
+      "ios": {
+        "image": "latest"
+      }
+    }
   },
   "submit": {
     "production": {}
