@@ -122,9 +122,7 @@ const RightsDetailsScreen = ({ route, navigation }) => {
           modalStyle={styles.modalize}
           modalTopOffset={50}
         >
-          <View style={styles.modalizeContent}>
-            <RightsSheetContent learnMoreId={activeLearnMoreId} />
-          </View>
+          <RightsSheetContent learnMoreId={activeLearnMoreId} />
         </Modalize>
       </Portal>
     </View>
@@ -147,11 +145,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   modalize: {
-    height: "85%",
     backgroundColor: Colors.lightOrange,
-  },
-  modalizeContent: {
-    flex: 1,
   },
   orgContainer: {
     marginTop: 20,
