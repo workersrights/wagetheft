@@ -28,12 +28,21 @@ const RightsSheetContent = ({ learnMoreId }) => {
     if (typeof informationChunks === "undefined" || informationChunks == null) {
       return null;
     }
-    return informationChunks.map((chunk) => (
-      <View key={informationChunks.indexOf(chunk)}>
-        <Text style={styles.header}>{chunk.header}</Text>
-        <Text style={styles.body}>{chunk.body}</Text>
-      </View>
-    ));
+    return informationChunks.map((chunk) => {
+      if (chunk.header === "" && chunk.body === "") {
+        return null;
+      }
+      return (
+        <View style={styles.topic} key={informationChunks.indexOf(chunk)}>
+          {chunk.header !== "" ? (
+            <Text style={styles.header}>{chunk.header}</Text>
+          ) : null}
+          {chunk.body !== "" ? (
+            <Text style={styles.body}>{`\t${chunk.body}`}</Text>
+          ) : null}
+        </View>
+      );
+    });
   };
 
   return (
@@ -52,18 +61,15 @@ const RightsSheetContent = ({ learnMoreId }) => {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 20,
-    marginVertical: 20,
+    paddingTop: 40,
+    paddingHorizontal: 20,
   },
   titleContainer: {
     flexDirection: "row",
-    margin: 20,
-    marginHorizontal: 30,
-    justifyContent: "center",
     alignItems: "center",
+    marginBottom: 20,
   },
   titleImage: {
-    margin: 10,
     width: 40,
     height: 40,
   },
@@ -81,8 +87,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   body: {
-    textAlign: "justify",
-    marginHorizontal: 3,
+    textAlign: "left",
+    fontFamily: "nunito-regular",
+    fontSize: 16,
+  },
+  topic: {
+    marginBottom: 10,
   },
 });
 
