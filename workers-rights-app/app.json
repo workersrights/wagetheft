@@ -43,7 +43,12 @@
     "android": {
       "package": "com.workersrightsstudio.workersrights",
       "versionCode": 3,
-      "permissions": [],
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "READ_CONTACTS",
+        "WRITE_CONTACTS"
+      ],
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",

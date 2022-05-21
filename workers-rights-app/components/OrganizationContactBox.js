@@ -5,6 +5,7 @@ import {
   Image,
   StyleSheet,
   TouchableHighlight,
+  Platform,
 } from "react-native";
 import PropTypes from "prop-types";
 import openMap from "react-native-open-maps";
@@ -31,11 +32,19 @@ const OrganizationContactBox = ({
     }
     const lat = parseFloat(address.lat);
     const long = parseFloat(address.long);
-    openMap({
-      latitude: lat,
-      longitude: long,
-      query: orgName,
-    });
+    if (Platform.OS === "ios") {
+      openMap({
+        latitude: lat,
+        longitude: long,
+        query: orgName,
+      });
+    } else {
+      const scheme = "geo:0,0?q=";
+      const latLng = `${lat},${long}`;
+      const label = orgName;
+      const url = `${scheme}${latLng}(${label})`;
+      Linking.openURL(url);
+    }
   };
 
   const onPressCallUs = () => {
