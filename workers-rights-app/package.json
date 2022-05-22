@@ -39,7 +39,7 @@
     "expo-updates": "~0.11.6",
     "firebase": "^7.9.0",
     "ionicons": "^5.0.1",
-    "moment": "^2.26.0",
+    "moment": "^2.29.2",
     "node-fetch": "^2.6.1",
     "prop-types": "^15.7.2",
     "react": "17.0.1",
