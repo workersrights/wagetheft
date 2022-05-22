@@ -1135,27 +1135,6 @@
     "xcode" "^3.0.1"
     "xml2js" "^0.4.23"
 
-"@expo/config-plugins@^4.0.14":
-  "integrity" "sha512-fkOjXnSieQfVSWVLKhst0DnCAyeHksvWky1CldFCQllhDB1HHBiP09Z8pamVB783n3qr/1HNZiSp6k2iUcaSoA=="
-  "resolved" "https://registry.npmjs.org/@expo/config-plugins/-/config-plugins-4.1.4.tgz"
-  "version" "4.1.4"
-  dependencies:
-    "@expo/config-types" "^45.0.0"
-    "@expo/json-file" "8.2.36"
-    "@expo/plist" "0.0.18"
-    "@expo/sdk-runtime-versions" "^1.0.0"
-    "@react-native/normalize-color" "^2.0.0"
-    "chalk" "^4.1.2"
-    "debug" "^4.3.1"
-    "find-up" "~5.0.0"
-    "getenv" "^1.0.0"
-    "glob" "7.1.6"
-    "resolve-from" "^5.0.0"
-    "semver" "^7.3.5"
-    "slash" "^3.0.0"
-    "xcode" "^3.0.1"
-    "xml2js" "0.4.23"
-
 "@expo/config-plugins@^4.0.2", "@expo/config-plugins@4.0.6":
   "integrity" "sha512-K/KQaw/CU8uLQgk7sFnZC54YGHoGucKFfdjYeZx5ds2eyzbuMAiKzGFcxZ/S+1dVBZ8QHzwowsVBW3kuYhnQ3Q=="
   "resolved" "https://registry.npmjs.org/@expo/config-plugins/-/config-plugins-4.0.6.tgz"
@@ -4503,12 +4482,12 @@
     "@expo/config" "^6.0.6"
     "uuid" "^3.3.2"
 
-"expo-contacts@^10.2.0":
-  "integrity" "sha512-OVqJNfzJfc/erpgN+w7xxp0ro8fkFVRrfc89qK9oQHrfajkj1JmxKaAwJX1BYCmNOudCI1L5+tBpzNe5ygOZOA=="
-  "resolved" "https://registry.npmjs.org/expo-contacts/-/expo-contacts-10.2.0.tgz"
-  "version" "10.2.0"
+"expo-contacts@^10.1.0":
+  "integrity" "sha512-L5Na3UXFn6AjoOv+Dq2aidYwVnre4Q6dLWva7vK+fj01mjWE/hww0TCXG2x9RT/uL6MYYk1z+5Gkwu2TjeZUfg=="
+  "resolved" "https://registry.npmjs.org/expo-contacts/-/expo-contacts-10.1.0.tgz"
+  "version" "10.1.0"
   dependencies:
-    "@expo/config-plugins" "^4.0.14"
+    "@expo/config-plugins" "^4.0.2"
     "uuid" "^3.4.0"
 
 "expo-device@*", "expo-device@~4.1.0":
