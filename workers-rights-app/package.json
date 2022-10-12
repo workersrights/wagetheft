@@ -60,7 +60,7 @@
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "sentry-expo": "^4.0.0",
+    "sentry-expo": "^4.2.0",
     "use-subscription": "1.5"
   },
   "devDependencies": {
