@@ -7,8 +7,8 @@ import { NativeModules, Platform } from "react-native"; // for language
 import * as FBAnalytics from "expo-firebase-analytics";
 import * as Sentry from "sentry-expo";
 import RightsNavigator from "./navigation/RightsNavigator";
-import ImportedData from "./data/FetchRightsData"; // eslint-disable-line
-import DSN from "./constants/SentryKeys";
+import ImportedData from "./data/FetchRightsData.js"; // eslint-disable-line
+import DSN from "./constants/SentryKeys.js";
 
 Sentry.init({
   dsn: DSN,

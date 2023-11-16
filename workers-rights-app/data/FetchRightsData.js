@@ -1,4 +1,5 @@
-import * as firebase from "firebase";
+import * as firebase from "firebase/compat/app";
+import 'firebase/database';
 import firebaseConfig from "../constants/MyApiKeys";
 import RightsCategory from "../models/rightsCategory";
 import SubRight from "../models/subRight";
