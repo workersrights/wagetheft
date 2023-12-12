@@ -1,5 +1,7 @@
-import * as firebase from "firebase";
-import firebaseConfig from "../constants/MyApiKeys";
+import firebase from "firebase/compat/app";
+import "firebase/compat/database";
+import "firebase/compat/auth";
+import "firebase/compat/analytics";
 import RightsCategory from "../models/rightsCategory";
 import SubRight from "../models/subRight";
 import learnMore from "../models/learnMore";
@@ -44,6 +46,7 @@ export default class ImportedData {
   static async importAllData(lang) {
     if (!firebase.apps.length) {
       // only load once
+      const { firebaseConfig } = await import('../constants/MyApiKeys.js');
       firebase.initializeApp(firebaseConfig);
     }
     // Get a reference to the database service

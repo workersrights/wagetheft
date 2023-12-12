@@ -22,6 +22,18 @@
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      
+    },
+    "internal": {
+      "android": {
+        "track": "internal"
+      }
+    },
+    "beta": {
+      "android": {
+        "track": "beta"
+      }
+    }
   }
 }

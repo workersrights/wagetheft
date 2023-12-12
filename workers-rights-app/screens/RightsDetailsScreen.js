@@ -1,9 +1,10 @@
 import React, { useState, useRef } from "react";
 import { View, Text, StyleSheet, ScrollView, FlatList } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Modalize } from "react-native-modalize";
 import { Portal } from "react-native-portalize";
 import PropTypes from "prop-types";
-import * as FBAnalytics from "expo-firebase-analytics";
+import analytics from "@react-native-firebase/analytics";
 import OrganizationBox from "../components/OrganizationBox";
 import LearnMoreItem from "../components/LearnMoreItem";
 import RightsSheetContent from "../components/RightsSheetContent";
@@ -63,7 +64,7 @@ const RightsDetailsScreen = ({ route, navigation }) => {
         title={itemData.item.name}
         image={itemData.item.image}
         onSelect={() => {
-          FBAnalytics.logEvent("org_tile_click", {
+          analytics().logEvent("org_tile_click", {
             clickDetails: `Clicked ${itemData.item.name} org box`,
           });
           openModalHandler(itemData.item);
@@ -74,7 +75,7 @@ const RightsDetailsScreen = ({ route, navigation }) => {
 
   const openLearnMoreHandler = (id) => {
     setActiveLearnMoreId(id);
-    modalizeRef.current.open(); //eslint-disable-line
+    modalizeRef.current?.open(); //eslint-disable-line
   };
 
   return (
@@ -115,14 +116,13 @@ const RightsDetailsScreen = ({ route, navigation }) => {
           ))}
         </View>
       </ScrollView>
-
       <Portal>
         <Modalize
           ref={modalizeRef}
           modalStyle={styles.modalize}
           modalTopOffset={50}
-        >
-          <RightsSheetContent learnMoreId={activeLearnMoreId} />
+          >
+            <RightsSheetContent learnMoreId={activeLearnMoreId} />
         </Modalize>
       </Portal>
     </View>

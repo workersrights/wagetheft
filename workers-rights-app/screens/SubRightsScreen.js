@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import PropTypes from "prop-types";
-import * as FBAnalytics from "expo-firebase-analytics";
+import analytics from "@react-native-firebase/analytics";
 import SubRightsItem from "../components/SubRightsItem";
 import ImportedData from "../data/FetchRightsData"; //eslint-disable-line
 
@@ -36,7 +36,7 @@ const SubRightsScreen = ({ navigation, route }) => {
         title={itemData.item.title}
         img={parentCategory.image}
         onSelect={() => {
-          FBAnalytics.logEvent("subright_tile_click", {
+          analytics().logEvent("subright_tile_click", {
             clickDetails: `Clicked ${itemData.item.title}`,
           });
           navigation.navigate({
