@@ -8,10 +8,11 @@ import * as Sentry from "sentry-expo";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import RightsNavigator from "./navigation/RightsNavigator";
 import ImportedData from "./data/FetchRightsData"; // eslint-disable-line
-import DSN from "./constants/SentryKeys";
+// import DSN from "./constants/SentryKeys";
 
 Sentry.init({
-  dsn: DSN,
+  dsn: "",
+  enabled: false,
   enableInExpoDevelopment: true,
   debug: false, // Sentry will try to print out useful debugging information if something goes wrong with sending an event. Set this to `false` in production.
 });
@@ -47,13 +48,13 @@ export default function App() {
           "nunito-bold": require("./assets/fonts/Nunito-Bold.ttf"),
           "nunito-extrabold": require("./assets/fonts/Nunito-ExtraBold.ttf"),
         });
-        
+
         // Get device language
         const deviceLanguage =
-        Platform.OS === "ios"
-        ? NativeModules.SettingsManager.settings.AppleLocale ||
-        NativeModules.SettingsManager.settings.AppleLanguages[0] // iOS 13
-        : NativeModules.I18nManager.localeIdentifier;
+          Platform.OS === "ios"
+            ? NativeModules.SettingsManager.settings.AppleLocale ||
+              NativeModules.SettingsManager.settings.AppleLanguages[0] // iOS 13
+            : NativeModules.I18nManager.localeIdentifier;
 
         await ImportedData.importAllData(deviceLanguage);
         analytics().logEvent("AppStart", { purpose: "User Started the app" });
@@ -63,7 +64,7 @@ export default function App() {
         // Tell the application to render
         setDataLoaded(true);
       }
-    };
+    }
     prepare();
   }, []);
 
@@ -80,7 +81,7 @@ export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Host>
-          <RightsNavigator />
+        <RightsNavigator />
       </Host>
     </GestureHandlerRootView>
   );

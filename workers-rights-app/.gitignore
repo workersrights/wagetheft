@@ -17,6 +17,7 @@ web-report/
 google-service-account-key.json
 # macOS
 .DS_Store
+.env.local
 
 #amplify
 amplify/\#current-cloud-backend
