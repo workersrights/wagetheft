@@ -8,10 +8,10 @@ import * as Sentry from "sentry-expo";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import RightsNavigator from "./navigation/RightsNavigator";
 import ImportedData from "./data/FetchRightsData"; // eslint-disable-line
-// import DSN from "./constants/SentryKeys";
+import DSN from "./constants/SentryKeys";
 
 Sentry.init({
-  dsn: "",
+  dsn: DSN,
   enabled: false,
   enableInExpoDevelopment: true,
   debug: false, // Sentry will try to print out useful debugging information if something goes wrong with sending an event. Set this to `false` in production.

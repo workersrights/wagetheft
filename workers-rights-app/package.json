@@ -18,7 +18,7 @@
   "dependencies": {
     "@babel/preset-typescript": "^7.23.3",
     "@expo/vector-icons": "^13.0.0",
-    "@react-native-async-storage/async-storage": "1.18.2",
+    "@react-native-async-storage/async-storage": "^1.23.1",
     "@react-native-community/netinfo": "9.3.10",
     "@react-native-firebase/analytics": "^18.7.2",
     "@react-native-firebase/app": "^18.7.2",

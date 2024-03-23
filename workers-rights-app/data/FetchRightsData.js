@@ -1,7 +1,8 @@
 import firebase from "firebase/compat/app";
-import "firebase/compat/database";
-import "firebase/compat/auth";
-import "firebase/compat/analytics";
+import {db} from "./FirebaseSetup.js";
+// import "firebase/compat/database";
+// import "firebase/compat/auth";
+// import "firebase/compat/analytics";
 import RightsCategory from "../models/rightsCategory";
 import SubRight from "../models/subRight";
 import learnMore from "../models/learnMore";
@@ -50,7 +51,8 @@ export default class ImportedData {
       firebase.initializeApp(firebaseConfig);
     }
     // Get a reference to the database service
-    var db = firebase.database();
+    // var db = firebase.database();
+    var db = db;
 
     // Set correct language for data
     const supportedLanguages = ["en", "es"];

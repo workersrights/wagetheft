@@ -10,11 +10,14 @@ npm-debug.*
 web-build/
 web-report/
 *MyApiKeys.js
+*SentryKeys.js
 *Keys.js
 *Keys*
 *MyTwitterKeys.js
 .vscode/
 google-service-account-key.json
+wagetheft*
+.idea/
 # macOS
 .DS_Store
 .env.local
